@@ -42,17 +42,17 @@ public class Person {
         telefonnummer = tel;
     }
     
-    public void printInfo()
-    {
-        System.out.println("Frau/Herr " + name + ":");
-        System.out.println("     burgerID:      " + burgerID);
-        System.out.println("     geburtsdatum:  " + geburtsdatum);
-        System.out.println("     anschrift:     " + anschrift);
-        System.out.println("     email:         " + email);
-        System.out.println("     telefonnummer: " + telefonnummer);
-        
-    }
     
+    @Override public String toString()
+    {
+        return String.format("Frau/Herr: " + name + "\n" +
+                             "     burgerID:      " + burgerID + "\n" +
+                             "     geburtsdatum:  " + geburtsdatum + "\n" +
+                             "     anschrift:     " + anschrift + "\n" +
+                             "     email:         " + email + "\n" +
+                             "     telefonnummer: " + telefonnummer );
+    }
+  
     public void updateKontakt(String e, int tel)
     {
         email = e;

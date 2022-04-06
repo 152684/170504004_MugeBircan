@@ -33,10 +33,12 @@ public class Kunde extends Person{
     {
         
     }
+
     
-    @Override
-    public void printInfo()
+    @Override public String toString()
     {
         
     }
+
+
 }
