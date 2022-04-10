@@ -46,6 +46,21 @@ public class Tour {
         r = rL;        
     }
         
+    public Tour(String n, Date d, int maxT, String hN, float p, int freiP)
+    {
+        tourName = n;
+        tourDatum = d;
+        maxTeilnehmer = maxT;
+        hotelName = hN;
+        preis = p;
+        freiePlaetze = freiP;       
+    }
+
+    public String getName()
+    {
+        return tourName;
+    }
+    
     public void setDate(Date d)
     {
         tourDatum = d;
@@ -92,7 +107,6 @@ public class Tour {
                              "preis:                    " + preis );
     }
         
-    }
     
    
     public void setKunde(Kunde k)

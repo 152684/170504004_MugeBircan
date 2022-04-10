@@ -12,8 +12,8 @@ import java.util.Date;
  */
 public class Mitarbeiter extends Arbeiter{
     
-    public Mitarbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt) {
-        super(n, ID, anschr, e, telefon, geburt);
+    public Mitarbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID) {
+        super(n, ID, anschr, e, telefon, geburt, personalID);
     }
     
 }

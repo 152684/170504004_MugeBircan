@@ -12,7 +12,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Person {
+public abstract class Person {
     
     private String name;
     private int burgerID;
@@ -33,7 +33,17 @@ public class Person {
         geburtsdatum = geburt;
         
     }
+    
+    public int getBurgerID()
+    {
+        return burgerID;
+    }
 
+    public String getName()
+    {
+        return name;
+    }
+    
     public void updateInfo(String n, String anschr, String e, int tel)
     {
         name = n;
