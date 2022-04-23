@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.In202fxmlController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.In202fxmlController">
+   <children>
+      <Label layoutX="195.0" layoutY="36.0" text="Reise Büro DB">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="127.0" text="User Name:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="175.0" text="Passwort:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <PasswordField layoutX="186.0" layoutY="172.0" />
+      <ProgressBar layoutX="179.0" layoutY="128.0" prefWidth="200.0" progress="0.0" />
+   </children>
 </AnchorPane>
