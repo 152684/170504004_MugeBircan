@@ -47,16 +47,22 @@ public class Arbeiter extends Person{
                 
         System.out.println("Geben Sie den Namen ein: ");
         n2 = sc.nextLine();
+        //sc.nextLine();
         System.out.println("Geben Sie die BugerID ein: ");
         ID2 = sc.nextInt();
+        sc.nextLine();
         System.out.println("Geben Sie den Anschrift ein: ");
         anschr2 = sc.nextLine();
+        //sc.nextLine();
         System.out.println("Geben Sie die Email ein: ");
         e2 = sc.nextLine();
+        //sc.nextLine();
         System.out.println("Geben Sie die Telefonnummer ein: ");
         telefon2 = sc.nextInt(); 
+        sc.nextLine();
         System.out.println("Geben Sie den Geburtsdatum ein: ");
         String d = sc.nextLine();
+        //sc.nextLine();
         try{
             geburt2 = dateFormat.parse(d);        
         }catch(ParseException e){
@@ -126,12 +132,13 @@ public class Arbeiter extends Person{
      
     }
     
-    public void deleteKunde(String n)
+    public void deleteKunde()
     {
         int id;
                 
         System.out.println("Geben Sie die BurgerID der Kunde ein: ");
         id = sc.nextInt();
+        sc.nextLine();
 
         Iterator<Kunde> iter = kunden.iterator();        
         boolean ex = false;
@@ -154,7 +161,10 @@ public class Arbeiter extends Person{
     
     public void kundeAlphPrint()
     {
-        
+        Iterator<Kunde> iter = kunden.iterator();
+        while(iter.hasNext()){
+            System.out.println(iter.next().toString());
+        }
     }
     
     public void printKunde(String n)

@@ -24,7 +24,8 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <PasswordField layoutX="186.0" layoutY="172.0" />
-      <ProgressBar layoutX="179.0" layoutY="128.0" prefWidth="200.0" progress="0.0" />
+      <PasswordField fx:id="passID" layoutX="186.0" layoutY="172.0" onAction="#passIN" />
+      <TextField fx:id="userID" layoutX="186.0" layoutY="124.0" onAction="#userIN" />
+      <TextArea fx:id="sceneText" layoutX="157.0" layoutY="240.0" prefHeight="66.0" prefWidth="260.0" />
    </children>
 </AnchorPane>

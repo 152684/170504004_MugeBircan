@@ -14,7 +14,7 @@ import static com.mycompany.inf202.Connect.connect;
 public class Inf202 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        connect();
+        System.out.println("---------------INF202 Project------------- ");
+        connect();                
     }
 }
