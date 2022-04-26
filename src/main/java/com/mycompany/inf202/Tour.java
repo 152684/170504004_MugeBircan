@@ -86,6 +86,10 @@ public class Tour {
         preis = p;
     }
     
+    public float getPreis(){
+        return preis;
+    }
+    
     public void setFreiP(int f)
     {
         freiePlaetze = f;

@@ -33,8 +33,15 @@ public class Hotel {
         preis = p;        
     }
     
-    public void printInfo()
-    {
-        
+    public String getName(){
+        return name;
+    }
+    
+    @Override public String toString(){
+        return String.format("Hotel: " + name + "\n" +
+                             "      Anschrift:     " + anschrift +
+                             "      Telefonnummer: " + telefonNummer +
+                             "      Email:         " + email +
+                             "      Preis:         " + preis);
     }
 }

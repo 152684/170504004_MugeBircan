@@ -47,22 +47,18 @@ public class Arbeiter extends Person{
                 
         System.out.println("Geben Sie den Namen ein: ");
         n2 = sc.nextLine();
-        //sc.nextLine();
         System.out.println("Geben Sie die BugerID ein: ");
         ID2 = sc.nextInt();
         sc.nextLine();
         System.out.println("Geben Sie den Anschrift ein: ");
         anschr2 = sc.nextLine();
-        //sc.nextLine();
         System.out.println("Geben Sie die Email ein: ");
         e2 = sc.nextLine();
-        //sc.nextLine();
         System.out.println("Geben Sie die Telefonnummer ein: ");
         telefon2 = sc.nextInt(); 
         sc.nextLine();
         System.out.println("Geben Sie den Geburtsdatum ein: ");
         String d = sc.nextLine();
-        //sc.nextLine();
         try{
             geburt2 = dateFormat.parse(d);        
         }catch(ParseException e){
@@ -167,18 +163,35 @@ public class Arbeiter extends Person{
         }
     }
     
-    public void printKunde(String n)
+    public void kundeNachNamePrint()
     {
+        System.out.println("Geben Sie den Namen des Kunden ein: ");
+        String name = sc.nextLine();
+        Iterator<Kunde> iter = kunden.iterator();
+        
+        while(iter.hasNext()){
+            if(iter.next().getName() == name){
+                iter.toString();
+                break;
+            }
+        }
         
     }
-    
-    public void printKunde(int id)
-    {
-        
-    }
-    
+       
     public void kundeNachIDprint()
     {
+
+        System.out.println("Geben Sie die BuergerID des Kunden ein: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        Iterator<Kunde> iter = kunden.iterator();
+        
+        while(iter.hasNext()){
+            if(iter.next().getBurgerID() == id){
+                iter.toString();
+                break;
+            }
+        }
         
     }
     
@@ -285,16 +298,40 @@ public class Arbeiter extends Person{
 
     public void tourAlphPrint()
     {
+        Iterator<Tour> iter = tours.iterator();
+        while(iter.hasNext()){
+            System.out.println(iter.next().toString());
+        }
         
     }
 
     public void tourPreisPrint()
     {
+        System.out.println("Geben Sie den Namen des Tours ein: ");
+        String name = sc.nextLine();
+        Iterator<Tour> iter = tours.iterator();
+        
+        while(iter.hasNext()){
+            if(iter.next().getName() == name){
+//                System.out.println("Der Preis ist: " + iter.getPreis());
+                break;
+            }
+        }
         
     }
 
-    public void printTour(String tour)
+    public void tourNachNamePrint()
     {
+        System.out.println("Geben Sie den Namen des Tours ein: ");
+        String name = sc.nextLine();
+        Iterator<Tour> iter = tours.iterator();
+        
+        while(iter.hasNext()){
+            if(iter.next().getName() == name){
+                iter.toString();
+                break;
+            }
+        }
         
     }
 
@@ -325,11 +362,25 @@ public class Arbeiter extends Person{
     
     public void hotelAlphPrint()
     {
+        Iterator<Hotel> iter = hotels.iterator();
+        while(iter.hasNext()){
+            System.out.println(iter.next().toString());
+        }
         
     }
     
-    public void printHotel(String n)
+    public void hotelNachNamePrint()
     {
+        System.out.println("Geben Sie den Namen des Hotels ein: ");
+        String name = sc.nextLine();
+        Iterator<Hotel> iter = hotels.iterator();
+        
+        while(iter.hasNext()){
+            if(iter.next().getName() == name){
+                iter.toString();
+                break;
+            }
+        }
         
     }
     
@@ -355,11 +406,25 @@ public class Arbeiter extends Person{
     
     public void reiseLAlphPrint()
     {
-        
+        Iterator<ReiseLeiter> iter = reiseleitern.iterator();
+        while(iter.hasNext()){
+            System.out.println(iter.next().toString());
+        }
+            
     }
     
-    public void printReiseL(String n)
+    public void printReiseL()
     {
+        System.out.println("Geben Sie den Namen des Kunden ein: ");
+        String name = sc.nextLine();
+        Iterator<ReiseLeiter> iter = reiseleitern.iterator();
+        
+        while(iter.hasNext()){
+            if(iter.next().getName() == name){
+                iter.toString();
+                break;
+            }
+        }
         
     }
     

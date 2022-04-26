@@ -6,7 +6,7 @@
 package com.mycompany.inf202;
 
 import static com.mycompany.inf202.Connect.connect;
-
+import testPackage.*;
 /**
  *
  * @author mbirc
@@ -15,6 +15,11 @@ public class Inf202 {
 
     public static void main(String[] args) {
         System.out.println("---------------INF202 Project------------- ");
-        connect();                
+        connect(); 
+        
+        kundeTest t = new kundeTest();
+        t.test();
+        
+        
     }
 }
