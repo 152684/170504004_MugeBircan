@@ -5,7 +5,7 @@
 
 package com.mycompany.inf202;
 
-import static com.mycompany.inf202.Connect.connect;
+import databaseFunctions.*;
 import testPackage.*;
 /**
  *
@@ -15,7 +15,6 @@ public class Inf202 {
 
     public static void main(String[] args) {
         System.out.println("---------------INF202 Project------------- ");
-        connect(); 
         
         kundeTest t = new kundeTest();
         t.test();

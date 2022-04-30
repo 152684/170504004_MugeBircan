@@ -5,6 +5,7 @@
 package testPackage;
 
 import com.mycompany.inf202.Arbeiter;
+import databaseFunctions.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +20,12 @@ public class kundeTest {
         System.out.println("-----------setKunde und kundeAlphPrint Funktionen überprüfen---------------");
         
         Date d = null;
-        Arbeiter a = new Arbeiter("muge", 170504, "maltepe", "email", 555372, d);
+        //Arbeiter a = new Arbeiter("muge", 17050402, "maltepe", "email", 55537203, d);
+        
+        InsertRecords r = new InsertRecords();
+        r.insertArbeiter("muge", 17050402, "maltepe", "email", 55537203, d);
+        System.out.println("erfolg");
+        /*
         a.setKunde();
         a.setKunde(); //muge id=2020
         a.setKunde();
@@ -28,5 +34,6 @@ public class kundeTest {
         System.out.println("-----------deleteKunde Funktion überprüfen---------------");
         a.deleteKunde();
         a.kundeAlphPrint();
+        */
     }
 }
