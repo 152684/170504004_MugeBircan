@@ -14,7 +14,7 @@ import java.util.Date;
 public abstract class Person {
     
     private String name;
-    private int burgerID;
+    private int burgerID; // 11-stellig ??
     private String anschrift;
     private String email;
     private int telefonnummer;
@@ -33,7 +33,7 @@ public abstract class Person {
         
     }
     
-    public int getBurgerID()
+    public long getBurgerID()
     {
         return burgerID;
     }

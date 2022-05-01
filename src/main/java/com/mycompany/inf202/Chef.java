@@ -12,8 +12,8 @@ import java.util.Date;
  */
 public class Chef extends Arbeiter{
    
-    public Chef(String n, int ID, String anschr, String e, int telefon, Date geburt/*, int persID*/) {
-        super(n, ID, anschr, e, telefon, geburt/*, personalID*/);
+    public Chef(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID) {
+        super(n, ID, anschr, e, telefon, geburt, persID);
     }
     
     public void printMitarbAlph()

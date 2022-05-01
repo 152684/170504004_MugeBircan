@@ -15,10 +15,12 @@ public class Inf202 {
 
     public static void main(String[] args) {
         System.out.println("---------------INF202 Project------------- ");
-        
+        /*
         kundeTest t = new kundeTest();
         t.test();
-        
+        */
+        InsertRecordsTest t = new InsertRecordsTest();
+        t.test();
         
     }
 }

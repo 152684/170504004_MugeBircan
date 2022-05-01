@@ -8,24 +8,22 @@ package databaseFunctions;
  *
  * @author mbirc
  */
-import com.mycompany.inf202.*;
 import java.sql.Connection;  
-import java.sql.DriverManager;  
 import java.sql.PreparedStatement;  
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 public class InsertRecords {
     
-    public void insertArbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt){
+    public void insertArbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        //"muge", 17050402, "maltepe", "email", 55537203, d
-        //String n, int ID, String anschr, String e, int telefon, Date geburt
+        //java.util.Date utilDate = new java.util.Date();
+        //java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
+        //java.sql.Timestamp sqlTS = new java.sql.Timestamp(geburt.getTime());
         
-        String sql = "INSERT INTO arbeiter(name, burgerID, anschrift, email, telefonnumer, geburtsdatum) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO arbeiter(name, burgerID, anschrift, email, telefonnumer, geburtsdatum, personalID) VALUES(?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  
@@ -33,7 +31,8 @@ public class InsertRecords {
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
-            //pstmt.setDouble(6, java.sql.Date.valueOf(geburt));  
+            pstmt.setDate(6, geburt);
+            pstmt.setInt(7, persID);
             pstmt.executeUpdate(); 
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  

@@ -8,7 +8,6 @@ package databaseFunctions;
  *
  * @author mbirc
  */
-//import com.mycompany.inf202.Arbeiter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

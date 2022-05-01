@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class Arbeiter extends Person{
     
-    //protected int personalID;
+    protected int personalID; //8-stellig
     private String passwort;
     
     private Scanner sc = new Scanner(System.in);
@@ -31,9 +31,9 @@ public class Arbeiter extends Person{
     private ArrayList<Hotel> hotels = new ArrayList();
 
     
-    public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt/*, int persID*/) {
+    public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID) {
         super(n, ID, anschr, e, telefon, geburt);
-        //personalID = persID;
+        personalID = persID;
     }
     
     public void setKunde()
@@ -66,6 +66,7 @@ public class Arbeiter extends Person{
             e.printStackTrace();
         }
 
+        /*
         Iterator<Kunde> iter = kunden.iterator();
         boolean ex = false;
         while(iter.hasNext()){
@@ -80,6 +81,8 @@ public class Arbeiter extends Person{
             Kunde k = new Kunde(n2, ID2, anschr2, e2, telefon2, geburt2);
             kunden.add(k);
         }
+        */
+        
         
     }
     
