@@ -34,8 +34,25 @@ public class InsertRecordsTest {
         java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
        
         InsertRecords r = new InsertRecords();
+
         r.insertArbeiter("muge", 170504, "maltepe", "email", 55537203, sqlDate, 45);
         //r.insertArbeiter("ayse", 170504, "kadikoy", "email", 55537203, sqlDate, 45);
+
+
+        System.out.println("-----------insertChef überprüfen---------------");
+        r.insertChef("ayse", 2000879, "kadikoy", "email2", 654987123, sqlDate, 96);
+        
+        System.out.println("-----------insertKunde überprüfen---------------");
+        r.insertKunde("hasan", 2000879, "kadikoy", "email2", 654987123, sqlDate);
+        
+        System.out.println("-----------insertReiseLeiter überprüfen---------------");
+        r.insertReiseLeiter("ali", 2000879, "kadikoy", "email2", 654987123, sqlDate);
+        
+        System.out.println("-----------insertHotel überprüfen---------------");
+        r.insertHotel("antalyaHotel", "antalya", 15675342, "emailHotel", 150);
+ 
+        System.out.println("-----------insertTour überprüfen---------------");
+        r.insertTour("antalyaTour", sqlDate, "burada kalinacak, suraya gidilecek", 20, "antalyaHotel", 50, 20, "ali");
         
     }
     
