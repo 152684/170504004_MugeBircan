@@ -8,6 +8,7 @@ package com.mycompany.inf202;
  *
  * @author mbirc
  */
+import databaseFunctions.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,14 +23,16 @@ public class Arbeiter extends Person{
     
     private Scanner sc = new Scanner(System.in);
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    
-    //private ArrayList<Chef> chefs = new ArrayList();
+
+    InsertRecords insertData = new InsertRecords();
+/*    
+    private ArrayList<Chef> chefs = new ArrayList();
     private ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
     private ArrayList<Kunde> kunden = new ArrayList();
     private ArrayList<ReiseLeiter> reiseleitern = new ArrayList();
     private ArrayList<Tour> tours = new ArrayList();
     private ArrayList<Hotel> hotels = new ArrayList();
-
+*/
     
     public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID) {
         super(n, ID, anschr, e, telefon, geburt);
@@ -65,6 +68,9 @@ public class Arbeiter extends Person{
             System.out.println("Der eingegebene Datum ist nicht gueltig.");
             e.printStackTrace();
         }
+        java.sql.Date sqlDate = new java.sql.Date(geburt2.getTime());
+        
+        insertData.insertArbeiter(n2, ID2, anschr2, e2, telefon2, sqlDate, personalID);
 
         /*
         Iterator<Kunde> iter = kunden.iterator();
@@ -84,9 +90,11 @@ public class Arbeiter extends Person{
         */
         
         
+        
+        
     }
     
-    public void updateKundenIfno()
+    public void updateKundenInfo()
     {
 
         String n2;

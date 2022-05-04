@@ -31,6 +31,7 @@ public class InsertRecords {
             pstmt.setInt(7, persID);
             pstmt.executeUpdate(); 
         } catch (SQLException e) {  
+            System.out.println("Der Arbeiter kann nicht hinzugefuegt werden!");
             System.out.println(e.getMessage());  
         }        
 
