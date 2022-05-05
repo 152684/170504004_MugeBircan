@@ -18,7 +18,7 @@ public class InsertRecordsTest {
     public void test(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         
-        System.out.println("-----------insertArbeiter überprüfen---------------");
+        System.out.println("-----------insertMitarbeiter überprüfen---------------");
         
         Scanner sc = new Scanner(System.in);
         Date geburt = null;
@@ -35,7 +35,7 @@ public class InsertRecordsTest {
        
         InsertRecords r = new InsertRecords();
 
-        r.insertArbeiter("muge", 170504, "maltepe", "email", 55537203, sqlDate, 45);
+        r.insertMitarbeiter("muge", 170504, "maltepe", "email", 55537203, sqlDate, 45);
         //r.insertArbeiter("ayse", 170504, "kadikoy", "email", 55537203, sqlDate, 45);
 
 

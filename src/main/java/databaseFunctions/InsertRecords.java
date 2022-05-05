@@ -15,11 +15,11 @@ import java.sql.Date;
 
 public class InsertRecords {
     
-    public void insertArbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID){
+    public void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        String sql = "INSERT INTO arbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID) VALUES(?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  

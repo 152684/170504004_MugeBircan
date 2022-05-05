@@ -7,6 +7,7 @@ package com.mycompany.inf202;
 
 import databaseFunctions.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import testPackage.*;
 /**
  *
@@ -16,8 +17,8 @@ import testPackage.*;
 
 public class Inf202 {
     
-    private ArrayList<Chef> chefs = new ArrayList();
-    private ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
+    private static ArrayList<Chef> chefs = new ArrayList();
+    private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
     
     public static void main(String[] args) {
@@ -35,6 +36,26 @@ public class Inf202 {
         t.test();
         */
         
-        //Mitarbeiter m = new Mitarbeiter();
+        SelectRecords t = new SelectRecords();
+        t.allMitarbeiterInArray(mitarbeitern);
+        t.allChefInArray(chefs);
+        
+        Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
+        Iterator<Chef> iterC = chefs.iterator();
+        
+        while(iter.hasNext()){
+                System.out.println("name:     " + iter.next().getName() + "\n" +
+                                   "burgerID: " + iter.next().getBurgerID() + "\n"); 
+                //schreibt alle Mitarbeitern nicht richtig auf, da mit iter.next() immer der nächste Mitarbeiter aufgerufen wird.
+                //Hier ist das aber nicht wichtig, das wichtigste war zu verstehen, dass alles im ArrayList rictig geschrieben worden ist.
+            
+        }
+        
+        while(iterC.hasNext()){
+                System.out.println("name:     " + iterC.next().getName() + "\n"); 
+            
+        }
+        
+        
     }
 }

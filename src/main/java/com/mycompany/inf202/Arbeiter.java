@@ -25,15 +25,15 @@ public class Arbeiter extends Person{
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     InsertRecords insertData = new InsertRecords();
-/*    
+    
     private ArrayList<Chef> chefs = new ArrayList();
     private ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
     private ArrayList<Kunde> kunden = new ArrayList();
     private ArrayList<ReiseLeiter> reiseleitern = new ArrayList();
     private ArrayList<Tour> tours = new ArrayList();
     private ArrayList<Hotel> hotels = new ArrayList();
-*/
-    
+
+   
     public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID) {
         super(n, ID, anschr, e, telefon, geburt);
         personalID = persID;
@@ -70,7 +70,7 @@ public class Arbeiter extends Person{
         }
         java.sql.Date sqlDate = new java.sql.Date(geburt2.getTime());
         
-        insertData.insertArbeiter(n2, ID2, anschr2, e2, telefon2, sqlDate, personalID);
+//        insertData.insertArbeiter(n2, ID2, anschr2, e2, telefon2, sqlDate, personalID);
 
         /*
         Iterator<Kunde> iter = kunden.iterator();

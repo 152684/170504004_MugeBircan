@@ -4,12 +4,12 @@
  */
 package databaseFunctions;
 
-import com.mycompany.inf202.Mitarbeiter;
+import com.mycompany.inf202.*;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,11 +17,11 @@ import java.sql.Statement;
  */
 public class SelectRecords {
     
-    public void selectArbeiter(){
+    public void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern){
         Connect c = new Connect();
         Connection conn = c.connect();
     
-        String sql = "SELECT * FROM arbeiter"; 
+        String sql = "SELECT * FROM mitarbeiter"; 
         
           
         try {  
@@ -30,6 +30,7 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
+/*
                 System.out.println(rs.getString("name") + "\t" +
                                    rs.getInt("burgerID") +  "\t" +   
                                    rs.getString("anschrift") + "\t" +
@@ -37,12 +38,36 @@ public class SelectRecords {
                                    rs.getInt("telefonnummer") + "\t" +
                                    rs.getDate("geburtsdatum") + "\t" + 
                                    rs.getInt("personalID")); 
+*/
                 Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"));
-                //mitarbeitern.add(m);
+                mitarbeitern.add(m);
             }  
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
-              
+          
     }    
+
+    public void allChefInArray(ArrayList<Chef> chefs){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM chef"; 
+        
+          
+        try {  
+            Statement stmt  = conn.createStatement();  
+            ResultSet rs    = stmt.executeQuery(sql);  
+              
+            // loop through the result set  
+            while (rs.next()) { 
+                Chef c2 = new Chef(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"));
+                chefs.add(c2);
+            }  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+          
+    }    
+
 }

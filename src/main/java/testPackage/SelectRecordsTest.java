@@ -14,7 +14,7 @@ public class SelectRecordsTest {
         System.out.println("-----------selectArbeiter überprüfen---------------");
         
         SelectRecords r = new SelectRecords();
-        r.selectArbeiter();
+        //r.selectArbeiter();
     }
 
     
