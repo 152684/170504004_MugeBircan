@@ -13,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
+import com.mycompany.inf202.*;
 
 /**
  * FXML Controller class
@@ -38,6 +39,7 @@ public class In202fxmlController implements Initializable {
 
     @FXML
     private void passIN(ActionEvent event) {
+/*
         System.out.println("passIN icinde");
                 
         String pwd = passID.getText();
@@ -48,10 +50,21 @@ public class In202fxmlController implements Initializable {
             System.out.println("sifre yanlis");
             sceneText.setText("falseche Eingabe");
          }  
+*/
+        String user = userID.getText();
+        String pwd = passID.getText();
+        //Login l = new Login();
+        boolean richtig = Login.loginRichtig(user, pwd);
+        if(richtig){
+            sceneText.setText("richtige Eingabe");
+        }else{
+            sceneText.setText("falseche Eingabe");
+        }
     }
 
     @FXML
     private void userIN(ActionEvent event) {
+/*
         System.out.println("userIN icinde");
                 
         String pwd = userID.getText();
@@ -62,7 +75,7 @@ public class In202fxmlController implements Initializable {
             System.out.println("user yanlis");
             sceneText.setText("falseche Eingabe");
          }  
-        
+*/        
     }
  
 }
