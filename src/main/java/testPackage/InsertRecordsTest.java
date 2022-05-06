@@ -35,18 +35,18 @@ public class InsertRecordsTest {
        
         InsertRecords r = new InsertRecords();
 
-        r.insertMitarbeiter("muge", 170504, "maltepe", "email", 55537203, sqlDate, 45);
-        //r.insertArbeiter("ayse", 170504, "kadikoy", "email", 55537203, sqlDate, 45);
+        r.insertMitarbeiter("muge", 170504005, "maltepe", "email", 55537203, sqlDate, 45);
+        r.insertMitarbeiter("ayse", 170504009, "kadikoy", "email", 55537203, sqlDate, 45);
 
 
         System.out.println("-----------insertChef überprüfen---------------");
-        r.insertChef("ayse", 2000879, "kadikoy", "email2", 654987123, sqlDate, 96);
+        r.insertChef("ayse", 170504006, "kadikoy", "email2", 654987123, sqlDate, 96);
         
         System.out.println("-----------insertKunde überprüfen---------------");
-        r.insertKunde("hasan", 2000879, "kadikoy", "email2", 654987123, sqlDate);
+        r.insertKunde("hasan", 170504007, "kadikoy", "email2", 654987123, sqlDate);
         
         System.out.println("-----------insertReiseLeiter überprüfen---------------");
-        r.insertReiseLeiter("ali", 2000879, "kadikoy", "email2", 654987123, sqlDate);
+        r.insertReiseLeiter("ali", 170504008, "kadikoy", "email2", 654987123, sqlDate);
         
         System.out.println("-----------insertHotel überprüfen---------------");
         r.insertHotel("antalyaHotel", "antalya", 15675342, "emailHotel", 150);

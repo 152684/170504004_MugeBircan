@@ -4,13 +4,12 @@
  */
 package com.mycompany.inf202;
 
+import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author mbirc
  */
-import java.util.ArrayList;
-import java.util.Date;
-
 public class Tour {
     
     private String tourName;
@@ -54,6 +53,16 @@ public class Tour {
         hotelName = hN;
         preis = p;
         freiePlaetze = freiP;       
+    }
+    
+    public void tourUpdate(String n, Date d, String info, String hN, float p, ReiseLeiter rL){
+        tourName = n;
+        tourDatum = d;
+        tourInfo = info;
+        hotelName = hN;
+        preis = p;
+        r = rL;        
+        
     }
 
     public String getName()

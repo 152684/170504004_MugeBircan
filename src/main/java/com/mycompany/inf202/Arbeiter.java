@@ -4,10 +4,6 @@
  */
 package com.mycompany.inf202;
 
-/**
- *
- * @author mbirc
- */
 import databaseFunctions.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,10 +12,15 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ *
+ * @author mbirc
+ */
 public class Arbeiter extends Person{
     
     protected int personalID; //8-stellig
     private String passwort;
+    private String userName;
     
     private Scanner sc = new Scanner(System.in);
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -38,6 +39,25 @@ public class Arbeiter extends Person{
         super(n, ID, anschr, e, telefon, geburt);
         personalID = persID;
     }
+    
+    public void setPasswort(){
+        System.out.println("Geben Sie neues Passwort ein: ");
+        passwort = sc.nextLine();
+    }
+    
+    public String getPasswort(){
+        return passwort;
+    }
+    
+    public void setUserName(){
+        System.out.println("Geben Sie neuer userName ein: ");
+        userName = sc.nextLine();
+    }
+    
+    public String getUserName(){
+        return userName;
+    }
+    
     
     public void setKunde()
     {

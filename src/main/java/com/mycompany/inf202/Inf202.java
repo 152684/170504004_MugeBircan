@@ -35,14 +35,15 @@ public class Inf202 {
         SelectRecordsTest t = new SelectRecordsTest();
         t.test();
         */
-        
+        /*
         SelectRecords t = new SelectRecords();
         t.allMitarbeiterInArray(mitarbeitern);
         t.allChefInArray(chefs);
         
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
         Iterator<Chef> iterC = chefs.iterator();
-        
+        */
+/*        
         while(iter.hasNext()){
                 System.out.println("name:     " + iter.next().getName() + "\n" +
                                    "burgerID: " + iter.next().getBurgerID() + "\n"); 
@@ -55,7 +56,10 @@ public class Inf202 {
                 System.out.println("name:     " + iterC.next().getName() + "\n"); 
             
         }
-        
+*/
+    
+        UpdateRecordsTest t = new UpdateRecordsTest();
+        t.test();
         
     }
 }

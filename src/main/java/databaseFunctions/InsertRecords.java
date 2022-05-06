@@ -4,15 +4,14 @@
  */
 package databaseFunctions;
 
-/**
- *
- * @author mbirc
- */
 import java.sql.Connection;  
 import java.sql.PreparedStatement;  
 import java.sql.SQLException;
 import java.sql.Date;
-
+/**
+ *
+ * @author mbirc
+ */
 public class InsertRecords {
     
     public void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID){
@@ -21,7 +20,8 @@ public class InsertRecords {
         
         String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID) VALUES(?,?,?,?,?,?,?)";
         try{    
-            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            System.out.println(sql);
             pstmt.setString(1, n);  
             pstmt.setInt(2, ID);  
             pstmt.setString(3, anschr);  

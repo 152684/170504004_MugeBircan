@@ -4,13 +4,12 @@
  */
 package com.mycompany.inf202;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author mbirc
  */
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public abstract class Person {
     
     private String name;

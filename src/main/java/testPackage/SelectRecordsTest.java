@@ -4,11 +4,11 @@
  */
 package testPackage;
 
+import databaseFunctions.*;
 /**
  *
  * @author mbirc
  */
-import databaseFunctions.*;
 public class SelectRecordsTest {
     public void test(){
         System.out.println("-----------selectArbeiter überprüfen---------------");

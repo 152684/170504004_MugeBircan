@@ -4,13 +4,12 @@
  */
 package com.mycompany.inf202;
 
+import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author mbirc
  */
-import java.util.ArrayList;
-import java.util.Date;
-
 public class ReiseLeiter extends Person{
     
     private ArrayList<String> touren = new ArrayList();
