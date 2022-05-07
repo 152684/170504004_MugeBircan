@@ -4,7 +4,7 @@
  */
 package userInterface;
 
-import com.mycompany.inf202.Login;
+import com.mycompany.inf202.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
