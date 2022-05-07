@@ -4,6 +4,7 @@
  */
 package userInterface;
 
+import com.mycompany.inf202.Login;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,20 +13,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
-import com.mycompany.inf202.*;
 
 /**
  * FXML Controller class
  *
  * @author mbirc
  */
-public class In202fxmlController implements Initializable {
+public class LoginSceneController implements Initializable {
 
     @FXML
-    private PasswordField passID;
-    @FXML
     private TextField userID;
+    @FXML
+    private PasswordField passID;
     @FXML
     private TextArea sceneText;
 
@@ -52,5 +51,6 @@ public class In202fxmlController implements Initializable {
             sceneText.setText("falseche Eingabe");
         }
     }
- 
+    
+    
 }

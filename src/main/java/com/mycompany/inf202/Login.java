@@ -16,7 +16,7 @@ public class Login {
     private static ArrayList<Chef> chefs = new ArrayList();
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
-    static public boolean loginRichtig(String user, String pass){
+    static public long loginRichtig(String user, String pass){
         System.out.println("userName: " + user + "  pass: " + pass);
         SelectRecords t = new SelectRecords();
         t.allMitarbeiterInArray(mitarbeitern);
@@ -24,27 +24,13 @@ public class Login {
         
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
         Iterator<Mitarbeiter> iter2 = mitarbeitern.iterator();
+        Iterator<Mitarbeiter> iter3 = mitarbeitern.iterator();
         Iterator<Chef> iterC = chefs.iterator();
         Iterator<Chef> iterC2 = chefs.iterator();
+        Iterator<Chef> iterC3 = chefs.iterator();
 
-        boolean mitarbeiterEx = false;
-        while(iter.hasNext()){
-            System.out.println("mit while icerde");
-            if(iter.next().getUserName().equals(user)){
-                System.out.println("mit if1 icerde");
-                if(iter2.next().getPasswort().equals(pass)){
-                    System.out.println("mit if2 icerde");
-                    mitarbeiterEx = true;
-                    break;
-                }else{
-                    break;
-                }
-            }else{
-                System.out.println("mit userName nicht gleich");
-            }
-            iter2.next();
-        }
         boolean chefEx = false;
+        boolean mitarbeiterEx = false;
         while(iterC.hasNext()){
             System.out.println("chef while icerde");
             if(iterC.next().getUserName().equals(user)){
@@ -60,10 +46,35 @@ public class Login {
                 System.out.println("chef userName nicht gleich");                
             }
             iterC2.next();
+            iterC3.next();
         }
-        System.out.println("chef " + chefEx + "  mit " + mitarbeiterEx);
-        return mitarbeiterEx || chefEx;
-    
+        if(!chefEx){
+            while(iter.hasNext()){
+                System.out.println("mit while icerde");
+                if(iter.next().getUserName().equals(user)){
+                    System.out.println("mit if1 icerde");
+                    if(iter2.next().getPasswort().equals(pass)){
+                        System.out.println("mit if2 icerde");
+                        mitarbeiterEx = true;
+                        break;
+                    }else{
+                        break;
+                    }
+                }else{
+                    System.out.println("mit userName nicht gleich");
+                }
+                iter2.next();
+                iter3.next();
+            }
+            if(mitarbeiterEx){
+                return iter3.next().getBurgerID();
+            }else{
+                return 0;
+            }
+        }else{
+            return iterC3.next().getBurgerID();
+        }
+            
     }
     
 }

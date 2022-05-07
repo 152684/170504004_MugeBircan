@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.LoginSceneController">
+   <children>
+      <Label layoutX="140.0" layoutY="57.0" text="ReiseBuro Agency Login">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="78.0" layoutY="144.0" text="username:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="200.0" text="passwort:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userID" layoutX="219.0" layoutY="144.0" onAction="#userIN" />
+      <PasswordField fx:id="passID" layoutX="219.0" layoutY="200.0" onAction="#passIN" />
+      <TextArea fx:id="sceneText" layoutX="215.0" layoutY="266.0" prefHeight="85.0" prefWidth="196.0" />
+   </children>
+</AnchorPane>
