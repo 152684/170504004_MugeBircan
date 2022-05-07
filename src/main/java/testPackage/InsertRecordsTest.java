@@ -35,15 +35,19 @@ public class InsertRecordsTest {
        
         InsertRecords r = new InsertRecords();
 
-        r.insertMitarbeiter("muge", 170504005, "maltepe", "email", 55537203, sqlDate, 45);
-        r.insertMitarbeiter("ayse", 170504009, "kadikoy", "email", 55537203, sqlDate, 45);
+        r.insertMitarbeiter("muge", 170504005, "maltepe", "email", 55537203, sqlDate, 45, "user1", "pass1");
+        r.insertMitarbeiter("ayse", 170504006, "kadikoy", "email", 55537203, sqlDate, 45, "user2", "pass2");
+        r.insertMitarbeiter("mehmet", 170504007, "bostanci", "email", 55537203, sqlDate, 45061, "user3", "pass3");
+        r.insertMitarbeiter("veli", 170504008, "uskudar", "email", 55537203, sqlDate, 45, "user4", "pass4");
 
 
         System.out.println("-----------insertChef überprüfen---------------");
-        r.insertChef("ayse", 170504006, "kadikoy", "email2", 654987123, sqlDate, 96);
+        r.insertChef("osman", 170504009, "kadikoy", "email2", 654987123, sqlDate, 96, "user5", "pass5");
+        r.insertChef("hasan", 170504010, "kadikoy", "email2", 654987123, sqlDate, 96, "user6", "pass6");
+        r.insertChef("nur", 170504011, "kadikoy", "email2", 654987123, sqlDate, 96, "user7", "pass7");
         
         System.out.println("-----------insertKunde überprüfen---------------");
-        r.insertKunde("hasan", 170504007, "kadikoy", "email2", 654987123, sqlDate);
+        r.insertKunde("nurgul", 170504012, "kadikoy", "email2", 654987123, sqlDate);
         
         System.out.println("-----------insertReiseLeiter überprüfen---------------");
         r.insertReiseLeiter("ali", 170504008, "kadikoy", "email2", 654987123, sqlDate);

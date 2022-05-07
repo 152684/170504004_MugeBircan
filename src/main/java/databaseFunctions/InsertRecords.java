@@ -14,11 +14,11 @@ import java.sql.Date;
  */
 public class InsertRecords {
     
-    public void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID){
+    public void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);
             System.out.println(sql);
@@ -29,6 +29,8 @@ public class InsertRecords {
             pstmt.setInt(5, telefon);  
             pstmt.setDate(6, geburt);
             pstmt.setInt(7, persID);
+            pstmt.setString(8, user);  
+            pstmt.setString(9, pass);  
             pstmt.executeUpdate(); 
         } catch (SQLException e) {  
             System.out.println("Der Arbeiter kann nicht hinzugefuegt werden!");
@@ -37,11 +39,11 @@ public class InsertRecords {
 
     }
     
-    public void insertChef(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID){
+    public void insertChef(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        String sql = "INSERT INTO chef(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO chef(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  
@@ -51,6 +53,8 @@ public class InsertRecords {
             pstmt.setInt(5, telefon);  
             pstmt.setDate(6, geburt);
             pstmt.setInt(7, persID);
+            pstmt.setString(8, user);  
+            pstmt.setString(9, pass);  
             pstmt.executeUpdate(); 
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  

@@ -35,9 +35,11 @@ public class Arbeiter extends Person{
     private ArrayList<Hotel> hotels = new ArrayList();
 
    
-    public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID) {
+    public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) {
         super(n, ID, anschr, e, telefon, geburt);
         personalID = persID;
+        userName = user;
+        passwort = pass;
     }
     
     public void setPasswort(){

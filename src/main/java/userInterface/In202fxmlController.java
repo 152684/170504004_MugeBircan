@@ -38,6 +38,22 @@ public class In202fxmlController implements Initializable {
     }    
 
     @FXML
+    private void userIN(ActionEvent event) {
+/*
+        System.out.println("userIN icinde");
+                
+        String pwd = userID.getText();
+        if(pwd.equals("muge")) {
+            System.out.println("user doğru");
+            sceneText.setText("richtiges Einloggen");
+         } else {
+            System.out.println("user yanlis");
+            sceneText.setText("falseche Eingabe");
+         }  
+*/        
+    }
+
+    @FXML
     private void passIN(ActionEvent event) {
 /*
         System.out.println("passIN icinde");
@@ -53,29 +69,12 @@ public class In202fxmlController implements Initializable {
 */
         String user = userID.getText();
         String pwd = passID.getText();
-        //Login l = new Login();
         boolean richtig = Login.loginRichtig(user, pwd);
         if(richtig){
             sceneText.setText("richtige Eingabe");
         }else{
             sceneText.setText("falseche Eingabe");
         }
-    }
-
-    @FXML
-    private void userIN(ActionEvent event) {
-/*
-        System.out.println("userIN icinde");
-                
-        String pwd = userID.getText();
-        if(pwd.equals("muge")) {
-            System.out.println("user doğru");
-            sceneText.setText("richtiges Einloggen");
-         } else {
-            System.out.println("user yanlis");
-            sceneText.setText("falseche Eingabe");
-         }  
-*/        
     }
  
 }

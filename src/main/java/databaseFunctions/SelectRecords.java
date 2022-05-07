@@ -39,7 +39,9 @@ public class SelectRecords {
                                    rs.getDate("geburtsdatum") + "\t" + 
                                    rs.getInt("personalID")); 
 */
-                Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"));
+                Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                                rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
+                                                rs.getString("passwort"));
                 mitarbeitern.add(m);
             }  
         } catch (SQLException e) {  
@@ -61,7 +63,9 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-                Chef c2 = new Chef(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"));
+                Chef c2 = new Chef(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                   rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
+                                   rs.getString("passwort"));
                 chefs.add(c2);
             }  
         } catch (SQLException e) {  
