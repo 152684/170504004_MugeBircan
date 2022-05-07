@@ -17,7 +17,6 @@ public class Login {
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
     static public long loginRichtig(String user, String pass){
-        System.out.println("userName: " + user + "  pass: " + pass);
         SelectRecords t = new SelectRecords();
         t.allMitarbeiterInArray(mitarbeitern);
         t.allChefInArray(chefs);
@@ -32,36 +31,28 @@ public class Login {
         boolean chefEx = false;
         boolean mitarbeiterEx = false;
         while(iterC.hasNext()){
-            System.out.println("chef while icerde");
             if(iterC.next().getUserName().equals(user)){
-                System.out.println("chef if1 icerde");
                 if(iterC2.next().getPasswort().equals(pass)){
-                    System.out.println("chef if2 icerde");
                     chefEx = true;
                     break;
                 }else{
                     break;
                 }
             }else{
-                System.out.println("chef userName nicht gleich");                
             }
             iterC2.next();
             iterC3.next();
         }
         if(!chefEx){
             while(iter.hasNext()){
-                System.out.println("mit while icerde");
                 if(iter.next().getUserName().equals(user)){
-                    System.out.println("mit if1 icerde");
                     if(iter2.next().getPasswort().equals(pass)){
-                        System.out.println("mit if2 icerde");
                         mitarbeiterEx = true;
                         break;
                     }else{
                         break;
                     }
                 }else{
-                    System.out.println("mit userName nicht gleich");
                 }
                 iter2.next();
                 iter3.next();
