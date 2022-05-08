@@ -14,7 +14,7 @@ import java.util.Date;
  * @author mbirc
  */
 public class UpdateRecords {
-    public void updateMitarbeiter(String n, String anschr, String e, int tel, int ID){
+    public static void updateMitarbeiter(String n, String anschr, String e, int tel, int ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -35,7 +35,7 @@ public class UpdateRecords {
         }                
     }
 
-    public void updateChef(String n, String anschr, String e, int tel, int ID){
+    public static void updateChef(String n, String anschr, String e, int tel, int ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -57,7 +57,7 @@ public class UpdateRecords {
         
     }
 
-    public void updateMitarbeiterUserNameUndPass(String user, String pass, int ID){
+    public static void updateMitarbeiterUserNameUndPass(String user, String pass, int ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -77,7 +77,7 @@ public class UpdateRecords {
         
     }
     
-    public void updateChefUserNameUndPass(String user, String pass, int ID){
+    public static void updateChefUserNameUndPass(String user, String pass, int ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -97,7 +97,7 @@ public class UpdateRecords {
         
     }
 
-    public void updateKunde(String n, String anschr, String e, int tel, int ID){
+    public static void updateKunde(String n, String anschr, String e, int tel, int ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -119,7 +119,7 @@ public class UpdateRecords {
         
     }
     
-    public void updateReiseL(String n, String anschr, String e, int tel, int ID){
+    public static void updateReiseL(String n, String anschr, String e, int tel, int ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -141,7 +141,7 @@ public class UpdateRecords {
         
     }
     
-    public void updateHotel(String n, String anschr, String e, int tel, float p){
+    public static void updateHotel(String n, String anschr, String e, int tel, float p){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -162,23 +162,25 @@ public class UpdateRecords {
         }        
         
     }
-
-// tour bilgilerine bakip degisikliklere karar verildikten sonra yapilacak    
-/*    
-    public void updateTourInfo(String n, Date d, String info, String hN, float p, String rL){
+  
+    public static void updateTourInfo(String n, Date d, int maxT, String info, String hN, float p, String rL){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        String sql = "UPDATE tour SET preis = ?, anschrift = ?, email = ?, telefonnummer = ? WHERE name = ?";
+        java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+        
+        String sql = "UPDATE tour SET tourDatum = ?, tourInfo = ?, maxTeilnehmer = ?, hotelName = ?, preis = ?, reiseL = ? WHERE tourName = ?";
 
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
 
-            pstmt.setFloat(1, preis);  
-            pstmt.setString(2, anschr);  
-            pstmt.setString(3, e);  
-            pstmt.setInt(4, tel);
-            pstmt.setString(5, n);
+            pstmt.setDate(1, sqlDate);  
+            pstmt.setString(2, info);  
+            pstmt.setInt(3, maxT);  
+            pstmt.setString(4, hN);
+            pstmt.setFloat(5, p);
+            pstmt.setString(6, rL);
+            pstmt.setString(7, n);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Das Hotel kann nicht aktualisiert werden!");
@@ -186,5 +188,4 @@ public class UpdateRecords {
         }        
         
     }
-*/    
 }

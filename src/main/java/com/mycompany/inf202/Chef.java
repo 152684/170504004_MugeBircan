@@ -4,6 +4,7 @@
  */
 package com.mycompany.inf202;
 
+import databaseFunctions.UpdateRecords;
 import java.util.Date;
 
 /**
@@ -16,6 +17,12 @@ public class Chef extends Arbeiter{
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
     }
     
+    public void setLogin(){
+        String pass = this.setPasswort();
+        String user = this.setUserName();
+        UpdateRecords.updateChefUserNameUndPass(user, pass, personalID);
+    }
+
     public void printMitarbAlph()
     {
         

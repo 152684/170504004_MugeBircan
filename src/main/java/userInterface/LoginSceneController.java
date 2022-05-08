@@ -53,7 +53,6 @@ public class LoginSceneController implements Initializable {
         if(id != 0){
             sceneText.setText("richtige Eingabe");
             try{
-                System.out.println("in try");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("optionsAfterLogin.fxml"));
                 Parent root = loader.load();
                 System.out.println("after root");

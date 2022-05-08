@@ -4,6 +4,7 @@
  */
 package com.mycompany.inf202;
 
+import databaseFunctions.UpdateRecords;
 import java.util.Date;
 
 /**
@@ -14,6 +15,12 @@ public class Mitarbeiter extends Arbeiter{
     
     public Mitarbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) {
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+    }
+
+    public void setLogin(){
+        String pass = this.setPasswort();
+        String user = this.setUserName();
+        UpdateRecords.updateChefUserNameUndPass(user, pass, personalID);
     }
     
 }

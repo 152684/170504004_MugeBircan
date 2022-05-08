@@ -19,8 +19,8 @@ import java.util.Scanner;
 public class Arbeiter extends Person{
     
     protected int personalID; //8-stellig
-    private String passwort;
-    private String userName;
+    protected String passwort;
+    protected String userName;
     
     private Scanner sc = new Scanner(System.in);
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -41,19 +41,21 @@ public class Arbeiter extends Person{
         userName = user;
         passwort = pass;
     }
-    
-    public void setPasswort(){
+        
+    public String setPasswort(){
         System.out.println("Geben Sie neues Passwort ein: ");
         passwort = sc.nextLine();
+        return passwort;
     }
-    
+
     public String getPasswort(){
         return passwort;
     }
-    
-    public void setUserName(){
+   
+    public String setUserName(){
         System.out.println("Geben Sie neuer userName ein: ");
         userName = sc.nextLine();
+        return userName;
     }
     
     public String getUserName(){
@@ -230,6 +232,7 @@ public class Arbeiter extends Person{
     
     public void setTour()
     {
+/*
         String n2;
         Date datum = null;
         String inf;
@@ -296,7 +299,7 @@ public class Arbeiter extends Person{
             Tour t = new Tour(n2, datum, maxT, hotel, preis, freiP);
             tours.add(t);
         }
-        
+*/        
     }
     
     public void updateTourReiseL(String tourName, String reiseL)

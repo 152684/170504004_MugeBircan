@@ -39,6 +39,7 @@ public class Inf202 {
         t.test();
         */
         
+        UpdateRecordsTest.test();
         
         
         

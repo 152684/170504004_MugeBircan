@@ -22,7 +22,7 @@ public class Tour {
     private int freiePlaetze = 0;
     private ReiseLeiter r;
 
-    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freiP, ReiseLeiter rL)
+    public Tour(String n, Date d, String info, int maxT, String hN, float p, ReiseLeiter rL)
     {
         tourName = n;
         tourDatum = d;
@@ -30,7 +30,7 @@ public class Tour {
         maxTeilnehmer = maxT;
         hotelName = hN;
         preis = p;
-        freiePlaetze = freiP;
+        freiePlaetze = maxT;
         r = rL;        
     }
 
@@ -44,20 +44,10 @@ public class Tour {
         freiePlaetze = freiP;
         r = rL;        
     }
-        
-    public Tour(String n, Date d, int maxT, String hN, float p, int freiP)
-    {
-        tourName = n;
+            
+    public void tourUpdate(Date d, int maxT, String info, String hN, float p, ReiseLeiter rL){
         tourDatum = d;
         maxTeilnehmer = maxT;
-        hotelName = hN;
-        preis = p;
-        freiePlaetze = freiP;       
-    }
-    
-    public void tourUpdate(String n, Date d, String info, String hN, float p, ReiseLeiter rL){
-        tourName = n;
-        tourDatum = d;
         tourInfo = info;
         hotelName = hN;
         preis = p;
