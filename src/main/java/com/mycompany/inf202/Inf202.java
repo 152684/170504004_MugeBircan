@@ -5,7 +5,10 @@
 
 package com.mycompany.inf202;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import databaseFunctions.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import testPackage.*;
@@ -19,30 +22,12 @@ public class Inf202 {
     
     public static void main(String[] args) {
         System.out.println("---------------INF202 Project------------- ");
-        /*
-        kundeTest t = new kundeTest();
-        t.test();
-        */
-        /*
-        InsertRecordsTest t = new InsertRecordsTest();
-        t.test();
-        */
-        /*
-        SelectRecordsTest t = new SelectRecordsTest();
-        t.test();
-        */
         
-
-    
-        /*
-        UpdateRecordsTest t = new UpdateRecordsTest();
-        t.test();
-        */
-        
+/*
+        InsertRecordsTest.test();
+        SelectRecordsTest.test();
+*/        
         UpdateRecordsTest.test();
-        
-        
-        
         
     }
 }

@@ -6,6 +6,7 @@ package databaseFunctions;
 
 import com.mycompany.inf202.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  */
 public class SelectRecords {
     
-    public void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern){
+    public static void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern){
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -30,15 +31,6 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-/*
-                System.out.println(rs.getString("name") + "\t" +
-                                   rs.getInt("burgerID") +  "\t" +   
-                                   rs.getString("anschrift") + "\t" +
-                                   rs.getString("email") + "\t" +
-                                   rs.getInt("telefonnummer") + "\t" +
-                                   rs.getDate("geburtsdatum") + "\t" + 
-                                   rs.getInt("personalID")); 
-*/
                 Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                                 rs.getString("passwort"));
@@ -47,10 +39,19 @@ public class SelectRecords {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
           
     }    
 
-    public void allChefInArray(ArrayList<Chef> chefs){
+    public static void allChefInArray(ArrayList<Chef> chefs){
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -70,8 +71,50 @@ public class SelectRecords {
             }  
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
-        }  
+        }
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
           
     }    
 
+    public static String selectTourKunden(String n){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT kunden FROM tour WHERE tourName = ?";  
+        
+          
+        try {  
+            System.out.println("select in try");
+            
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setString(1, n);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            System.out.println("in try geschrieben: " + rs.getString("kunden"));
+            return rs.getString("kunden");
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+        return null;
+          
+    }    
+    
+    
 }

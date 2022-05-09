@@ -14,14 +14,13 @@ import java.sql.Date;
  */
 public class InsertRecords {
     
-    public void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
+    public static void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
         
         String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            System.out.println(sql);
             pstmt.setString(1, n);  
             pstmt.setInt(2, ID);  
             pstmt.setString(3, anschr);  
@@ -36,10 +35,19 @@ public class InsertRecords {
             System.out.println("Der Arbeiter kann nicht hinzugefuegt werden!");
             System.out.println(e.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
 
     }
     
-    public void insertChef(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
+    public static void insertChef(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -59,10 +67,19 @@ public class InsertRecords {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }        
-        
+            finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+    
     }
     
-    public void insertKunde(String n, int ID, String anschr, String email, int telefon, Date geburt){
+    public static void insertKunde(String n, int ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -79,10 +96,19 @@ public class InsertRecords {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
     
-    public void insertReiseLeiter(String n, int ID, String anschr, String email, int telefon, Date geburt){
+    public static void insertReiseLeiter(String n, int ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -99,10 +125,19 @@ public class InsertRecords {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
     
-    public void insertHotel(String n, String anschr, int telefon, String email, float preis){
+    public static void insertHotel(String n, String anschr, int telefon, String email, float preis){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -118,10 +153,19 @@ public class InsertRecords {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
 
-    public void insertTour(String n, Date d, String info, int maxT, String hN, float p, int freiP, String rL){
+    public static void insertTour(String n, Date d, String info, int maxT, String hN, float p, int freiP, String rL){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -140,6 +184,15 @@ public class InsertRecords {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
     

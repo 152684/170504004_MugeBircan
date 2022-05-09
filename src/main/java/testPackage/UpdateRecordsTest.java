@@ -4,10 +4,15 @@
  */
 package testPackage;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import databaseFunctions.UpdateRecords;
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -36,11 +41,11 @@ public class UpdateRecordsTest {
         UpdateRecords.updateReiseL("veli", "mugla", "email4", 45, 170504008);
 
         System.out.println("-----------updateKunde überprüfen---------------");    
-        UpdateRecords.updateKunde("hasan2", "mugla", "email4", 45, 170504007);
+        UpdateRecords.updateKunde("hasan23", "mugla", "email4", 45, 170504007);
 
         System.out.println("-----------updateHotel überprüfen---------------");    
         UpdateRecords.updateHotel("antalyaHotel", "fethiye", "email4", 45, 160);
-*/
+
         System.out.println("-----------updateTour überprüfen---------------");    
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -57,5 +62,18 @@ public class UpdateRecordsTest {
         java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
 
         UpdateRecords.updateTourInfo("antalyaTour", sqlDate, 25, "burasi orasi surasi", "fethiyeHotel", 410, "ayse");
+        
+        System.out.println("-----------updateTourKunden überprüfen---------------"); 
+
+        UpdateRecords.updateTourKunden("antalyaTour", "hasan");        
+        System.out.println("after first update");        
+        UpdateRecords.updateTourKunden("antalyaTour", "mehmet2");
+*/
+        
+        System.out.println("-----------updateTourKunden2 überprüfen---------------"); 
+
+        
+        UpdateRecords.updateTourKunden("antalyaTour2", "veli");
+        
     }
 }

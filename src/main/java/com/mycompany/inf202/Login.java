@@ -17,9 +17,8 @@ public class Login {
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
     static public long loginRichtig(String user, String pass){
-        SelectRecords t = new SelectRecords();
-        t.allMitarbeiterInArray(mitarbeitern);
-        t.allChefInArray(chefs);
+        SelectRecords.allMitarbeiterInArray(mitarbeitern);
+        SelectRecords.allChefInArray(chefs);
         
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
         Iterator<Mitarbeiter> iter2 = mitarbeitern.iterator();

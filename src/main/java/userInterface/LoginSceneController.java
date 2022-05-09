@@ -55,10 +55,9 @@ public class LoginSceneController implements Initializable {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("optionsAfterLogin.fxml"));
                 Parent root = loader.load();
-                System.out.println("after root");
                 //The following both lines are the only addition we need to pass the arguments
                 OptionsAfterLoginController controller2 = loader.getController();
-                controller2.fromLayout1(sceneText.getText());
+                controller2.fromLayout1();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle("Layout2 + Controller2");

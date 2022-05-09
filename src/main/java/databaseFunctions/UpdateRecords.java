@@ -4,10 +4,15 @@
  */
 package databaseFunctions;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -33,6 +38,16 @@ public class UpdateRecords {
             System.out.println("Der Mitarbeiter kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }                
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+
     }
 
     public static void updateChef(String n, String anschr, String e, int tel, int ID){
@@ -54,6 +69,15 @@ public class UpdateRecords {
             System.out.println("Der Chef kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
 
@@ -74,6 +98,15 @@ public class UpdateRecords {
             System.out.println("Die login Daten des Mitarbeiters kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
         
     }
     
@@ -94,6 +127,15 @@ public class UpdateRecords {
             System.out.println("Die login Daten des Chefs kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
         
     }
 
@@ -116,6 +158,15 @@ public class UpdateRecords {
             System.out.println("Der Kunde kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
     
@@ -138,6 +189,15 @@ public class UpdateRecords {
             System.out.println("Der Reiseleiter kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
     
@@ -160,6 +220,15 @@ public class UpdateRecords {
             System.out.println("Das Hotel kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
         
     }
   
@@ -183,9 +252,74 @@ public class UpdateRecords {
             pstmt.setString(7, n);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
-            System.out.println("Das Hotel kann nicht aktualisiert werden!");
+            System.out.println("Die Tour kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
         }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
         
     }
+
+    public static void updateTourKunden(String n, String kunde){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+
+        Gson gson = new Gson();
+        String vonDatabase = SelectRecords.selectTourKunden(n);
+        System.out.println("update String vom database: " + vonDatabase);
+        
+        boolean kundeEx = false;
+        ArrayList<String> inVonDatabase = new ArrayList();
+        
+        if(vonDatabase != null){
+            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            inVonDatabase = gson.fromJson(vonDatabase, type);
+            System.out.println("inVonDatabase array: " + inVonDatabase);
+            Iterator<String> iter = inVonDatabase.iterator();           
+            while(iter.hasNext()){
+                if(iter.next().equals(kunde)){
+                    System.out.println("Dieser Kunde ist schon bei dieser Tour angemeldet.");
+                    kundeEx = true;
+                    break;
+                }            
+            }
+
+            if(!kundeEx){
+                inVonDatabase.add(kunde);
+                //ArrayList in einem String
+                String neueKunden = gson.toJson(inVonDatabase);                            
+
+                String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
+
+                try{    
+                    PreparedStatement pstmt = conn.prepareStatement(sql);  
+
+                    pstmt.setString(1, neueKunden);  
+                    pstmt.setString(2, n);  
+                    pstmt.executeUpdate(); 
+                } catch (SQLException ex) {  
+                    System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
+                    System.out.println(ex.getMessage());  
+                }
+
+                finally {
+                    if(conn != null){
+                        try{
+                            conn.close();                    
+                        }catch(SQLException e){
+                            System.out.println(e.getMessage());                      
+                        }
+                    }
+                }                
+            }            
+        }                
+    }
+   
 }
