@@ -22,11 +22,11 @@ public class Inf202 {
     
     public static void main(String[] args) {
         System.out.println("---------------INF202 Project------------- ");
+       
+       
+        //InsertRecordsTest.test();
+        //SelectRecordsTest.test();
         
-/*
-        InsertRecordsTest.test();
-        SelectRecordsTest.test();
-*/        
         UpdateRecordsTest.test();
         
     }

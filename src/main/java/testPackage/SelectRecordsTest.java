@@ -22,7 +22,7 @@ public class SelectRecordsTest {
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
     public static void test(){
-        
+/*        
         System.out.println("-----------allMitarbeiterInArray überprüfen---------------");
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
@@ -36,17 +36,18 @@ public class SelectRecordsTest {
         while(iterC.hasNext()){
             System.out.println(iterC.next().getName());
         }
-        
+*/        
         System.out.println("-----------selectTourKunden überprüfen---------------");
         String s = SelectRecords.selectTourKunden("antalyaTour");
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<String>>() {}.getType();
         ArrayList<String> in = gson.fromJson(s, type);  
-        
-        Iterator<String> iterK = in.iterator();
-        while(iterK.hasNext()){
-            System.out.println(iterK.next());
-        }
+        System.out.println("tourKunden2: "+ in);
+
+        String s2 = SelectRecords.selectTourKunden("antalyaTour2");
+        ArrayList<String> in2 = gson.fromJson(s2, type);  
+        System.out.println("tourKunden2: "+ in2);
+
     }
 
     

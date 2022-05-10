@@ -91,14 +91,11 @@ public class SelectRecords {
         String sql = "SELECT kunden FROM tour WHERE tourName = ?";  
         
           
-        try {  
-            System.out.println("select in try");
-            
+        try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);
   
             ResultSet rs    = pstmt.executeQuery();
-            System.out.println("in try geschrieben: " + rs.getString("kunden"));
             return rs.getString("kunden");
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  

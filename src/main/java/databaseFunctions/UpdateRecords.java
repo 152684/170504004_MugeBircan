@@ -272,17 +272,15 @@ public class UpdateRecords {
         Connection conn = c.connect();
 
         Gson gson = new Gson();
-        String vonDatabase = SelectRecords.selectTourKunden(n);
-        System.out.println("update String vom database: " + vonDatabase);
+        String vonDatabaseString = SelectRecords.selectTourKunden(n);
         
         boolean kundeEx = false;
-        ArrayList<String> inVonDatabase = new ArrayList();
-        
-        if(vonDatabase != null){
+        ArrayList<String> vonDatabaseArray = new ArrayList();
+                
+        if(vonDatabaseString != null){
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
-            inVonDatabase = gson.fromJson(vonDatabase, type);
-            System.out.println("inVonDatabase array: " + inVonDatabase);
-            Iterator<String> iter = inVonDatabase.iterator();           
+            vonDatabaseArray = gson.fromJson(vonDatabaseString, type);
+            Iterator<String> iter = vonDatabaseArray.iterator();           
             while(iter.hasNext()){
                 if(iter.next().equals(kunde)){
                     System.out.println("Dieser Kunde ist schon bei dieser Tour angemeldet.");
@@ -290,36 +288,35 @@ public class UpdateRecords {
                     break;
                 }            
             }
+        }    
 
-            if(!kundeEx){
-                inVonDatabase.add(kunde);
-                //ArrayList in einem String
-                String neueKunden = gson.toJson(inVonDatabase);                            
+        if(!kundeEx){
+            vonDatabaseArray.add(kunde);
+            //ArrayList in einem String
+            String neueKunden = gson.toJson(vonDatabaseArray);                            
+            String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
+              
+            try{
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                 
+                pstmt.setString(1, neueKunden);
+                pstmt.setString(2, n);
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {  
+                System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
+                System.out.println(ex.getMessage());  
+            }
 
-                String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
-
-                try{    
-                    PreparedStatement pstmt = conn.prepareStatement(sql);  
-
-                    pstmt.setString(1, neueKunden);  
-                    pstmt.setString(2, n);  
-                    pstmt.executeUpdate(); 
-                } catch (SQLException ex) {  
-                    System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
-                    System.out.println(ex.getMessage());  
-                }
-
-                finally {
-                    if(conn != null){
-                        try{
-                            conn.close();                    
-                        }catch(SQLException e){
-                            System.out.println(e.getMessage());                      
-                        }
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException e){
+                        System.out.println(e.getMessage());                      
                     }
-                }                
-            }            
-        }                
+                }
+            }
+        }                            
     }
    
 }

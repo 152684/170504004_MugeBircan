@@ -62,18 +62,20 @@ public class UpdateRecordsTest {
         java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
 
         UpdateRecords.updateTourInfo("antalyaTour", sqlDate, 25, "burasi orasi surasi", "fethiyeHotel", 410, "ayse");
-        
+
+
         System.out.println("-----------updateTourKunden überprüfen---------------"); 
 
         UpdateRecords.updateTourKunden("antalyaTour", "hasan");        
-        System.out.println("after first update");        
-        UpdateRecords.updateTourKunden("antalyaTour", "mehmet2");
-*/
-        
+       
+        UpdateRecords.updateTourKunden("antalyaTour", "veli");
+
+*/        
         System.out.println("-----------updateTourKunden2 überprüfen---------------"); 
 
         
         UpdateRecords.updateTourKunden("antalyaTour2", "veli");
+        UpdateRecords.updateTourKunden("antalyaTour2", "veli2");
         
     }
 }
