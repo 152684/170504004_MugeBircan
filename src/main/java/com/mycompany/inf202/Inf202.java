@@ -27,7 +27,8 @@ public class Inf202 {
         //InsertRecordsTest.test();
         //SelectRecordsTest.test();
         
-        UpdateRecordsTest.test();
+        //UpdateRecordsTest.test();
+        DeleteRecordsTest.test();
         
     }
 }

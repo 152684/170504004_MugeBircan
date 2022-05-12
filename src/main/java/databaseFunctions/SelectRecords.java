@@ -84,6 +84,133 @@ public class SelectRecords {
           
     }    
 
+    public static void allKundenInArray(ArrayList<Kunde> kunden){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM kunde"; 
+        
+          
+        try {  
+            Statement stmt  = conn.createStatement();  
+            ResultSet rs    = stmt.executeQuery(sql);  
+              
+            // loop through the result set  
+            while (rs.next()) { 
+                Kunde k2 = new Kunde(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                   rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getString("reisen"));
+                kunden.add(k2);
+            }  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+          
+    }    
+
+    public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM kunde"; 
+        
+          
+        try {  
+            Statement stmt  = conn.createStatement();  
+            ResultSet rs    = stmt.executeQuery(sql);  
+              
+            // loop through the result set  
+            while (rs.next()) { 
+                ReiseLeiter k2 = new ReiseLeiter(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                   rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"));
+                reiseLeitern.add(k2);
+            }  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+          
+    }    
+
+    public static void hotelNamenInArray(ArrayList<String> hotels){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM hotel"; 
+        
+          
+        try {  
+            Statement stmt  = conn.createStatement();  
+            ResultSet rs    = stmt.executeQuery(sql);  
+              
+            // loop through the result set  
+            while (rs.next()) { 
+                String c2 = rs.getString("name");
+                hotels.add(c2);
+            }  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+          
+    }    
+
+    public static void tourNamenInArray(ArrayList<String> tours){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM tour"; 
+        
+          
+        try {  
+            Statement stmt  = conn.createStatement();  
+            ResultSet rs    = stmt.executeQuery(sql);  
+              
+            // loop through the result set  
+            while (rs.next()) { 
+                //String n, Date d, String info, int maxT, String hN, float p, ReiseLeiter rL
+                String c2 = rs.getString("tourName");
+                tours.add(c2);
+            }  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+          
+    }    
+
     public static String selectTourKunden(String n){
         Connect c = new Connect();
         Connection conn = c.connect();

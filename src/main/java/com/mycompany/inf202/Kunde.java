@@ -13,9 +13,15 @@ import java.util.Date;
 public class Kunde extends Person{
     
     private ArrayList<Reise> reisen = new ArrayList();
+    private String reisenString;
     
     public Kunde(String n, int ID, String anschr, String e, int telefon, Date geburt) {
         super(n, ID, anschr, e, telefon, geburt);
+    }
+
+    public Kunde(String n, int ID, String anschr, String e, int telefon, Date geburt, String reise) {
+        super(n, ID, anschr, e, telefon, geburt);
+        reisenString = reise;
     }
     
     public void setReise(Tour t, Hotel h)
