@@ -120,7 +120,7 @@ public class SelectRecords {
         Connect c = new Connect();
         Connection conn = c.connect();
     
-        String sql = "SELECT * FROM kunde"; 
+        String sql = "SELECT * FROM reiseLeiter"; 
         
           
         try {  

@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
@@ -49,6 +51,18 @@ public class OptionsAfterLoginController implements Initializable {
             System.out.println("Choice 3 selected");
         });
 */
+    }
+
+    @FXML
+    private void onDragEnter(DragEvent event) {
+    }
+
+    @FXML
+    private void onDragDetect(MouseEvent event) {
+    }
+
+    @FXML
+    private void onDragDone(DragEvent event) {
     }
     
 }

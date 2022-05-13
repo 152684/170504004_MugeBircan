@@ -32,11 +32,11 @@ public class DeleteRecordsTest {
         System.out.println("-----------deleteHotel überprüfen---------------");
         DeleteRecords.deleteHotel("fethiye");
         DeleteRecords.deleteHotel("antalyaHotel2");
-*/
+
         System.out.println("-----------deleteTour überprüfen---------------");
         DeleteRecords.deleteTour("fethiye");
         DeleteRecords.deleteTour("antalyaTour2");
-        
+*/        
     }
     
 }

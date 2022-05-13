@@ -53,6 +53,10 @@ public class LoginSceneController implements Initializable {
         if(id != 0){
             sceneText.setText("richtige Eingabe");
             try{
+                testMenuButton t = new testMenuButton();
+                Stage s = new Stage();
+                t.start(s);
+                /*
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("optionsAfterLogin.fxml"));
                 Parent root = loader.load();
                 //The following both lines are the only addition we need to pass the arguments
@@ -62,7 +66,7 @@ public class LoginSceneController implements Initializable {
                 stage.setScene(new Scene(root));
                 stage.setTitle("Layout2 + Controller2");
                 stage.show();
-
+                */
             }catch(IOException e){
                 e.printStackTrace();
             }
