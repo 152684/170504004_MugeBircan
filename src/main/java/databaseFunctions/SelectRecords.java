@@ -51,6 +51,74 @@ public class SelectRecords {
           
     }    
 
+    public static Mitarbeiter findMitarbeiter(int id){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM mitarbeiter WHERE burgerID = ?"; 
+        
+        Mitarbeiter m = null;
+        
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setInt(1, id);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            m = new Mitarbeiter(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                                rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
+                                                rs.getString("passwort"));
+            
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+      
+        return m;
+    }
+    
+    public static Chef findChef(int id){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM mitarbeiter WHERE burgerID = ?"; 
+        
+        Chef chef = null;
+        
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setInt(1, id);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            chef = new Chef(rs.getString("name"), rs.getInt("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                   rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
+                                   rs.getString("passwort"));
+            
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+      
+        return chef;
+    }
+
     public static void allChefInArray(ArrayList<Chef> chefs){
         Connect c = new Connect();
         Connection conn = c.connect();

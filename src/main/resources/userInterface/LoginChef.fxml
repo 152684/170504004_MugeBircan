@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.LoginChefController">
+   <children>
+      <TextArea fx:id="sceneText" layoutX="129.0" layoutY="42.0" prefHeight="40.0" prefWidth="343.0" />
+      <SplitMenuButton layoutX="129.0" layoutY="109.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="343.0" text="Wählen Sie eine Operation aus">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#loginDatenAendern" text="Login Daten ändern" />
+            <MenuItem mnemonicParsing="false" onAction="#chefHinzu" text="Chef hinzufügen" />
+            <MenuItem mnemonicParsing="false" onAction="#chefLoeschen" text="Chef löschen" />
+          <MenuItem mnemonicParsing="false" onAction="#mitarbHinzu" text="Mitarbeiter hinzufügen" />
+            <MenuItem mnemonicParsing="false" onAction="#mitarbLoeschen" text="Mitarbeiter löschen" />
+            <MenuItem mnemonicParsing="false" onAction="#kundeHinzu" text="Kunde hinzufügen" />
+            <MenuItem mnemonicParsing="false" onAction="#kundeLoeschen" text="Kunde löschen" />
+            <MenuItem mnemonicParsing="false" text="ReiseLeiter hinzufügen" />
+            <MenuItem mnemonicParsing="false" text="ReiseLeiter löschen" />
+            <MenuItem mnemonicParsing="false" text="Hotel hinzufügen" />
+            <MenuItem mnemonicParsing="false" text="Hotel löschen" />
+            <MenuItem mnemonicParsing="false" text="Tour hinzufügen" />
+            <MenuItem mnemonicParsing="false" text="Tour löschen" />
+        </items>
+      </SplitMenuButton>
+   </children>
+</AnchorPane>
