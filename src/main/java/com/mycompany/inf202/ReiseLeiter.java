@@ -15,7 +15,7 @@ public class ReiseLeiter extends Person{
     private ArrayList<String> touren = new ArrayList();
     private int reiseAnzahl = 0;
     
-    public ReiseLeiter(String n, String ID, String anschr, String e, int telefon, Date geburt) {
+    public ReiseLeiter(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt);
     }
     

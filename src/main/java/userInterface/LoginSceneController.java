@@ -49,11 +49,11 @@ public class LoginSceneController implements Initializable {
     }
 
     @FXML
-    private void passIN(ActionEvent event) {
+    private void passIN(ActionEvent event) throws UngueltigeIDException{
         //für Chef wird loginType = 1, für Mitarbeiter = 2 
         String user = userID.getText();
         String pwd = passID.getText();
-        String id = Login.loginRichtig(user, pwd);
+        long id = Login.loginRichtig(user, pwd);
         int loginType = 0;
         
         ArrayList<Chef> chefs = new ArrayList();        
@@ -61,7 +61,7 @@ public class LoginSceneController implements Initializable {
         
         Iterator<Chef> c = chefs.iterator();
         while(c.hasNext()){
-            if(c.next().getBurgerID().equals(id)){
+            if(c.next().getBurgerID() == id){
                 loginType = 1;
             }
         }
@@ -70,7 +70,7 @@ public class LoginSceneController implements Initializable {
             SelectRecords.allMitarbeiterInArray(mitarbeitern);
             Iterator<Mitarbeiter> m = mitarbeitern.iterator();
             while(m.hasNext()){
-                if(c.next().getBurgerID().equals(id)){
+                if(c.next().getBurgerID() == id){
                     loginType = 2;
                 }
             }

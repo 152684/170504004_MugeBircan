@@ -19,7 +19,7 @@ import java.util.Iterator;
  * @author mbirc
  */
 public class UpdateRecords {
-    public static void updateMitarbeiter(String n, String anschr, String e, int tel, int ID){
+    public static void updateMitarbeiter(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -32,7 +32,7 @@ public class UpdateRecords {
             pstmt.setString(2, anschr);  
             pstmt.setString(3, e);  
             pstmt.setInt(4, tel);
-            pstmt.setInt(5, ID);
+            pstmt.setLong(5, ID);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Der Mitarbeiter kann nicht aktualisiert werden!");
@@ -50,7 +50,7 @@ public class UpdateRecords {
 
     }
 
-    public static void updateChef(String n, String anschr, String e, int tel, int ID){
+    public static void updateChef(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -63,7 +63,7 @@ public class UpdateRecords {
             pstmt.setString(2, anschr);  
             pstmt.setString(3, e);  
             pstmt.setInt(4, tel);
-            pstmt.setInt(5, ID);
+            pstmt.setLong(5, ID);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Der Chef kann nicht aktualisiert werden!");
@@ -81,7 +81,7 @@ public class UpdateRecords {
         
     }
 
-    public static void updateMitarbeiterUserNameUndPass(String user, String pass, int ID){
+    public static void updateMitarbeiterUserNameUndPass(String user, String pass, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -92,7 +92,7 @@ public class UpdateRecords {
 
             pstmt.setString(1, user);  
             pstmt.setString(2, pass);  
-            pstmt.setInt(3, ID);
+            pstmt.setLong(3, ID);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Die login Daten des Mitarbeiters kann nicht aktualisiert werden!");
@@ -110,7 +110,7 @@ public class UpdateRecords {
         
     }
     
-    public static void updateChefUserNameUndPass(String user, String pass, int ID){
+    public static void updateChefUserNameUndPass(String user, String pass, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -121,7 +121,7 @@ public class UpdateRecords {
 
             pstmt.setString(1, user);  
             pstmt.setString(2, pass);  
-            pstmt.setInt(3, ID);
+            pstmt.setLong(3, ID);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Die login Daten des Chefs kann nicht aktualisiert werden!");
@@ -139,7 +139,7 @@ public class UpdateRecords {
         
     }
 
-    public static void updateKunde(String n, String anschr, String e, int tel, int ID){
+    public static void updateKunde(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -152,7 +152,7 @@ public class UpdateRecords {
             pstmt.setString(2, anschr);  
             pstmt.setString(3, e);  
             pstmt.setInt(4, tel);
-            pstmt.setInt(5, ID);
+            pstmt.setLong(5, ID);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Der Kunde kann nicht aktualisiert werden!");
@@ -170,7 +170,7 @@ public class UpdateRecords {
         
     }
     
-    public static void updateReiseL(String n, String anschr, String e, int tel, int ID){
+    public static void updateReiseL(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -183,7 +183,7 @@ public class UpdateRecords {
             pstmt.setString(2, anschr);  
             pstmt.setString(3, e);  
             pstmt.setInt(4, tel);
-            pstmt.setInt(5, ID);
+            pstmt.setLong(5, ID);
             pstmt.executeUpdate(); 
         } catch (SQLException ex) {  
             System.out.println("Der Reiseleiter kann nicht aktualisiert werden!");

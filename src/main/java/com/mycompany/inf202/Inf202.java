@@ -20,13 +20,13 @@ import testPackage.*;
 
 public class Inf202 {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UngueltigeIDException {
         System.out.println("---------------INF202 Project------------- ");
        
        
-        //InsertRecordsTest.test();
-        //SelectRecordsTest.test();
+        //InsertRecordsTest.test(); //nur richtige IDs sollen inserted werden.
         
+        //SelectRecordsTest.test(); // program abstürtz beim ungueltiegeIDException 
         //UpdateRecordsTest.test();
         DeleteRecordsTest.test();
         

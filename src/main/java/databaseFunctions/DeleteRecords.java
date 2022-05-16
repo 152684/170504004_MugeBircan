@@ -24,7 +24,7 @@ public class DeleteRecords {
     private static ArrayList<String> hotels = new ArrayList();
     private static ArrayList<String> tours = new ArrayList();
     
-    public static void deleteMitarbeiter(String ID){
+    public static void deleteMitarbeiter(long ID) throws UngueltigeIDException{
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iterM = mitarbeitern.iterator();
         
@@ -38,7 +38,7 @@ public class DeleteRecords {
                 String sql = "DELETE FROM mitarbeiter WHERE burgerID = ?";
                 try{    
                     PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, ID);  
+                    pstmt.setLong(1, ID);  
                     System.out.println("Der Mitarbeiter mit der Buerger ID: " + ID + " wird nun geloescht.");
                     pstmt.executeUpdate(); 
                 } catch (SQLException e) {  
@@ -61,7 +61,7 @@ public class DeleteRecords {
         }
     }
 
-    public static void deleteChef(String ID){
+    public static void deleteChef(long ID) throws UngueltigeIDException{
         SelectRecords.allChefInArray(chefs);
         Iterator<Chef> iter = chefs.iterator();
         
@@ -75,7 +75,7 @@ public class DeleteRecords {
                 String sql = "DELETE FROM chef WHERE burgerID = ?";
                 try{    
                     PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, ID);  
+                    pstmt.setLong(1, ID);  
                     System.out.println("Der Chef mit der Buerger ID: " + ID + " wird nun geloescht.");
                     pstmt.executeUpdate(); 
                 } catch (SQLException e) {  
@@ -98,7 +98,7 @@ public class DeleteRecords {
         }
     }
 
-    public static void deleteKunde(String ID){
+    public static void deleteKunde(long ID) throws UngueltigeIDException{
         SelectRecords.allKundenInArray(kunden);
         Iterator<Kunde> iter = kunden.iterator();
         
@@ -112,7 +112,7 @@ public class DeleteRecords {
                 String sql = "DELETE FROM kunde WHERE burgerID = ?";
                 try{    
                     PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, ID);  
+                    pstmt.setLong(1, ID);  
                     System.out.println("Der Kunde mit der Buerger ID: " + ID + " wird nun geloescht.");
                     pstmt.executeUpdate(); 
                 } catch (SQLException e) {  
@@ -135,13 +135,13 @@ public class DeleteRecords {
         }
     }
     
-    public static void deleteReiseL(String ID){
+    public static void deleteReiseL(long ID) throws UngueltigeIDException{
         SelectRecords.allReiseLInArray(reiseLs);
         Iterator<ReiseLeiter> iter = reiseLs.iterator();
         
         boolean exist = false;
         while(iter.hasNext()){
-            if(iter.next().getBurgerID().equals(ID)){
+            if(iter.next().getBurgerID() == ID){
                 exist = true;
                 Connect c = new Connect();
                 Connection conn = c.connect();
@@ -149,7 +149,7 @@ public class DeleteRecords {
                 String sql = "DELETE FROM reiseLeiter WHERE burgerID = ?";
                 try{    
                     PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, ID);  
+                    pstmt.setLong(1, ID);  
                     System.out.println("Der ReiseL mit der Buerger ID: " + ID + " wird nun geloescht.");
                     pstmt.executeUpdate(); 
                 } catch (SQLException e) {  

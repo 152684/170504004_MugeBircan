@@ -14,7 +14,7 @@ import java.sql.Date;
  */
 public class InsertRecords {
     
-    public static void insertMitarbeiter(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
+    public static void insertMitarbeiter(String n, long ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -22,7 +22,7 @@ public class InsertRecords {
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, n);  
-            pstmt.setInt(2, ID);  
+            pstmt.setLong(2, ID);  
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
@@ -47,7 +47,7 @@ public class InsertRecords {
 
     }
     
-    public static void insertChef(String n, int ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
+    public static void insertChef(String n, long ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -55,7 +55,7 @@ public class InsertRecords {
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  
-            pstmt.setInt(2, ID);  
+            pstmt.setLong(2, ID);  
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
@@ -79,7 +79,7 @@ public class InsertRecords {
     
     }
     
-    public static void insertKunde(String n, int ID, String anschr, String email, int telefon, Date geburt){
+    public static void insertKunde(String n, long ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -87,7 +87,7 @@ public class InsertRecords {
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  
-            pstmt.setInt(2, ID);  
+            pstmt.setLong(2, ID);  
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
@@ -108,7 +108,7 @@ public class InsertRecords {
         
     }
     
-    public static void insertReiseLeiter(String n, int ID, String anschr, String email, int telefon, Date geburt){
+    public static void insertReiseLeiter(String n, long ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -116,7 +116,7 @@ public class InsertRecords {
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  
-            pstmt.setInt(2, ID);  
+            pstmt.setLong(2, ID);  
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  

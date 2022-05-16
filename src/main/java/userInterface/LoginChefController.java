@@ -36,7 +36,7 @@ public class LoginChefController implements Initializable {
         System.out.println("Login daten andern");
     }
 
-    public void fromLogin(String id){
+    public void fromLogin(long id){
         System.out.println("from login");
         //currentUser = SelectRecords.findChef(id);
 

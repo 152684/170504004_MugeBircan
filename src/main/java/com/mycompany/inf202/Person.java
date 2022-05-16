@@ -13,7 +13,7 @@ import java.util.Date;
 public abstract class Person {
     
     private String name;
-    private String burgerID; // 11-stellige Zahl war zu groß für long, deswegen als String speichern.
+    private long burgerID; // 11-stellige Zahl war zu groß für long, deswegen als String speichern.
     private String anschrift;
     private String email;
     private int telefonnummer;
@@ -21,19 +21,14 @@ public abstract class Person {
     
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-    public static boolean isNumeric(String str) { 
-        try {  
-          Long.parseLong(str);  
-          return true;
-        } catch(NumberFormatException e){  
-          return false;  
-        }  
+    public static boolean idGueltig(long a) { 
+        return (10000000000L <= a) && (a <= 99999999999L);
     }
 
     
-    public Person(String n, String ID, String anschr, String e, int telefon, Date geburt)
+    public Person(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException
     {
-        if(isNumeric(ID)){
+        if(idGueltig(ID)){
             name = n;
             burgerID = ID;
             anschrift = anschr;
@@ -42,10 +37,11 @@ public abstract class Person {
             geburtsdatum = geburt;            
         }else{
             System.out.println("Fehler beim Erzeugen der Person!");
+            throw new UngueltigeIDException();
         }        
     }
     
-    public String getBurgerID()
+    public long getBurgerID()
     {
         return burgerID;
     }

@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.inf202.Chef;
 import com.mycompany.inf202.Mitarbeiter;
+import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class SelectRecordsTest {
     private static ArrayList<Chef> chefs = new ArrayList();
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
-    public static void test(){
-/*        
+    public static void test() throws UngueltigeIDException{
+        
         System.out.println("-----------allMitarbeiterInArray überprüfen---------------");
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
@@ -36,7 +37,7 @@ public class SelectRecordsTest {
         while(iterC.hasNext()){
             System.out.println(iterC.next().getName());
         }
-*/        
+        
         System.out.println("-----------selectTourKunden überprüfen---------------");
         String s = SelectRecords.selectTourKunden("antalyaTour");
         Gson gson = new Gson();

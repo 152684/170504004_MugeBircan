@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class SelectRecords {
     
-    public static void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern){
+    public static void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -31,12 +31,14 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-                Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getString("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                                 rs.getString("passwort"));
                 mitarbeitern.add(m);
             }  
-        } catch (SQLException e) {  
+        }catch(UngueltigeIDException e) {
+            throw e;
+        }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {
@@ -51,7 +53,7 @@ public class SelectRecords {
           
     }    
 
-    public static Mitarbeiter findMitarbeiter(int id){
+    public static Mitarbeiter findMitarbeiter(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -62,13 +64,15 @@ public class SelectRecords {
         
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
-            pstmt.setInt(1, id);
+            pstmt.setLong(1, id);
   
             ResultSet rs    = pstmt.executeQuery();
-            m = new Mitarbeiter(rs.getString("name"), rs.getString("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+            m = new Mitarbeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                                 rs.getString("passwort"));
             
+        } catch(UngueltigeIDException e){
+            throw e;            
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
@@ -85,7 +89,7 @@ public class SelectRecords {
         return m;
     }
     
-    public static Chef findChef(int id){
+    public static Chef findChef(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -96,14 +100,16 @@ public class SelectRecords {
         
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
-            pstmt.setInt(1, id);
+            pstmt.setLong(1, id);
   
             ResultSet rs    = pstmt.executeQuery();
-            chef = new Chef(rs.getString("name"), rs.getString("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+            chef = new Chef(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                    rs.getString("passwort"));
             
-        } catch (SQLException e) {  
+        }catch(UngueltigeIDException e) {
+            throw e;
+        }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {
@@ -119,7 +125,7 @@ public class SelectRecords {
         return chef;
     }
 
-    public static void allChefInArray(ArrayList<Chef> chefs){
+    public static void allChefInArray(ArrayList<Chef> chefs) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -132,12 +138,14 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-                Chef c2 = new Chef(rs.getString("name"), rs.getString("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                Chef c2 = new Chef(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                    rs.getString("passwort"));
                 chefs.add(c2);
             }  
-        } catch (SQLException e) {  
+        } catch(UngueltigeIDException e){
+            throw e;
+        }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
         finally {
@@ -152,7 +160,7 @@ public class SelectRecords {
           
     }    
 
-    public static void allKundenInArray(ArrayList<Kunde> kunden){
+    public static void allKundenInArray(ArrayList<Kunde> kunden) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -165,11 +173,13 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-                Kunde k2 = new Kunde(rs.getString("name"), rs.getString("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                Kunde k2 = new Kunde(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getString("reisen"));
                 kunden.add(k2);
             }  
-        } catch (SQLException e) {  
+        } catch(UngueltigeIDException e){
+            throw e;
+        }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
         finally {
@@ -184,7 +194,7 @@ public class SelectRecords {
           
     }    
 
-    public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern){
+    public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -197,11 +207,13 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-                ReiseLeiter k2 = new ReiseLeiter(rs.getString("name"), rs.getString("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                ReiseLeiter k2 = new ReiseLeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"));
                 reiseLeitern.add(k2);
             }  
-        } catch (SQLException e) {  
+        } catch(UngueltigeIDException e){
+            throw e;
+        }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
         finally {
@@ -260,7 +272,6 @@ public class SelectRecords {
               
             // loop through the result set  
             while (rs.next()) { 
-                //String n, Date d, String info, int maxT, String hN, float p, ReiseLeiter rL
                 String c2 = rs.getString("tourName");
                 tours.add(c2);
             }  

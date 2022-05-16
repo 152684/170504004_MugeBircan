@@ -16,7 +16,7 @@ public class Login {
     private static ArrayList<Chef> chefs = new ArrayList();
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
-    static public String loginRichtig(String user, String pass){
+    static public long loginRichtig(String user, String pass) throws UngueltigeIDException{
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         SelectRecords.allChefInArray(chefs);
         
@@ -59,7 +59,7 @@ public class Login {
             if(mitarbeiterEx){
                 return iter3.next().getBurgerID();
             }else{
-                return null;
+                return 0;
             }
         }else{
             return iterC3.next().getBurgerID();

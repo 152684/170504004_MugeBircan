@@ -35,7 +35,7 @@ public class Arbeiter extends Person{
     private ArrayList<Hotel> hotels = new ArrayList();
 
    
-    public Arbeiter(String n, String ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) {
+    public Arbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt);
         personalID = persID;
         userName = user;

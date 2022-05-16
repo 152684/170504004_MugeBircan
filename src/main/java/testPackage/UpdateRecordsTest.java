@@ -24,28 +24,27 @@ public class UpdateRecordsTest {
         //???? primaryKey not found hatasi verilmiyo. Islem yapildi gibi gozukuyor ama zapilmiyor
 /*        
         System.out.println("-----------updateMitarbeiter überprüfen---------------");    
-        UpdateRecords.updateMitarbeiter("turan", "mugla", "email4", 45, 170504005);
-        UpdateRecords.updateMitarbeiter("ayse2", "kadikoy2", "email2", 45, 170504009);
+        UpdateRecords.updateMitarbeiter("ayse2", "kadikoy2", "email2", 45, 170504005002L);
         
         System.out.println("-----------updateChef überprüfen---------------");    
-        UpdateRecords.updateChef("turan", "mugla", "email4", 45, 170504005);
-        UpdateRecords.updateChef("turan", "mugla", "email4", 45, 170504006);
-        
+        UpdateRecords.updateChef("nur3", "mugla", "email4", 45, 170504005009L);
+*/        
         System.out.println("-----------updateMitarbeiterUserNameUndPass überprüfen---------------");    
-        UpdateRecords.updateMitarbeiterUserNameUndPass("userName1", "pass12345", 170504009);
+        UpdateRecords.updateMitarbeiterUserNameUndPass("userName1", "pass12345", 170504005003L);
         
         System.out.println("-----------updateChefUserNameUndPass überprüfen---------------");    
-        UpdateRecords.updateChefUserNameUndPass("userName2", "pass123456", 170504006);
-
+        UpdateRecords.updateChefUserNameUndPass("userName2", "pass123456", 170504005009L);
+/*
         System.out.println("-----------updateReiseL überprüfen---------------");    
-        UpdateRecords.updateReiseL("veli", "mugla", "email4", 45, 170504008);
+        UpdateRecords.updateReiseL("veli", "mugla", "email4", 45, 170504005012L);
+        UpdateRecords.updateReiseL("veli", "mugla", "email4", 45, 170504005001L);
 
         System.out.println("-----------updateKunde überprüfen---------------");    
-        UpdateRecords.updateKunde("hasan23", "mugla", "email4", 45, 170504007);
+        UpdateRecords.updateKunde("hasan23", "mugla", "email4", 45, 170504005010L);
 
         System.out.println("-----------updateHotel überprüfen---------------");    
         UpdateRecords.updateHotel("antalyaHotel", "fethiye", "email4", 45, 160);
-
+*/
         System.out.println("-----------updateTour überprüfen---------------");    
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -70,7 +69,7 @@ public class UpdateRecordsTest {
        
         UpdateRecords.updateTourKunden("antalyaTour", "veli");
 
-*/        
+        
         System.out.println("-----------updateTourKunden2 überprüfen---------------"); 
 
         

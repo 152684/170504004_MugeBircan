@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Mitarbeiter extends Arbeiter{
     
-    public Mitarbeiter(String n, String ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) {
+    public Mitarbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
     }
 

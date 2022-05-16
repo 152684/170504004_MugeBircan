@@ -15,11 +15,11 @@ public class Kunde extends Person{
     private ArrayList<Reise> reisen = new ArrayList();
     private String reisenString;
     
-    public Kunde(String n, String ID, String anschr, String e, int telefon, Date geburt) {
+    public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt);
     }
 
-    public Kunde(String n, String ID, String anschr, String e, int telefon, Date geburt, String reise) {
+    public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt, String reise) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt);
         reisenString = reise;
     }
