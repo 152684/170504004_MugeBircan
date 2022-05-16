@@ -26,8 +26,8 @@ public class DeleteRecordsTest {
         DeleteRecords.deleteKunde(170504012);
 */
         System.out.println("-----------deleteReiseL überprüfen---------------");
-        DeleteRecords.deleteReiseL(170504014);
-        DeleteRecords.deleteReiseL(170504017); //fehler, reiseL mit der ID ex nicht
+        DeleteRecords.deleteReiseL("170504014");
+        DeleteRecords.deleteReiseL("170504017"); //fehler, reiseL mit der ID ex nicht
 /*
         System.out.println("-----------deleteHotel überprüfen---------------");
         DeleteRecords.deleteHotel("fethiye");

@@ -13,26 +13,39 @@ import java.util.Date;
 public abstract class Person {
     
     private String name;
-    private int burgerID; // 11-stellig ??
+    private String burgerID; // 11-stellige Zahl war zu groß für long, deswegen als String speichern.
     private String anschrift;
     private String email;
     private int telefonnummer;
     private Date geburtsdatum;
     
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+    public static boolean isNumeric(String str) { 
+        try {  
+          Long.parseLong(str);  
+          return true;
+        } catch(NumberFormatException e){  
+          return false;  
+        }  
+    }
+
     
-    public Person(String n, int ID, String anschr, String e, int telefon, Date geburt)
+    public Person(String n, String ID, String anschr, String e, int telefon, Date geburt)
     {
-        name = n;
-        burgerID = ID;
-        anschrift = anschr;
-        email = e;
-        telefonnummer = telefon;
-        geburtsdatum = geburt;
-        
+        if(isNumeric(ID)){
+            name = n;
+            burgerID = ID;
+            anschrift = anschr;
+            email = e;
+            telefonnummer = telefon;
+            geburtsdatum = geburt;            
+        }else{
+            System.out.println("Fehler beim Erzeugen der Person!");
+        }        
     }
     
-    public long getBurgerID()
+    public String getBurgerID()
     {
         return burgerID;
     }

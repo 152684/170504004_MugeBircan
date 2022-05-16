@@ -16,7 +16,7 @@ public class Login {
     private static ArrayList<Chef> chefs = new ArrayList();
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
-    static public long loginRichtig(String user, String pass){
+    static public String loginRichtig(String user, String pass){
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         SelectRecords.allChefInArray(chefs);
         
@@ -59,7 +59,7 @@ public class Login {
             if(mitarbeiterEx){
                 return iter3.next().getBurgerID();
             }else{
-                return 0;
+                return null;
             }
         }else{
             return iterC3.next().getBurgerID();

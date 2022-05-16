@@ -35,7 +35,7 @@ public class Arbeiter extends Person{
     private ArrayList<Hotel> hotels = new ArrayList();
 
    
-    public Arbeiter(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) {
+    public Arbeiter(String n, String ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) {
         super(n, ID, anschr, e, telefon, geburt);
         personalID = persID;
         userName = user;
@@ -120,7 +120,7 @@ public class Arbeiter extends Person{
     
     public void updateKundenInfo()
     {
-
+    /*
         String n2;
         int id;
         String anschr2;
@@ -160,11 +160,12 @@ public class Arbeiter extends Person{
         }else{
             System.out.println("Der Kunde ex. nicht!");
         }
-     
+    */ 
     }
     
     public void deleteKunde()
     {
+    /*
         int id;
                 
         System.out.println("Geben Sie die BurgerID der Kunde ein: ");
@@ -188,6 +189,7 @@ public class Arbeiter extends Person{
         }else{
             System.out.println("Der Kunde mit der eingegebenen BurgerID ex. nicht!");
         }
+    */
     }
     
     public void kundeAlphPrint()
@@ -215,7 +217,7 @@ public class Arbeiter extends Person{
        
     public void kundeNachIDprint()
     {
-
+    /*
         System.out.println("Geben Sie die BuergerID des Kunden ein: ");
         int id = sc.nextInt();
         sc.nextLine();
@@ -227,7 +229,7 @@ public class Arbeiter extends Person{
                 break;
             }
         }
-        
+    */    
     }
     
     public void setTour()
