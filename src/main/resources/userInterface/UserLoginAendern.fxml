@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.UserLoginAendernController">
+   <children>
+      <Label layoutX="149.0" layoutY="47.0" text="Login Daten Ändern">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="152.0" text="Geben Sie neuer Username ein:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="209.0" text="Geben Sie neues Passwort ein:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="neuUserName" layoutX="346.0" layoutY="151.0" onAction="#userNameIn" />
+      <TextField fx:id="neuPass" layoutX="346.0" layoutY="209.0" onAction="#neuPassIn" />
+   </children>
+</AnchorPane>

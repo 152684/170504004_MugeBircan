@@ -12,12 +12,12 @@ import java.util.Date;
  */
 public abstract class Person {
     
-    private String name;
-    private long burgerID; // 11-stellige Zahl war zu groß für long, deswegen als String speichern.
-    private String anschrift;
-    private String email;
-    private int telefonnummer;
-    private Date geburtsdatum;
+    protected String name;
+    protected long burgerID; // 11-stellige Zahl war zu groß für long, deswegen als String speichern.
+    protected String anschrift;
+    protected String email;
+    protected int telefonnummer;
+    protected Date geburtsdatum;
     
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 

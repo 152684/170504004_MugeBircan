@@ -70,7 +70,7 @@ public class LoginSceneController implements Initializable {
             SelectRecords.allMitarbeiterInArray(mitarbeitern);
             Iterator<Mitarbeiter> m = mitarbeitern.iterator();
             while(m.hasNext()){
-                if(c.next().getBurgerID() == id){
+                if(m.next().getBurgerID() == id){
                     loginType = 2;
                 }
             }

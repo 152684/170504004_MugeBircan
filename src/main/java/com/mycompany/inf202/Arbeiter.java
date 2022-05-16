@@ -41,23 +41,29 @@ public class Arbeiter extends Person{
         userName = user;
         passwort = pass;
     }
-        
+      
+    public void setLogin(String user, String pass){
+        userName = user;
+        passwort = pass;
+        UpdateRecords.updateChefUserNameUndPass(user, pass, burgerID);
+    }
+    /*
     public String setPasswort(){
         System.out.println("Geben Sie neues Passwort ein: ");
         passwort = sc.nextLine();
         return passwort;
     }
-
+    */
     public String getPasswort(){
         return passwort;
     }
-   
+    /*
     public String setUserName(){
         System.out.println("Geben Sie neuer userName ein: ");
         userName = sc.nextLine();
         return userName;
     }
-    
+    */
     public String getUserName(){
         return userName;
     }
