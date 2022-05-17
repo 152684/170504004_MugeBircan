@@ -39,9 +39,8 @@ public class LoginChefController implements Initializable {
 
 
     public void fromLogin(long id) throws UngueltigeIDException{
-        System.out.println("from login");
         currentUser = SelectRecords.findChef(id);
-        sceneText.setText("Willkommen Herr/Frau Chef" );
+        sceneText.setText("Willkommen Herr/Frau " + currentUser.getName());
     }
 
     @FXML
@@ -55,7 +54,7 @@ public class LoginChefController implements Initializable {
             controller2.LoginCurrentChef(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Layout2 + Controller2");
+            stage.setTitle("Login Daten Aendern");
             stage.show();
                 
         }catch(IOException e){
@@ -82,6 +81,21 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void kundeHinzu(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeHinzufuegenController controller2 = loader.getController();
+            controller2.kundeHinzu(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Kunde Hinzufuegen");
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     @FXML

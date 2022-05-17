@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,16 +44,17 @@ public class Arbeiter extends Person{
         passwort = pass;
     }
       
-    public void setLogin(String user, String pass, int typ){
+    public boolean setLogin(String user, String pass, int typ){
         userName = user;
         passwort = pass;
         if(typ == 1){
-            UpdateRecords.updateChefUserNameUndPass(user, pass, burgerID);            
+            UpdateRecords.updateChefUserNameUndPass(user, pass, burgerID); 
+            return true;
         }else if(typ == 2){
-            UpdateRecords.updateMitarbeiterUserNameUndPass(user, pass, burgerID);            
-        }else{
-            
+            UpdateRecords.updateMitarbeiterUserNameUndPass(user, pass, burgerID);  
+            return true;
         }
+        return false;
     }
 
     public String getPasswort(){
@@ -63,133 +66,33 @@ public class Arbeiter extends Person{
     }
     
     
-    public void setKunde()
+    public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) // existierende kunden werden nicht anerkannt (nicht nochmal
+                                                                                                  //hinzugefugt aber wird benachrichtight, dass sie hinzugefugt werden
     {
-        String n2;
-        int ID2;
-        String anschr2;
-        String e2;
-        int telefon2;
-        Date geburt2 = null;
-                
-        System.out.println("Geben Sie den Namen ein: ");
-        n2 = sc.nextLine();
-        System.out.println("Geben Sie die BugerID ein: ");
-        ID2 = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Geben Sie den Anschrift ein: ");
-        anschr2 = sc.nextLine();
-        System.out.println("Geben Sie die Email ein: ");
-        e2 = sc.nextLine();
-        System.out.println("Geben Sie die Telefonnummer ein: ");
-        telefon2 = sc.nextInt(); 
-        sc.nextLine();
-        System.out.println("Geben Sie den Geburtsdatum ein: ");
-        String d = sc.nextLine();
-        try{
-            geburt2 = dateFormat.parse(d);        
-        }catch(ParseException e){
-            System.out.println("Der eingegebene Datum ist nicht gueltig.");
-            e.printStackTrace();
+        try {
+            Kunde k = new Kunde(n, ID, anschr, e, telefon, geburt);
+            InsertRecords.insertKunde(n, ID, anschr, e, telefon, geburt);
+            return true;
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        java.sql.Date sqlDate = new java.sql.Date(geburt2.getTime());
-        
-//        insertData.insertArbeiter(n2, ID2, anschr2, e2, telefon2, sqlDate, personalID);
-
-        /*
-        Iterator<Kunde> iter = kunden.iterator();
-        boolean ex = false;
-        while(iter.hasNext()){
-            if(iter.next().getBurgerID() == ID2){
-                ex = true;
-                System.out.println("Der Kunde mit der BurgerID " + ID2 +  " existiert!");
-                break;
-            }
-        }
-        
-        if(ex == false){
-            Kunde k = new Kunde(n2, ID2, anschr2, e2, telefon2, geburt2);
-            kunden.add(k);
-        }
-        */
-        
-        
-        
-        
+        return false;
     }
     
     public void updateKundenInfo()
     {
-    /*
-        String n2;
-        int id;
-        String anschr2;
-        String e2;
-        int telefon2;
-                
-        System.out.println("Geben Sie die BurgerID der Kunde ein: ");
-        id = sc.nextInt();
 
-        Iterator<Kunde> iter = kunden.iterator();        
-        boolean ex = false;
-        int stelle = -1;
-        while(iter.hasNext()){
-            stelle++;
-            if(iter.next().getBurgerID() == id){
-                ex = true;
-                break;
-            }
-        }
-        
-        if(ex){
-            System.out.println("Geben Sie den neuen Namen ein: ");
-            n2 = sc.nextLine();
-            System.out.println("Geben Sie den neuen Anschrift ein: ");
-            anschr2 = sc.nextLine();
-            System.out.println("Geben Sie die neue Email ein: ");
-            e2 = sc.nextLine();
-            System.out.println("Geben Sie die neue Telefonnummer ein: ");
-            telefon2 = sc.nextInt(); 
-
-            Iterator<Kunde> iter2 = kunden.iterator();
-            while(stelle != 0){
-                iter2.next();
-                stelle--;                
-            }
-            iter2.next().updateInfo(n2, anschr2, e2, telefon2);            
-        }else{
-            System.out.println("Der Kunde ex. nicht!");
-        }
-    */ 
     }
     
-    public void deleteKunde()
+    public boolean deleteKunde(long id) //nicht existierende Kunden werden auch true returned
     {
-    /*
-        int id;
-                
-        System.out.println("Geben Sie die BurgerID der Kunde ein: ");
-        id = sc.nextInt();
-        sc.nextLine();
-
-        Iterator<Kunde> iter = kunden.iterator();        
-        boolean ex = false;
-        int stelle = -1;
-        while(iter.hasNext()){
-            stelle++;
-            if(iter.next().getBurgerID() == id){
-                ex = true;
-                break;
-            }
+        try {
+            DeleteRecords.deleteKunde(id);
+            return true;
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
         }
- 
-        if(ex){
-            System.out.println("Der Kunde mit der BurgerID " + id + " wird nun geloscht.");
-            kunden.remove(stelle);
-        }else{
-            System.out.println("Der Kunde mit der eingegebenen BurgerID ex. nicht!");
-        }
-    */
+        return false;
     }
     
     public void kundeAlphPrint()

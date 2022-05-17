@@ -60,15 +60,21 @@ public class UserLoginAendernController implements Initializable {
     private void buttonOK(ActionEvent event) {
         String user = neuUserName.getText();
         String pass = neuPass.getText();  
+        boolean anderungGemacht = false;
         if(currentTyp == 1){
-            currentChef.setLogin(user, pass, currentTyp);
-            textField.setText("Login Daten wurden erfolgreich aktualisiert!");
+            anderungGemacht = currentChef.setLogin(user, pass, currentTyp);
+            if(anderungGemacht){
+                textField.setText("Login Daten wurden erfolgreich aktualisiert!");            
+            }else{
+                textField.setText("Login Daten konnten nicht aktualisiert werden!");                
+            }              
         }else if(currentTyp == 2){
-            currentMit.setLogin(user, pass, currentTyp);
-            textField.setText("Login Daten wurden erfolgreich aktualisiert!");
-        }else{
-            textField.setText("Login Daten konnten nicht aktualisiert werden!");
-        }
-    }
-    
+            anderungGemacht = currentMit.setLogin(user, pass, currentTyp);
+            if(anderungGemacht){
+                textField.setText("Login Daten wurden erfolgreich aktualisiert!");            
+            }else{
+                textField.setText("Login Daten konnten nicht aktualisiert werden!");                
+            }
+        }       
+    }   
 }

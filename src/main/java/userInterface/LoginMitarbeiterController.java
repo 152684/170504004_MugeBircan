@@ -39,15 +39,13 @@ public class LoginMitarbeiterController implements Initializable {
     }    
 
     public void fromLogin(long id) throws UngueltigeIDException{
-        System.out.println("from login");
         currentUser = SelectRecords.findMitarbeiter(id);
-        sceneText.setText("Willkommen Herr/Frau Mitarbeiter" );
+        sceneText.setText("Willkommen Herr/Frau " + currentUser.getName() );
     }
 
     
     @FXML
     private void loginDatenAendern(ActionEvent event) {
-        System.out.println("Login daten andern");
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("UserLoginAendern.fxml"));
             Parent root = loader.load();
@@ -56,7 +54,7 @@ public class LoginMitarbeiterController implements Initializable {
             controller2.LoginCurrentMit(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Layout2 + Controller2");
+            stage.setTitle("Login Daten Aendern");
             stage.show();
                 
         }catch(IOException e){
@@ -67,10 +65,38 @@ public class LoginMitarbeiterController implements Initializable {
 
     @FXML
     private void kundeHinzu(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeHinzufuegenController controller2 = loader.getController();
+            controller2.kundeHinzu(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Kunde Hinzufuegen");
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void kundeLoeschen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeLoeschen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeLoeschenController controller2 = loader.getController();
+            controller2.kundeLoesch(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Kunde Loeschen");
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
 }

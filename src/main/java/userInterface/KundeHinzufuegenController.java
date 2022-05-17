@@ -88,8 +88,36 @@ public class KundeHinzufuegenController implements Initializable {
         }catch(ParseException e){
             System.out.println("Der eingegebene Datum ist nicht gueltig.");
             e.printStackTrace();
-        }             
+        }     
+
+        boolean insertErfolg = false;
+        if(currentTyp == 1){
+            insertErfolg = currentChef.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
+            if(insertErfolg){
+                textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
+            }else{
+                textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
+            }
+        }else if(currentTyp == 2){
+            insertErfolg = currentMit.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
+            if(insertErfolg){
+                textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
+            }else{
+                textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
+            }
+        }else{
+            textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
+        }
         
     }
     
+    public void kundeHinzu(Mitarbeiter m){
+        currentMit = m;
+        currentTyp = 2;        
+    }
+    
+    public void kundeHinzu(Chef c){
+        currentChef = c;
+        currentTyp = 1;                
+    }
 }

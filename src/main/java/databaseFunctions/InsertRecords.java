@@ -7,7 +7,9 @@ package databaseFunctions;
 import java.sql.Connection;  
 import java.sql.PreparedStatement;  
 import java.sql.SQLException;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author mbirc
@@ -18,6 +20,8 @@ public class InsertRecords {
         Connect c = new Connect();
         Connection conn = c.connect();
         
+        java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
+        
         String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -26,7 +30,7 @@ public class InsertRecords {
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
-            pstmt.setDate(6, geburt);
+            pstmt.setDate(6, sqlDate);
             pstmt.setInt(7, persID);
             pstmt.setString(8, user);  
             pstmt.setString(9, pass);  
@@ -51,6 +55,8 @@ public class InsertRecords {
         Connect c = new Connect();
         Connection conn = c.connect();
         
+        java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
+        
         String sql = "INSERT INTO chef(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
@@ -59,7 +65,7 @@ public class InsertRecords {
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
-            pstmt.setDate(6, geburt);
+            pstmt.setDate(6, sqlDate);
             pstmt.setInt(7, persID);
             pstmt.setString(8, user);  
             pstmt.setString(9, pass);  
@@ -78,10 +84,13 @@ public class InsertRecords {
         }
     
     }
-    
+   
     public static void insertKunde(String n, long ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
+ 
+      
+        java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());        
         
         String sql = "INSERT INTO kunde(name, burgerID, anschrift, email, telefonnummer, geburtsdatum) VALUES(?,?,?,?,?,?)";
         try{    
@@ -91,7 +100,7 @@ public class InsertRecords {
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
-            pstmt.setDate(6, geburt);
+            pstmt.setDate(6, sqlDate);
             pstmt.executeUpdate(); 
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
@@ -112,6 +121,8 @@ public class InsertRecords {
         Connect c = new Connect();
         Connection conn = c.connect();
         
+        java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
+        
         String sql = "INSERT INTO reiseLeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum) VALUES(?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
@@ -120,7 +131,7 @@ public class InsertRecords {
             pstmt.setString(3, anschr);  
             pstmt.setString(4, email);  
             pstmt.setInt(5, telefon);  
-            pstmt.setDate(6, geburt);
+            pstmt.setDate(6, sqlDate);
             pstmt.executeUpdate(); 
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
@@ -169,11 +180,13 @@ public class InsertRecords {
         Connect c = new Connect();
         Connection conn = c.connect();
         
+        java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+        
         String sql = "INSERT INTO tour(tourName, tourDatum, tourInfo, maxTeilnehmer, hotelName, preis, freiePlaetze, reiseL, kunden) VALUES(?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);  
-            pstmt.setDate(2, d);  
+            pstmt.setDate(2, sqlDate);  
             pstmt.setString(3, info);  
             pstmt.setInt(4, maxT);  
             pstmt.setString(5, hN);
