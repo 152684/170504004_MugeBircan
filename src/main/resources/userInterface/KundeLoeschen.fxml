@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeLoeschenController">
    <children>
-      <Label layoutX="200.0" layoutY="47.0" text="Kunde Löschen">
+      <Label layoutX="122.0" layoutY="43.0" text="Kunde/ReiseLeiter Löschen">
          <font>
             <Font size="30.0" />
          </font>
@@ -20,7 +20,8 @@
          </font>
       </Label>
       <TextField fx:id="burgerID" layoutX="207.0" layoutY="141.0" onAction="#burgerIDIN" />
-      <Button layoutX="447.0" layoutY="200.0" mnemonicParsing="false" onAction="#buttonOK" text="Kunde Löschen" />
-      <TextArea fx:id="textArea" layoutX="81.0" layoutY="293.0" prefHeight="45.0" prefWidth="438.0" />
+      <Button layoutX="418.0" layoutY="185.0" mnemonicParsing="false" onAction="#kundeLoeschenButton" text="Kunde Löschen" />
+      <TextArea fx:id="textArea" layoutX="81.0" layoutY="293.0" prefHeight="45.0" prefWidth="459.0" />
+      <Button layoutX="404.0" layoutY="232.0" mnemonicParsing="false" onAction="#reiseLLoeschenButton" text="ReiseLeiter Löschen" />
    </children>
 </AnchorPane>

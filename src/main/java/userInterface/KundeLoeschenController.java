@@ -40,8 +40,22 @@ public class KundeLoeschenController implements Initializable {
     private void burgerIDIN(ActionEvent event) {
     }
 
-    @FXML
     private void buttonOK(ActionEvent event) {
+        
+    }
+
+    public void kundeLoesch(Mitarbeiter m){
+        currentMit = m;
+        currentTyp = 2;        
+    }
+    
+    public void kundeLoesch(Chef c){
+        currentChef = c;
+        currentTyp = 1;                
+    }
+
+    @FXML
+    private void kundeLoeschenButton(ActionEvent event) {
         long burgerID = Long.parseLong(this.burgerID.getText());
 
         boolean loeschErfolg = false;
@@ -62,17 +76,30 @@ public class KundeLoeschenController implements Initializable {
         }else{
             textArea.setText("Der Kunde mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
         }
-        
     }
 
-    public void kundeLoesch(Mitarbeiter m){
-        currentMit = m;
-        currentTyp = 2;        
-    }
-    
-    public void kundeLoesch(Chef c){
-        currentChef = c;
-        currentTyp = 1;                
+    @FXML
+    private void reiseLLoeschenButton(ActionEvent event) {
+        long burgerID = Long.parseLong(this.burgerID.getText());
+
+        boolean loeschErfolg = false;
+        if(currentTyp == 1){
+            loeschErfolg = currentChef.deleteReiseL(burgerID);
+            if(loeschErfolg){
+                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");                
+            }else{
+                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+            }
+        }else if(currentTyp == 2){
+            loeschErfolg = currentMit.deleteKunde(burgerID);
+            if(loeschErfolg){
+                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");                
+            }else{
+                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+            }
+        }else{
+            textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+        }
     }
 
     

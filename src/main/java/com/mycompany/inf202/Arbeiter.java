@@ -336,14 +336,22 @@ public class Arbeiter extends Person{
         
     }
     
-    public void setReiseL(String n, int ID, String anschr, String e, int telefon, Date geburt)
+    public boolean setReiseL(String n, long ID, String anschr, String e, int telefon, Date geburt)
     {
+        try {
+            ReiseLeiter k = new ReiseLeiter(n, ID, anschr, e, telefon, geburt);
+            InsertRecords.insertReiseLeiter(n, ID, anschr, e, telefon, geburt);
+            return true;
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
         
     }
     
-    public void updateReiseLInfo(String n, String anschr, String e, int telefon)
+    public void updateReiseLInfo(String n, String anschr, String e, int telefon, long ID)
     {
-        
+        UpdateRecords.updateReiseL(n, anschr, e, telefon, ID);        
     }
     
     public void reiseLAlphPrint()
@@ -370,9 +378,15 @@ public class Arbeiter extends Person{
         
     }
     
-    public void deleteReiseL(String n)
+    public boolean deleteReiseL(long ID)
     {
-        
+        try {
+            DeleteRecords.deleteReiseL(ID);
+            return true;
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
 }

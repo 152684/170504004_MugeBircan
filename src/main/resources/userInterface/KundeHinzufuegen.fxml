@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeHinzufuegenController">
+<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeHinzufuegenController">
    <children>
-      <Label layoutX="86.0" layoutY="35.0" text="Kunde Hinzufügen/Aktualisieren">
+      <Label layoutX="86.0" layoutY="35.0" text="Kunde/ReiseLeiter Hinzufügen/Aktualisieren">
          <font>
             <Font size="31.0" />
          </font>
@@ -20,14 +20,16 @@
       <Label layoutX="33.0" layoutY="240.0" text="Email:" />
       <Label layoutX="34.0" layoutY="282.0" text="Telefonnnummer:" />
       <Label layoutX="34.0" layoutY="330.0" text="Geburtsdatum:" />
-      <TextField fx:id="name" layoutX="173.0" layoutY="103.0" onAction="#nameIN" />
-      <TextField fx:id="burgerID" layoutX="173.0" layoutY="148.0" onAction="#burgerIDIN" />
-      <TextField fx:id="anschrift" layoutX="173.0" layoutY="193.0" onAction="#anschriftIN" />
-      <TextField fx:id="email" layoutX="173.0" layoutY="235.0" onAction="#emailIN" />
-      <TextField fx:id="tel" layoutX="173.0" layoutY="277.0" onAction="#telIN" />
-      <TextField fx:id="geburt" layoutX="173.0" layoutY="325.0" onAction="#geburtIN" />
-      <Button layoutX="416.0" layoutY="310.0" mnemonicParsing="false" onAction="#kundeHin" text="Kunde hinzufügen" />
-      <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="411.0" layoutY="351.0" mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
+      <TextField fx:id="name" layoutX="173.0" layoutY="103.0" />
+      <TextField fx:id="burgerID" layoutX="173.0" layoutY="148.0" />
+      <TextField fx:id="anschrift" layoutX="173.0" layoutY="193.0" />
+      <TextField fx:id="email" layoutX="173.0" layoutY="235.0" />
+      <TextField fx:id="tel" layoutX="173.0" layoutY="277.0" />
+      <TextField fx:id="geburt" layoutX="173.0" layoutY="325.0" />
+      <Button layoutX="416.0" layoutY="277.0" mnemonicParsing="false" onAction="#kundeHin" text="Kunde hinzufügen" />
+      <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="153.0" prefWidth="413.0" />
+      <Button layoutX="412.0" layoutY="325.0" mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
+      <Button layoutX="603.0" layoutY="277.0" mnemonicParsing="false" onAction="#reiseLHinButton" text="ReiseLeiter hinzufügen" />
+      <Button layoutX="599.0" layoutY="325.0" mnemonicParsing="false" onAction="#reiseLAktButton" text="ReiseLeiter aktualisieren" />
    </children>
 </AnchorPane>

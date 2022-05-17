@@ -49,29 +49,6 @@ public class KundeHinzufuegenController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void nameIN(ActionEvent event) {
-    }
-
-    @FXML
-    private void burgerIDIN(ActionEvent event) {
-    }
-
-    @FXML
-    private void anschriftIN(ActionEvent event) {
-    }
-
-    @FXML
-    private void emailIN(ActionEvent event) {
-    }
-
-    @FXML
-    private void telIN(ActionEvent event) {
-    }
-
-    @FXML
-    private void geburtIN(ActionEvent event) {
-    }
 
     public void kundeHinzu(Mitarbeiter m){
         currentMit = m;
@@ -152,5 +129,84 @@ public class KundeHinzufuegenController implements Initializable {
             textField.setText("Der Kunde mit den Namen " + name + " kann nicht aktualisiert werden.");            
         }        
 
+    }
+    public void ReiseLHin(Mitarbeiter m){
+        currentMit = m;
+        currentTyp = 2;        
+    }
+    
+    public void ReiseLHin(Chef c){
+        currentChef = c;
+        currentTyp = 1;                
+    }
+
+        public void ReiseLAkt(Mitarbeiter m){
+        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
+        currentMit = m;
+        currentTyp = 2;        
+    }
+    
+    public void ReiseLAkt(Chef c){
+        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
+        currentChef = c;
+        currentTyp = 1;                
+    }
+
+    @FXML
+    private void reiseLHinButton(ActionEvent event) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        String name = this.name.getText();
+        long burgerID = Long.parseLong(this.burgerID.getText());
+        String anschrift = this.anschrift.getText();
+        String email = this.email.getText();
+        int tel = Integer.parseInt(this.tel.getText());
+        String g = this.geburt.getText();
+        Date geburtsDatum = null;
+        try{
+            geburtsDatum = dateFormat.parse(g);        
+        }catch(ParseException e){
+            System.out.println("Der eingegebene Datum ist nicht gueltig.");
+            e.printStackTrace();
+        }     
+
+        boolean insertErfolg = false;
+        if(currentTyp == 1){
+            insertErfolg = currentChef.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
+            if(insertErfolg){
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
+            }else{
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
+            }
+        }else if(currentTyp == 2){
+            insertErfolg = currentMit.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
+            if(insertErfolg){
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
+            }else{
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
+            }
+        }else{
+            textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
+        }        
+    }
+
+    @FXML
+    private void reiseLAktButton(ActionEvent event) {
+        String name = this.name.getText();
+        long burgerID = Long.parseLong(this.burgerID.getText());
+        String anschrift = this.anschrift.getText();
+        String email = this.email.getText();
+        int tel = Integer.parseInt(this.tel.getText());
+
+        boolean updateErfolg = false;
+        if(currentTyp == 1){
+            currentChef.updateReiseLInfo(name, anschrift, email, tel, burgerID);
+            textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " wird aktualisiert.");
+
+        }else if(currentTyp == 2){
+            currentMit.updateReiseLInfo(name, anschrift, email, tel, burgerID);
+            textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " wird aktualisiert.");
+        }else{
+            textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " kann nicht aktualisiert werden.");            
+        }        
     }
 }
