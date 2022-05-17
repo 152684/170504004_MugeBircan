@@ -79,8 +79,9 @@ public class Arbeiter extends Person{
         return false;
     }
     
-    public void updateKundenInfo()
+    public void updateKundenInfo(String n, long ID, String anschr, String e, int telefon)
     {
+        UpdateRecords.updateKunde(n, anschr, e, telefon, ID);
 
     }
     

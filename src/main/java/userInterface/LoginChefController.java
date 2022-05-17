@@ -100,5 +100,37 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void kundeLoeschen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeLoeschen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeLoeschenController controller2 = loader.getController();
+            controller2.kundeLoesch(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Kunde Loeschen");
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void kundeAkt(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeHinzufuegenController controller2 = loader.getController();
+            controller2.kundeAkt(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Kunde Aktualisieren");
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }

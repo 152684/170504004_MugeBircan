@@ -73,8 +73,18 @@ public class KundeHinzufuegenController implements Initializable {
     private void geburtIN(ActionEvent event) {
     }
 
+    public void kundeHinzu(Mitarbeiter m){
+        currentMit = m;
+        currentTyp = 2;        
+    }
+    
+    public void kundeHinzu(Chef c){
+        currentChef = c;
+        currentTyp = 1;                
+    }
+
     @FXML
-    private void buttonOK(ActionEvent event) {
+    private void kundeHin(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         String name = this.name.getText();
         long burgerID = Long.parseLong(this.burgerID.getText());
@@ -107,17 +117,40 @@ public class KundeHinzufuegenController implements Initializable {
             }
         }else{
             textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
-        }
-        
+        }        
     }
-    
-    public void kundeHinzu(Mitarbeiter m){
+
+    public void kundeAkt(Mitarbeiter m){
+        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentMit = m;
         currentTyp = 2;        
     }
     
-    public void kundeHinzu(Chef c){
+    public void kundeAkt(Chef c){
+        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentChef = c;
         currentTyp = 1;                
+    }
+    
+    @FXML
+    private void kundeAkt(ActionEvent event) {        
+        String name = this.name.getText();
+        long burgerID = Long.parseLong(this.burgerID.getText());
+        String anschrift = this.anschrift.getText();
+        String email = this.email.getText();
+        int tel = Integer.parseInt(this.tel.getText());
+
+        boolean updateErfolg = false;
+        if(currentTyp == 1){
+            currentChef.updateKundenInfo(name, burgerID, anschrift, email, tel);
+            textField.setText("Der Kunde mit den Namen " + name + " wird aktualisiert.");
+
+        }else if(currentTyp == 2){
+            currentMit.updateKundenInfo(name, burgerID, anschrift, email, tel);
+            textField.setText("Der Kunde mit den Namen " + name + " wird aktualisiert.");
+        }else{
+            textField.setText("Der Kunde mit den Namen " + name + " kann nicht aktualisiert werden.");            
+        }        
+
     }
 }

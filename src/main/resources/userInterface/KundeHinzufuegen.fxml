@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.KundeHinzufuegenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeHinzufuegenController">
    <children>
-      <Label layoutX="173.0" layoutY="39.0" text="Kunde Hinzufügen">
+      <Label layoutX="86.0" layoutY="35.0" text="Kunde Hinzufügen/Aktualisieren">
          <font>
             <Font size="31.0" />
          </font>
@@ -27,7 +26,8 @@
       <TextField fx:id="email" layoutX="173.0" layoutY="235.0" onAction="#emailIN" />
       <TextField fx:id="tel" layoutX="173.0" layoutY="277.0" onAction="#telIN" />
       <TextField fx:id="geburt" layoutX="173.0" layoutY="325.0" onAction="#geburtIN" />
-      <Button layoutX="415.0" layoutY="325.0" mnemonicParsing="false" onAction="#buttonOK" text="Kunde hinzufügen" />
-      <TextArea fx:id="textField" layoutX="385.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="416.0" layoutY="310.0" mnemonicParsing="false" onAction="#kundeHin" text="Kunde hinzufügen" />
+      <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="411.0" layoutY="351.0" mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
    </children>
 </AnchorPane>

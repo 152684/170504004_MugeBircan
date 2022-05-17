@@ -17,6 +17,7 @@
           <MenuItem mnemonicParsing="false" onAction="#mitarbHinzu" text="Mitarbeiter hinzufügen" />
             <MenuItem mnemonicParsing="false" onAction="#mitarbLoeschen" text="Mitarbeiter löschen" />
             <MenuItem mnemonicParsing="false" onAction="#kundeHinzu" text="Kunde hinzufügen" />
+            <MenuItem mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
             <MenuItem mnemonicParsing="false" onAction="#kundeLoeschen" text="Kunde löschen" />
             <MenuItem mnemonicParsing="false" text="ReiseLeiter hinzufügen" />
             <MenuItem mnemonicParsing="false" text="ReiseLeiter löschen" />
