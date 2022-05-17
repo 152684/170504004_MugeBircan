@@ -23,7 +23,7 @@ public class SelectRecordsTest {
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
     public static void test() throws UngueltigeIDException{
-        
+/*        
         System.out.println("-----------allMitarbeiterInArray überprüfen---------------");
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
@@ -48,7 +48,16 @@ public class SelectRecordsTest {
         String s2 = SelectRecords.selectTourKunden("antalyaTour2");
         ArrayList<String> in2 = gson.fromJson(s2, type);  
         System.out.println("tourKunden2: "+ in2);
-
+*/
+/*
+        System.out.println("-----------findMitarbeiter überprüfen---------------");
+        Mitarbeiter m = SelectRecords.findMitarbeiter(17050405007L);
+        System.out.println("der Name ist " + m.getName());
+*/
+        System.out.println("-----------findChef überprüfen---------------");
+        Chef c = SelectRecords.findChef(17050400508L);
+        System.out.println("der Name ist " + c.getName());
+        
     }
 
     

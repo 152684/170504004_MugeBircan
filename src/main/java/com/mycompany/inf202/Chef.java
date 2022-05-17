@@ -16,13 +16,7 @@ public class Chef extends Arbeiter{
     public Chef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
     }
-/*    
-    public void setLogin(){
-        String pass = this.setPasswort();
-        String user = this.setUserName();
-        UpdateRecords.updateChefUserNameUndPass(user, pass, personalID);
-    }
-*/
+
     public void printMitarbAlph()
     {
         

@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.UserLoginAendernController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.UserLoginAendernController">
    <children>
       <Label layoutX="149.0" layoutY="47.0" text="Login Daten Ändern">
          <font>
@@ -27,5 +26,7 @@
       </Label>
       <TextField fx:id="neuUserName" layoutX="346.0" layoutY="151.0" onAction="#userNameIn" />
       <TextField fx:id="neuPass" layoutX="346.0" layoutY="209.0" onAction="#neuPassIn" />
+      <Button layoutX="492.0" layoutY="259.0" mnemonicParsing="false" onAction="#buttonOK" text="OK" />
+      <TextArea fx:id="textField" layoutX="55.0" layoutY="305.0" prefHeight="31.0" prefWidth="479.0" />
    </children>
 </AnchorPane>

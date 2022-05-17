@@ -99,7 +99,7 @@ public class LoginSceneController implements Initializable {
                 Parent root = loader.load();
                 //The following both lines are the only addition we need to pass the arguments
                 LoginMitarbeiterController controller2 = loader.getController();
-                //controller2.fromLogin();
+                controller2.fromLogin(id);
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle("Layout2 + Controller2");

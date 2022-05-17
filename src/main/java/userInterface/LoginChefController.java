@@ -37,24 +37,6 @@ public class LoginChefController implements Initializable {
         // TODO
     }    
 
-    private void LoginDatenAendern(ActionEvent event) {
-        System.out.println("Login daten andern");
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginChef.fxml"));
-            Parent root = loader.load();
-            //The following both lines are the only addition we need to pass the arguments
-            UserLoginAendernController controller2 = loader.getController();
-            controller2.LoginChefAendern(currentUser);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Layout2 + Controller2");
-            stage.show();
-                
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        
-    }
 
     public void fromLogin(long id) throws UngueltigeIDException{
         System.out.println("from login");
@@ -64,6 +46,21 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void loginDatenAendern(ActionEvent event) {
+        System.out.println("Login daten andern");
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserLoginAendern.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            UserLoginAendernController controller2 = loader.getController();
+            controller2.LoginCurrentChef(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Layout2 + Controller2");
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
         
     }
 

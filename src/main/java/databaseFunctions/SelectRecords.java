@@ -72,6 +72,7 @@ public class SelectRecords {
                                                 rs.getString("passwort"));
             
         } catch(UngueltigeIDException e){
+            System.out.println("in exceptioin");
             throw e;            
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
@@ -92,8 +93,8 @@ public class SelectRecords {
     public static Chef findChef(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
-    
-        String sql = "SELECT * FROM mitarbeiter WHERE burgerID = ?"; 
+        
+        String sql = "SELECT * FROM chef WHERE burgerID = ?"; 
         
         Chef chef = null;
         
@@ -101,7 +102,7 @@ public class SelectRecords {
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setLong(1, id);
-  
+ 
             ResultSet rs    = pstmt.executeQuery();
             chef = new Chef(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
