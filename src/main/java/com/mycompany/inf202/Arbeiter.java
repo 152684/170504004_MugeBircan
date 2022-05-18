@@ -70,12 +70,14 @@ public class Arbeiter extends Person{
                                                                                                   //hinzugefugt aber wird benachrichtight, dass sie hinzugefugt werden
     {       
         try {
-            
-            
-            
-            Kunde k = new Kunde(n, ID, anschr, e, telefon, geburt);
-            InsertRecords.insertKunde(n, ID, anschr, e, telefon, geburt);
-            return true;
+            Kunde k = SelectRecords.findKunde(ID);
+            if(k == null){
+                Kunde kNew = new Kunde(n, ID, anschr, e, telefon, geburt);
+                InsertRecords.insertKunde(n, ID, anschr, e, telefon, geburt);
+                return true;                
+            }else{
+                return false;
+            }                        
         } catch (UngueltigeIDException ex) {
             Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -91,8 +93,12 @@ public class Arbeiter extends Person{
     public boolean deleteKunde(long id) //nicht existierende Kunden werden auch true returned
     {
         try {
-            DeleteRecords.deleteKunde(id);
-            return true;
+            Kunde r = SelectRecords.findKunde(id);
+            if(r == null){
+                return false;                
+            }else{
+                DeleteRecords.deleteKunde(id);
+                return true;            }
         } catch (UngueltigeIDException ex) {
             Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -141,74 +147,7 @@ public class Arbeiter extends Person{
     
     public void setTour()
     {
-/*
-        String n2;
-        Date datum = null;
-        String inf;
-        String rL;
-        int maxT, freiP;
-        float preis;
-        String hotel;
-        
-        System.out.println("Geben Sie den Namen ein: ");
-        n2 = sc.nextLine();
-        System.out.println("Geben Sie den datum ein: ");
-        String d = sc.nextLine();
-        try{
-            datum = dateFormat.parse(d);        
-        }catch(ParseException e){
-            System.out.println("Der eingegebene Datum ist nicht gueltig.");
-            e.printStackTrace();
-        }
-        System.out.println("Geben Sie die Informationen ein: ");
-        inf = sc.nextLine();
-        System.out.println("Geben Sie die maximale Teilnehmerzahl ein: ");
-        maxT = sc.nextInt();
-        freiP = maxT;
-        System.out.println("Geben Sie den Preis ein: ");
-        preis = sc.nextFloat();
-        System.out.println("Geben Sie den Hotelnamen ein: ");
-        hotel = sc.nextLine();
-        System.out.println("Geben Sie den verantwortlichen Reiseleiter ein: ");
-        rL = sc.nextLine();
-        Iterator<ReiseLeiter> iter = reiseleitern.iterator();
-        Iterator<ReiseLeiter> iterR = reiseleitern.iterator();
-        boolean ex = false;
-        int stelle = -1;
-        while(iter.hasNext()){
-            stelle++;
-            if(iter.next().getName() == null ? rL == null : iter.next().getName().equals(rL)){
-                ex = true;
-                break;
-            }
-        }
-        if(ex){
-            while(stelle != 0){
-                stelle--;
-                iterR.next();
-            }
-        }else{
-            System.out.println("Es gibt keinen Reiseleiter mit den Namen " + rL);
-        }
-
-        Iterator<Tour> iterT = tours.iterator();
-        boolean exT = false;
-        while(iterT.hasNext()){
-            if(iterT.next().getName() == n2){
-                exT = true;
-                System.out.println("Die Tour mit der Name " + n2 +  " existiert schon!");
-                break;
-            }
-        }
-        
-        if((exT == false) && ex){
-            Tour t = new Tour(n2, datum, inf, maxT, hotel, preis, freiP, iterR.next());
-            tours.add(t);
-        }else if(!exT && !ex){
-            Tour t = new Tour(n2, datum, maxT, hotel, preis, freiP);
-            tours.add(t);
-        }
-*/        
+       
     }
     
     public void updateTourReiseL(String tourName, String reiseL)
@@ -342,9 +281,14 @@ public class Arbeiter extends Person{
     public boolean setReiseL(String n, long ID, String anschr, String e, int telefon, Date geburt)
     {
         try {
-            ReiseLeiter k = new ReiseLeiter(n, ID, anschr, e, telefon, geburt);
-            InsertRecords.insertReiseLeiter(n, ID, anschr, e, telefon, geburt);
-            return true;
+            ReiseLeiter r = SelectRecords.findReiseL(ID);
+            if(r == null){
+                ReiseLeiter k = new ReiseLeiter(n, ID, anschr, e, telefon, geburt);
+                InsertRecords.insertReiseLeiter(n, ID, anschr, e, telefon, geburt);
+                return true;                
+            }else{
+                return false;
+            }
         } catch (UngueltigeIDException ex) {
             Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -384,12 +328,17 @@ public class Arbeiter extends Person{
     public boolean deleteReiseL(long ID)
     {
         try {
-            DeleteRecords.deleteReiseL(ID);
-            return true;
+            ReiseLeiter r = SelectRecords.findReiseL(ID);
+            if(r == null){
+                return false;                
+            }else{
+                DeleteRecords.deleteReiseL(ID);
+                return true;            }
         } catch (UngueltigeIDException ex) {
             Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+
     }
     
 }

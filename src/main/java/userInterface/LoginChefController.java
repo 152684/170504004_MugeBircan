@@ -63,21 +63,6 @@ public class LoginChefController implements Initializable {
         
     }
 
-    @FXML
-    private void chefHinzu(ActionEvent event) {
-    }
-
-    @FXML
-    private void chefLoeschen(ActionEvent event) {
-    }
-
-    @FXML
-    private void mitarbHinzu(ActionEvent event) {
-    }
-
-    @FXML
-    private void mitarbLoeschen(ActionEvent event) {
-    }
 
     @FXML
     private void kundeReiseLHinzuAkt(ActionEvent event) {
@@ -103,6 +88,41 @@ public class LoginChefController implements Initializable {
             Parent root = loader.load();
             //The following both lines are the only addition we need to pass the arguments
             KundeLoeschenController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void chefMitHinzu(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefMitarbHinzufuegen.fxml"));
+            System.out.println("in try");
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            ChefMitarbHinzufuegenController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void chefMitLoeschen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefMiarbLoeschen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            ChefMiarbLoeschenController controller2 = loader.getController();
             controller2.currentAnlegen(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

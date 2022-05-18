@@ -16,7 +16,7 @@
       </Label>
       <Label layoutX="34.0" layoutY="108.0" text="Name:" />
       <Label layoutX="34.0" layoutY="153.0" text="Bürger ID:" />
-      <Label layoutX="33.0" layoutY="198.0" text="Anscchrift:" />
+      <Label layoutX="33.0" layoutY="198.0" text="Anschrift:" />
       <Label layoutX="33.0" layoutY="240.0" text="Email:" />
       <Label layoutX="34.0" layoutY="282.0" text="Telefonnnummer:" />
       <Label layoutX="34.0" layoutY="330.0" text="Geburtsdatum:" />
@@ -26,10 +26,10 @@
       <TextField fx:id="email" layoutX="173.0" layoutY="235.0" />
       <TextField fx:id="tel" layoutX="173.0" layoutY="277.0" />
       <TextField fx:id="geburt" layoutX="173.0" layoutY="325.0" />
-      <Button layoutX="416.0" layoutY="277.0" mnemonicParsing="false" onAction="#kundeHin" text="Kunde hinzufügen" />
-      <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="153.0" prefWidth="413.0" />
-      <Button layoutX="412.0" layoutY="325.0" mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
-      <Button layoutX="603.0" layoutY="277.0" mnemonicParsing="false" onAction="#reiseLHinButton" text="ReiseLeiter hinzufügen" />
-      <Button layoutX="599.0" layoutY="325.0" mnemonicParsing="false" onAction="#reiseLAktButton" text="ReiseLeiter aktualisieren" />
+      <Button layoutX="421.0" layoutY="277.0" mnemonicParsing="false" onAction="#kundeHin" text="Kunde hinzufügen" />
+      <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="153.0" prefWidth="438.0" />
+      <Button layoutX="417.0" layoutY="325.0" mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
+      <Button layoutX="625.0" layoutY="277.0" mnemonicParsing="false" onAction="#reiseLHinButton" text="ReiseLeiter hinzufügen" />
+      <Button layoutX="621.0" layoutY="325.0" mnemonicParsing="false" onAction="#reiseLAktButton" text="ReiseLeiter aktualisieren" />
    </children>
 </AnchorPane>

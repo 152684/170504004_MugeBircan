@@ -19,7 +19,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="burgerID" layoutX="207.0" layoutY="141.0" onAction="#burgerIDIN" />
+      <TextField fx:id="burgerID" layoutX="207.0" layoutY="141.0" />
       <Button layoutX="418.0" layoutY="185.0" mnemonicParsing="false" onAction="#kundeLoeschenButton" text="Kunde Löschen" />
       <TextArea fx:id="textArea" layoutX="81.0" layoutY="293.0" prefHeight="45.0" prefWidth="459.0" />
       <Button layoutX="404.0" layoutY="232.0" mnemonicParsing="false" onAction="#reiseLLoeschenButton" text="ReiseLeiter Löschen" />

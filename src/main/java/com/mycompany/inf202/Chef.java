@@ -4,8 +4,13 @@
  */
 package com.mycompany.inf202;
 
+import databaseFunctions.DeleteRecords;
+import databaseFunctions.InsertRecords;
+import databaseFunctions.SelectRecords;
 import databaseFunctions.UpdateRecords;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,33 +32,84 @@ public class Chef extends Arbeiter{
         
     }
     
-    public void setMitarb(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID)
+    public boolean setMitarb(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
     {
+        try {
+            Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
+            if(r == null){
+                Mitarbeiter k = new Mitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+                InsertRecords.insertMitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+                return true;                
+            }else{
+                return false;
+            }
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
         
     }
     
-    public void updateMitarb(String n, String anschr, String e, int telefon)
+    public void updateMitarb(String n, String anschr, String e, int telefon, long ID)
     {
+        UpdateRecords.updateMitarbeiter(n, anschr, e, telefon, ID);                
+    }
+    
+    public boolean deleteMitarb(long ID)
+    {
+        try {
+            Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
+            if(r == null){
+                return false;                
+            }else{
+                DeleteRecords.deleteMitarbeiter(ID);
+                return true;            
+            }
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
         
     }
     
-    public void deleteMitarb(String name)
+    public boolean setChef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
     {
+        try {
+            Chef r = SelectRecords.findChef(ID);
+            if(r == null){
+                Chef k = new Chef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+                InsertRecords.insertChef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+                return true;                
+            }else{
+                return false;
+            }
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
         
     }
     
-    public void setChef(String n, int ID, String anschr, String e, int telefon, Date geburt, int persID)
+    public void updateChef(String n, String anschr, String e, int telefon, long ID)
     {
+        UpdateRecords.updateChef(n, anschr, e, telefon, ID);        
         
     }
     
-    public void updateChef(String n, String anschr, String e, int telefon)
+    public boolean deleteChef(long ID)
     {
-        
-    }
-    
-    public void deleteChef(String name)
-    {
+        try {
+            Chef r = SelectRecords.findChef(ID);
+            if(r == null){
+                return false;                
+            }else{
+                DeleteRecords.deleteChef(ID);
+                return true;            
+            }
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
         
     }
     

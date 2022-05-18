@@ -36,9 +36,6 @@ public class KundeLoeschenController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void burgerIDIN(ActionEvent event) {
-    }
 
     public void currentAnlegen(Mitarbeiter m){
         currentMit = m;
@@ -60,14 +57,14 @@ public class KundeLoeschenController implements Initializable {
             if(loeschErfolg){
                 textArea.setText("Der Kunde mit der burgerID " + burgerID + " wird geloescht.");                
             }else{
-                textArea.setText("Der Kunde mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+                textArea.setText("Der Kunde mit der burgerID " + burgerID + " existiert nicht.");            
             }
         }else if(currentTyp == 2){
             loeschErfolg = currentMit.deleteKunde(burgerID);
             if(loeschErfolg){
                 textArea.setText("Der Kunde mit der burgerID " + burgerID + " wird geloescht.");                
             }else{
-                textArea.setText("Der Kunde mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+                textArea.setText("Der Kunde mit der burgerID " + burgerID + " existiert nicht.");            
             }
         }else{
             textArea.setText("Der Kunde mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
@@ -84,14 +81,14 @@ public class KundeLoeschenController implements Initializable {
             if(loeschErfolg){
                 textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");                
             }else{
-                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert nicht.");            
             }
         }else if(currentTyp == 2){
             loeschErfolg = currentMit.deleteReiseL(burgerID);
             if(loeschErfolg){
                 textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");                
             }else{
-                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
+                textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert nicht.");            
             }
         }else{
             textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            

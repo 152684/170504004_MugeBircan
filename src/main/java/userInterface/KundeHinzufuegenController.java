@@ -85,14 +85,14 @@ public class KundeHinzufuegenController implements Initializable {
             if(insertErfolg){
                 textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
             }else{
-                textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
+                textField.setText("Der Kunde mit den Namen " + name + " existiert schon.");            
             }
         }else if(currentTyp == 2){
             insertErfolg = currentMit.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
             if(insertErfolg){
                 textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
             }else{
-                textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
+                textField.setText("Der Kunde mit den Namen " + name + " existiert schon.");            
             }
         }else{
             textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
@@ -144,14 +144,14 @@ public class KundeHinzufuegenController implements Initializable {
             if(insertErfolg){
                 textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
             }else{
-                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert schon.");            
             }
         }else if(currentTyp == 2){
             insertErfolg = currentMit.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
             if(insertErfolg){
                 textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
             }else{
-                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert schon.");            
             }
         }else{
             textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            

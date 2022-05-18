@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.ChefMitarbHinzufuegenController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="551.0" prefWidth="841.0">
+         <children>
+            <Label layoutX="131.0" layoutY="33.0" text="Chef/Mitarbeiter Hinzufügen/Aktualisieren">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="108.0" text="Name:" />
+            <Label layoutX="34.0" layoutY="153.0" text="Bürger ID:" />
+            <Label layoutX="33.0" layoutY="198.0" text="Anschrift:" />
+            <Label layoutX="33.0" layoutY="240.0" text="Email:" />
+            <Label layoutX="34.0" layoutY="282.0" text="Telefonnnummer:" />
+            <Label layoutX="34.0" layoutY="330.0" text="Geburtsdatum:" />
+            <TextField fx:id="name" layoutX="173.0" layoutY="103.0" />
+            <TextField fx:id="burgerID" layoutX="173.0" layoutY="148.0" />
+            <TextField fx:id="anschrift" layoutX="173.0" layoutY="193.0" />
+            <TextField fx:id="email" layoutX="173.0" layoutY="235.0" />
+            <TextField fx:id="tel" layoutX="173.0" layoutY="277.0" />
+            <TextField fx:id="geburt" layoutX="173.0" layoutY="325.0" />
+            <Button layoutX="437.0" layoutY="407.0" mnemonicParsing="false" onAction="#chefHinButton" text="Chef hinzufügen" />
+            <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="261.0" prefWidth="438.0" />
+            <Button layoutX="432.0" layoutY="456.0" mnemonicParsing="false" onAction="#chefAktButton" text="Chef aktualisieren" />
+            <Button layoutX="620.0" layoutY="407.0" mnemonicParsing="false" onAction="#MitHinButton" text="Mitarbeiter hinzufügen" />
+            <Button layoutX="615.0" layoutY="456.0" mnemonicParsing="false" onAction="#MitAktButton" text="Mitarbeiter aktualisieren" />
+            <Label layoutX="34.0" layoutY="421.0" text="User Name:" />
+            <Label layoutX="37.0" layoutY="471.0" text="Passwort:" />
+            <TextField fx:id="userName" layoutX="173.0" layoutY="416.0" />
+            <TextField fx:id="passwort" layoutX="173.0" layoutY="466.0" />
+            <Label layoutX="33.0" layoutY="378.0" text="Personal ID:" />
+            <TextField fx:id="persID" layoutX="173.0" layoutY="373.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
