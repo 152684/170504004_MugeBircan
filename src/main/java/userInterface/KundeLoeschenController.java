@@ -40,16 +40,12 @@ public class KundeLoeschenController implements Initializable {
     private void burgerIDIN(ActionEvent event) {
     }
 
-    private void buttonOK(ActionEvent event) {
-        
-    }
-
-    public void kundeLoesch(Mitarbeiter m){
+    public void currentAnlegen(Mitarbeiter m){
         currentMit = m;
         currentTyp = 2;        
     }
     
-    public void kundeLoesch(Chef c){
+    public void currentAnlegen(Chef c){
         currentChef = c;
         currentTyp = 1;                
     }
@@ -77,7 +73,7 @@ public class KundeLoeschenController implements Initializable {
             textArea.setText("Der Kunde mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
         }
     }
-
+   
     @FXML
     private void reiseLLoeschenButton(ActionEvent event) {
         long burgerID = Long.parseLong(this.burgerID.getText());
@@ -91,7 +87,7 @@ public class KundeLoeschenController implements Initializable {
                 textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");            
             }
         }else if(currentTyp == 2){
-            loeschErfolg = currentMit.deleteKunde(burgerID);
+            loeschErfolg = currentMit.deleteReiseL(burgerID);
             if(loeschErfolg){
                 textArea.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");                
             }else{

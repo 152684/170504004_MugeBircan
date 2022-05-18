@@ -24,9 +24,9 @@ public class Inf202 {
         System.out.println("---------------INF202 Project------------- ");
        
        
-        InsertRecordsTest.test(); //nur richtige IDs sollen inserted werden.
+        //InsertRecordsTest.test(); //nur richtige IDs sollen inserted werden.
         
-        //SelectRecordsTest.test(); // program abstürtz beim ungueltiegeIDException / auch wenn MitarbeiterID in Chef gesucht wird
+        SelectRecordsTest.test(); // program abstürtz beim ungueltiegeIDException / auch wenn MitarbeiterID in Chef gesucht wird
         //UpdateRecordsTest.test();
         //DeleteRecordsTest.test();
         

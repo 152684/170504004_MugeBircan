@@ -195,6 +195,41 @@ public class SelectRecords {
           
     }    
 
+    public static Kunde findKunde(long id) throws UngueltigeIDException{
+        Connect c = new Connect();
+        Connection conn = c.connect();
+        
+        String sql = "SELECT * FROM kunde WHERE burgerID = ?"; 
+        
+        Kunde k = null;
+        
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setLong(1, id);
+ 
+            ResultSet rs    = pstmt.executeQuery();
+            k = new Kunde(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                               rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getString("reisen"));
+            
+        }catch(UngueltigeIDException e) {
+            throw e;
+        }catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+      
+        return k;
+    }
+
     public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -228,6 +263,41 @@ public class SelectRecords {
         }
           
     }    
+
+    public static ReiseLeiter findReiseL(long id) throws UngueltigeIDException{
+        Connect c = new Connect();
+        Connection conn = c.connect();
+        
+        String sql = "SELECT * FROM reiseLeiter WHERE burgerID = ?"; 
+        
+        ReiseLeiter k = null;
+        
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setLong(1, id);
+ 
+            ResultSet rs    = pstmt.executeQuery();
+            k = new ReiseLeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
+                                rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"));
+            
+        }catch(UngueltigeIDException e) {
+            throw e;
+        }catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+      
+        return k;
+    }
 
     public static void hotelNamenInArray(ArrayList<String> hotels){
         Connect c = new Connect();

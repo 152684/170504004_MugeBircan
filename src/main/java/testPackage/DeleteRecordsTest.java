@@ -13,7 +13,7 @@ import databaseFunctions.DeleteRecords;
  */
 public class DeleteRecordsTest {
     public static void test() throws UngueltigeIDException{
- 
+/* 
         System.out.println("-----------deleteMitarbeiter überprüfen---------------");
         DeleteRecords.deleteMitarbeiter(17050405005L);
         DeleteRecords.deleteMitarbeiter(17050405005L);
@@ -25,11 +25,11 @@ public class DeleteRecordsTest {
         System.out.println("-----------deleteKunde überprüfen---------------");
         DeleteRecords.deleteKunde(17050405011L);
         DeleteRecords.deleteKunde(17050405011L);
-
+*/
         System.out.println("-----------deleteReiseL überprüfen---------------");
-        DeleteRecords.deleteReiseL(17050405013L);
-        DeleteRecords.deleteReiseL(17050405013L); 
-
+        DeleteRecords.deleteReiseL(17050405018L);
+        //DeleteRecords.deleteReiseL(17050405013L); 
+/*
         System.out.println("-----------deleteHotel überprüfen---------------");
         DeleteRecords.deleteHotel("fethiye");
         DeleteRecords.deleteHotel("antalyaHotel2");
@@ -37,7 +37,7 @@ public class DeleteRecordsTest {
         System.out.println("-----------deleteTour überprüfen---------------");
         DeleteRecords.deleteTour("fethiye");
         DeleteRecords.deleteTour("antalyaTour2");
-        
+*/        
     }
     
 }

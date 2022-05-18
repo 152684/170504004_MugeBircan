@@ -70,7 +70,7 @@ public class LoginMitarbeiterController implements Initializable {
             Parent root = loader.load();
             //The following both lines are the only addition we need to pass the arguments
             KundeHinzufuegenController controller2 = loader.getController();
-            controller2.kundeHinzu(currentUser);
+            controller2.currentAnlegen(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -87,7 +87,7 @@ public class LoginMitarbeiterController implements Initializable {
             Parent root = loader.load();
             //The following both lines are the only addition we need to pass the arguments
             KundeLoeschenController controller2 = loader.getController();
-            controller2.kundeLoesch(currentUser);
+            controller2.currentAnlegen(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

@@ -68,8 +68,11 @@ public class Arbeiter extends Person{
     
     public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) // existierende kunden werden nicht anerkannt (nicht nochmal
                                                                                                   //hinzugefugt aber wird benachrichtight, dass sie hinzugefugt werden
-    {
+    {       
         try {
+            
+            
+            
             Kunde k = new Kunde(n, ID, anschr, e, telefon, geburt);
             InsertRecords.insertKunde(n, ID, anschr, e, telefon, geburt);
             return true;

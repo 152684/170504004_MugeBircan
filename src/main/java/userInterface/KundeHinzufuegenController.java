@@ -50,12 +50,14 @@ public class KundeHinzufuegenController implements Initializable {
     }    
 
 
-    public void kundeHinzu(Mitarbeiter m){
+    public void currentAnlegen(Mitarbeiter m){
+        textField.setText("Lassen Sie den Geburtsdatumfeld leer fuers Aktualisieren. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentMit = m;
         currentTyp = 2;        
     }
     
-    public void kundeHinzu(Chef c){
+    public void currentAnlegen(Chef c){
+        textField.setText("Lassen Sie den Geburtsdatumfeld leer fuers Aktualisieren. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentChef = c;
         currentTyp = 1;                
     }
@@ -96,19 +98,7 @@ public class KundeHinzufuegenController implements Initializable {
             textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
         }        
     }
-
-    public void kundeAkt(Mitarbeiter m){
-        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
-        currentMit = m;
-        currentTyp = 2;        
-    }
-    
-    public void kundeAkt(Chef c){
-        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
-        currentChef = c;
-        currentTyp = 1;                
-    }
-    
+  
     @FXML
     private void kundeAkt(ActionEvent event) {        
         String name = this.name.getText();
@@ -129,27 +119,6 @@ public class KundeHinzufuegenController implements Initializable {
             textField.setText("Der Kunde mit den Namen " + name + " kann nicht aktualisiert werden.");            
         }        
 
-    }
-    public void ReiseLHin(Mitarbeiter m){
-        currentMit = m;
-        currentTyp = 2;        
-    }
-    
-    public void ReiseLHin(Chef c){
-        currentChef = c;
-        currentTyp = 1;                
-    }
-
-        public void ReiseLAkt(Mitarbeiter m){
-        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
-        currentMit = m;
-        currentTyp = 2;        
-    }
-    
-    public void ReiseLAkt(Chef c){
-        textField.setText("Lassen Sie den Geburtsdatumfeld leer. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
-        currentChef = c;
-        currentTyp = 1;                
     }
 
     @FXML
@@ -178,7 +147,7 @@ public class KundeHinzufuegenController implements Initializable {
                 textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
             }
         }else if(currentTyp == 2){
-            insertErfolg = currentMit.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
+            insertErfolg = currentMit.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
             if(insertErfolg){
                 textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
             }else{

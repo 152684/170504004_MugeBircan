@@ -6,8 +6,7 @@ package testPackage;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mycompany.inf202.Chef;
-import com.mycompany.inf202.Mitarbeiter;
+import com.mycompany.inf202.*;
 import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.*;
 import java.lang.reflect.Type;
@@ -53,10 +52,18 @@ public class SelectRecordsTest {
         System.out.println("-----------findMitarbeiter überprüfen---------------");
         Mitarbeiter m = SelectRecords.findMitarbeiter(17050405007L);
         System.out.println("der Name ist " + m.getName());
-*/
+
         System.out.println("-----------findChef überprüfen---------------");
         Chef c = SelectRecords.findChef(17050400508L);
         System.out.println("der Name ist " + c.getName());
+*/
+        System.out.println("-----------findKunde überprüfen---------------");
+        Kunde k = SelectRecords.findKunde(17050405014L);
+        System.out.println("der Name ist " + k.getName());
+
+        System.out.println("-----------findReiseL überprüfen---------------");
+        ReiseLeiter r = SelectRecords.findReiseL(17050405018L);
+        System.out.println("der Name ist " + r.getName());
         
     }
 
