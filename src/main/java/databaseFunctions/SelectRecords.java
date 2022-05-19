@@ -330,6 +330,36 @@ public class SelectRecords {
           
     }    
 
+    public static Hotel findHotel(String name){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+        
+        String sql = "SELECT * FROM hotel WHERE name = ?"; 
+        
+        Hotel k = null;
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setString(1, name);
+ 
+            ResultSet rs    = pstmt.executeQuery();
+            k = new Hotel(rs.getString("name"), rs.getString("anschrift"), rs.getInt("telefonnummer"), rs.getString("email"), rs.getFloat("preis"));            
+        }catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+      
+        return k;
+    }
+
     public static void tourNamenInArray(ArrayList<String> tours){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -361,7 +391,7 @@ public class SelectRecords {
           
     }    
 
-    public static Tour findTour(String name) throws UngueltigeIDException{
+    public static Tour findTour(String name){
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -372,7 +402,6 @@ public class SelectRecords {
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, name);
-            //String n, Date d, String info, int maxT, String hN, float p, ReiseLeiter rL
  
             ResultSet rs    = pstmt.executeQuery();
             k = new Tour(rs.getString("tourName"), rs.getDate("tourDatum"), rs.getString("tourInfo"), rs.getInt("maxTeilnehmer"),

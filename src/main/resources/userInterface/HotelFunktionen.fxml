@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="628.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.HotelFunktionenController">
+   <children>
+      <Label layoutX="51.0" layoutY="43.0" text="Hotel Hinzufügen/Aktualisieren/Löschen">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="130.0" text="Hotelname:" />
+      <Label layoutX="51.0" layoutY="172.0" text="Anschrift:" />
+      <Label layoutX="51.0" layoutY="219.0" text="Telefonnummer:" />
+      <Label layoutX="51.0" layoutY="264.0" text="Email:" />
+      <Label layoutX="51.0" layoutY="311.0" text="Preis:" />
+      <TextField fx:id="name" layoutX="174.0" layoutY="125.0" />
+      <TextField fx:id="anschr" layoutX="174.0" layoutY="167.0" />
+      <TextField fx:id="tel" layoutX="174.0" layoutY="214.0" />
+      <TextField fx:id="email" layoutX="174.0" layoutY="259.0" />
+      <TextField fx:id="preis" layoutX="174.0" layoutY="306.0" />
+      <Button layoutX="420.0" layoutY="317.0" mnemonicParsing="false" onAction="#hotelHinzuButton" text="Hotel hinzufügen" />
+      <Button layoutX="416.0" layoutY="359.0" mnemonicParsing="false" onAction="#hotelAktButton" text="Hotel aktualisieren" />
+      <Button layoutX="433.0" layoutY="398.0" mnemonicParsing="false" onAction="#hotelLoeschButton" text="Hotel löschen" />
+      <TextArea fx:id="textArea" layoutX="387.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

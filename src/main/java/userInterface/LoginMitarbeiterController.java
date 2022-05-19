@@ -113,5 +113,22 @@ public class LoginMitarbeiterController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void hotelFunktionen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HotelFunktionen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            HotelFunktionenController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     
 }

@@ -66,10 +66,17 @@ public class SelectRecordsTest {
         ReiseLeiter r = SelectRecords.findReiseL(17050405018L);
         System.out.println("der Name ist " + r.getName());
 */
+/*
         System.out.println("-----------findTour überprüfen---------------");
         Tour t = SelectRecords.findTour("antalyaTour");
         System.out.println("der Info ist " + t.getInfo());
-        
+*/        
+
+        System.out.println("-----------findHotel überprüfen---------------");
+        Hotel t = SelectRecords.findHotel("antalyaHotel2");
+        System.out.println("der email ist " + t.getEmail());
+
+
     }
 
     

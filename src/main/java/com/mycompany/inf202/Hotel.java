@@ -37,6 +37,10 @@ public class Hotel {
         return name;
     }
     
+    public String getEmail(){
+        return email;
+    }
+    
     @Override public String toString(){
         return String.format("Hotel: " + name + "\n" +
                              "      Anschrift:     " + anschrift +

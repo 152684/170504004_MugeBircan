@@ -146,52 +146,45 @@ public class Arbeiter extends Person{
     
     public int setTour( String n, Date d, String info, int maxT, String hN, float p, String rL)
     { // 1 erfolgreich ins Databease gespeichert, 2 existiert, 3 fehler
-        try {// throw unneccesary??
-            Tour k = SelectRecords.findTour(n);
-            if(k == null){
-                Tour kNew = new Tour(n, d, info, maxT, hN, p, rL);
-                InsertRecords.insertTour(n, d, info, maxT, hN, p, maxT, rL);
-                return 1;                
-            }else{
-                return 2;
-            }                        
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 3;
+
+        Tour k = SelectRecords.findTour(n);
+        if(k == null){
+            InsertRecords.insertTour(n, d, info, maxT, hN, p, maxT, rL);
+            return 1;                
+        }else if(k!=null){
+            return 2;
+        }else{
+            return 3;
+        }                        
+
        
     }
     
     public int updateTourInfos(String n, Date date, int maxT, String info, String hN, float p, String reiseL)
     {   // 1 erfolgreich aktualisiert, 2 existiert nicht, 3 fehler
-        try {// throw unneccesary??
-            Tour k = SelectRecords.findTour(n);
-            if(k != null){
-                UpdateRecords.updateTourInfo(n, date, maxT, info, hN, p, hN);
-                return 1;                
-            }else{
-                return 2;
-            }                        
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 3;
+
+        Tour k = SelectRecords.findTour(n);
+        if(k != null){
+            UpdateRecords.updateTourInfo(n, date, maxT, info, hN, p, hN);
+            return 1;                
+        }else if(k == null){
+            return 2;
+        }else{
+            return 3;
+        }                        
     }
     
     public int deleteTour(String n)
     { // 1 erfolgreich geloescht, 2 existiert nicht, 3 fehler
-        try {// throw unneccesary??
-            Tour k = SelectRecords.findTour(n);
-            if(k != null){
-                DeleteRecords.deleteTour(n);
-                return 1;                
-            }else{
-                return 2;
-            }                        
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 3;
+        Tour k = SelectRecords.findTour(n);
+        if(k != null){
+            DeleteRecords.deleteTour(n);
+            return 1;                
+        }else if(k == null){
+            return 2;
+        }else{
+            return 3;
+        }                        
         
     }
 
@@ -254,9 +247,18 @@ public class Arbeiter extends Person{
         
     }
     
-    public void setHotel(String n, String ansch, int telefon, float preis)
-    {
-        
+    public int setHotel(String n, String ansch, int telefon, String email, float preis)
+    { // 1 erfolgreich ins Databease gespeichert, 2 existiert, 3 fehler
+
+        Hotel k = SelectRecords.findHotel(n);
+        if(k == null){
+            InsertRecords.insertHotel(n, ansch, telefon, email, preis);
+            return 1;                
+        }else if(k!=null){
+            return 2;
+        }else{
+            return 3;
+        }                        
     }
     
     public void hotelAlphPrint()
@@ -283,14 +285,31 @@ public class Arbeiter extends Person{
         
     }
     
-    public void deleteHotel(String n)
-    {
-        
+    public int deleteHotel(String n)
+    { // 1 erfolgreich geloescht, 2 existiert nicht, 3 fehler
+        Hotel k = SelectRecords.findHotel(n);
+        if(k != null){
+            DeleteRecords.deleteHotel(n);
+            return 1;                
+        }else if(k == null){
+            return 2;
+        }else{
+            return 3;
+        }                        
     }
     
-    public void updateHotelInfo(String n, String ansch, int telefon, float preis)
-    {
-        
+    public int updateHotelInfo(String n, String ansch, int telefon, String email, float preis)
+    {   // 1 erfolgreich aktualisiert, 2 existiert nicht, 3 fehler
+
+        Hotel k = SelectRecords.findHotel(n);
+        if(k != null){
+            UpdateRecords.updateHotel(n, ansch, n, telefon, preis);
+            return 1;                
+        }else if(k == null){
+            return 2;
+        }else{
+            return 3;
+        }                        
     }
     
     public boolean setReiseL(String n, long ID, String anschr, String e, int telefon, Date geburt)

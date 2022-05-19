@@ -127,7 +127,6 @@ public class TourHinzuLoeschController implements Initializable {
 
     @FXML
     private void tourAktButton(ActionEvent event) {
-        //String n, Date date, int maxT, String info, String hN, float p, String reiseL
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         String name = this.tourName.getText();
         String info = this.tourInfo.getText();
