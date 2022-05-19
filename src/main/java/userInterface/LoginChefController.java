@@ -207,10 +207,10 @@ public class LoginChefController implements Initializable {
     @FXML
     private void tourL(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListToursNachNamen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListTest.fxml"));
             Parent root = loader.load();
             //The following both lines are the only addition we need to pass the arguments
-            ListToursNachNamenController controller2 = loader.getController();
+            TourListTestController controller2 = loader.getController();
             //controller2.currentAnlegen(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
