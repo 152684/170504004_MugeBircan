@@ -57,6 +57,7 @@ public class SelectRecordsTest {
         Chef c = SelectRecords.findChef(17050400508L);
         System.out.println("der Name ist " + c.getName());
 */
+/* 
         System.out.println("-----------findKunde überprüfen---------------");
         Kunde k = SelectRecords.findKunde(17050405014L);
         System.out.println("der Name ist " + k.getName());
@@ -64,6 +65,10 @@ public class SelectRecordsTest {
         System.out.println("-----------findReiseL überprüfen---------------");
         ReiseLeiter r = SelectRecords.findReiseL(17050405018L);
         System.out.println("der Name ist " + r.getName());
+*/
+        System.out.println("-----------findTour überprüfen---------------");
+        Tour t = SelectRecords.findTour("antalyaTour");
+        System.out.println("der Info ist " + t.getInfo());
         
     }
 

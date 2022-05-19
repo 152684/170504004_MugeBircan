@@ -100,8 +100,7 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         String email = this.email.getText();
         int tel = Integer.parseInt(this.tel.getText());
         
-        currentUser.updateChef(name, anschrift, name, tel, burgerID);
-
+        currentUser.updateChef(name, anschrift, email, tel, burgerID);
     }
 
     @FXML
@@ -143,7 +142,7 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         String email = this.email.getText();
         int tel = Integer.parseInt(this.tel.getText());
         
-        currentUser.updateMitarb(name, anschrift, name, tel, burgerID);
+        currentUser.updateMitarb(name, anschrift, email, tel, burgerID);
 
     }
     

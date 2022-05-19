@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.TourHinzuLoeschController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+    
+</AnchorPane>
+      <AnchorPane id="AnchorPane" layoutX="-8.0" prefHeight="452.0" prefWidth="715.0">
+         <children>
+            <Label layoutX="85.0" layoutY="30.0" text="Tour Hinzufügen/Aktualisieren/Löschen">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="108.0" text="Tour Name:" />
+            <Label layoutX="50.0" layoutY="150.0" text="Tour Datum:" />
+            <Label layoutX="50.0" layoutY="190.0" text="Tour Info:" />
+            <Label layoutX="48.0" layoutY="234.0" text="maximale Teilnehmerzahl:" />
+            <Label layoutX="48.0" layoutY="276.0" text="Hotelname:" />
+            <Label layoutX="48.0" layoutY="321.0" text="Preis:" />
+            <Label layoutX="46.0" layoutY="369.0" text="ReiseLeiter:" />
+            <TextField fx:id="tourName" layoutX="244.0" layoutY="103.0" />
+            <TextField fx:id="tourDatum" layoutX="244.0" layoutY="145.0" />
+            <TextField fx:id="tourInfo" layoutX="244.0" layoutY="185.0" />
+            <TextField fx:id="maxTeil" layoutX="244.0" layoutY="229.0" />
+            <TextField fx:id="hotelName" layoutX="244.0" layoutY="271.0" />
+            <TextField fx:id="preis" layoutX="244.0" layoutY="316.0" />
+            <TextField fx:id="reiseL" layoutX="244.0" layoutY="364.0" />
+            <TextArea fx:id="textArea" layoutX="467.0" layoutY="101.0" prefHeight="202.0" prefWidth="222.0" />
+            <Button layoutX="514.0" layoutY="316.0" mnemonicParsing="false" onAction="#tourHinzuButton" text="Tour hinzufügen" />
+            <Button layoutX="525.0" layoutY="390.0" mnemonicParsing="false" onAction="#tourLoeschButton" text="Tour Löschen" />
+            <Button layoutX="510.0" layoutY="354.0" mnemonicParsing="false" onAction="#tourAktButton" text="Tour aktualisieren" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

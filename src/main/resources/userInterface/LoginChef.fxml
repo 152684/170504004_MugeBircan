@@ -22,8 +22,7 @@
             <MenuItem mnemonicParsing="false" onAction="#kundeReiseLLoeschen" text="Kunde/ReiseLeiter löschen" />
             <MenuItem mnemonicParsing="false" text="Hotel hinzufügen" />
             <MenuItem mnemonicParsing="false" text="Hotel löschen" />
-            <MenuItem mnemonicParsing="false" text="Tour hinzufügen" />
-            <MenuItem mnemonicParsing="false" text="Tour löschen" />
+            <MenuItem mnemonicParsing="false" onAction="#tourHinzuAktLoesch" text="Tour hinzufügen/aktualisieren/löschen" />
         </items>
       </SplitMenuButton>
    </children>

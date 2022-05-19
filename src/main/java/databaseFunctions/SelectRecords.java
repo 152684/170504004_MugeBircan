@@ -361,6 +361,38 @@ public class SelectRecords {
           
     }    
 
+    public static Tour findTour(String name) throws UngueltigeIDException{
+        Connect c = new Connect();
+        Connection conn = c.connect();
+        
+        String sql = "SELECT * FROM tour WHERE tourName = ?"; 
+        
+        Tour k = null;
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setString(1, name);
+            //String n, Date d, String info, int maxT, String hN, float p, ReiseLeiter rL
+ 
+            ResultSet rs    = pstmt.executeQuery();
+            k = new Tour(rs.getString("tourName"), rs.getDate("tourDatum"), rs.getString("tourInfo"), rs.getInt("maxTeilnehmer"),
+                         rs.getString("hotelName"), rs.getFloat("preis"), rs.getString("reiseL"));            
+        }catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+      
+        return k;
+    }
+
     public static String selectTourKunden(String n){
         Connect c = new Connect();
         Connection conn = c.connect();

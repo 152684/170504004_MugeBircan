@@ -66,8 +66,7 @@ public class Arbeiter extends Person{
     }
     
     
-    public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) // existierende kunden werden nicht anerkannt (nicht nochmal
-                                                                                                  //hinzugefugt aber wird benachrichtight, dass sie hinzugefugt werden
+    public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) //typ von boolean zu int umwandeln um fehler beim hinzufuegen zu sehen
     {       
         try {
             Kunde k = SelectRecords.findKunde(ID);
@@ -145,38 +144,54 @@ public class Arbeiter extends Person{
     */    
     }
     
-    public void setTour()
-    {
+    public int setTour( String n, Date d, String info, int maxT, String hN, float p, String rL)
+    { // 1 erfolgreich ins Databease gespeichert, 2 existiert, 3 fehler
+        try {// throw unneccesary??
+            Tour k = SelectRecords.findTour(n);
+            if(k == null){
+                Tour kNew = new Tour(n, d, info, maxT, hN, p, rL);
+                InsertRecords.insertTour(n, d, info, maxT, hN, p, maxT, rL);
+                return 1;                
+            }else{
+                return 2;
+            }                        
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 3;
        
     }
     
-    public void updateTourReiseL(String tourName, String reiseL)
-    {
-        
+    public int updateTourInfos(String n, Date date, int maxT, String info, String hN, float p, String reiseL)
+    {   // 1 erfolgreich aktualisiert, 2 existiert nicht, 3 fehler
+        try {// throw unneccesary??
+            Tour k = SelectRecords.findTour(n);
+            if(k != null){
+                UpdateRecords.updateTourInfo(n, date, maxT, info, hN, p, hN);
+                return 1;                
+            }else{
+                return 2;
+            }                        
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 3;
     }
     
-    public void updateTourDate(String tourName, Date d)
-    {
-        
-    }
-    
-    public void updateTourInfo(String tourName, String info)
-    {
-        
-    }
-
-    public void updateTourMaxTeilnehmer(String tourName, int m)
-    {
-        
-    }
-    
-    public void updateTourPreis(String tourName, float preis)
-    {
-        
-    }
-
-    public void deleteTour(String tourName)
-    {
+    public int deleteTour(String n)
+    { // 1 erfolgreich geloescht, 2 existiert nicht, 3 fehler
+        try {// throw unneccesary??
+            Tour k = SelectRecords.findTour(n);
+            if(k != null){
+                DeleteRecords.deleteTour(n);
+                return 1;                
+            }else{
+                return 2;
+            }                        
+        } catch (UngueltigeIDException ex) {
+            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 3;
         
     }
 
@@ -188,7 +203,7 @@ public class Arbeiter extends Person{
         }
         
     }
-
+/*
     public void tourPreisPrint()
     {
         System.out.println("Geben Sie den Namen des Tours ein: ");
@@ -218,7 +233,7 @@ public class Arbeiter extends Person{
         }
         
     }
-
+*/
     public void printTourKunden(String tour)
     {
         

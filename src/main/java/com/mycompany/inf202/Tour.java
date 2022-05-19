@@ -20,9 +20,9 @@ public class Tour {
     private float preis = 0;
     private ArrayList<Kunde> kunden = new ArrayList();
     private int freiePlaetze = 0;
-    private ReiseLeiter r;
+    private String r;
 
-    public Tour(String n, Date d, String info, int maxT, String hN, float p, ReiseLeiter rL)
+    public Tour(String n, Date d, String info, int maxT, String hN, float p, String rL)
     {
         tourName = n;
         tourDatum = d;
@@ -33,7 +33,7 @@ public class Tour {
         freiePlaetze = maxT;
         r = rL;        
     }
-
+/*
     public Tour(String n, Date d, int maxT, String hN, float p, int freiP, ReiseLeiter rL)
     {
         tourName = n;
@@ -45,7 +45,7 @@ public class Tour {
         r = rL;        
     }
             
-    public void tourUpdate(Date d, int maxT, String info, String hN, float p, ReiseLeiter rL){
+    public void tourUpdate(Date d, String info, int maxT, String hN, float p, String rL){
         tourDatum = d;
         maxTeilnehmer = maxT;
         tourInfo = info;
@@ -54,7 +54,7 @@ public class Tour {
         r = rL;        
         
     }
-
+*/
     public String getName()
     {
         return tourName;
@@ -68,6 +68,10 @@ public class Tour {
     public void setInfo(String i)
     {
         tourInfo = i;
+    }
+    
+    public String getInfo(){
+        return tourInfo;
     }
     
     public void setMaxTeilnehmer(int m)

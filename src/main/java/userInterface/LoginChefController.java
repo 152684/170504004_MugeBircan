@@ -132,4 +132,21 @@ public class LoginChefController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void tourHinzuAktLoesch(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourHinzuLoesch.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            TourHinzuLoeschController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }
