@@ -360,12 +360,13 @@ public class SelectRecords {
         return k;
     }
 
-    public static void tourNamenInArray(ArrayList<String> tours){
+    public static int tourNamenInArray(ArrayList<String> tours){
         Connect c = new Connect();
         Connection conn = c.connect();
     
         String sql = "SELECT * FROM tour"; 
         
+        int tourZahl = 0;
           
         try {  
             Statement stmt  = conn.createStatement();  
@@ -375,6 +376,7 @@ public class SelectRecords {
             while (rs.next()) { 
                 String c2 = rs.getString("tourName");
                 tours.add(c2);
+                tourZahl++;
             }  
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
@@ -388,6 +390,7 @@ public class SelectRecords {
                 }
             }
         }
+        return tourZahl;
           
     }    
 
