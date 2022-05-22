@@ -27,8 +27,8 @@ public class Inf202 {
         //InsertRecordsTest.test(); //nur richtige IDs sollen inserted werden.
         
         //SelectRecordsTest.test(); // program abstürtz beim ungueltiegeIDException / auch wenn MitarbeiterID in Chef gesucht wird
-        UpdateRecordsTest.test();
-        //DeleteRecordsTest.test();
+        //UpdateRecordsTest.test();
+        DeleteRecordsTest.test();
         
     }
 }

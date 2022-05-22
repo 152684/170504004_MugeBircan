@@ -246,4 +246,41 @@ public class DeleteRecords {
         }
     }
     
+    public static void deleteKundeVonTour(String tour, String kunde){
+        ArrayList<String> kunden = SelectRecords.selectTourKunden(tour);
+        Iterator iter = kunden.iterator();
+        
+        boolean kundeEx = false;
+        int stelle = 0;
+        if(kunden == null || kunden.isEmpty()){
+            System.out.println("Es gibt keine Kunden bei diesem Tour");
+        }else{
+            while(iter.hasNext()){
+                if(iter.next().equals(kunde)){
+                    stelle ++;
+                    kundeEx = true;
+                    break;
+                }
+            }
+            
+            if(kundeEx){
+                if(kunden.size() == 1){
+                    kunden.removeAll(kunden);
+                    UpdateRecords.deleteKundeVonTour(tour, kunden);
+                    System.out.println("Der letzte Kunde ist von dem Tour abgemeldet.");
+                }else{
+                    kunden.remove(stelle);
+                    UpdateRecords.deleteKundeVonTour(tour, kunden);
+                    System.out.println("Der Kunde " + kunde + " wird von dem Tour abgemeldet.");
+                }
+                /*
+                System.out.println("  kunden: " + kunden);
+                kunden.remove(stelle);
+                System.out.println(" neue kunden: " + kunden);
+                UpdateRecords.deleteKundeVonTour(tour, kunden);*/
+            }else{
+                System.out.println("Der Kunde " + kunde + " ist nicht bei diesem Tour angemeldet");
+            }
+        }
+    }    
 }

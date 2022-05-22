@@ -75,8 +75,10 @@ public class UpdateRecordsTest {
         System.out.println("-----------updateTourKunden2 überprüfen---------------"); 
 
         
-        UpdateRecords.updateTourKunden("antalyaTour2", "veli");
-        UpdateRecords.updateTourKunden("antalyaTour2", "veli2");
+        UpdateRecords.updateTourKunden("Tour Istanbul3", "veli");
+        UpdateRecords.updateTourKunden("Tour Istanbul3", "veli2");
+        UpdateRecords.updateTourKunden("Tour Istanbul3", "veli2");
+        UpdateRecords.updateTourKunden("Tour Istanbul3", "veli3");
         
     }
 }

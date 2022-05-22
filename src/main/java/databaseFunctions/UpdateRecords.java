@@ -272,14 +272,11 @@ public class UpdateRecords {
         Connection conn = c.connect();
 
         Gson gson = new Gson();
-        String vonDatabaseString = SelectRecords.selectTourKunden(n);
+        ArrayList<String> vonDatabaseArray = SelectRecords.selectTourKunden(n);
         
         boolean kundeEx = false;
-        ArrayList<String> vonDatabaseArray = new ArrayList();
                 
-        if(vonDatabaseString != null){
-            Type type = new TypeToken<ArrayList<String>>() {}.getType();
-            vonDatabaseArray = gson.fromJson(vonDatabaseString, type);
+        if(vonDatabaseArray != null){
             Iterator<String> iter = vonDatabaseArray.iterator();           
             while(iter.hasNext()){
                 if(iter.next().equals(kunde)){
@@ -288,6 +285,8 @@ public class UpdateRecords {
                     break;
                 }            
             }
+        }else{
+            vonDatabaseArray = new ArrayList();
         }    
 
         if(!kundeEx){
@@ -318,5 +317,37 @@ public class UpdateRecords {
             }
         }                            
     }
-   
+       
+    public static void deleteKundeVonTour(String n, ArrayList<String> kunde){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+
+        Gson gson = new Gson();
+
+        String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
+              
+        String neueKunden = gson.toJson(kunde);
+        try{
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+                 
+            pstmt.setString(1, neueKunden);
+            pstmt.setString(2, n);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {  
+            System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
+            System.out.println(ex.getMessage());  
+        }
+
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+    }
+
+
 }

@@ -4,7 +4,10 @@
  */
 package databaseFunctions;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mycompany.inf202.*;
+import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -425,19 +428,20 @@ public class SelectRecords {
         return k;
     }
 
-    public static String selectTourKunden(String n){
+    public static ArrayList<String> selectTourKunden(String n){
         Connect c = new Connect();
         Connection conn = c.connect();
     
         String sql = "SELECT kunden FROM tour WHERE tourName = ?";  
         
-          
+        String vonDatabaseString = null;
+        
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
             pstmt.setString(1, n);
   
             ResultSet rs    = pstmt.executeQuery();
-            return rs.getString("kunden");
+            vonDatabaseString = rs.getString("kunden");
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
@@ -450,9 +454,17 @@ public class SelectRecords {
                 }
             }
         }
-        return null;
+        
+        Gson gson = new Gson();
+        ArrayList<String> vonDatabaseArray = new ArrayList();
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        if(vonDatabaseString != null){
+            vonDatabaseArray = gson.fromJson(vonDatabaseString, type);    
+            return vonDatabaseArray;
+        }else{
+            return null;
+        }
           
     }    
-    
-    
+        
 }

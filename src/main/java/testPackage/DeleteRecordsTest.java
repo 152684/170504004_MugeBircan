@@ -25,10 +25,10 @@ public class DeleteRecordsTest {
         System.out.println("-----------deleteKunde überprüfen---------------");
         DeleteRecords.deleteKunde(17050405011L);
         DeleteRecords.deleteKunde(17050405011L);
-*/
+
         System.out.println("-----------deleteReiseL überprüfen---------------");
         DeleteRecords.deleteReiseL(17050405018L);
-        //DeleteRecords.deleteReiseL(17050405013L); 
+*/        //DeleteRecords.deleteReiseL(17050405013L); 
 /*
         System.out.println("-----------deleteHotel überprüfen---------------");
         DeleteRecords.deleteHotel("fethiye");
@@ -37,7 +37,14 @@ public class DeleteRecordsTest {
         System.out.println("-----------deleteTour überprüfen---------------");
         DeleteRecords.deleteTour("fethiye");
         DeleteRecords.deleteTour("antalyaTour2");
-*/        
+*/
+
+        System.out.println("-----------deleteKundeVonTour überprüfen---------------");
+        DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli2");
+        DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli");
+        DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli3");
+        DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli2");
+        
     }
     
 }

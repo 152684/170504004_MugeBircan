@@ -7,6 +7,7 @@ package userInterface;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.inf202.*;
+import databaseFunctions.DeleteRecords;
 import databaseFunctions.SelectRecords;
 import databaseFunctions.UpdateRecords;
 import java.io.IOException;
@@ -90,77 +91,37 @@ public class FromTourListController implements Initializable {
     }
 
     @FXML
-    private void kundeAnButton(ActionEvent event) throws UngueltigeIDException{
-        long id = Long.parseLong(this.kundenID.getText());
-        Kunde kunde = SelectRecords.findKunde(id);
-         
-        if(kunde == null){
-            textArea2.setText("Die Kunde muss zuertst registriert werden!");
-            try{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
-                Parent root = loader.load();
-                //The following both lines are the only addition we need to pass the arguments
-                KundeHinzufuegenController controller2 = loader.getController();
-                if(currentTyp == 1){
-                    controller2.currentAnlegen(currentChef);                
-                }else{
-                    controller2.currentAnlegen(currentMit);                                
-                }
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-        }else{
-            UpdateRecords.updateTourKunden(t.getName(), kunde.getName());
-            textArea2.setText("Der Kunde " + kunde.getName() + " ist zur Tour angemeldet.");
-        }
+    private void kundeAnButton(ActionEvent event){
+        String kundenName = kundenID.getText();
+        UpdateRecords.updateTourKunden(t.getName(), kundenName);
+        textArea2.setText("Der Kunde " + kundenName + " ist zur Tour angemeldet.");
         
     }
 
     @FXML
-    private void kundeAbButton(ActionEvent event) throws UngueltigeIDException {
-        long id = Long.parseLong(this.kundenID.getText());
-        Kunde kunde = SelectRecords.findKunde(id);
-         
-        if(kunde == null){
-            textArea2.setText("Die Kunde existiert nicht!");
-            try{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
-                Parent root = loader.load();
-                //The following both lines are the only addition we need to pass the arguments
-                KundeHinzufuegenController controller2 = loader.getController();
-                if(currentTyp == 1){
-                    controller2.currentAnlegen(currentChef);                
-                }else{
-                    controller2.currentAnlegen(currentMit);                                
-                }
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+    private void kundeAbButton(ActionEvent event) {
 
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-        }else{
-            String s = SelectRecords.selectTourKunden(t.getName()); // direkte arraylist übergabe
-            Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<String>>() {}.getType();
-            ArrayList<String> in = gson.fromJson(s, type);  
-            Iterator<String> iter = in.iterator();
+        String kundenName = kundenID.getText();
+        ArrayList<String> kunden = SelectRecords.selectTourKunden(t.getName()); 
+        boolean kundeEx = false;
+        if(kunden != null){
+            Iterator<String> iter = kunden.iterator();
             while(iter.hasNext()){
-                if(iter.next().equals(kunde.getName())){
-                    //DeleteRecords.
-                }else{
-                    textArea2.setText("Die Kunde is beim Tour nicht angemeldet!");
+                if(iter.next().equals(kundenName)){
+                    DeleteRecords.deleteKundeVonTour(t.getName(), kundenName);
+                    textArea2.setText("Der Kunde " + kundenName + " ist vom Tour abgemeldet!");
+                    kundeEx = true;
+                    break;
                 }
             }
-            
-            UpdateRecords.updateTourKunden(t.getName(), kunde.getName());
-            textArea2.setText("Der Kunde " + kunde.getName() + " ist zur Tour angemeldet.");
+            if(!kundeEx){
+                textArea2.setText("Dieser Kunde ist bei deisem Tour nicht angemeldet!");
+            }
+                
+        }else{
+            textArea.setText("Bei diesem Tour gibt es keine Kunden");
         }
+       
     }
     
 }
