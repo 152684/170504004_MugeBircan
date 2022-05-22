@@ -22,7 +22,6 @@
             <MenuItem mnemonicParsing="false" onAction="#kundeReiseLLoeschen" text="Kunde/ReiseLeiter löschen" />
             <MenuItem mnemonicParsing="false" onAction="#hotelFunktionen" text="Hotel hinzufügen/aktualisieren/löschen" />
             <MenuItem mnemonicParsing="false" onAction="#tourHinzuAktLoesch" text="Tour hinzufügen/aktualisieren/löschen" />
-            <MenuItem mnemonicParsing="false" onAction="#tourList" text="tourList" />
             <Menu mnemonicParsing="false" text="Tour">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#tourFnk" text="Tour hinzufügen/aktualisieren/löschen" />

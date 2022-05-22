@@ -164,4 +164,9 @@ public class TourHinzuLoeschController implements Initializable {
 
     }
     
+    public void fromTourListe(Tour t){    
+        this.tourName.setText(t.getName());
+        textArea.setText("Aktualisieren Sie die gegebene Tour");
+    }
+    
 }

@@ -28,12 +28,14 @@ public class UpdateRecordsTest {
         
         System.out.println("-----------updateChef überprüfen---------------");    
         UpdateRecords.updateChef("nur3", "mugla", "email4", 45, 170504005009L);
-*/        
+*/ 
+/*
         System.out.println("-----------updateMitarbeiterUserNameUndPass überprüfen---------------");    
         UpdateRecords.updateMitarbeiterUserNameUndPass("userName1", "pass12345", 170504005003L);
         
         System.out.println("-----------updateChefUserNameUndPass überprüfen---------------");    
         UpdateRecords.updateChefUserNameUndPass("userName2", "pass123456", 170504005009L);
+*/
 /*
         System.out.println("-----------updateReiseL überprüfen---------------");    
         UpdateRecords.updateReiseL("veli", "mugla", "email4", 45, 170504005012L);
@@ -44,7 +46,7 @@ public class UpdateRecordsTest {
 
         System.out.println("-----------updateHotel überprüfen---------------");    
         UpdateRecords.updateHotel("antalyaHotel", "fethiye", "email4", 45, 160);
-*/
+
         System.out.println("-----------updateTour überprüfen---------------");    
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -61,7 +63,7 @@ public class UpdateRecordsTest {
         java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
 
         UpdateRecords.updateTourInfo("antalyaTour", sqlDate, 25, "burasi orasi surasi", "fethiyeHotel", 410, "ayse");
-
+*/
 
         System.out.println("-----------updateTourKunden überprüfen---------------"); 
 

@@ -171,23 +171,6 @@ public class LoginChefController implements Initializable {
     }
 
     @FXML
-    private void tourList(ActionEvent event) {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListToursNachNamen.fxml"));
-            Parent root = loader.load();
-            //The following both lines are the only addition we need to pass the arguments
-            ListToursNachNamenController controller2 = loader.getController();
-            //controller2.currentAnlegen(currentUser);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-                
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void tourFnk(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TourHinzuLoesch.fxml"));
@@ -207,11 +190,11 @@ public class LoginChefController implements Initializable {
     @FXML
     private void tourL(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListTest.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListe.fxml"));
             Parent root = loader.load();
             //The following both lines are the only addition we need to pass the arguments
-            TourListTestController controller2 = loader.getController();
-            //controller2.currentAnlegen(currentUser);
+            TourListeController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
