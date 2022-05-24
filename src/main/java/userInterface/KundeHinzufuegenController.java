@@ -178,4 +178,56 @@ public class KundeHinzufuegenController implements Initializable {
             textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " kann nicht aktualisiert werden.");            
         }        
     }
+
+    @FXML
+    private void kundeLoeschButton(ActionEvent event) {
+        long burgerID = Long.parseLong(this.burgerID.getText());
+
+        boolean loeschErfolg = false;
+        switch (currentTyp) {
+            case 1:
+                loeschErfolg = currentChef.deleteKunde(burgerID);
+                if(loeschErfolg){
+                    textField.setText("Der Kunde mit der burgerID " + burgerID + " wird geloescht.");
+                }else{
+                    textField.setText("Der Kunde mit der burgerID " + burgerID + " existiert nicht.");
+                }   break;
+            case 2:
+                loeschErfolg = currentMit.deleteKunde(burgerID);
+                if(loeschErfolg){
+                    textField.setText("Der Kunde mit der burgerID " + burgerID + " wird geloescht.");
+                }else{
+                    textField.setText("Der Kunde mit der burgerID " + burgerID + " existiert nicht.");
+                }   break;
+            default:            
+                textField.setText("Der Kunde mit der burgerID " + burgerID + " kann nicht geloescht werden.");
+                break;
+        }
+    }
+
+    @FXML
+    private void reiseLeitLoeschButton(ActionEvent event) {
+        long burgerID = Long.parseLong(this.burgerID.getText());
+
+        boolean loeschErfolg = false;
+        switch (currentTyp) {
+            case 1:
+                loeschErfolg = currentChef.deleteReiseL(burgerID);
+                if(loeschErfolg){
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");
+                }else{
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert nicht.");
+                }   break;
+            case 2:
+                loeschErfolg = currentMit.deleteReiseL(burgerID);
+                if(loeschErfolg){
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird geloescht.");
+                }else{
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert nicht.");
+                }   break;
+            default:            
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht geloescht werden.");
+                break;
+        }
+    }
 }

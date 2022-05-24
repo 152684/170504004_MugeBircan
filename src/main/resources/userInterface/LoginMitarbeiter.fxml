@@ -14,10 +14,21 @@
             <SplitMenuButton layoutX="129.0" layoutY="109.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="343.0" text="Wählen Sie eine Operation aus">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#loginDatenAendern" text="Login Daten ändern" />
-                  <MenuItem mnemonicParsing="false" onAction="#kundeReiseLHinzuAkt" text="Kunde/ReiseLeiter hinzufügen/aktualisieren" />
-                  <MenuItem mnemonicParsing="false" onAction="#kundeReiseLLoeschen" text="Kunde/ReiseLeiter löschen" />
+                  <Menu mnemonicParsing="false" text="Kunde/ReiseLeiter">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#kundeReiseLFnk" text="Hinzufügen/Aktualisieren/Löschen" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#kundeListen" text="Kunden Listen" />
+                        <MenuItem mnemonicParsing="false" onAction="#reiseLeiterListen" text="ReiseLeitern Listen" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Tour">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#tourFnk" text="Tour hinzufügen/aktualisieren/löschen" />
+                        <MenuItem mnemonicParsing="false" onAction="#tourL" text="Tours Listen" />
+                    </items>
+                  </Menu>
                   <MenuItem mnemonicParsing="false" onAction="#hotelFunktionen" text="Hotel hinzufügen/aktualisieren/löschen" />
-                  <MenuItem mnemonicParsing="false" onAction="#tourHinzuAktLoesch" text="Tour hinzufügen/aktualisieren/löschen" />
               </items>
             </SplitMenuButton>
          </children>

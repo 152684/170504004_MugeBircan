@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeHinzufuegenController">
+<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeHinzufuegenController">
    <children>
-      <Label layoutX="86.0" layoutY="35.0" text="Kunde/ReiseLeiter Hinzufügen/Aktualisieren">
+      <Label layoutX="59.0" layoutY="34.0" text="Kunde/ReiseLeiter Hinzufügen/Aktualisieren/Löschen">
          <font>
             <Font size="31.0" />
          </font>
@@ -31,5 +31,7 @@
       <Button layoutX="417.0" layoutY="325.0" mnemonicParsing="false" onAction="#kundeAkt" text="Kunde aktualisieren" />
       <Button layoutX="625.0" layoutY="277.0" mnemonicParsing="false" onAction="#reiseLHinButton" text="ReiseLeiter hinzufügen" />
       <Button layoutX="621.0" layoutY="325.0" mnemonicParsing="false" onAction="#reiseLAktButton" text="ReiseLeiter aktualisieren" />
+      <Button layoutX="433.0" layoutY="376.0" mnemonicParsing="false" onAction="#kundeLoeschButton" text="Kunde löschen" />
+      <Button layoutX="637.0" layoutY="376.0" mnemonicParsing="false" onAction="#reiseLeitLoeschButton" text="ReiseLeiter löschen" />
    </children>
 </AnchorPane>

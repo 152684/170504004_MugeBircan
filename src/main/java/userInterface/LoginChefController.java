@@ -67,7 +67,6 @@ public class LoginChefController implements Initializable {
     }
 
 
-    @FXML
     private void kundeReiseLHinzuAkt(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
@@ -84,24 +83,6 @@ public class LoginChefController implements Initializable {
         }
     }
 
-    @FXML
-    private void kundeReiseLLoeschen(ActionEvent event) {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeLoeschen.fxml"));
-            Parent root = loader.load();
-            //The following both lines are the only addition we need to pass the arguments
-            KundeLoeschenController controller2 = loader.getController();
-            controller2.currentAnlegen(currentUser);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-                
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void chefMitHinzu(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefMitarbHinzufuegen.fxml"));
@@ -119,24 +100,6 @@ public class LoginChefController implements Initializable {
         }
     }
 
-    @FXML
-    private void chefMitLoeschen(ActionEvent event) {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefMiarbLoeschen.fxml"));
-            Parent root = loader.load();
-            //The following both lines are the only addition we need to pass the arguments
-            ChefMiarbLoeschenController controller2 = loader.getController();
-            controller2.currentAnlegen(currentUser);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-                
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void tourHinzuAktLoesch(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TourHinzuLoesch.fxml"));
@@ -202,6 +165,57 @@ public class LoginChefController implements Initializable {
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void kundeReiseLFnk(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeHinzufuegenController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void kundeListen(ActionEvent event) {
+    }
+
+    @FXML
+    private void reiseLeiterListen(ActionEvent event) {
+    }
+
+    @FXML
+    private void arbeiterFnk(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefMitarbHinzufuegen.fxml"));
+            System.out.println("in try");
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            ChefMitarbHinzufuegenController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void chefListen(ActionEvent event) {
+    }
+
+    @FXML
+    private void mitarbListen(ActionEvent event) {
     }
 
 

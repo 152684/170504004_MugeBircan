@@ -145,5 +145,29 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         currentUser.updateMitarb(name, anschrift, email, tel, burgerID);
 
     }
+
+    @FXML
+    private void chefLoeschButton(ActionEvent event) {
+        long burgerID = Long.parseLong(this.burgerID.getText());
+        
+        boolean loeschErfolg = currentUser.deleteChef(burgerID);
+        if(loeschErfolg){
+            textField.setText("Der Chef mit der burgerID " + burgerID + " wird geloescht.");                            
+        }else{
+            textField.setText("Der Chef mit der burgerID " + burgerID + " existiert nicht.");                        
+        }
+    }
+
+    @FXML
+    private void mitarbLoeschButton(ActionEvent event) {
+        long burgerID = Long.parseLong(this.burgerID.getText());
+        
+        boolean loeschErfolg = currentUser.deleteMitarb(burgerID);
+        if(loeschErfolg){
+            textField.setText("Der Mitarbeiter mit der burgerID " + burgerID + " wird geloescht.");                            
+        }else{
+            textField.setText("Der Mitarbeiter mit der burgerID " + burgerID + " existiert nicht.");                        
+        }
+    }
     
 }

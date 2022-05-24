@@ -63,7 +63,6 @@ public class LoginMitarbeiterController implements Initializable {
  
     }
 
-    @FXML
     private void kundeReiseLHinzuAkt(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
@@ -80,24 +79,6 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
-    @FXML
-    private void kundeReiseLLoeschen(ActionEvent event) {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeLoeschen.fxml"));
-            Parent root = loader.load();
-            //The following both lines are the only addition we need to pass the arguments
-            KundeLoeschenController controller2 = loader.getController();
-            controller2.currentAnlegen(currentUser);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-                
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void tourHinzuAktLoesch(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TourHinzuLoesch.fxml"));
@@ -129,6 +110,65 @@ public class LoginMitarbeiterController implements Initializable {
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void tourFnk(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourHinzuLoesch.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            TourHinzuLoeschController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void tourL(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            TourListeController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void kundeReiseLFnk(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeHinzufuegenController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void kundeListen(ActionEvent event) {
+    }
+
+    @FXML
+    private void reiseLeiterListen(ActionEvent event) {
     }
     
 }

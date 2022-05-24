@@ -367,7 +367,7 @@ public class SelectRecords {
         Connect c = new Connect();
         Connection conn = c.connect();
     
-        String sql = "SELECT * FROM tour"; 
+        String sql = "SELECT * FROM tour ORDER BY tourName ASC"; 
         
         int tourZahl = 0;
           

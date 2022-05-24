@@ -11,7 +11,7 @@
    <children>
       <AnchorPane id="AnchorPane" prefHeight="551.0" prefWidth="841.0">
          <children>
-            <Label layoutX="131.0" layoutY="33.0" text="Chef/Mitarbeiter Hinzufügen/Aktualisieren">
+            <Label layoutX="80.0" layoutY="34.0" text="Chef/Mitarbeiter Hinzufügen/Aktualisieren/Löschen">
                <font>
                   <Font size="31.0" />
                </font>
@@ -28,17 +28,19 @@
             <TextField fx:id="email" layoutX="173.0" layoutY="235.0" />
             <TextField fx:id="tel" layoutX="173.0" layoutY="277.0" />
             <TextField fx:id="geburt" layoutX="173.0" layoutY="325.0" />
-            <Button layoutX="437.0" layoutY="407.0" mnemonicParsing="false" onAction="#chefHinButton" text="Chef hinzufügen" />
+            <Button layoutX="437.0" layoutY="389.0" mnemonicParsing="false" onAction="#chefHinButton" text="Chef hinzufügen" />
             <TextArea fx:id="textField" layoutX="386.0" layoutY="100.0" prefHeight="261.0" prefWidth="438.0" />
-            <Button layoutX="432.0" layoutY="456.0" mnemonicParsing="false" onAction="#chefAktButton" text="Chef aktualisieren" />
-            <Button layoutX="620.0" layoutY="407.0" mnemonicParsing="false" onAction="#MitHinButton" text="Mitarbeiter hinzufügen" />
-            <Button layoutX="615.0" layoutY="456.0" mnemonicParsing="false" onAction="#MitAktButton" text="Mitarbeiter aktualisieren" />
+            <Button layoutX="433.0" layoutY="441.0" mnemonicParsing="false" onAction="#chefAktButton" text="Chef aktualisieren" />
+            <Button layoutX="620.0" layoutY="389.0" mnemonicParsing="false" onAction="#MitHinButton" text="Mitarbeiter hinzufügen" />
+            <Button layoutX="615.0" layoutY="441.0" mnemonicParsing="false" onAction="#MitAktButton" text="Mitarbeiter aktualisieren" />
             <Label layoutX="34.0" layoutY="421.0" text="User Name:" />
             <Label layoutX="37.0" layoutY="471.0" text="Passwort:" />
             <TextField fx:id="userName" layoutX="173.0" layoutY="416.0" />
             <TextField fx:id="passwort" layoutX="173.0" layoutY="466.0" />
             <Label layoutX="33.0" layoutY="378.0" text="Personal ID:" />
             <TextField fx:id="persID" layoutX="173.0" layoutY="373.0" />
+            <Button layoutX="449.0" layoutY="492.0" mnemonicParsing="false" onAction="#chefLoeschButton" text="Chef löschen" />
+            <Button layoutX="631.0" layoutY="492.0" mnemonicParsing="false" onAction="#mitarbLoeschButton" text="Mitarbeiter löschen" />
          </children>
       </AnchorPane>
    </children>
