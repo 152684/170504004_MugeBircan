@@ -10,14 +10,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
@@ -43,7 +40,7 @@ public class LoginChefController implements Initializable {
 
     public void fromLogin(long id) throws UngueltigeIDException{
         currentUser = SelectRecords.findChef(id);
-        sceneText.setText("Willkommen Herr/Frau " + currentUser.getName());
+        sceneText.setText("Willkommen Herr/Frau " + currentUser.getName().toUpperCase());
     }
 
     @FXML
@@ -216,6 +213,23 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void mitarbListen(ActionEvent event) {
+    }
+
+    @FXML
+    private void kundeZurTourAnAb(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            TourListeController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 

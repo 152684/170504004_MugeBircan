@@ -33,74 +33,77 @@ public class Tour {
         freiePlaetze = maxT;
         r = rL;        
     }
-/*
-    public Tour(String n, Date d, int maxT, String hN, float p, int freiP, ReiseLeiter rL)
-    {
-        tourName = n;
-        tourDatum = d;
-        maxTeilnehmer = maxT;
-        hotelName = hN;
-        preis = p;
-        freiePlaetze = freiP;
-        r = rL;        
-    }
-            
-    public void tourUpdate(Date d, String info, int maxT, String hN, float p, String rL){
-        tourDatum = d;
-        maxTeilnehmer = maxT;
-        tourInfo = info;
-        hotelName = hN;
-        preis = p;
-        r = rL;        
-        
-    }
-*/
-    public String getName()
-    {
+
+    public String getTourName() {
         return tourName;
     }
-    
-    public void setDate(Date d)
-    {
-        tourDatum = d;
+
+    public void setTourName(String tourName) {
+        this.tourName = tourName;
     }
-    
-    public void setInfo(String i)
-    {
-        tourInfo = i;
+
+    public Date getTourDatum() {
+        return tourDatum;
     }
-    
-    public String getInfo(){
+
+    public void setTourDatum(Date tourDatum) {
+        this.tourDatum = tourDatum;
+    }
+
+    public String getTourInfo() {
         return tourInfo;
     }
+
+    public void setTourInfo(String tourInfo) {
+        this.tourInfo = tourInfo;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public ArrayList<Kunde> getKunden() {
+        return kunden;
+    }
+
+    public void setKunden(ArrayList<Kunde> kunden) {
+        this.kunden = kunden;
+    }
+
+    public int getFreiePlaetze() {
+        return freiePlaetze;
+    }
+
+    public void setFreiePlaetze(int freiePlaetze) {
+        this.freiePlaetze = freiePlaetze;
+    }
+
+    public String getR() {
+        return r;
+    }
+
+    public void setR(String r) {
+        this.r = r;
+    }
     
-    public void setMaxTeilnehmer(int m)
-    {
+    public int getMaxTeilnehmer(){
+        return maxTeilnehmer;
+    }
+    
+    public void setMaxTeilnehmer(int m){
         maxTeilnehmer = m;
     }
 
-    public void setHotel(String h)
-    {
-        hotelName = h;
-    }
-    
-    public void setPreis(float p)
-    {
-        preis = p;
-    }
-    
     public float getPreis(){
         return preis;
     }
     
-    public void setFreiP(int f)
-    {
-        freiePlaetze = f;
-    }
-    
-    public int getFreiP()
-    {
-        return freiePlaetze;
+    public void setPreis(int m){
+        preis = m;
     }
 
     @Override public String toString()
@@ -113,24 +116,5 @@ public class Tour {
                              "Reiseleiter:              " + r + "\n" +
                              "preis:                    " + preis );
     }
-        
-    
-   
-    public void setKunde(Kunde k)
-    {
-        if(freiePlaetze != 0){
-            kunden.add(k);
-            freiePlaetze--;
-            System.out.println("Der Kunde " + k.toString() + "ist erfolgreich zu Tour " + this.toString() + " angemeldet worden.");
-        }else{
-            System.out.println("Der Kunde kann zu Tour nicht angemeldet werde, da der Tour voll ist!");
-        }
-        
-    }
-    
-    public void deleteKunde(Kunde k)
-    {
-        
-    }
-    
+           
 }

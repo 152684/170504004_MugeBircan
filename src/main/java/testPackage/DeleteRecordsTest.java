@@ -38,13 +38,13 @@ public class DeleteRecordsTest {
         DeleteRecords.deleteTour("fethiye");
         DeleteRecords.deleteTour("antalyaTour2");
 */
-
+/*
         System.out.println("-----------deleteKundeVonTour überprüfen---------------");
         DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli2");
         DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli");
         DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli3");
         DeleteRecords.deleteKundeVonTour("Tour Istanbul", "veli2");
-        
+*/        
     }
     
 }

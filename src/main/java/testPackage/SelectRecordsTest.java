@@ -70,13 +70,15 @@ public class SelectRecordsTest {
         System.out.println("-----------findTour überprüfen---------------");
         Tour t = SelectRecords.findTour("antalyaTour");
         System.out.println("der Info ist " + t.getInfo());
-*/        
+        
 
         System.out.println("-----------findHotel überprüfen---------------");
         Hotel t = SelectRecords.findHotel("antalyaHotel2");
         System.out.println("der email ist " + t.getEmail());
-
-
+*/
+        System.out.println("-----------toursEinesKunden überprüfen---------------");
+        ArrayList<String> toursKunden = SelectRecords.toursEinesKunden(17050405012L);
+        
     }
 
     

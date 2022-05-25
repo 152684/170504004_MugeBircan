@@ -6,6 +6,7 @@ package databaseFunctions;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mycompany.inf202.Tour;
 import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -267,72 +268,116 @@ public class UpdateRecords {
         
     }
 
-    public static void updateTourKunden(String n, String kunde){
-        Connect c = new Connect();
-        Connection conn = c.connect();
-
-        Gson gson = new Gson();
-        ArrayList<String> vonDatabaseArray = SelectRecords.selectTourKunden(n);
+    public static int kundeZurTourAnmelden(String tour, long kundeId){
+        //returns 0 when kunde schon zur Tour angemeldet ist
+        //returns 1 when kunde erfolgreich angemeldet wird
+        //returns 2 fehler
+        //returns 3 falls keine freiePlaetze vorhanden
         
-        boolean kundeEx = false;
-                
-        if(vonDatabaseArray != null){
-            Iterator<String> iter = vonDatabaseArray.iterator();           
-            while(iter.hasNext()){
-                if(iter.next().equals(kunde)){
-                    System.out.println("Dieser Kunde ist schon bei dieser Tour angemeldet.");
-                    kundeEx = true;
-                    break;
-                }            
-            }
-        }else{
-            vonDatabaseArray = new ArrayList();
-        }    
+        Tour currentTour = SelectRecords.findTour(tour);
+        if(currentTour.getFreiePlaetze()!= 0){
+            Connect c = new Connect();
+            Connection conn = c.connect();
 
-        if(!kundeEx){
-            vonDatabaseArray.add(kunde);
-            //ArrayList in einem String
-            String neueKunden = gson.toJson(vonDatabaseArray);                            
-            String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
-              
-            try{
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                 
-                pstmt.setString(1, neueKunden);
-                pstmt.setString(2, n);
-                pstmt.executeUpdate();
-            } catch (SQLException ex) {  
-                System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
-                System.out.println(ex.getMessage());  
-            }
+            Gson gson = new Gson();
+            ArrayList<String> vonDatabaseArray = SelectRecords.selectTourKunden(tour);
 
-            finally {
-                if(conn != null){
-                    try{
-                        conn.close();                    
-                    }catch(SQLException e){
-                        System.out.println(e.getMessage());                      
+            boolean kundeEx = false;
+
+            if(vonDatabaseArray != null){
+                Iterator<String> iter = vonDatabaseArray.iterator();
+                while(iter.hasNext()){
+                    Long l = Long.parseLong(iter.next());
+                    if(l == kundeId){
+                        System.out.println("Dieser Kunde ist schon bei dieser Tour angemeldet.");
+                        kundeEx = true;
+                        return 0;
+                    }            
+                }
+            }else{
+                vonDatabaseArray = new ArrayList();
+            }    
+
+            if(!kundeEx){
+                String s = String.valueOf(kundeId);
+                vonDatabaseArray.add(s);
+                //ArrayList in einem String
+                String neueKunden = gson.toJson(vonDatabaseArray);                            
+                String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
+
+                ArrayList<String> toursKunde = SelectRecords.toursEinesKunden(kundeId);
+                if(toursKunde == null){
+                    toursKunde = new ArrayList();
+                    toursKunde.add(tour);
+                }else{
+                    toursKunde.add(tour);                
+                }
+                String neueReisen = gson.toJson(toursKunde);
+
+                String sql2 = "UPDATE kunde SET reisen = ? WHERE burgerID = ?";
+
+                try{
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                    PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+
+                    pstmt.setString(1, neueKunden);
+                    pstmt.setString(2, tour);
+                    pstmt.executeUpdate();
+
+                    pstmt2.setString(1, neueReisen);
+                    pstmt2.setLong(2, kundeId);
+                    pstmt2.executeUpdate();
+                    
+                    currentTour.setFreiePlaetze(currentTour.getFreiePlaetze()-1); 
+                    //updateTour info mit freiePlätze
+                    //preis beachten
+                    UpdateRecords.updateTourInfo(currentTour.getTourName(), currentTour.getTourDatum(), currentTour.getMaxTeilnehmer(), currentTour.getTourInfo(), currentTour.getHotelName(), currentTour.getPreis(), currentTour.getR());
+                    return 1;
+                } catch (SQLException ex) {  
+                    System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
+                    System.out.println(ex.getMessage());  
+                }
+
+                finally {
+                    if(conn != null){
+                        try{
+                            conn.close();                    
+                        }catch(SQLException e){
+                            System.out.println(e.getMessage());                      
+                        }
                     }
                 }
             }
-        }                            
+            return 2;
+            
+        }else{
+            return 3;
+        }
+
     }
        
-    public static void deleteKundeVonTour(String n, ArrayList<String> kunde){
+    public static void deleteKundeVonTour(String tour, ArrayList<String> kunde, long kundenId, ArrayList<String> reisen){
         Connect c = new Connect();
         Connection conn = c.connect();
 
         Gson gson = new Gson();
 
         String sql = "UPDATE tour SET kunden = ? WHERE tourName = ?";
+        String sql2 = "UPDATE kunde SET reisen = ? WHERE burgerID = ?";
               
         String neueKunden = gson.toJson(kunde);
+        String neueReisen = gson.toJson(reisen);
         try{
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            PreparedStatement pstmt2 = conn.prepareStatement(sql2);
                  
             pstmt.setString(1, neueKunden);
-            pstmt.setString(2, n);
+            pstmt.setString(2, tour);
             pstmt.executeUpdate();
+
+            pstmt2.setString(1, neueReisen);
+            pstmt2.setLong(2, kundenId);
+            pstmt2.executeUpdate();
         } catch (SQLException ex) {  
             System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  

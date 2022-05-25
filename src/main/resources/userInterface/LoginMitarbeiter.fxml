@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -10,8 +11,11 @@
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TextArea fx:id="sceneText" layoutX="129.0" layoutY="42.0" prefHeight="40.0" prefWidth="343.0" />
-            <SplitMenuButton layoutX="129.0" layoutY="109.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="343.0" text="Wählen Sie eine Operation aus">
+            <TextArea fx:id="sceneText" editable="false" layoutX="17.0" layoutY="42.0" prefHeight="71.0" prefWidth="563.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextArea>
+            <SplitMenuButton layoutX="129.0" layoutY="147.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="343.0" text="Wählen Sie eine Operation aus">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#loginDatenAendern" text="Login Daten ändern" />
                   <Menu mnemonicParsing="false" text="Kunde/ReiseLeiter">
@@ -26,6 +30,8 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#tourFnk" text="Tour hinzufügen/aktualisieren/löschen" />
                         <MenuItem mnemonicParsing="false" onAction="#tourL" text="Tours Listen" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#kundeZurTourAnAb" text="Kunde zu/von Tour anmelden/abmelden" />
                     </items>
                   </Menu>
                   <MenuItem mnemonicParsing="false" onAction="#hotelFunktionen" text="Hotel hinzufügen/aktualisieren/löschen" />

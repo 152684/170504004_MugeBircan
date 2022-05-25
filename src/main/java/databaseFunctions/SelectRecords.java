@@ -233,6 +233,45 @@ public class SelectRecords {
         return k;
     }
 
+    public static ArrayList<String> toursEinesKunden(long kundeId){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT reisen FROM kunde WHERE burgerID = ?";  
+        
+        String vonDatabaseString = null;
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setLong(1, kundeId);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            vonDatabaseString = rs.getString("reisen");
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+        
+        Gson gson = new Gson();
+        ArrayList<String> vonDatabaseArray = new ArrayList();
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        if(vonDatabaseString != null){
+            vonDatabaseArray = gson.fromJson(vonDatabaseString, type);    
+            return vonDatabaseArray;
+        }else{
+            return null;
+        }
+          
+    }    
+
     public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -428,7 +467,7 @@ public class SelectRecords {
         return k;
     }
 
-    public static ArrayList<String> selectTourKunden(String n){
+    public static ArrayList<String> selectTourKunden(String tour){
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -438,7 +477,7 @@ public class SelectRecords {
         
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
-            pstmt.setString(1, n);
+            pstmt.setString(1, tour);
   
             ResultSet rs    = pstmt.executeQuery();
             vonDatabaseString = rs.getString("kunden");

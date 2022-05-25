@@ -170,5 +170,22 @@ public class LoginMitarbeiterController implements Initializable {
     @FXML
     private void reiseLeiterListen(ActionEvent event) {
     }
+
+    @FXML
+    private void kundeZurTourAnAb(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            TourListeController controller2 = loader.getController();
+            controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     
 }

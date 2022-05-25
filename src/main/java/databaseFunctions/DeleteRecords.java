@@ -246,41 +246,62 @@ public class DeleteRecords {
         }
     }
     
-    public static void deleteKundeVonTour(String tour, String kunde){
+    public static int deleteKundeVonTour(String tour, long kundenId){
+        //returns 0 when kunde nicht zur Tour angemeldet ist
+        //returns 1 when kunde erfolgreich abgemeldet wird
+        //returns 2 fehler
         ArrayList<String> kunden = SelectRecords.selectTourKunden(tour);
-        Iterator iter = kunden.iterator();
+        Iterator<String> iter = kunden.iterator();
+        ArrayList<String> reisen = SelectRecords.toursEinesKunden(kundenId);
+        Iterator<String> iterR = reisen.iterator();
         
         boolean kundeEx = false;
         int stelle = 0;
+        int stelleR = 0;
         if(kunden == null || kunden.isEmpty()){
             System.out.println("Es gibt keine Kunden bei diesem Tour");
         }else{
             while(iter.hasNext()){
-                if(iter.next().equals(kunde)){
+                long l = Long.parseLong(iter.next());
+                if(l == kundenId){
                     stelle ++;
                     kundeEx = true;
                     break;
                 }
             }
-            
+            while(iterR.hasNext()){
+                if(iterR.next().equals(tour)){
+                    stelleR ++;
+                    break;
+                }
+            }
+                        
             if(kundeEx){
                 if(kunden.size() == 1){
+                    if(reisen.size() == 1){
+                        reisen.removeAll(reisen);
+                    }else{
+                        reisen.remove(stelleR);
+                    }
                     kunden.removeAll(kunden);
-                    UpdateRecords.deleteKundeVonTour(tour, kunden);
-                    System.out.println("Der letzte Kunde ist von dem Tour abgemeldet.");
+                    UpdateRecords.deleteKundeVonTour(tour, kunden, kundenId, reisen);
+                    System.out.println("Der letzte Kunde (kundenID: " + kundenId + ") ist von dem Tour abgemeldet.");
                 }else{
+                    if(reisen.size() == 1){
+                        reisen.removeAll(reisen);
+                    }else{
+                        reisen.remove(stelleR);
+                    }
                     kunden.remove(stelle);
-                    UpdateRecords.deleteKundeVonTour(tour, kunden);
-                    System.out.println("Der Kunde " + kunde + " wird von dem Tour abgemeldet.");
+                    UpdateRecords.deleteKundeVonTour(tour, kunden, kundenId, reisen);
+                    System.out.println("Der Kunde (kundenID: " + kundenId + ") wird von dem Tour abgemeldet.");
                 }
-                /*
-                System.out.println("  kunden: " + kunden);
-                kunden.remove(stelle);
-                System.out.println(" neue kunden: " + kunden);
-                UpdateRecords.deleteKundeVonTour(tour, kunden);*/
+                return 1;
             }else{
-                System.out.println("Der Kunde " + kunde + " ist nicht bei diesem Tour angemeldet");
+                System.out.println("Der Kunde (kundenID: " + kundenId + ") ist nicht bei diesem Tour angemeldet");
+                return 0;
             }
         }
+        return 2;
     }    
 }

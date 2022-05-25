@@ -16,6 +16,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -92,36 +94,80 @@ public class FromTourListController implements Initializable {
 
     @FXML
     private void kundeAnButton(ActionEvent event){
-        String kundenName = kundenID.getText();
-        UpdateRecords.updateTourKunden(t.getName(), kundenName);
-        textArea2.setText("Der Kunde " + kundenName + " ist zur Tour angemeldet.");
+        ArrayList<Kunde> kunden = new ArrayList();
+        long kundeId = Long.parseLong(kundenID.getText());
+        boolean kundeEx = false;
+        try {
+            SelectRecords.allKundenInArray(kunden);
+            Iterator<Kunde> iter = kunden.iterator();
+            Kunde k;
+
+            int anmeldeSituation;
+            while(iter.hasNext()){
+                k = iter.next();
+                if(k.getBurgerID() == kundeId){
+                    anmeldeSituation = UpdateRecords.kundeZurTourAnmelden(t.getName(), k.getBurgerID());
+                    switch (anmeldeSituation) {
+                        case 0:
+                            textArea2.setText("Der Kunde " + k.getName() + " ist schon zu dieser Tour angemeldet.");
+                            break;
+                        case 1:
+                            textArea2.setText("Der Kunde " + k.getName() + " ist zur Tour angemeldet.");                         
+                            break;
+                        default:
+                            textArea2.setText("Der Kunde " + k.getName() + " kann zur Tour nicht angemeldet werden.");
+                            break;
+                    }
+                    kundeEx = true;
+                    break;
+                }
+            }
+            if(!kundeEx){
+                textArea2.setText("Der Kunde mit der IDNummer: " + kundeId + " existiert nicht. Reigstieren Sie die Kunde.");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+                Parent root = loader.load();
+                //The following both lines are the only addition we need to pass the arguments
+                KundeHinzufuegenController controller2 = loader.getController();
+                if(currentTyp == 1){
+                    controller2.currentAnlegen(currentChef);                    
+                }else if(currentTyp == 2){
+                    controller2.currentAnlegen(currentMit);                                        
+                }
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+               
+                
+            }
+            
+        }catch(UngueltigeIDException ex){
+            Logger.getLogger(FromTourListController.class.getName()).log(Level.SEVERE, null, ex);            
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
         
     }
 
     @FXML
     private void kundeAbButton(ActionEvent event) {
 
-        String kundenName = kundenID.getText();
-        ArrayList<String> kunden = SelectRecords.selectTourKunden(t.getName()); 
-        boolean kundeEx = false;
-        if(kunden != null){
-            Iterator<String> iter = kunden.iterator();
-            while(iter.hasNext()){
-                if(iter.next().equals(kundenName)){
-                    DeleteRecords.deleteKundeVonTour(t.getName(), kundenName);
-                    textArea2.setText("Der Kunde " + kundenName + " ist vom Tour abgemeldet!");
-                    kundeEx = true;
-                    break;
-                }
-            }
-            if(!kundeEx){
-                textArea2.setText("Dieser Kunde ist bei deisem Tour nicht angemeldet!");
-            }
-                
-        }else{
-            textArea.setText("Bei diesem Tour gibt es keine Kunden");
-        }
-       
+        long kundenId = Long.parseLong(kundenID.getText());
+        int abmeldeSituation = DeleteRecords.deleteKundeVonTour(t.getName(), kundenId);
+        switch (abmeldeSituation) {
+            case 0:
+                textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist zu dieser Tour nicht angemeldet!");
+                break;
+            case 1:
+                textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour abgemeldet!");
+                break;
+            case 2:
+                textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour nicht abgemeldet werden!");
+                break;
+            default:
+                break;
+        }       
     }
     
 }

@@ -64,7 +64,7 @@ public class UpdateRecordsTest {
 
         UpdateRecords.updateTourInfo("antalyaTour", sqlDate, 25, "burasi orasi surasi", "fethiyeHotel", 410, "ayse");
 */
-
+/*
         System.out.println("-----------updateTourKunden überprüfen---------------"); 
 
         UpdateRecords.updateTourKunden("antalyaTour", "hasan");        
@@ -79,6 +79,9 @@ public class UpdateRecordsTest {
         UpdateRecords.updateTourKunden("Tour Istanbul3", "veli2");
         UpdateRecords.updateTourKunden("Tour Istanbul3", "veli2");
         UpdateRecords.updateTourKunden("Tour Istanbul3", "veli3");
-        
+*/
+        System.out.println("-----------kundeZurTourAnmelden überprüfen---------------"); 
+        UpdateRecords.kundeZurTourAnmelden("b", 17050405013L);
+
     }
 }
