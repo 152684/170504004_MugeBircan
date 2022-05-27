@@ -234,38 +234,107 @@ public class UpdateRecords {
     }
   
     public static void updateTourInfo(String n, Date d, int maxT, String info, String hN, float p, String rL){
-        Connect c = new Connect();
-        Connection conn = c.connect();
         
-        java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-        
-        String sql = "UPDATE tour SET tourDatum = ?, tourInfo = ?, maxTeilnehmer = ?, hotelName = ?, preis = ?, reiseL = ? WHERE tourName = ?";
+        Tour t = SelectRecords.findTour(n);
+        if(t.getMaxTeilnehmer() <= maxT){
+            Connect c = new Connect();
+            Connection conn = c.connect();
 
-        try{    
-            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            java.sql.Date sqlDate = new java.sql.Date(d.getTime());
 
-            pstmt.setDate(1, sqlDate);  
-            pstmt.setString(2, info);  
-            pstmt.setInt(3, maxT);  
-            pstmt.setString(4, hN);
-            pstmt.setFloat(5, p);
-            pstmt.setString(6, rL);
-            pstmt.setString(7, n);
-            pstmt.executeUpdate(); 
-        } catch (SQLException ex) {  
-            System.out.println("Die Tour kann nicht aktualisiert werden!");
-            System.out.println(ex.getMessage());  
-        }        
-        finally {
-            if(conn != null){
-                try{
-                    conn.close();                    
-                }catch(SQLException e){
-                    System.out.println(e.getMessage());                      
+            String sql = "UPDATE tour SET tourDatum = ?, tourInfo = ?, maxTeilnehmer = ?, hotelName = ?, preis = ?, reiseL = ? WHERE tourName = ?";
+
+            try{    
+                PreparedStatement pstmt = conn.prepareStatement(sql);  
+
+                pstmt.setDate(1, sqlDate);  
+                pstmt.setString(2, info);  
+                pstmt.setInt(3, maxT);  
+                pstmt.setString(4, hN);
+                pstmt.setFloat(5, p);
+                pstmt.setString(6, rL);
+                pstmt.setString(7, n);
+                pstmt.executeUpdate(); 
+            } catch (SQLException ex) {  
+                System.out.println("Die Tour kann nicht aktualisiert werden!");
+                System.out.println(ex.getMessage());  
+            }        
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException e){
+                        System.out.println(e.getMessage());                      
+                    }
                 }
             }
+            
+        }else{
+            System.out.println("Die maximale Teilnehmerzahl kann nicht reduziert werden.");
         }
         
+    }
+    
+    public static void tourFreiPlAkt(String tour, int anAb){
+        //anAb 1 -- kunde anmelden
+        //anAb 2 -- kunde abmelden
+        Connect c = new Connect();
+        Connection conn = c.connect();
+        Tour t = SelectRecords.findTour(tour);
+        
+        if(anAb == 1){
+            int neueFreieP = t.getFreiePlaetze()-1;
+
+            String sql = "UPDATE tour SET freiePlaetze = ? WHERE tourName = ?";
+
+            try{            
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, neueFreieP);
+                pstmt.setString(2, tour);                
+                pstmt.executeUpdate();
+
+            } catch (SQLException ex) {  
+                System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
+                System.out.println(ex.getMessage());  
+            }
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException e){
+                        System.out.println(e.getMessage());                      
+                    }
+                }
+            }
+            
+        }else if(anAb == 2){
+            int neueFreieP = t.getFreiePlaetze()+1;
+
+            String sql = "UPDATE tour SET freiePlaetze = ? WHERE tourName = ?";
+
+            try{            
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, neueFreieP);
+                pstmt.setString(2, tour);                
+                pstmt.executeUpdate();
+
+            } catch (SQLException ex) {  
+                System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
+                System.out.println(ex.getMessage());  
+            }
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException e){
+                        System.out.println(e.getMessage());                      
+                    }
+                }
+            }
+            
+        }else{
+            System.out.println("Fehler beim freiePlaetze anlegen");
+        }
     }
 
     public static int kundeZurTourAnmelden(String tour, long kundeId){
@@ -329,9 +398,7 @@ public class UpdateRecords {
                     pstmt2.executeUpdate();
                     
                     currentTour.setFreiePlaetze(currentTour.getFreiePlaetze()-1); 
-                    //updateTour info mit freiePlätze
-                    //preis beachten
-                    UpdateRecords.updateTourInfo(currentTour.getTourName(), currentTour.getTourDatum(), currentTour.getMaxTeilnehmer(), currentTour.getTourInfo(), currentTour.getHotelName(), currentTour.getPreis(), currentTour.getR());
+                    UpdateRecords.tourFreiPlAkt(tour, 1);
                     return 1;
                 } catch (SQLException ex) {  
                     System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
@@ -378,6 +445,7 @@ public class UpdateRecords {
             pstmt2.setString(1, neueReisen);
             pstmt2.setLong(2, kundenId);
             pstmt2.executeUpdate();
+            UpdateRecords.tourFreiPlAkt(tour, 2);
         } catch (SQLException ex) {  
             System.out.println("Die Kunden der Tour können nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  

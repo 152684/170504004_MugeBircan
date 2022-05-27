@@ -34,6 +34,18 @@ public class Tour {
         r = rL;        
     }
 
+    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freieP, String rL)
+    {
+        tourName = n;
+        tourDatum = d;
+        tourInfo = info;
+        maxTeilnehmer = maxT;
+        hotelName = hN;
+        preis = p;
+        freiePlaetze = freieP;
+        r = rL;        
+    }
+
     public String getTourName() {
         return tourName;
     }

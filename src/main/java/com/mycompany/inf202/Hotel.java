@@ -41,6 +41,9 @@ public class Hotel {
         return email;
     }
     
+    public float getPreis(){
+        return preis;
+    }
     @Override public String toString(){
         return String.format("Hotel: " + name + "\n" +
                              "      Anschrift:     " + anschrift +

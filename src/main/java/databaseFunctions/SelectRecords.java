@@ -450,7 +450,7 @@ public class SelectRecords {
  
             ResultSet rs    = pstmt.executeQuery();
             k = new Tour(rs.getString("tourName"), rs.getDate("tourDatum"), rs.getString("tourInfo"), rs.getInt("maxTeilnehmer"),
-                         rs.getString("hotelName"), rs.getFloat("preis"), rs.getString("reiseL"));            
+                         rs.getString("hotelName"), rs.getFloat("preis"), rs.getInt("freiePlaetze"), rs.getString("reiseL"));            
         }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  

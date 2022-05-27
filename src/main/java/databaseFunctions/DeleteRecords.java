@@ -250,6 +250,11 @@ public class DeleteRecords {
         //returns 0 when kunde nicht zur Tour angemeldet ist
         //returns 1 when kunde erfolgreich abgemeldet wird
         //returns 2 fehler
+        //return 3 id unguiltig
+        
+        if(kundenId>10000000000L && kundenId<99999999999L ){
+            return 3; 
+        }
         ArrayList<String> kunden = SelectRecords.selectTourKunden(tour);
         Iterator<String> iter = kunden.iterator();
         ArrayList<String> reisen = SelectRecords.toursEinesKunden(kundenId);

@@ -66,8 +66,10 @@ public class FromTourListController implements Initializable {
     }
 
     public void fromTourList(String tourName){
-        textArea.setText("Sie haben " + tourName + " gewählt.");
         t = SelectRecords.findTour(tourName);
+        Hotel h = SelectRecords.findHotel(t.getHotelName());
+        float total = t.getPreis()+h.getPreis();
+        textArea.setText("Sie haben " + tourName + " gewählt.\nTour Preis: " + t.getPreis() + "\nHotel preis: " + h.getPreis() + "\nTotal preis: " + total);
     }
 
     @FXML
@@ -106,7 +108,7 @@ public class FromTourListController implements Initializable {
             while(iter.hasNext()){
                 k = iter.next();
                 if(k.getBurgerID() == kundeId){
-                    anmeldeSituation = UpdateRecords.kundeZurTourAnmelden(t.getName(), k.getBurgerID());
+                    anmeldeSituation = UpdateRecords.kundeZurTourAnmelden(t.getTourName(), k.getBurgerID());
                     switch (anmeldeSituation) {
                         case 0:
                             textArea2.setText("Der Kunde " + k.getName() + " ist schon zu dieser Tour angemeldet.");
@@ -114,9 +116,12 @@ public class FromTourListController implements Initializable {
                         case 1:
                             textArea2.setText("Der Kunde " + k.getName() + " ist zur Tour angemeldet.");                         
                             break;
+                        case 3:
+                            textArea2.setText("Es gibt keine freiePlätze bei diser Tour.");
+                            break;
                         default:
                             textArea2.setText("Der Kunde " + k.getName() + " kann zur Tour nicht angemeldet werden.");
-                            break;
+                            break;                            
                     }
                     kundeEx = true;
                     break;
@@ -154,7 +159,7 @@ public class FromTourListController implements Initializable {
     private void kundeAbButton(ActionEvent event) {
 
         long kundenId = Long.parseLong(kundenID.getText());
-        int abmeldeSituation = DeleteRecords.deleteKundeVonTour(t.getName(), kundenId);
+        int abmeldeSituation = DeleteRecords.deleteKundeVonTour(t.getTourName(), kundenId);
         switch (abmeldeSituation) {
             case 0:
                 textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist zu dieser Tour nicht angemeldet!");
@@ -166,7 +171,8 @@ public class FromTourListController implements Initializable {
                 textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour nicht abgemeldet werden!");
                 break;
             default:
-                break;
+                textArea2.setText("ID Nummer muss 11 Stellig sein");
+
         }       
     }
     

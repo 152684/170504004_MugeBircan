@@ -5,6 +5,7 @@
 package userInterface;
 
 import com.mycompany.inf202.*;
+import databaseFunctions.SelectRecords;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -82,24 +83,30 @@ public class TourHinzuLoeschController implements Initializable {
             e.printStackTrace();
         }   
         
-        int insertErfolg = 3;
-        
-        if(currentTyp == 1){
-            insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);
+        Hotel h = SelectRecords.findHotel(hotelName);
+        if(h == null){
+            textArea.setText("Der Tour mit den Namen " + name + " kann nicht hinzugefügt werden.\nDas Hotel " + hotelName + " existiert nicht!");
         }else{
-            insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);            
+            int insertErfolg = 3;
+
+            if(currentTyp == 1){
+                insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);
+            }else{
+                insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);            
+            }
+            switch (insertErfolg) {
+                case 1:
+                    textArea.setText("Der Tour mit den Namen " + name + " wird gespeichert.");
+                    break;
+                case 2:
+                    textArea.setText("Der Tour mit den Namen " + name + " existiert schon.");
+                    break;
+                default:
+                    textArea.setText("Der Tour mit den Namen " + name + " kann nicht hinzugefügt werden.");
+                    break;
+            }
         }
-        switch (insertErfolg) {
-            case 1:
-                textArea.setText("Der Tour mit den Namen " + name + " wird gespeichert.");
-                break;
-            case 2:
-                textArea.setText("Der Tour mit den Namen " + name + " existiert schon.");
-                break;
-            default:
-                textArea.setText("Der Tour mit den Namen " + name + " kann nicht hinzugefügt werden.");
-                break;
-        }
+        
     }
 
     @FXML
@@ -165,7 +172,7 @@ public class TourHinzuLoeschController implements Initializable {
     }
     
     public void fromTourListe(Tour t){    
-        this.tourName.setText(t.getName());
+        this.tourName.setText(t.getTourName());
         textArea.setText("Aktualisieren Sie die gegebene Tour");
     }
     
