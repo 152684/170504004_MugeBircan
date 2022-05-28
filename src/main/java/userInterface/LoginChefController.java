@@ -213,6 +213,18 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void mitarbListen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MitarbeiterListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            MitarbeiterListeController controller2 = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

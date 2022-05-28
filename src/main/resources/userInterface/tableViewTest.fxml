@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.TableViewTestController">
+   <children>
+      <TableView fx:id="toursTable" layoutX="-3.0" prefHeight="403.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="tourNameColumn" prefWidth="99.0" text="tourName" />
+          <TableColumn fx:id="tourDatumColumn" prefWidth="114.0" text="tourDatum" />
+            <TableColumn fx:id="tourInfoColumn" prefWidth="305.0" text="tourInfo" />
+            <TableColumn fx:id="preisColumn" prefWidth="81.0" text="preis" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

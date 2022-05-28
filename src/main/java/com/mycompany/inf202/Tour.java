@@ -6,6 +6,7 @@ package com.mycompany.inf202;
 
 import java.util.ArrayList;
 import java.util.Date;
+//import javafx.beans.property.StringProperty;
 /**
  *
  * @author mbirc
@@ -45,11 +46,15 @@ public class Tour {
         freiePlaetze = freieP;
         r = rL;        
     }
-
+    /*
+    public StringProperty tourNameProperty() {
+	return tourName;
+    }
+    */
     public String getTourName() {
         return tourName;
     }
-
+    
     public void setTourName(String tourName) {
         this.tourName = tourName;
     }
