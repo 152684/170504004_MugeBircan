@@ -46,6 +46,21 @@ public abstract class Person {
         return burgerID;
     }
 
+    public String getAnschrift()
+    {
+        return anschrift;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public int getTel()
+    {
+        return telefonnummer;
+    }
+
     public String getName()
     {
         return name;

@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="1075.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.MitarbeiterListeController">
+<AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="1075.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.MitarbeiterListeController">
    <children>
       <TableView fx:id="mitarbeiterTable" layoutX="140.0" layoutY="81.0" prefHeight="417.0" prefWidth="733.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
         <columns>
@@ -21,7 +20,7 @@
             <TableColumn fx:id="persIdColumn" prefWidth="164.0" text="PersonalID" />
         </columns>
       </TableView>
-      <Label layoutX="206.0" layoutY="20.0" text="Mitarbeitern des ReiseBüros">
+      <Label layoutX="377.0" layoutY="20.0" text="Mitarbeitern des ReiseBüros">
          <font>
             <Font size="26.0" />
          </font>

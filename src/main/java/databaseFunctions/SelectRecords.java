@@ -56,6 +56,41 @@ public class SelectRecords {
           
     }    
 
+    public static int mitarbIDsInArray(ArrayList<Long> mitarbeitern){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT * FROM mitarbeiter ORDER BY burgerID ASC"; 
+        
+        int mitarbZahl = 0;
+          
+        try {  
+            Statement stmt  = conn.createStatement();  
+            ResultSet rs    = stmt.executeQuery(sql);  
+              
+            // loop through the result set  
+            while (rs.next()) { 
+                Long c2 = rs.getLong("burgerID");
+                mitarbeitern.add(c2);
+                mitarbZahl++;
+            }  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
+            }
+        }
+        return mitarbZahl;
+          
+    }    
+
+
     public static Mitarbeiter findMitarbeiter(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -341,11 +376,13 @@ public class SelectRecords {
         return k;
     }
 
-    public static void hotelNamenInArray(ArrayList<String> hotels){
+    public static int hotelNamenInArray(ArrayList<String> hotels){
         Connect c = new Connect();
         Connection conn = c.connect();
     
-        String sql = "SELECT * FROM hotel"; 
+        int hotelZahl = 0;
+        
+        String sql = "SELECT * FROM hotel ORDER BY name ASC"; 
         
           
         try {  
@@ -356,6 +393,7 @@ public class SelectRecords {
             while (rs.next()) { 
                 String c2 = rs.getString("name");
                 hotels.add(c2);
+                hotelZahl++;
             }  
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
@@ -369,7 +407,7 @@ public class SelectRecords {
                 }
             }
         }
-          
+        return hotelZahl;  
     }    
 
     public static Hotel findHotel(String name){

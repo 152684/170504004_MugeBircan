@@ -19,34 +19,34 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-//import static userInterface.TableViewTestController.table_info_app;
+import static userInterface.TableViewTestController.table_info_app;
 
 /**
  * FXML Controller class
  *
  * @author mbirc
  */
-public class MitarbeiterListeController implements Initializable {
+public class ChefListeController implements Initializable {
 
-    private ObservableList<Mitarbeiter> mitarbData = FXCollections.observableArrayList();
-    public static TableView<Mitarbeiter> table_info_app;
+    private ObservableList<Chef> chefData = FXCollections.observableArrayList();
+    public static TableView<Chef> table_info_app;
     
     @FXML
-    private TableView<Mitarbeiter> mitarbeiterTable;
+    private TableView<Chef> chefTable;
     @FXML
-    private TableColumn<Mitarbeiter, String> nameColumn;
+    private TableColumn<Chef, String> nameColumn;
     @FXML
-    private TableColumn<Mitarbeiter, Long> burgerIdColumn;
+    private TableColumn<Chef, Long> burgerIdColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> anschriftColumn;
+    private TableColumn<Chef, String> anschriftColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> emailColumn;
+    private TableColumn<Chef, String> emailColumn;
     @FXML
-    private TableColumn<Mitarbeiter, Integer> telColumn;
+    private TableColumn<Chef, Integer> telColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> geburtColumn;
+    private TableColumn<Chef, String> geburtColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> persIdColumn;
+    private TableColumn<Chef, Integer> persIdColumn;
 
     /**
      * Initializes the controller class.
@@ -54,12 +54,12 @@ public class MitarbeiterListeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        table_info_app = mitarbeiterTable;
+        table_info_app = chefTable;
         initializeCols();
-        try {        
+        try {
             loadData();
         } catch (UngueltigeIDException ex) {
-            Logger.getLogger(MitarbeiterListeController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChefListeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
 
@@ -76,31 +76,15 @@ public class MitarbeiterListeController implements Initializable {
     
     private void loadData() throws UngueltigeIDException{
 
-        ArrayList<Long> mitarb = new ArrayList();
-        int tourZahl = SelectRecords.mitarbIDsInArray(mitarb);
-        Iterator<Long> iter = mitarb.iterator();
-        
-        
-        while(tourZahl != 0){
-            Mitarbeiter currentTour = SelectRecords.findMitarbeiter(iter.next());
-            mitarbData.add(currentTour);  
-            tourZahl--;
-        }
-
-        mitarbeiterTable.setItems(mitarbData);
-    }    
-        
-        
-        /*
-        ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
-        SelectRecords.allMitarbeiterInArray(mitarbeitern);
-        Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
+        ArrayList<Chef> chefs = new ArrayList();
+        SelectRecords.allChefInArray(chefs);
+        Iterator<Chef> iter = chefs.iterator();
                 
         while(iter.hasNext()){
-            mitarbData.add(iter.next());
+            chefData.add(iter.next());  
         }
 
-        mitarbeiterTable.setItems(mitarbData);
+        chefTable.setItems(chefData);
     }    
-*/    
+    
 }

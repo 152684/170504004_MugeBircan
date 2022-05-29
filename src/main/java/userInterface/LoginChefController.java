@@ -209,6 +209,18 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void chefListen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            ChefListeController controller2 = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -235,6 +247,22 @@ public class LoginChefController implements Initializable {
             //The following both lines are the only addition we need to pass the arguments
             TourListeController controller2 = loader.getController();
             controller2.currentAnlegen(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void hotelsListen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HotelListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            HotelListeController controller2 = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

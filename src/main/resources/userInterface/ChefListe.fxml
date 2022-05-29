@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.ChefListeController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="1075.0">
+         <children>
+            <TableView fx:id="chefTable" layoutX="140.0" layoutY="81.0" prefHeight="417.0" prefWidth="733.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
+              <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="116.0" text="Name" />
+                <TableColumn fx:id="burgerIdColumn" prefWidth="221.0" text="BürgerID" />
+                  <TableColumn fx:id="anschriftColumn" prefWidth="145.0" text="Anschrift" />
+                  <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="145.0" text="Email" />
+                  <TableColumn fx:id="telColumn" minWidth="8.0" prefWidth="167.0" text="Telefonnummer" />
+                  <TableColumn fx:id="geburtColumn" minWidth="0.0" prefWidth="116.0" text="Geburtsdatum" />
+                  <TableColumn fx:id="persIdColumn" prefWidth="164.0" text="PersonalID" />
+              </columns>
+            </TableView>
+            <Label layoutX="416.0" layoutY="20.0" text="Chefs des ReiseBüros">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

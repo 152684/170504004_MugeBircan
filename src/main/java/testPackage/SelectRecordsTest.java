@@ -27,7 +27,7 @@ public class SelectRecordsTest {
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
         while(iter.hasNext()){
-            System.out.println(iter.next().getName());
+            System.out.println(iter.next().getAnschrift());
         }
         
         System.out.println("-----------allChefInArray überprüfen---------------");
@@ -75,10 +75,33 @@ public class SelectRecordsTest {
         System.out.println("-----------findHotel überprüfen---------------");
         Hotel t = SelectRecords.findHotel("antalyaHotel2");
         System.out.println("der email ist " + t.getEmail());
-*/
+
         System.out.println("-----------toursEinesKunden überprüfen---------------");
         ArrayList<String> toursKunden = SelectRecords.toursEinesKunden(17050405012L);
         
+        System.out.println("-----------mitarbNamenInArray überprüfen---------------");
+        ArrayList<Long> mitarb = new ArrayList();
+        int zahl = SelectRecords.mitarbIDsInArray(mitarb);
+        Iterator<Long> iter = mitarb.iterator();
+        while(zahl != 0){
+            Mitarbeiter currentMit = SelectRecords.findMitarbeiter(iter.next());
+            System.out.println(currentMit.getAnschrift());
+            zahl--;
+        }
+*/
+
+        System.out.println("-----------hotelNamenInArray überprüfen---------------");
+        ArrayList<String> hotels = new ArrayList();
+        int zahl = SelectRecords.hotelNamenInArray(hotels);
+        Iterator<String> iter = hotels.iterator();
+        while(zahl != 0){
+            Hotel currentHotel = SelectRecords.findHotel(iter.next());
+            System.out.println(currentHotel.getName());
+            zahl--;
+        }
+
+
+
     }
 
     

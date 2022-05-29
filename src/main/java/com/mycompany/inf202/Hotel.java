@@ -12,7 +12,7 @@ public class Hotel {
     
     private String name;
     private String anschrift;
-    private int telefonNummer;
+    private int telefonnummer;
     private String email;
     private float preis;
     
@@ -20,7 +20,7 @@ public class Hotel {
     {
         name = n;
         anschrift = ansch;
-        telefonNummer = tel;
+        telefonnummer = tel;
         email = e;
         preis = p;
     }
@@ -28,7 +28,7 @@ public class Hotel {
     public void updateInfo(String ansch, int tel, String e, float p)
     {
         anschrift = ansch;
-        telefonNummer = tel;
+        telefonnummer = tel;
         email = e;
         preis = p;        
     }
@@ -37,6 +37,14 @@ public class Hotel {
         return name;
     }
     
+    public String getAnschrift(){
+        return anschrift;
+    }
+
+    public int getTel(){
+        return telefonnummer;
+    }
+
     public String getEmail(){
         return email;
     }
@@ -47,7 +55,7 @@ public class Hotel {
     @Override public String toString(){
         return String.format("Hotel: " + name + "\n" +
                              "      Anschrift:     " + anschrift +
-                             "      Telefonnummer: " + telefonNummer +
+                             "      Telefonnummer: " + telefonnummer +
                              "      Email:         " + email +
                              "      Preis:         " + preis);
     }

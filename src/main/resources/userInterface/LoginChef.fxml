@@ -40,7 +40,12 @@
                   <MenuItem mnemonicParsing="false" onAction="#kundeZurTourAnAb" text="Kunde zu/von Tour anmelden/abmelden" />
               </items>
             </Menu>
-            <MenuItem mnemonicParsing="false" onAction="#hotelFunktionen" text="Hotel hinzufügen/aktualisieren/löschen" />
+            <Menu mnemonicParsing="false" text="Hotel">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#hotelFunktionen" text="Hotel hinzufügen/aktualisieren/löschen" />
+                <MenuItem mnemonicParsing="false" onAction="#hotelsListen" text="Hotels Listen" />
+              </items>
+            </Menu>
         </items>
       </SplitMenuButton>
    </children>
