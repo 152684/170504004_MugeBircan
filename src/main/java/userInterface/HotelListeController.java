@@ -17,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import static userInterface.TableViewTestController.table_info_app;
 
 /**
  * FXML Controller class
@@ -69,11 +68,6 @@ public class HotelListeController implements Initializable {
         
         while(hotelZahl != 0){
             Hotel currentHotel = SelectRecords.findHotel(iter.next());
-            if(currentHotel != null){
-                System.out.println(currentHotel.getTel());
-            }else{
-                System.out.println("null pointer");
-            }
             hotelData.add(currentHotel); 
             
             hotelZahl--;

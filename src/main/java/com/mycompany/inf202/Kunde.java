@@ -34,16 +34,5 @@ public class Kunde extends Person{
         
     }
     */
-    public void updateReise(String n)
-    {
-        
-    }
-
-/*    
-    @Override public String toString()
-    {
-        
-    }
-*/
 
 }

@@ -56,9 +56,14 @@ public abstract class Person {
         return email;
     }
 
-    public int getTel()
+    public int getTelefonnummer()
     {
         return telefonnummer;
+    }
+
+    public Date getGeburtsdatum()
+    {
+        return geburtsdatum;
     }
 
     public String getName()
@@ -74,27 +79,10 @@ public abstract class Person {
         telefonnummer = tel;
     }
     
-    
-    @Override public String toString()
-    {
-        return String.format("Frau/Herr: " + name + "\n" +
-                             "     burgerID:      " + burgerID + "\n" +
-                             "     geburtsdatum:  " + geburtsdatum + "\n" +
-                             "     anschrift:     " + anschrift + "\n" +
-                             "     email:         " + email + "\n" +
-                             "     telefonnummer: " + telefonnummer );
-    }
-  
     public void updateKontakt(String e, int tel)
     {
         email = e;
         telefonnummer = tel;
     }
     
-    public void printKontakt()
-    {
-        System.out.println("Frau/Herr " + name + ":");
-        System.out.println("     email:         " + email);
-        System.out.println("     telefonnummer: " + telefonnummer);        
-    }
 }

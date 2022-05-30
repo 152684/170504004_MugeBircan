@@ -64,7 +64,10 @@ public class Arbeiter extends Person{
     public String getUserName(){
         return userName;
     }
-    
+
+    public int getPersonalID(){
+        return personalID;
+    }
     
     public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) //typ von boolean zu int umwandeln um fehler beim hinzufuegen zu sehen
     {       
@@ -126,24 +129,7 @@ public class Arbeiter extends Person{
         }
         
     }
-       
-    public void kundeNachIDprint()
-    {
-    /*
-        System.out.println("Geben Sie die BuergerID des Kunden ein: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        Iterator<Kunde> iter = kunden.iterator();
-        
-        while(iter.hasNext()){
-            if(iter.next().getBurgerID() == id){
-                iter.toString();
-                break;
-            }
-        }
-    */    
-    }
-    
+           
     public int setTour( String n, Date d, String info, int maxT, String hN, float p, String rL)
     { // 1 erfolgreich ins Databease gespeichert, 2 existiert, 3 fehler
 
@@ -187,65 +173,6 @@ public class Arbeiter extends Person{
         }                        
         
     }
-
-    public void tourAlphPrint()
-    {
-        Iterator<Tour> iter = tours.iterator();
-        while(iter.hasNext()){
-            System.out.println(iter.next().toString());
-        }
-        
-    }
-/*
-    public void tourPreisPrint()
-    {
-        System.out.println("Geben Sie den Namen des Tours ein: ");
-        String name = sc.nextLine();
-        Iterator<Tour> iter = tours.iterator();
-        
-        while(iter.hasNext()){
-            if(iter.next().getName() == name){
-//                System.out.println("Der Preis ist: " + iter.getPreis());
-                break;
-            }
-        }
-        
-    }
-
-    public void tourNachNamePrint()
-    {
-        System.out.println("Geben Sie den Namen des Tours ein: ");
-        String name = sc.nextLine();
-        Iterator<Tour> iter = tours.iterator();
-        
-        while(iter.hasNext()){
-            if(iter.next().getName() == name){
-                iter.toString();
-                break;
-            }
-        }
-        
-    }
-*/
-    public void printTourKunden(String tour)
-    {
-        
-    }
-
-    public void tourSetHotel(String tour, String hotel)
-    {
-        
-    }
-    
-    public void tourSetKunde(String tour, String kunde)
-    {
-        
-    }
-    
-    public void tourDeleteKunde(String tour, String kunde)
-    {
-        
-    }
     
     public int setHotel(String n, String ansch, int telefon, String email, float preis)
     { // 1 erfolgreich ins Databease gespeichert, 2 existiert, 3 fehler
@@ -259,30 +186,6 @@ public class Arbeiter extends Person{
         }else{
             return 3;
         }                        
-    }
-    
-    public void hotelAlphPrint()
-    {
-        Iterator<Hotel> iter = hotels.iterator();
-        while(iter.hasNext()){
-            System.out.println(iter.next().toString());
-        }
-        
-    }
-    
-    public void hotelNachNamePrint()
-    {
-        System.out.println("Geben Sie den Namen des Hotels ein: ");
-        String name = sc.nextLine();
-        Iterator<Hotel> iter = hotels.iterator();
-        
-        while(iter.hasNext()){
-            if(iter.next().getName() == name){
-                iter.toString();
-                break;
-            }
-        }
-        
     }
     
     public int deleteHotel(String n)
@@ -335,30 +238,7 @@ public class Arbeiter extends Person{
         UpdateRecords.updateReiseL(n, anschr, e, telefon, ID);        
     }
     
-    public void reiseLAlphPrint()
-    {
-        Iterator<ReiseLeiter> iter = reiseleitern.iterator();
-        while(iter.hasNext()){
-            System.out.println(iter.next().toString());
-        }
-            
-    }
-    
-    public void printReiseL()
-    {
-        System.out.println("Geben Sie den Namen des Kunden ein: ");
-        String name = sc.nextLine();
-        Iterator<ReiseLeiter> iter = reiseleitern.iterator();
         
-        while(iter.hasNext()){
-            if(iter.next().getName() == name){
-                iter.toString();
-                break;
-            }
-        }
-        
-    }
-    
     public boolean deleteReiseL(long ID)
     {
         try {

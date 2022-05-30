@@ -150,11 +150,11 @@ public class LoginChefController implements Initializable {
     @FXML
     private void tourL(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourListe.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ToursTable.fxml"));
             Parent root = loader.load();
             //The following both lines are the only addition we need to pass the arguments
-            TourListeController controller2 = loader.getController();
-            controller2.currentAnlegen(currentUser);
+            ToursTableController controller2 = loader.getController();
+            //controller2.currentAnlegen(currentUser);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -183,10 +183,34 @@ public class LoginChefController implements Initializable {
 
     @FXML
     private void kundeListen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            KundeListeController controller2 = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void reiseLeiterListen(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReiseLeitListe.fxml"));
+            Parent root = loader.load();
+            //The following both lines are the only addition we need to pass the arguments
+            ReiseLeitListeController controller2 = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

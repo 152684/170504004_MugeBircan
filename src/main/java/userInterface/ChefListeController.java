@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import static userInterface.TableViewTestController.table_info_app;
 
 /**
  * FXML Controller class

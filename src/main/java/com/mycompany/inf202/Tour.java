@@ -6,6 +6,8 @@ package com.mycompany.inf202;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 //import javafx.beans.property.StringProperty;
 /**
  *
@@ -22,6 +24,7 @@ public class Tour {
     private ArrayList<Kunde> kunden = new ArrayList();
     private int freiePlaetze = 0;
     private String r;
+    private SplitMenuButton optionen;
 
     public Tour(String n, Date d, String info, int maxT, String hN, float p, String rL)
     {
@@ -46,11 +49,24 @@ public class Tour {
         freiePlaetze = freieP;
         r = rL;        
     }
-    /*
-    public StringProperty tourNameProperty() {
-	return tourName;
+
+    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freieP, String rL, SplitMenuButton button)
+    {
+        tourName = n;
+        tourDatum = d;
+        tourInfo = info;
+        maxTeilnehmer = maxT;
+        hotelName = hN;
+        preis = p;
+        freiePlaetze = freieP;
+        r = rL;     
+        optionen = button;
     }
-    */
+
+    public SplitMenuButton getOptionen(){
+        return optionen;
+    }
+    
     public String getTourName() {
         return tourName;
     }
@@ -122,16 +138,19 @@ public class Tour {
     public void setPreis(int m){
         preis = m;
     }
-
-    @Override public String toString()
-    {
-        return String.format("Tour:                     " + tourName + "\n" +
-                             "tourDatum:                " + tourDatum + "\n" +
-                             "maximale Teilnehmerzahl:  " + maxTeilnehmer + "\n" +
-                             "freiePlaetze:             " + freiePlaetze + "\n" +
-                             "Hotel:                    " + hotelName + "\n" +
-                             "Reiseleiter:              " + r + "\n" +
-                             "preis:                    " + preis );
+    
+    public void menuButtonSet(){
+        optionen = new SplitMenuButton();
+        optionen.setText("Optionen");
+        
+        MenuItem kundeAnAb = new MenuItem("Kunde An- Abmeldung");
+        MenuItem aktual = new MenuItem("Tour aktualisieren");
+        
+        optionen.getItems().addAll(kundeAnAb, aktual);
+        
+        kundeAnAb.setOnAction((e)-> {
+            System.out.println("Choice 1 selected");
+        });
     }
            
 }

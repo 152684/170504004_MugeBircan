@@ -41,7 +41,7 @@ public class Hotel {
         return anschrift;
     }
 
-    public int getTel(){
+    public int getTelefonnummer(){
         return telefonnummer;
     }
 
@@ -51,12 +51,5 @@ public class Hotel {
     
     public float getPreis(){
         return preis;
-    }
-    @Override public String toString(){
-        return String.format("Hotel: " + name + "\n" +
-                             "      Anschrift:     " + anschrift +
-                             "      Telefonnummer: " + telefonnummer +
-                             "      Email:         " + email +
-                             "      Preis:         " + preis);
     }
 }

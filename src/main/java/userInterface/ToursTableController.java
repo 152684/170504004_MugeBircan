@@ -4,7 +4,7 @@
  */
 package userInterface;
 
-import com.mycompany.inf202.*;
+import com.mycompany.inf202.Tour;
 import databaseFunctions.SelectRecords;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,41 +24,54 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author mbirc
  */
-
-public class TableViewTestController implements Initializable {
+public class ToursTableController implements Initializable {
 
     private ObservableList<Tour> tourData = FXCollections.observableArrayList();
     public static TableView<Tour> table_info_app;
-    
+
     @FXML
     private TableView<Tour> toursTable;
     @FXML
-    private TableColumn<Tour, String> tourNameColumn;    
+    private TableColumn<Tour, String> tourNameColumn;
     @FXML
     private TableColumn<Tour, String> tourDatumColumn;
     @FXML
     private TableColumn<Tour, String> tourInfoColumn;
     @FXML
+    private TableColumn<Tour, String> reiseLColumn;
+    @FXML
+    private TableColumn<Tour, String> hotelNameColumn;
+    @FXML
+    private TableColumn<Tour, Integer> maxTColumn;
+    @FXML
+    private TableColumn<Tour, Integer> freiePColumn;
+    @FXML
     private TableColumn<Tour, Float> preisColumn;
-    
-    
+    @FXML
+    private TableColumn<Tour, SplitMenuButton> optionColumn;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO        
+        // TODO
         table_info_app = toursTable;
         initializeCols();
         loadData();
     }    
-
+    
     private void initializeCols(){
       
       tourNameColumn.setCellValueFactory(new PropertyValueFactory<>("tourName"));
       tourDatumColumn.setCellValueFactory(new PropertyValueFactory<>("tourDatum"));
       tourInfoColumn.setCellValueFactory(new PropertyValueFactory<>("tourInfo"));
       preisColumn.setCellValueFactory(new PropertyValueFactory<>("preis"));
+      reiseLColumn.setCellValueFactory(new PropertyValueFactory<>("reiseL"));
+      hotelNameColumn.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+      maxTColumn.setCellValueFactory(new PropertyValueFactory<>("maxTeilnehmer"));
+      freiePColumn.setCellValueFactory(new PropertyValueFactory<>("freiePlaetze"));
+      optionColumn.setCellValueFactory(new PropertyValueFactory<>("optionen"));
     }   
     
     private void loadData(){
@@ -75,5 +89,4 @@ public class TableViewTestController implements Initializable {
 
         toursTable.setItems(tourData);
     }    
-    
 }

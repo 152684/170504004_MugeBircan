@@ -4,7 +4,8 @@
  */
 package userInterface;
 
-import com.mycompany.inf202.*;
+import com.mycompany.inf202.Kunde;
+import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.SelectRecords;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,34 +20,31 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-//import static userInterface.TableViewTestController.table_info_app;
 
 /**
  * FXML Controller class
  *
  * @author mbirc
  */
-public class MitarbeiterListeController implements Initializable {
+public class KundeListeController implements Initializable {
 
-    private ObservableList<Mitarbeiter> mitarbData = FXCollections.observableArrayList();
-    public static TableView<Mitarbeiter> table_info_app;
-    
+    private ObservableList<Kunde> kundeData = FXCollections.observableArrayList();
+    public static TableView<Kunde> table_info_app;
+
     @FXML
-    private TableView<Mitarbeiter> mitarbeiterTable;
+    private TableView<Kunde> kundeTable;
     @FXML
-    private TableColumn<Mitarbeiter, String> nameColumn;
+    private TableColumn<Kunde, String> nameColumn;
     @FXML
-    private TableColumn<Mitarbeiter, Long> burgerIdColumn;
+    private TableColumn<Kunde, Long> burgerIdColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> anschriftColumn;
+    private TableColumn<Kunde, String> anschriftColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> emailColumn;
+    private TableColumn<Kunde, String> emailColumn;
     @FXML
-    private TableColumn<Mitarbeiter, Integer> telColumn;
+    private TableColumn<Kunde, Integer> telColumn;
     @FXML
-    private TableColumn<Mitarbeiter, String> geburtColumn;
-    @FXML
-    private TableColumn<Mitarbeiter, String> persIdColumn;
+    private TableColumn<Kunde, String> geburtColumn;
 
     /**
      * Initializes the controller class.
@@ -54,7 +52,7 @@ public class MitarbeiterListeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        table_info_app = mitarbeiterTable;
+        table_info_app = kundeTable;
         initializeCols();
         try {        
             loadData();
@@ -62,7 +60,7 @@ public class MitarbeiterListeController implements Initializable {
             Logger.getLogger(MitarbeiterListeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
-
+ 
     private void initializeCols(){
       
       nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -71,36 +69,19 @@ public class MitarbeiterListeController implements Initializable {
       emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
       telColumn.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
       geburtColumn.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
-      persIdColumn.setCellValueFactory(new PropertyValueFactory<>("personalID"));
     }   
     
     private void loadData() throws UngueltigeIDException{
-        /*
-        ArrayList<Long> mitarb = new ArrayList();
-        int tourZahl = SelectRecords.mitarbIDsInArray(mitarb);
-        Iterator<Long> iter = mitarb.iterator();
-        
-        
-        while(tourZahl != 0){
-            Mitarbeiter currentTour = SelectRecords.findMitarbeiter(iter.next());
-            mitarbData.add(currentTour);  
-            tourZahl--;
-        }
 
-        mitarbeiterTable.setItems(mitarbData);
-    }    
-        
-        
-        */
-        ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
-        SelectRecords.allMitarbeiterInArray(mitarbeitern);
-        Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
+        ArrayList<Kunde> kunden = new ArrayList();
+        SelectRecords.allKundenInArray(kunden);
+        Iterator<Kunde> iter = kunden.iterator();
                 
         while(iter.hasNext()){
-            mitarbData.add(iter.next());
+            kundeData.add(iter.next());
         }
 
-        mitarbeiterTable.setItems(mitarbData);
+        kundeTable.setItems(kundeData);
     }    
     
 }

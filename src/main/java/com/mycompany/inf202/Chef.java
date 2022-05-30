@@ -21,16 +21,6 @@ public class Chef extends Arbeiter{
     public Chef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
     }
-
-    public void printMitarbAlph()
-    {
-        
-    }
-    
-    public void printMitarbNachID()
-    {
-        
-    }
     
     public boolean setMitarb(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
     {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="736.0" prefWidth="1130.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.ToursTableController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="76.0" layoutY="103.0" prefHeight="633.0" prefWidth="1130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="103.0">
+         <children>
+            <TableView fx:id="toursTable" layoutX="88.0" layoutY="46.0" prefHeight="736.0" prefWidth="1109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="tourNameColumn" prefWidth="99.0" text="Tour Name" />
+                <TableColumn fx:id="tourDatumColumn" prefWidth="114.0" text="Tour Datum" />
+                  <TableColumn fx:id="tourInfoColumn" prefWidth="149.0" text="Tour Information" />
+                  <TableColumn fx:id="reiseLColumn" prefWidth="97.0" text="ReiseLeiter" />
+                  <TableColumn fx:id="hotelNameColumn" minWidth="0.0" prefWidth="136.0" text="Hotel Name" />
+                  <TableColumn fx:id="maxTColumn" prefWidth="160.0" text="maximale Teilnehmer" />
+                  <TableColumn fx:id="freiePColumn" minWidth="0.0" prefWidth="128.0" text="freie Plätze" />
+                  <TableColumn fx:id="preisColumn" maxWidth="376.0" prefWidth="96.0" text="preis" />
+                  <TableColumn fx:id="optionColumn" prefWidth="128.0" text="Optionenen" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="429.0" layoutY="26.0" text="Tours des Reisebüros">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
