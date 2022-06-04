@@ -14,7 +14,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -48,7 +47,7 @@ public class ToursTableController implements Initializable {
     @FXML
     private TableColumn<Tour, Float> preisColumn;
     @FXML
-    private TableColumn<Tour, SplitMenuButton> optionColumn;
+    private TableColumn<Tour, String> kundenColumn;
 
     /**
      * Initializes the controller class.
@@ -71,7 +70,7 @@ public class ToursTableController implements Initializable {
       hotelNameColumn.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
       maxTColumn.setCellValueFactory(new PropertyValueFactory<>("maxTeilnehmer"));
       freiePColumn.setCellValueFactory(new PropertyValueFactory<>("freiePlaetze"));
-      optionColumn.setCellValueFactory(new PropertyValueFactory<>("optionen"));
+      kundenColumn.setCellValueFactory(new PropertyValueFactory<>("kunden"));
     }   
     
     private void loadData(){
@@ -89,4 +88,5 @@ public class ToursTableController implements Initializable {
 
         toursTable.setItems(tourData);
     }    
+
 }

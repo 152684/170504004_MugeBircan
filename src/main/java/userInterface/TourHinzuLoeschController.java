@@ -41,8 +41,6 @@ public class TourHinzuLoeschController implements Initializable {
     @FXML
     private TextField preis;
     @FXML
-    private TextField reiseL;
-    @FXML
     private TextArea textArea;
 
     /**
@@ -72,7 +70,7 @@ public class TourHinzuLoeschController implements Initializable {
         String info = this.tourInfo.getText();
         String hotelName = this.hotelName.getText();
         int maxTeil = Integer.parseInt(this.maxTeil.getText());
-        String reiseL = this.reiseL.getText();
+        //String reiseL = this.reiseL.getText();
         float preis = Float.parseFloat(this.preis.getText());
         String g = this.tourDatum.getText();
         Date tourDatum = null;
@@ -85,14 +83,16 @@ public class TourHinzuLoeschController implements Initializable {
         
         Hotel h = SelectRecords.findHotel(hotelName);
         if(h == null){
-            textArea.setText("Der Tour mit den Namen " + name + " kann nicht hinzugefügt werden.\nDas Hotel " + hotelName + " existiert nicht!");
+            textArea.setText("Der Tour mit den Namen " + name + " kann nicht hinzugefügt werden.\nDa das Hotel " + hotelName + " nicht existiert!");
         }else{
             int insertErfolg = 3;
 
             if(currentTyp == 1){
-                insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);
+                //insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);
+                insertErfolg = currentChef.setTour2(name, tourDatum, info, maxTeil, hotelName, preis);
             }else{
-                insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);            
+//                insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);            
+                insertErfolg = currentMit.setTour2(name, tourDatum, info, maxTeil, hotelName, preis);
             }
             switch (insertErfolg) {
                 case 1:
@@ -139,7 +139,7 @@ public class TourHinzuLoeschController implements Initializable {
         String info = this.tourInfo.getText();
         String hotelName = this.hotelName.getText();
         int maxTeil = Integer.parseInt(this.maxTeil.getText());
-        String reiseL = this.reiseL.getText();
+        //String reiseL = this.reiseL.getText();
         float preis = Float.parseFloat(this.preis.getText());
         String g = this.tourDatum.getText();
         Date tourDatum = null;
@@ -151,23 +151,33 @@ public class TourHinzuLoeschController implements Initializable {
         }   
 
         int aktualErfolg = 3;
-        
-        if(currentTyp == 1){
-            aktualErfolg = currentChef.updateTourInfos(name, tourDatum, maxTeil, info, hotelName, preis, reiseL);
+        Hotel h = SelectRecords.findHotel(hotelName);
+        if(h == null){
+            textArea.setText("Der Tour mit den Namen " + name + " kann nicht aktualisiert werden.\nDa das Hotel " + hotelName + " nicht existiert!");
         }else{
-            aktualErfolg = currentMit.updateTourInfos(name, tourDatum, maxTeil, info, hotelName, preis, reiseL);
+            if(currentTyp == 1){
+                aktualErfolg = currentChef.updateTourInfos(name, tourDatum, maxTeil, info, hotelName, preis);
+            }else{
+                aktualErfolg = currentMit.updateTourInfos(name, tourDatum, maxTeil, info, hotelName, preis);
+            }
+            // 0 maxTeil reduziert, 1 erfolgreich aktualisiert, 2 fehler, 3 existiert nicht
+            switch (aktualErfolg) {
+                case 0:
+                    textArea.setText("Die maximale Teilnehmerzahl des Tours kann nicht reduziert werden.");
+                    break;
+                case 1:
+                    textArea.setText("Der Tour mit den Namen " + name + " wird aktualisiert.");
+                    break;
+                case 3:
+                    textArea.setText("Der Tour mit den Namen " + name + " existiert nicht.");
+                    break;
+                default:
+                    textArea.setText("Der Tour mit den Namen " + name + " kann nicht aktualisiert werden.");
+                    break;
+            }
+            
         }
-        switch (aktualErfolg) {
-            case 1:
-                textArea.setText("Der Tour mit den Namen " + name + " wird aktualisiert.");
-                break;
-            case 2:
-                textArea.setText("Der Tour mit den Namen " + name + " existiert nicht.");
-                break;
-            default:
-                textArea.setText("Der Tour mit den Namen " + name + " kann nicht aktualisiert werden.");
-                break;
-        }
+        
 
     }
     

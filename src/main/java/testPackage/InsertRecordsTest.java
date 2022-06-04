@@ -89,8 +89,8 @@ public class InsertRecordsTest {
         InsertRecords.insertHotel("antalyaHotel2", "antalya", 15675342, "emailHotel", 150);
  
         System.out.println("-----------insertTour überprüfen---------------");
-        InsertRecords.insertTour("antalyaTour", geburt, "burada kalinacak, suraya gidilecek", 20, "antalyaHotel", 50, 20, "ali");
-        InsertRecords.insertTour("antalyaTour2", geburt, "orda burda surda", 20, "antalyaHotel", 50, 20, "ali");
+//        InsertRecords.insertTour("antalyaTour", geburt, "burada kalinacak, suraya gidilecek", 20, "antalyaHotel", 50, 20, "ali");
+//        InsertRecords.insertTour("antalyaTour2", geburt, "orda burda surda", 20, "antalyaHotel", 50, 20, "ali");
         
     }
     

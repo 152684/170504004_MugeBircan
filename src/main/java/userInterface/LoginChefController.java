@@ -96,7 +96,7 @@ public class LoginChefController implements Initializable {
             e.printStackTrace();
         }
     }
-
+/*
     private void tourHinzuAktLoesch(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TourHinzuLoesch.fxml"));
@@ -112,7 +112,7 @@ public class LoginChefController implements Initializable {
             e.printStackTrace();
         }
     }
-
+*/
     @FXML
     private void hotelFunktionen(ActionEvent event) {
         try{

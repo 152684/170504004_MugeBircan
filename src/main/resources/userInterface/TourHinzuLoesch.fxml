@@ -25,14 +25,12 @@
             <Label layoutX="48.0" layoutY="234.0" text="maximale Teilnehmerzahl:" />
             <Label layoutX="48.0" layoutY="276.0" text="Hotelname:" />
             <Label layoutX="48.0" layoutY="321.0" text="Preis:" />
-            <Label layoutX="46.0" layoutY="369.0" text="ReiseLeiter:" />
             <TextField fx:id="tourName" layoutX="244.0" layoutY="103.0" />
             <TextField fx:id="tourDatum" layoutX="244.0" layoutY="145.0" />
             <TextField fx:id="tourInfo" layoutX="244.0" layoutY="185.0" />
             <TextField fx:id="maxTeil" layoutX="244.0" layoutY="229.0" />
             <TextField fx:id="hotelName" layoutX="244.0" layoutY="271.0" />
             <TextField fx:id="preis" layoutX="244.0" layoutY="316.0" />
-            <TextField fx:id="reiseL" layoutX="244.0" layoutY="364.0" />
             <TextArea fx:id="textArea" layoutX="467.0" layoutY="101.0" prefHeight="202.0" prefWidth="222.0" />
             <Button layoutX="514.0" layoutY="316.0" mnemonicParsing="false" onAction="#tourHinzuButton" text="Tour hinzufügen" />
             <Button layoutX="525.0" layoutY="390.0" mnemonicParsing="false" onAction="#tourLoeschButton" text="Tour Löschen" />

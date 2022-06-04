@@ -488,7 +488,7 @@ public class SelectRecords {
  
             ResultSet rs    = pstmt.executeQuery();
             k = new Tour(rs.getString("tourName"), rs.getDate("tourDatum"), rs.getString("tourInfo"), rs.getInt("maxTeilnehmer"),
-                         rs.getString("hotelName"), rs.getFloat("preis"), rs.getInt("freiePlaetze"), rs.getString("reiseL"));            
+                         rs.getString("hotelName"), rs.getFloat("preis"), rs.getInt("freiePlaetze"), rs.getString("reiseL"), rs.getString("kunden"));            
         }catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
@@ -544,4 +544,44 @@ public class SelectRecords {
           
     }    
         
+    public static ArrayList<String> selectTourReiseL(String tour){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT reiseL FROM tour WHERE tourName = ?";  
+        
+        String vonDatabaseString = null;
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setString(1, tour);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            vonDatabaseString = rs.getString("reiseL");
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+        
+        Gson gson = new Gson();
+        ArrayList<String> vonDatabaseArray = new ArrayList();
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        if(vonDatabaseString != null){
+            vonDatabaseArray = gson.fromJson(vonDatabaseString, type);    
+            return vonDatabaseArray;
+        }else{
+            return null;
+        }
+          
+    }    
+
+
 }

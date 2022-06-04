@@ -252,7 +252,7 @@ public class DeleteRecords {
         //returns 2 fehler
         //return 3 id unguiltig
         
-        if(kundenId>10000000000L && kundenId<99999999999L ){
+        if(!(kundenId>10000000000L && kundenId<99999999999L )){
             return 3; 
         }
         ArrayList<String> kunden = SelectRecords.selectTourKunden(tour);
@@ -309,4 +309,51 @@ public class DeleteRecords {
         }
         return 2;
     }    
+
+    public static int deleteReiseLVonTour(String tour, long reiseLId){
+        //returns 0 when reiseLeiter nicht zur Tour angemeldet ist
+        //returns 1 when reiseLeiter erfolgreich abgemeldet wird
+        //returns 2 fehler
+        //return 3 id unguiltig
+        //return 4 der letzte reiseL
+        
+        if(!(reiseLId>10000000000L && reiseLId<99999999999L )){
+            return 3; 
+        }
+        ArrayList<String> reiseL = SelectRecords.selectTourReiseL(tour);
+        Iterator<String> iter = reiseL.iterator();
+        
+        boolean reiseLEx = false;
+        int stelle = 0;
+        if(reiseL == null || reiseL.isEmpty()){
+            System.out.println("Es gibt keinen ReiseLeiter bei diesem Tour");
+        }else{
+            while(iter.hasNext()){
+                long l = Long.parseLong(iter.next());
+                if(l == reiseLId){
+                    stelle ++;
+                    reiseLEx = true;
+                    break;
+                }
+            }
+                        
+            if(reiseLEx){
+                if(reiseL.size() == 1){
+                    System.out.println("Der letzte ReiseLeiter (reiseLId: " + reiseLId + ") ist von dem Tour abgemeldet.");
+                    return 4;
+                }else{
+                    reiseL.remove(stelle);
+                    UpdateRecords.deleteReiseLVonTour(tour, reiseL, reiseLId);
+                    System.out.println("Der ReiseLeiter (reiseLId: " + reiseLId + ") wird von dem Tour abgemeldet.");
+                }
+                return 1;
+            }else{
+                System.out.println("Der ReiseLeiter (reiseLId: " + reiseLId + ") ist nicht bei diesem Tour angemeldet");
+                return 0;
+            }
+        }
+        return 2;
+    }    
+
+
 }

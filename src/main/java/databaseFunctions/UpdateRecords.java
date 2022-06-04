@@ -233,16 +233,20 @@ public class UpdateRecords {
         
     }
   
-    public static void updateTourInfo(String n, Date d, int maxT, String info, String hN, float p, String rL){
+    public static int updateTourInfo(String n, Date d, int maxT, String info, String hN, float p){
+        //return 0 maxTeilnehmer reduziert
+        //return 1 erfolg
+        //return 2 fehler
         
         Tour t = SelectRecords.findTour(n);
         if(t.getMaxTeilnehmer() <= maxT){
+            int neueFreieP = maxT-t.getMaxTeilnehmer()+t.getFreiePlaetze();
             Connect c = new Connect();
             Connection conn = c.connect();
 
             java.sql.Date sqlDate = new java.sql.Date(d.getTime());
 
-            String sql = "UPDATE tour SET tourDatum = ?, tourInfo = ?, maxTeilnehmer = ?, hotelName = ?, preis = ?, reiseL = ? WHERE tourName = ?";
+            String sql = "UPDATE tour SET tourDatum = ?, tourInfo = ?, maxTeilnehmer = ?, hotelName = ?, preis = ?, freiePlaetze = ? WHERE tourName = ?";
 
             try{    
                 PreparedStatement pstmt = conn.prepareStatement(sql);  
@@ -252,9 +256,10 @@ public class UpdateRecords {
                 pstmt.setInt(3, maxT);  
                 pstmt.setString(4, hN);
                 pstmt.setFloat(5, p);
-                pstmt.setString(6, rL);
+                pstmt.setInt(6, neueFreieP);
                 pstmt.setString(7, n);
                 pstmt.executeUpdate(); 
+                return 1;
             } catch (SQLException ex) {  
                 System.out.println("Die Tour kann nicht aktualisiert werden!");
                 System.out.println(ex.getMessage());  
@@ -271,7 +276,9 @@ public class UpdateRecords {
             
         }else{
             System.out.println("Die maximale Teilnehmerzahl kann nicht reduziert werden.");
+            return 0;
         }
+        return 3;
         
     }
     
@@ -462,5 +469,104 @@ public class UpdateRecords {
         }
     }
 
+    public static int reiseLZurTourAnmelden(String tour, long reiseLId){
+        //returns 0 when reiseL schon zur Tour angemeldet ist
+        //returns 1 when reiseL erfolgreich angemeldet wird
+        //returns 2 fehler
+    
+        Tour currentTour = SelectRecords.findTour(tour);
+        
+        Connect c = new Connect();
+        Connection conn = c.connect();
 
+        Gson gson = new Gson();
+        ArrayList<String> vonDatabaseArray = SelectRecords.selectTourReiseL(tour);
+
+        boolean reiseLEx = false;
+
+        if(vonDatabaseArray != null){
+            Iterator<String> iter = vonDatabaseArray.iterator();
+            while(iter.hasNext()){
+                Long l = Long.parseLong(iter.next());
+                if(l == reiseLId){
+                    System.out.println("Dieser ReiseLeiter ist schon bei dieser Tour angemeldet.");
+                    reiseLEx = true;
+                    return 0;
+                }            
+            }
+        }else{
+            vonDatabaseArray = new ArrayList();
+        }    
+
+        if(!reiseLEx){
+            String s = String.valueOf(reiseLId);
+            vonDatabaseArray.add(s);
+            //ArrayList in einem String
+            String neueReiseL = gson.toJson(vonDatabaseArray);                            
+            String sql = "UPDATE tour SET reiseL = ? WHERE tourName = ?";
+            
+            try{
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+
+                pstmt.setString(1, neueReiseL);
+                pstmt.setString(2, tour);
+                pstmt.executeUpdate();
+
+                return 1;
+            } catch (SQLException ex) {  
+                System.out.println("Die ReiseLeitern der Tour können nicht aktualisiert werden!");
+                System.out.println(ex.getMessage());  
+            }
+
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException e){
+                        System.out.println(e.getMessage());                      
+                    }
+                }
+            }
+        }
+        return 2;
+            
+
+
+    }
+       
+    public static void deleteReiseLVonTour(String tour, ArrayList<String> reiseL, long reiseLId){
+        Connect c = new Connect();
+        Connection conn = c.connect();
+
+        Gson gson = new Gson();
+
+        String sql = "UPDATE tour SET reiseL = ? WHERE tourName = ?";
+              
+        String neueReiseL = gson.toJson(reiseL);
+
+        try{
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+                 
+            pstmt.setString(1, neueReiseL);
+            pstmt.setString(2, tour);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {  
+            System.out.println("Die ReiseL der Tour können nicht aktualisiert werden!");
+            System.out.println(ex.getMessage());  
+        }
+
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+    }
+
+    
+    
 }

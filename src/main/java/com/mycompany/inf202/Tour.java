@@ -6,8 +6,10 @@ package com.mycompany.inf202;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import userInterface.ToursTableController;
 //import javafx.beans.property.StringProperty;
 /**
  *
@@ -21,11 +23,10 @@ public class Tour {
     private int maxTeilnehmer = 0;
     private String hotelName;
     private float preis = 0;
-    private ArrayList<Kunde> kunden = new ArrayList();
+    private String kunden;
     private int freiePlaetze = 0;
-    private String r;
-    private SplitMenuButton optionen;
-
+    private String reiseL;
+/*
     public Tour(String n, Date d, String info, int maxT, String hN, float p, String rL)
     {
         tourName = n;
@@ -35,10 +36,21 @@ public class Tour {
         hotelName = hN;
         preis = p;
         freiePlaetze = maxT;
-        r = rL;        
+        reiseL = rL;        
+    }
+*/
+    public Tour(String n, Date d, String info, int maxT, String hN, float p)
+    {
+        tourName = n;
+        tourDatum = d;
+        tourInfo = info;
+        maxTeilnehmer = maxT;
+        hotelName = hN;
+        preis = p;
+        freiePlaetze = maxT;       
     }
 
-    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freieP, String rL)
+    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freieP, String rL, String kunde)
     {
         tourName = n;
         tourDatum = d;
@@ -47,10 +59,11 @@ public class Tour {
         hotelName = hN;
         preis = p;
         freiePlaetze = freieP;
-        r = rL;        
+        reiseL = rL;        
+        kunden = kunde;
     }
-
-    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freieP, String rL, SplitMenuButton button)
+ 
+    public Tour(String n, Date d, String info, int maxT, String hN, float p, int freieP)
     {
         tourName = n;
         tourDatum = d;
@@ -58,15 +71,9 @@ public class Tour {
         maxTeilnehmer = maxT;
         hotelName = hN;
         preis = p;
-        freiePlaetze = freieP;
-        r = rL;     
-        optionen = button;
+        freiePlaetze = freieP;        
     }
 
-    public SplitMenuButton getOptionen(){
-        return optionen;
-    }
-    
     public String getTourName() {
         return tourName;
     }
@@ -99,11 +106,11 @@ public class Tour {
         this.hotelName = hotelName;
     }
 
-    public ArrayList<Kunde> getKunden() {
+    public String getKunden() {
         return kunden;
     }
 
-    public void setKunden(ArrayList<Kunde> kunden) {
+    public void setKunden(String kunden) {
         this.kunden = kunden;
     }
 
@@ -115,12 +122,12 @@ public class Tour {
         this.freiePlaetze = freiePlaetze;
     }
 
-    public String getR() {
-        return r;
+    public String getReiseL() {
+        return reiseL;
     }
 
-    public void setR(String r) {
-        this.r = r;
+    public void setReiseL(String r) {
+        this.reiseL = r;
     }
     
     public int getMaxTeilnehmer(){
@@ -138,19 +145,5 @@ public class Tour {
     public void setPreis(int m){
         preis = m;
     }
-    
-    public void menuButtonSet(){
-        optionen = new SplitMenuButton();
-        optionen.setText("Optionen");
-        
-        MenuItem kundeAnAb = new MenuItem("Kunde An- Abmeldung");
-        MenuItem aktual = new MenuItem("Tour aktualisieren");
-        
-        optionen.getItems().addAll(kundeAnAb, aktual);
-        
-        kundeAnAb.setOnAction((e)-> {
-            System.out.println("Choice 1 selected");
-        });
-    }
-           
+          
 }

@@ -109,15 +109,16 @@ public class KundeHinzufuegenController implements Initializable {
 
         boolean updateErfolg = false;
         if(currentTyp == 1){
-            currentChef.updateKundenInfo(name, burgerID, anschrift, email, tel);
-            textField.setText("Der Kunde mit den Namen " + name + " wird aktualisiert.");
-
+            updateErfolg = currentChef.updateKundenInfo(name, burgerID, anschrift, email, tel);            
         }else if(currentTyp == 2){
-            currentMit.updateKundenInfo(name, burgerID, anschrift, email, tel);
+            updateErfolg = currentMit.updateKundenInfo(name, burgerID, anschrift, email, tel);            
+        }
+        
+        if(updateErfolg){
             textField.setText("Der Kunde mit den Namen " + name + " wird aktualisiert.");
         }else{
-            textField.setText("Der Kunde mit den Namen " + name + " kann nicht aktualisiert werden.");            
-        }        
+            textField.setText("Der Kunde mit den Namen " + name + " existiert nicht");
+        }
 
     }
 
@@ -168,15 +169,17 @@ public class KundeHinzufuegenController implements Initializable {
 
         boolean updateErfolg = false;
         if(currentTyp == 1){
-            currentChef.updateReiseLInfo(name, anschrift, email, tel, burgerID);
-            textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " wird aktualisiert.");
-
+            updateErfolg = currentChef.updateReiseLInfo(name, anschrift, email, tel, burgerID);
         }else if(currentTyp == 2){
-            currentMit.updateReiseLInfo(name, anschrift, email, tel, burgerID);
-            textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " wird aktualisiert.");
+            updateErfolg = currentMit.updateReiseLInfo(name, anschrift, email, tel, burgerID);
+        }
+
+        if(updateErfolg){
+            textField.setText("Der ReiseLeiter mit den Namen " + name + " wird aktualisiert.");
         }else{
-            textField.setText("Der ReiseLeiter mit der BurgerID " + burgerID + " kann nicht aktualisiert werden.");            
-        }        
+            textField.setText("Der ReiseLeiter mit den Namen " + name + " existiert nicht");
+        }
+       
     }
 
     @FXML

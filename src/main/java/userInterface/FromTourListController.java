@@ -4,14 +4,12 @@
  */
 package userInterface;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+
 import com.mycompany.inf202.*;
 import databaseFunctions.DeleteRecords;
 import databaseFunctions.SelectRecords;
 import databaseFunctions.UpdateRecords;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -69,7 +67,7 @@ public class FromTourListController implements Initializable {
         t = SelectRecords.findTour(tourName);
         Hotel h = SelectRecords.findHotel(t.getHotelName());
         float total = t.getPreis()+h.getPreis();
-        textArea.setText("Sie haben " + tourName + " gewählt.\nTour Preis: " + t.getPreis() + "\nHotel preis: " + h.getPreis() + "\nTotal preis: " + total);
+        textArea2.setText("Sie haben " + tourName + " gewählt.\nTour Preis: " + t.getPreis() + "\nHotel preis: " + h.getPreis() + "\nTotal preis: " + total);
     }
 
     @FXML
@@ -111,16 +109,16 @@ public class FromTourListController implements Initializable {
                     anmeldeSituation = UpdateRecords.kundeZurTourAnmelden(t.getTourName(), k.getBurgerID());
                     switch (anmeldeSituation) {
                         case 0:
-                            textArea2.setText("Der Kunde " + k.getName() + " ist schon zu dieser Tour angemeldet.");
+                            textArea.setText("Der Kunde " + k.getName() + " ist schon zu dieser Tour angemeldet.");
                             break;
                         case 1:
-                            textArea2.setText("Der Kunde " + k.getName() + " ist zur Tour angemeldet.");                         
+                            textArea.setText("Der Kunde " + k.getName() + " ist zur Tour angemeldet.");                         
                             break;
                         case 3:
-                            textArea2.setText("Es gibt keine freiePlätze bei diser Tour.");
+                            textArea.setText("Es gibt keine freiePlätze bei diser Tour.");
                             break;
                         default:
-                            textArea2.setText("Der Kunde " + k.getName() + " kann zur Tour nicht angemeldet werden.");
+                            textArea.setText("Der Kunde " + k.getName() + " kann zur Tour nicht angemeldet werden.");
                             break;                            
                     }
                     kundeEx = true;
@@ -128,7 +126,7 @@ public class FromTourListController implements Initializable {
                 }
             }
             if(!kundeEx){
-                textArea2.setText("Der Kunde mit der IDNummer: " + kundeId + " existiert nicht. Reigstieren Sie die Kunde.");
+                textArea.setText("Der Kunde mit der IDNummer: " + kundeId + " existiert nicht. Reigstieren Sie die Kunde.");
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
                 Parent root = loader.load();
@@ -162,18 +160,100 @@ public class FromTourListController implements Initializable {
         int abmeldeSituation = DeleteRecords.deleteKundeVonTour(t.getTourName(), kundenId);
         switch (abmeldeSituation) {
             case 0:
-                textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist zu dieser Tour nicht angemeldet!");
+                textArea.setText("Der Kunde (burgerID: " + kundenId + ") ist zu dieser Tour nicht angemeldet!");
                 break;
             case 1:
-                textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour abgemeldet!");
+                textArea.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour abgemeldet!");
                 break;
             case 2:
-                textArea2.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour nicht abgemeldet werden!");
+                textArea.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour nicht abgemeldet werden!");
                 break;
             default:
-                textArea2.setText("ID Nummer muss 11 Stellig sein");
+                textArea.setText("ID Nummer muss 11 Stellig sein");
 
         }       
+    }
+
+    @FXML
+    private void reiseLAnButton(ActionEvent event) {
+        ArrayList<ReiseLeiter> reiseLs = new ArrayList();
+        long reiseLId = Long.parseLong(kundenID.getText());
+        boolean reiseLEx = false;
+        try {
+            SelectRecords.allReiseLInArray(reiseLs);
+            Iterator<ReiseLeiter> iter = reiseLs.iterator();
+            ReiseLeiter k;
+
+            int anmeldeSituation;
+            while(iter.hasNext()){
+                k = iter.next();
+                if(k.getBurgerID() == reiseLId){
+                    anmeldeSituation = UpdateRecords.reiseLZurTourAnmelden(t.getTourName(), k.getBurgerID());
+                    switch (anmeldeSituation) {
+                        case 0:
+                            textArea.setText("Der ReiseLeiter " + k.getName() + " ist schon zu dieser Tour angemeldet.");
+                            break;
+                        case 1:
+                            textArea.setText("Der ReiseLeiter " + k.getName() + " ist zur Tour angemeldet.");                         
+                            break;
+                        default:
+                            textArea.setText("Der ReiseLeiter " + k.getName() + " kann zur Tour nicht angemeldet werden.");
+                            break;                            
+                    }
+                    reiseLEx = true;
+                    break;
+                }
+            }
+            if(!reiseLEx){
+                textArea.setText("Der ReiseLeiter mit der IDNummer: " + reiseLId + " existiert nicht. Reigstieren Sie die ReiseLeiter.");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
+                Parent root = loader.load();
+                //The following both lines are the only addition we need to pass the arguments
+                KundeHinzufuegenController controller2 = loader.getController();
+                if(currentTyp == 1){
+                    controller2.currentAnlegen(currentChef);                    
+                }else if(currentTyp == 2){
+                    controller2.currentAnlegen(currentMit);                                        
+                }
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+               
+                
+            }
+            
+        }catch(UngueltigeIDException ex){
+            Logger.getLogger(FromTourListController.class.getName()).log(Level.SEVERE, null, ex);            
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    private void reiseLAbButton(ActionEvent event) {
+
+        long reiseLId = Long.parseLong(kundenID.getText());
+        int abmeldeSituation = DeleteRecords.deleteReiseLVonTour(t.getTourName(), reiseLId);
+        switch (abmeldeSituation) {
+            case 0:
+                textArea.setText("Der ReiseLeiter (burgerID: " + reiseLId + ") ist zu dieser Tour nicht angemeldet!");
+                break;
+            case 1:
+                textArea.setText("Der ReiseLeiter (burgerID: " + reiseLId + ") ist vom Tour abgemeldet!");
+                break;
+            case 2:
+                textArea.setText("Der ReiseLeiter (burgerID: " + reiseLId + ") kann vom Tour nicht abgemeldet werden!");
+                break;
+            case 4:
+                textArea.setText("Der letzte ReiseLeiter (burgerID: " + reiseLId + ") kann vom Tour nicht abgemeldet werden!");
+                break;                
+            default:
+                textArea.setText("ID Nummer muss 11 Stellig sein");
+
+        }       
+
     }
     
 }
