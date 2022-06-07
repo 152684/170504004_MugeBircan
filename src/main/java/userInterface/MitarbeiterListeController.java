@@ -47,6 +47,8 @@ public class MitarbeiterListeController implements Initializable {
     private TableColumn<Mitarbeiter, String> geburtColumn;
     @FXML
     private TableColumn<Mitarbeiter, String> persIdColumn;
+    @FXML
+    private TableColumn<Mitarbeiter, Float> erfolgColumn;
 
     /**
      * Initializes the controller class.
@@ -72,6 +74,7 @@ public class MitarbeiterListeController implements Initializable {
       telColumn.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
       geburtColumn.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
       persIdColumn.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+      erfolgColumn.setCellValueFactory(new PropertyValueFactory<>("erfolgsRate"));
     }   
     
     private void loadData() throws UngueltigeIDException{

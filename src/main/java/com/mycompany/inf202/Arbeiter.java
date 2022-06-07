@@ -69,7 +69,7 @@ public class Arbeiter extends Person{
         return personalID;
     }
     
-    public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) //typ von boolean zu int umwandeln um fehler beim hinzufuegen zu sehen
+    public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) 
     {       
         try {
             Kunde k = SelectRecords.findKunde(ID);

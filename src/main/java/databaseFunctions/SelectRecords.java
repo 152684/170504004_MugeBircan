@@ -36,7 +36,7 @@ public class SelectRecords {
             while (rs.next()) { 
                 Mitarbeiter m = new Mitarbeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
-                                                rs.getString("passwort"));
+                                                rs.getString("passwort"), rs.getFloat("erfolgsRate"));
                 mitarbeitern.add(m);
             }  
         }catch(UngueltigeIDException e) {
@@ -583,5 +583,62 @@ public class SelectRecords {
           
     }    
 
+    public static int mitarbErfolg(long mitId){ // returns registrierteKunden eines Mitarbeiters
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT registrierteKunden FROM mitarbeiter WHERE burgerID = ?";  
+        
+        int anzahl = 0;
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setLong(1, mitId);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            anzahl = rs.getInt("registrierteKunden");
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+        return anzahl;
+    }    
 
+    public static int mitarbMiserfolg(long mitId){ // returns abgemeldeteKunden eines Mitarbeiters
+        Connect c = new Connect();
+        Connection conn = c.connect();
+    
+        String sql = "SELECT abgemeldeteKunden FROM mitarbeiter WHERE burgerID = ?";  
+        
+        int anzahl = 0;
+        
+        try {              
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setLong(1, mitId);
+  
+            ResultSet rs    = pstmt.executeQuery();
+            anzahl = rs.getInt("abgemeldeteKunden");
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException e){
+                    System.out.println(e.getMessage());                      
+                }
+            }
+        }
+        return anzahl;
+    }    
+    
 }

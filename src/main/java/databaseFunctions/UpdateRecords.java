@@ -51,6 +51,67 @@ public class UpdateRecords {
 
     }
 
+    public static void updateMitarbeiterErfolg(long id, int anAb){
+        System.out.println("in update");
+        //anAb = 1 -- an
+        //anAb = 2 -- ab
+        Connect c = new Connect();
+        Connection conn = c.connect();
+        
+        int anzahlAn = SelectRecords.mitarbErfolg(id);
+        int anzahlAb = SelectRecords.mitarbMiserfolg(id);
+        float rateAn = (float) (anzahlAn+1)/anzahlAb;
+        float rateAb = (float) anzahlAn/(anzahlAb+1);
+        
+        if(anAb == 1){
+            String sql = "UPDATE mitarbeiter SET registrierteKunden = ?, erfolgsRate = ? WHERE burgerID = ?";
+            
+            try{
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                
+                pstmt.setInt(1, anzahlAn+1);  
+                pstmt.setFloat(2, rateAn);  
+                pstmt.setLong(3, id);  
+                pstmt.executeUpdate(); 
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }  
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException ex){
+                        System.out.println(ex.getMessage());                      
+                    }
+                }
+            }
+        }else{
+                        
+            String sql = "UPDATE mitarbeiter SET abgemeldeteKunden = ?, erfolgsRate = ? WHERE burgerID = ?";
+            
+            try{
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                
+                pstmt.setInt(1, anzahlAb+1); 
+                pstmt.setFloat(2, rateAb);
+                pstmt.setLong(3, id);  
+                pstmt.executeUpdate(); 
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }  
+            finally {
+                if(conn != null){
+                    try{
+                        conn.close();                    
+                    }catch(SQLException ex){
+                        System.out.println(ex.getMessage());                      
+                    }
+                }
+            }
+            
+        }
+    }
+
     public static void updateChef(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();

@@ -74,22 +74,24 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         try{
             geburtsDatum = dateFormat.parse(g);        
         }catch(ParseException e){
-            System.out.println("Der eingegebene Datum ist nicht gueltig.");
-            e.printStackTrace();
+            textField.setText("Der eingegebene Datum ist nicht gueltig.\nGeben Sie den Datum in folgendes Format ein: 'TT.MM.JJJJ'");
         }   
         String user = this.userName.getText();
         String pass = this.passwort.getText();
         int persID = Integer.parseInt(this.persID.getText());
 
-        boolean insertErfolg = false;
-        
-
-        insertErfolg = currentUser.setChef(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
-        if(insertErfolg){
-            textField.setText("Der Chef mit den Namen " + name + " wird gespeichert.");                            
+        if(burgerID < 99999999999L && burgerID > 10000000000L){
+            boolean insertErfolg = false;
+            insertErfolg = currentUser.setChef(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
+            if(insertErfolg){
+                textField.setText("Der Chef mit den Namen " + name + " wird gespeichert.");                            
+            }else{
+                textField.setText("Der Chef mit den Namen " + name + " existiert schon.");                        
+            }
         }else{
-            textField.setText("Der Chef mit den Namen " + name + " existiert schon.");                        
+            textField.setText("Die Bürger ID darf nur eine 11 stellige Zahl sein.");
         }
+
     }
 
     @FXML
@@ -116,21 +118,22 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         try{
             geburtsDatum = dateFormat.parse(g);        
         }catch(ParseException e){
-            System.out.println("Der eingegebene Datum ist nicht gueltig.");
-            e.printStackTrace();
+            textField.setText("Der eingegebene Datum ist nicht gültig.\nGeben Sie den Datum in folgendes Format ein: 'TT.MM.JJJJ'");
         }   
         String user = this.userName.getText();
         String pass = this.passwort.getText();
         int persID = Integer.parseInt(this.persID.getText());
 
-        boolean insertErfolg = false;
-        
-
-        insertErfolg = currentUser.setMitarb(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
-        if(insertErfolg){
-            textField.setText("Der Mitarbeiter mit den Namen " + name + " wird gespeichert.");                            
+        if(burgerID < 99999999999L && burgerID > 10000000000L){
+            boolean insertErfolg = false;
+            insertErfolg = currentUser.setMitarb(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
+            if(insertErfolg){
+                textField.setText("Der Mitarbeiter mit den Namen " + name + " wird gespeichert.");                            
+            }else{
+                textField.setText("Der Mitarbeiter mit den Namen " + name + " existiert schon.");                        
+            }            
         }else{
-            textField.setText("Der Mitarbeiter mit den Namen " + name + " existiert schon.");                        
+            textField.setText("Die B[rger ID darf nur eine 11 stellige Zahl sein");
         }
     }
 

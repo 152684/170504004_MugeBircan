@@ -165,9 +165,6 @@ public class FromTourListController implements Initializable {
             case 1:
                 textArea.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour abgemeldet!");
                 break;
-            case 2:
-                textArea.setText("Der Kunde (burgerID: " + kundenId + ") ist vom Tour nicht abgemeldet werden!");
-                break;
             default:
                 textArea.setText("ID Nummer muss 11 Stellig sein");
 

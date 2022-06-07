@@ -212,10 +212,34 @@ public class DeleteRecords {
     public static void deleteTour(String n){
         SelectRecords.tourNamenInArray(tours);
         Iterator<String> iter = tours.iterator();
-        
+
         boolean exist = false;
         while(iter.hasNext()){
             if(iter.next().equals(n)){
+                ArrayList<String> kundenDesTours = SelectRecords.selectTourKunden(n);
+                Iterator<String> iterK = kundenDesTours.iterator();
+
+                while(iterK.hasNext()){
+                    long id = Long.parseLong(iterK.next());
+                    ArrayList<String> reisen = SelectRecords.toursEinesKunden(id);
+                    Iterator<String> iterR = reisen.iterator();
+                    int stelleR = -1;
+
+                    while(iterR.hasNext()){
+                        stelleR ++;
+                        if(iterR.next().equals(n)){                    
+                            break;
+                        }
+                    }
+                    System.out.println("stelle: " + stelleR);
+                    if(reisen.size() == 1){
+                        reisen.removeAll(reisen);
+                    }else{            
+                        reisen.remove(stelleR);
+                    }
+                    UpdateRecords.deleteKundeVonTour(n, kundenDesTours, id, reisen);            
+                }        
+
                 exist = true;
                 Connect c = new Connect();
                 Connection conn = c.connect();
@@ -249,11 +273,10 @@ public class DeleteRecords {
     public static int deleteKundeVonTour(String tour, long kundenId){
         //returns 0 when kunde nicht zur Tour angemeldet ist
         //returns 1 when kunde erfolgreich abgemeldet wird
-        //returns 2 fehler
-        //return 3 id unguiltig
+        //return 2 id unguiltig
         
         if(!(kundenId>10000000000L && kundenId<99999999999L )){
-            return 3; 
+            return 2; 
         }
         ArrayList<String> kunden = SelectRecords.selectTourKunden(tour);
         Iterator<String> iter = kunden.iterator();
@@ -261,22 +284,23 @@ public class DeleteRecords {
         Iterator<String> iterR = reisen.iterator();
         
         boolean kundeEx = false;
-        int stelle = 0;
-        int stelleR = 0;
+        int stelle = -1;
+        int stelleR = -1;
         if(kunden == null || kunden.isEmpty()){
             System.out.println("Es gibt keine Kunden bei diesem Tour");
+            return 0;
         }else{
             while(iter.hasNext()){
                 long l = Long.parseLong(iter.next());
-                if(l == kundenId){
-                    stelle ++;
+                stelle ++;
+                if(l == kundenId){                    
                     kundeEx = true;
                     break;
                 }
             }
             while(iterR.hasNext()){
-                if(iterR.next().equals(tour)){
-                    stelleR ++;
+                stelleR ++;
+                if(iterR.next().equals(tour)){                    
                     break;
                 }
             }
@@ -307,7 +331,6 @@ public class DeleteRecords {
                 return 0;
             }
         }
-        return 2;
     }    
 
     public static int deleteReiseLVonTour(String tour, long reiseLId){

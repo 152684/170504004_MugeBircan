@@ -5,6 +5,7 @@
 package userInterface;
 
 import com.mycompany.inf202.*;
+import databaseFunctions.UpdateRecords;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -75,28 +76,32 @@ public class KundeHinzufuegenController implements Initializable {
         try{
             geburtsDatum = dateFormat.parse(g);        
         }catch(ParseException e){
-            System.out.println("Der eingegebene Datum ist nicht gueltig.");
-            e.printStackTrace();
+            textField.setText("Der eingegebene Datum ist nicht gueltig.\nGeben Sie den Datum in folgendes Format ein: 'TT.MM.JJJJ'");
         }     
 
-        boolean insertErfolg = false;
-        if(currentTyp == 1){
-            insertErfolg = currentChef.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
-            if(insertErfolg){
-                textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
+        if(burgerID < 99999999999L && burgerID > 10000000000L){
+            boolean insertErfolg = false;
+            if(currentTyp == 1){
+                insertErfolg = currentChef.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
+                if(insertErfolg){
+                    textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
+                }else{
+                    textField.setText("Der Kunde mit den Namen " + name + " existiert schon.");            
+                }
+            }else if(currentTyp == 2){
+                insertErfolg = currentMit.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
+                if(insertErfolg){
+                    textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");  
+                    UpdateRecords.updateMitarbeiterErfolg(currentMit.getBurgerID(), 1);
+                }else{
+                    textField.setText("Der Kunde mit den Namen " + name + " existiert schon.");            
+                }
             }else{
-                textField.setText("Der Kunde mit den Namen " + name + " existiert schon.");            
-            }
-        }else if(currentTyp == 2){
-            insertErfolg = currentMit.setKunde(name, burgerID, anschrift, email, tel, geburtsDatum);
-            if(insertErfolg){
-                textField.setText("Der Kunde mit den Namen " + name + " wird gespeichert.");                
-            }else{
-                textField.setText("Der Kunde mit den Namen " + name + " existiert schon.");            
-            }
+                textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
+            }                    
         }else{
-            textField.setText("Der Kunde mit den Namen " + name + " kann nicht gespeichert werden.");            
-        }        
+            textField.setText("Die Bürger ID darf nur eine 11 stellige Zahl sein!");                        
+        }
     }
   
     @FXML
@@ -135,28 +140,33 @@ public class KundeHinzufuegenController implements Initializable {
         try{
             geburtsDatum = dateFormat.parse(g);        
         }catch(ParseException e){
-            System.out.println("Der eingegebene Datum ist nicht gueltig.");
-            e.printStackTrace();
+            textField.setText("Der eingegebene Datum ist nicht gueltig.\nGeben Sie den Datum in folgendes Format ein: 'TT.MM.JJJJ'");
         }     
 
-        boolean insertErfolg = false;
-        if(currentTyp == 1){
-            insertErfolg = currentChef.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
-            if(insertErfolg){
-                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
+        if(burgerID < 99999999999L && burgerID > 10000000000L){
+            boolean insertErfolg = false;
+            if(currentTyp == 1){
+                insertErfolg = currentChef.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
+                if(insertErfolg){
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
+                }else{
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert schon.");            
+                }
+            }else if(currentTyp == 2){
+                insertErfolg = currentMit.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
+                if(insertErfolg){
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
+                }else{
+                    textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert schon.");            
+                }
             }else{
-                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert schon.");            
-            }
-        }else if(currentTyp == 2){
-            insertErfolg = currentMit.setReiseL(name, burgerID, anschrift, email, tel, geburtsDatum);
-            if(insertErfolg){
-                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " wird gespeichert.");                
-            }else{
-                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " existiert schon.");            
-            }
+                textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
+            }        
+            
         }else{
-            textField.setText("Der ReiseLeiter mit der burgerID " + burgerID + " kann nicht gespeichert werden.");            
-        }        
+            textField.setText("Die Bürger ID darf nur eine 11 stellige Zahl sein.");                        
+        }
+                    
     }
 
     @FXML
@@ -199,6 +209,7 @@ public class KundeHinzufuegenController implements Initializable {
                 loeschErfolg = currentMit.deleteKunde(burgerID);
                 if(loeschErfolg){
                     textField.setText("Der Kunde mit der burgerID " + burgerID + " wird geloescht.");
+                    UpdateRecords.updateMitarbeiterErfolg(currentMit.getBurgerID(), 2);
                 }else{
                     textField.setText("Der Kunde mit der burgerID " + burgerID + " existiert nicht.");
                 }   break;
