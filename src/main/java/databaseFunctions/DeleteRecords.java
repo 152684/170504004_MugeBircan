@@ -24,115 +24,85 @@ public class DeleteRecords {
     private static ArrayList<String> hotels = new ArrayList();
     private static ArrayList<String> tours = new ArrayList();
     
-    public static void deleteMitarbeiter(long ID) throws UngueltigeIDException{
-        SelectRecords.allMitarbeiterInArray(mitarbeitern);
-        Iterator<Mitarbeiter> iterM = mitarbeitern.iterator();
-        
-        boolean mitEx = false;
-        while(iterM.hasNext()){
-            if(iterM.next().getBurgerID() == ID){
-                mitEx = true;
-                Connect c = new Connect();
-                Connection conn = c.connect();
+    public static boolean deleteMitarbeiter(long ID) throws UngueltigeIDException{
+        Connect c = new Connect();
+        Connection conn = c.connect();
 
-                String sql = "DELETE FROM mitarbeiter WHERE burgerID = ?";
-                try{    
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setLong(1, ID);  
-                    System.out.println("Der Mitarbeiter mit der Buerger ID: " + ID + " wird nun geloescht.");
-                    pstmt.executeUpdate(); 
-                } catch (SQLException e) {  
-                    System.out.println("Der Mitarbeiter kann nicht geloescht werden!");
-                    System.out.println(e.getMessage());  
-                }        
-                finally {
-                    if(conn != null){
-                        try{
-                            conn.close();                    
-                        }catch(SQLException ex){
-                            System.out.println(ex.getMessage());                      
-                        }
-                    }
-                }                
+        String sql = "DELETE FROM mitarbeiter WHERE burgerID = ?";
+        try{    
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, ID);  
+            System.out.println("Der Mitarbeiter mit der Buerger ID: " + ID + " wird nun geloescht.");
+            pstmt.executeUpdate(); 
+        } catch (SQLException e) {  
+            System.out.println("Der Mitarbeiter kann nicht geloescht werden!");
+            System.out.println(e.getMessage());  
+            return false;
+        }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
             }
-        }
-        if(!mitEx){
-            System.out.println("Es gibt keinen Mitearbeiter mit der BurgerID: " + ID);            
-        }
+        } 
+        return true;
     }
 
-    public static void deleteChef(long ID) throws UngueltigeIDException{
-        SelectRecords.allChefInArray(chefs);
-        Iterator<Chef> iter = chefs.iterator();
-        
-        boolean exist = false;
-        while(iter.hasNext()){
-            if(iter.next().getBurgerID() == ID){
-                exist = true;
-                Connect c = new Connect();
-                Connection conn = c.connect();
+    public static boolean deleteChef(long ID) throws UngueltigeIDException{
+        Connect c = new Connect();
+        Connection conn = c.connect();
 
-                String sql = "DELETE FROM chef WHERE burgerID = ?";
-                try{    
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setLong(1, ID);  
-                    System.out.println("Der Chef mit der Buerger ID: " + ID + " wird nun geloescht.");
-                    pstmt.executeUpdate(); 
-                } catch (SQLException e) {  
-                    System.out.println("Der Chef kann nicht geloescht werden!");
-                    System.out.println(e.getMessage());  
-                }        
-                finally {
-                    if(conn != null){
-                        try{
-                            conn.close();                    
-                        }catch(SQLException ex){
-                            System.out.println(ex.getMessage());                      
-                        }
-                    }
-                }                
+        String sql = "DELETE FROM chef WHERE burgerID = ?";
+        try{    
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, ID);  
+            System.out.println("Der Chef mit der Buerger ID: " + ID + " wird nun geloescht.");
+            pstmt.executeUpdate(); 
+        } catch (SQLException e) {  
+            System.out.println("Der Chef kann nicht geloescht werden!");
+            System.out.println(e.getMessage());  
+            return false;
+        }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
             }
-        }
-        if(!exist){
-            System.out.println("Es gibt keinen Chef mit der BurgerID: " + ID);            
-        }
+        }                
+        return true;
     }
 
-    public static void deleteKunde(long ID) throws UngueltigeIDException{
-        SelectRecords.allKundenInArray(kunden);
-        Iterator<Kunde> iter = kunden.iterator();
-        
-        boolean exist = false;
-        while(iter.hasNext()){
-            if(iter.next().getBurgerID() == ID){
-                exist = true;
-                Connect c = new Connect();
-                Connection conn = c.connect();
+    public static boolean deleteKunde(long ID) throws UngueltigeIDException{
+        Connect c = new Connect();
+        Connection conn = c.connect();
 
-                String sql = "DELETE FROM kunde WHERE burgerID = ?";
-                try{    
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setLong(1, ID);  
-                    System.out.println("Der Kunde mit der Buerger ID: " + ID + " wird nun geloescht.");
-                    pstmt.executeUpdate(); 
-                } catch (SQLException e) {  
-                    System.out.println("Der Kunde kann nicht geloescht werden!");
-                    System.out.println(e.getMessage());  
-                }        
-                finally {
-                    if(conn != null){
-                        try{
-                            conn.close();                    
-                        }catch(SQLException ex){
-                            System.out.println(ex.getMessage());                      
-                        }
-                    }
-                }                
+        String sql = "DELETE FROM kunde WHERE burgerID = ?";
+        try{    
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, ID);  
+            System.out.println("Der Kunde mit der Buerger ID: " + ID + " wird nun geloescht.");
+            pstmt.executeUpdate(); 
+        } catch (SQLException e) {  
+            System.out.println("Der Kunde kann nicht geloescht werden!");
+            System.out.println(e.getMessage());  
+            return false;
+        }        
+        finally {
+            if(conn != null){
+                try{
+                    conn.close();                    
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());                      
+                }
             }
         }
-        if(!exist){
-            System.out.println("Es gibt keine Kunde mit der BurgerID: " + ID);            
-        }
+        return true;
     }
     
     public static void deleteReiseL(long ID) throws UngueltigeIDException{
@@ -208,7 +178,11 @@ public class DeleteRecords {
             System.out.println("Es gibt kein Hotel mit den Namen: " + n);            
         }
     }
-
+    
+    /**
+     * deleteTour deletes Tours von Database. Wenn ein Tour geloescht wird, wird automatisch auch zum Tour angemeldete Kunden von diesem Tour abgemeldet. 
+     * @param n -- Tour Name
+     */
     public static void deleteTour(String n){
         SelectRecords.tourNamenInArray(tours);
         Iterator<String> iter = tours.iterator();

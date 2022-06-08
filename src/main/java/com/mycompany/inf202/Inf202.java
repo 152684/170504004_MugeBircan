@@ -15,6 +15,8 @@ import testPackage.*;
 /**
  *
  * @author mbirc
+ * 
+ * Main class wobei der TestMethoden gerufen wurde
  */
 
 

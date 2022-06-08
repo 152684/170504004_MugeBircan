@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeListeController">
+<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1118.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.KundeListeController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="912.0">
+      <AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1118.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TableView fx:id="kundeTable" layoutX="140.0" layoutY="81.0" prefHeight="417.0" prefWidth="733.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
               <columns>
@@ -19,9 +19,10 @@
                   <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="145.0" text="Email" />
                   <TableColumn fx:id="telColumn" minWidth="8.0" prefWidth="167.0" text="Telefonnummer" />
                   <TableColumn fx:id="geburtColumn" minWidth="0.0" prefWidth="116.0" text="Geburtsdatum" />
+                  <TableColumn fx:id="toursColumn" prefWidth="207.0" text="Angemeldete Tours" />
               </columns>
             </TableView>
-            <Label layoutX="322.0" layoutY="14.0" text="Kunden des ReiseBüros">
+            <Label layoutX="425.0" layoutY="23.0" text="Kunden des ReiseBüros">
                <font>
                   <Font size="26.0" />
                </font>

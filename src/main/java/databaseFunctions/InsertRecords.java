@@ -175,41 +175,8 @@ public class InsertRecords {
         }
         
     }
-/*
-    public static void insertTour(String n, Date d, String info, int maxT, String hN, float p, int freiP, String rL){
-        Connect c = new Connect();
-        Connection conn = c.connect();
-        
-        java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-        
-        String sql = "INSERT INTO tour(tourName, tourDatum, tourInfo, maxTeilnehmer, hotelName, preis, freiePlaetze, reiseL, kunden) VALUES(?,?,?,?,?,?,?,?,?)";
-        try{    
-            PreparedStatement pstmt = conn.prepareStatement(sql);  
-            pstmt.setString(1, n);  
-            pstmt.setDate(2, sqlDate);  
-            pstmt.setString(3, info);  
-            pstmt.setInt(4, maxT);  
-            pstmt.setString(5, hN);
-            pstmt.setFloat(6, p);
-            pstmt.setFloat(7, freiP);
-            pstmt.setString(8, rL);
-            pstmt.executeUpdate(); 
-        } catch (SQLException e) {  
-            System.out.println(e.getMessage());  
-        }        
-        finally {
-            if(conn != null){
-                try{
-                    conn.close();                    
-                }catch(SQLException ex){
-                    System.out.println(ex.getMessage());                      
-                }
-            }
-        }
-        
-    }
-*/    
-    public static void insertTour2(String n, Date d, String info, int maxT, String hN, float p, int freiP){
+
+    public static void insertTour(String n, Date d, String info, int maxT, String hN, float p, int freiP){
         Connect c = new Connect();
         Connection conn = c.connect();
         

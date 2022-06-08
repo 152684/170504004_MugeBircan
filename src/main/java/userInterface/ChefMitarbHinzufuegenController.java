@@ -103,6 +103,8 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         int tel = Integer.parseInt(this.tel.getText());
         
         currentUser.updateChef(name, anschrift, email, tel, burgerID);
+        
+        textField.setText("Der Chef mit dem BurgerID: " + burgerID + " wurde aktualisiert.");
     }
 
     @FXML
@@ -147,6 +149,7 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         
         currentUser.updateMitarb(name, anschrift, email, tel, burgerID);
 
+        textField.setText("Der Mitarbeiter mit dem BurgerID: " + burgerID + " wurde aktualisiert.");
     }
 
     @FXML

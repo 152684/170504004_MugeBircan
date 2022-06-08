@@ -45,6 +45,8 @@ public class KundeListeController implements Initializable {
     private TableColumn<Kunde, Integer> telColumn;
     @FXML
     private TableColumn<Kunde, String> geburtColumn;
+    @FXML
+    private TableColumn<Kunde, String> toursColumn;
 
     /**
      * Initializes the controller class.
@@ -69,6 +71,7 @@ public class KundeListeController implements Initializable {
       emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
       telColumn.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
       geburtColumn.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
+      toursColumn.setCellValueFactory(new PropertyValueFactory<>("reisen"));
     }   
     
     private void loadData() throws UngueltigeIDException{

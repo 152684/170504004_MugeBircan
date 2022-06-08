@@ -89,10 +89,10 @@ public class TourHinzuLoeschController implements Initializable {
 
             if(currentTyp == 1){
                 //insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);
-                insertErfolg = currentChef.setTour2(name, tourDatum, info, maxTeil, hotelName, preis);
+                insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis);
             }else{
 //                insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);            
-                insertErfolg = currentMit.setTour2(name, tourDatum, info, maxTeil, hotelName, preis);
+                insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis);
             }
             switch (insertErfolg) {
                 case 1:

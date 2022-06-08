@@ -9,30 +9,49 @@ import java.util.Date;
 /**
  *
  * @author mbirc
+ * 
+ * Class Kunde extends from Class Person
  */
 public class Kunde extends Person{
     
-    private ArrayList<Reise> reisen = new ArrayList();
-    private String reisenString;
+    private String reisen; /**< String form aller Touren, die ein Kunde sich angemeldet hat*/
     
+    /**
+     * constructor for Kunde
+     * @param n -- Kunde Name
+     * @param ID -- Kunde BurgerID
+     * @param anschr -- Kunde Anschrift
+     * @param e -- Kunde Email
+     * @param telefon -- Kunde Telefonnummer
+     * @param geburt -- Kunde Geburtsdatum
+     * @throws UngueltigeIDException 
+     */
     public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt);
     }
 
+    /**
+     * constructor 2 for Kunde
+     * @param n -- Kunde Name
+     * @param ID -- Kunde BurgerID
+     * @param anschr -- Kunde Anschrift
+     * @param e -- Kunde Email
+     * @param telefon -- Kunde Telefonnummer
+     * @param geburt -- Kunde Geburtsdatum
+     * @param reise -- Kunde Reisen
+     * @throws UngueltigeIDException 
+     */
     public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt, String reise) throws UngueltigeIDException{
         super(n, ID, anschr, e, telefon, geburt);
-        reisenString = reise;
+        reisen = reise;
     }
-    
-    public void setReise(Tour t, Hotel h)
-    {
-        
+
+    /**
+     * getMethod for Reisen einer Kunde
+     * @return reisen
+     */
+    public String getReisen() {
+        return reisen;
     }
-    /*
-    public Reise getReise(String n)
-    {
-        
-    }
-    */
 
 }
