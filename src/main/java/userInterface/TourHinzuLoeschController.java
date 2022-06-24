@@ -24,9 +24,9 @@ import javafx.scene.control.TextField;
  */
 public class TourHinzuLoeschController implements Initializable {
     
-    Chef currentChef;
-    Mitarbeiter currentMit;
-    int currentTyp = 0; //1 chef, 2 mit
+    Chef currentChef; /**< aktueller chef*/
+    Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
+    int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
 
     @FXML
     private TextField tourName;
@@ -51,18 +51,30 @@ public class TourHinzuLoeschController implements Initializable {
         // TODO
     }    
 
+    /**
+     * aktueller Mitarbeiter anlegen
+     * @param m -- Mitarbeiter
+     */
     public void currentAnlegen(Mitarbeiter m){
         textArea.setText("Der Löschvorgang funktioniert nach dem Namen des Tours.\n Der Tourname kann deshalb nicht verändert werden und alle andere Eingaben beim Löschen werden vernachlässigt!");
         currentMit = m;
         currentTyp = 2;        
     }
     
+    /**
+     * aktueller Chef anlegen
+     * @param c -- Chef
+     */
     public void currentAnlegen(Chef c){
         textArea.setText("Der Löschvorgang funktioniert nach dem Namen des Tours.\n Der Tourname kann deshalb nicht verändert werden und alle andere Eingaben beim Löschen werden vernachlässigt!");
         currentChef = c;
         currentTyp = 1;                
     }
 
+    /**
+     * Tour hinzufuegen 
+     * @param event 
+     */
     @FXML
     private void tourHinzuButton(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -88,10 +100,8 @@ public class TourHinzuLoeschController implements Initializable {
             int insertErfolg = 3;
 
             if(currentTyp == 1){
-                //insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);
                 insertErfolg = currentChef.setTour(name, tourDatum, info, maxTeil, hotelName, preis);
-            }else{
-//                insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis, reiseL);            
+            }else{            
                 insertErfolg = currentMit.setTour(name, tourDatum, info, maxTeil, hotelName, preis);
             }
             switch (insertErfolg) {
@@ -109,6 +119,10 @@ public class TourHinzuLoeschController implements Initializable {
         
     }
 
+    /**
+     * Tour Loeschen
+     * @param event 
+     */
     @FXML
     private void tourLoeschButton(ActionEvent event) {
         String name = this.tourName.getText();
@@ -132,6 +146,10 @@ public class TourHinzuLoeschController implements Initializable {
         }
     }
 
+    /**
+     * Tour Aktualisieren
+     * @param event 
+     */
     @FXML
     private void tourAktButton(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -139,7 +157,6 @@ public class TourHinzuLoeschController implements Initializable {
         String info = this.tourInfo.getText();
         String hotelName = this.hotelName.getText();
         int maxTeil = Integer.parseInt(this.maxTeil.getText());
-        //String reiseL = this.reiseL.getText();
         float preis = Float.parseFloat(this.preis.getText());
         String g = this.tourDatum.getText();
         Date tourDatum = null;
@@ -181,6 +198,10 @@ public class TourHinzuLoeschController implements Initializable {
 
     }
     
+    /**
+     * Wenn von Kunde/ReiseL zur /von Tour n/abmelden gekommen wird
+     * @param t 
+     */
     public void fromTourListe(Tour t){    
         this.tourName.setText(t.getTourName());
         textArea.setText("Aktualisieren Sie die gegebene Tour");

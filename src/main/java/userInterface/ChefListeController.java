@@ -62,6 +62,9 @@ public class ChefListeController implements Initializable {
         }
     }    
 
+    /**
+     * Initialisieren den Spalten
+     */
     private void initializeCols(){
       
       nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -73,6 +76,11 @@ public class ChefListeController implements Initializable {
       persIdColumn.setCellValueFactory(new PropertyValueFactory<>("personalID"));
     }   
     
+    /**
+     * Richtige Daten in die Tabelle einsetzen
+     * 
+     * @throws UngueltigeIDException
+     */
     private void loadData() throws UngueltigeIDException{
 
         ArrayList<Chef> chefs = new ArrayList();

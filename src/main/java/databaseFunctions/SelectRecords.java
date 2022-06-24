@@ -18,9 +18,16 @@ import java.util.ArrayList;
 /**
  *
  * @author mbirc
+ * 
+ * Klasse, um Daten von der Database zu lesen
  */
 public class SelectRecords {
     
+    /**
+     * Alle Mitarbietern aus der Database in ein ArrayList speichern
+     * @param mitarbeitern -- Mitarbeiter ArrayList
+     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
+     */
     public static void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -56,6 +63,11 @@ public class SelectRecords {
           
     }    
 
+    /**
+     * BurgerIDs aller Mitarbietern aus der Database in ein ArrayList speichern
+     * @param mitarbeitern -- Mitarbeiter BurgerIDs ArrayList
+     * @return mitarbZahl -- Zahl der Mitarbeitern
+     */
     public static int mitarbIDsInArray(ArrayList<Long> mitarbeitern){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -90,7 +102,12 @@ public class SelectRecords {
           
     }    
 
-
+    /**
+     * Mitarbeiter mit der gegebenen BurgerID finden
+     * @param id -- BurgerID des Mitarbeiters
+     * @return Mitarbeiter
+     * @throws UngueltigeIDException falls BurgerID ungueltig ist
+     */
     public static Mitarbeiter findMitarbeiter(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -128,6 +145,12 @@ public class SelectRecords {
         return m;
     }
     
+    /**
+     * Chef mit der gegebenen BurgerID finden
+     * @param id -- BurgerID des Chefs
+     * @return Chef
+     * @throws UngueltigeIDException falls BurgerID ungueltig ist
+     */
     public static Chef findChef(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -164,6 +187,11 @@ public class SelectRecords {
         return chef;
     }
 
+    /**
+     * Alle Chefs aus der Database in ein ArrayList speichern
+     * @param chefs -- Chef ArrayList
+     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
+     */
     public static void allChefInArray(ArrayList<Chef> chefs) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -199,6 +227,11 @@ public class SelectRecords {
           
     }    
 
+    /**
+     * Alle Kunden aus der Database in ein ArrayList speichern
+     * @param kunden -- Kunde ArrayList
+     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
+     */
     public static void allKundenInArray(ArrayList<Kunde> kunden) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -233,6 +266,12 @@ public class SelectRecords {
           
     }    
 
+    /**
+     * Kunde mit der gegebenen BurgerID finden
+     * @param id -- BurgerID
+     * @return Kunde
+     * @throws UngueltigeIDException falls BurgerID nicht gueltig ist
+     */
     public static Kunde findKunde(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -268,6 +307,11 @@ public class SelectRecords {
         return k;
     }
 
+    /**
+     * Die Touren, die ein Kunde sich angemeldet hat
+     * @param kundeId -- BurgerID des Kunden
+     * @return toursEinesKunden -- ArrayList
+     */
     public static ArrayList<String> toursEinesKunden(long kundeId){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -307,6 +351,11 @@ public class SelectRecords {
           
     }    
 
+    /**
+     * Alle reiseLeitern aus der Database in ein ArrayList speichern
+     * @param reiseLeitern -- ReiseLeiter ArrayList
+     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
+     */
     public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -341,6 +390,12 @@ public class SelectRecords {
           
     }    
 
+    /**
+     * ReiseLeiter mit der gegebenen BurgerID finden
+     * @param id -- BurgerID des ReiseLeiters
+     * @return ReiseLeiter
+     * @throws UngueltigeIDException falls BurgerID ungueltig ist 
+     */
     public static ReiseLeiter findReiseL(long id) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -376,6 +431,11 @@ public class SelectRecords {
         return k;
     }
 
+    /**
+     * Namen aller Hotels aus der Database in ein ArrayList speichern
+     * @param hotels -- ArrayList
+     * @return hotelZahl -- Anzahl der Hotels
+     */
     public static int hotelNamenInArray(ArrayList<String> hotels){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -410,6 +470,11 @@ public class SelectRecords {
         return hotelZahl;  
     }    
 
+    /**
+     * Hotel mit dem gegebenen Namen finden
+     * @param name -- Name des Hotels
+     * @return Hotel
+     */
     public static Hotel findHotel(String name){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -440,6 +505,11 @@ public class SelectRecords {
         return k;
     }
 
+    /**
+     * Namen aller Tours aus der DAtabase in ein ArrayList speichern
+     * @param tours -- ArrayList
+     * @return tourZahl -- Anzahl der Touren
+     */
     public static int tourNamenInArray(ArrayList<String> tours){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -474,6 +544,11 @@ public class SelectRecords {
           
     }    
  
+    /**
+     * Tour mit dem gegebenen Namen finden
+     * @param name -- Tourname
+     * @return Tour
+     */
     public static Tour findTour(String name){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -505,6 +580,11 @@ public class SelectRecords {
         return k;
     }
 
+    /**
+     * Kunden, die bei einem Tour angemeldet sind, in ein ArrayList speichern
+     * @param tour -- Tourname
+     * @return tourKunden -- ArrayList
+     */
     public static ArrayList<String> selectTourKunden(String tour){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -543,7 +623,12 @@ public class SelectRecords {
         }
           
     }    
-        
+     
+    /**
+     * ReiseLeiter, die bei einem Tour angemeldet sind, in ein ArrayList speichern
+     * @param tour -- Tourname
+     * @return tourReiseLeiter -- ArrayList
+     */
     public static ArrayList<String> selectTourReiseL(String tour){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -583,7 +668,12 @@ public class SelectRecords {
           
     }    
 
-    public static int mitarbErfolg(long mitId){ // returns registrierteKunden eines Mitarbeiters
+    /**
+     * Aktualisieren der Anzahl der registrierten Kunden
+     * @param mitId -- Mitarbeiter BurgerID
+     * @return Anzahl der registrierten Kunden
+     */
+    public static int mitarbErfolg(long mitId){ 
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -612,7 +702,12 @@ public class SelectRecords {
         return anzahl;
     }    
 
-    public static int mitarbMiserfolg(long mitId){ // returns abgemeldeteKunden eines Mitarbeiters
+    /**
+     * Aktualisieren der Anzahl der abgemeldeten Kunden
+     * @param mitId -- Mitarbeiter BurgerID
+     * @return Anzahl der abgemeldeten Kunden
+     */
+    public static int mitarbMiserfolg(long mitId){ 
         Connect c = new Connect();
         Connection conn = c.connect();
     

@@ -37,7 +37,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#tourFnk" text="Tour hinzufügen/aktualisieren/löschen" />
                   <MenuItem mnemonicParsing="false" onAction="#tourL" text="Tours Listen" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#kundeZurTourAnAb" text="Kunde zu/von Tour anmelden/abmelden" />
+                  <MenuItem mnemonicParsing="false" onAction="#kundeZurTourAnAb" text="Kunde/ReiseLeiter zu/von Tour anmelden/abmelden" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Hotel">

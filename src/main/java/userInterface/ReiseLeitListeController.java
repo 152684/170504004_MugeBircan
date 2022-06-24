@@ -61,6 +61,9 @@ public class ReiseLeitListeController implements Initializable {
         }
     }    
  
+    /**
+     * Initialisieren den Spalten
+     */
     private void initializeCols(){
       
       nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -71,6 +74,10 @@ public class ReiseLeitListeController implements Initializable {
       geburtColumn.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
     }   
     
+    /**
+     * Daten in die Tabelle speichern
+     * @throws UngueltigeIDException 
+     */
     private void loadData() throws UngueltigeIDException{
 
         ArrayList<ReiseLeiter> reiseLeitern = new ArrayList();

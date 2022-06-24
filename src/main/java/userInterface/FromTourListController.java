@@ -33,10 +33,10 @@ import javafx.stage.Stage;
  */
 public class FromTourListController implements Initializable {
     
-    Chef currentChef;
-    Mitarbeiter currentMit;
-    int currentTyp = 0; //1 chef, 2 mit
-    Tour t;
+    Chef currentChef; /**< aktueller chef*/
+    Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
+    int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
+    Tour t; /**<Tour*/
 
     @FXML
     private TextArea textArea;
@@ -53,16 +53,28 @@ public class FromTourListController implements Initializable {
         // TODO
     }    
     
+    /**
+     * aktueller Mitarbeiter anlegen
+     * @param m -- Mitarbeiter
+     */
     public void currentAnlegen(Mitarbeiter m){
         currentMit = m;
         currentTyp = 2;        
     }
     
+    /**
+     * aktueller Chef anlegen
+     * @param c -- Chef
+     */
     public void currentAnlegen(Chef c){
         currentChef = c;
         currentTyp = 1;                
     }
 
+    /**
+     * Tour speichern und die Preis Informationen ausgeben
+     * @param tourName 
+     */
     public void fromTourList(String tourName){
         t = SelectRecords.findTour(tourName);
         Hotel h = SelectRecords.findHotel(t.getHotelName());
@@ -70,6 +82,10 @@ public class FromTourListController implements Initializable {
         textArea2.setText("Sie haben " + tourName + " gewählt.\nTour Preis: " + t.getPreis() + "\nHotel preis: " + h.getPreis() + "\nTotal preis: " + total);
     }
 
+    /**
+     * Tour aktualisieren
+     * @param event 
+     */
     @FXML
     private void tourAktButton(ActionEvent event) {
         try{
@@ -92,6 +108,10 @@ public class FromTourListController implements Initializable {
         }
     }
 
+    /**
+     * ein Kunde zur Tour anmelden
+     * @param event 
+     */
     @FXML
     private void kundeAnButton(ActionEvent event){
         ArrayList<Kunde> kunden = new ArrayList();
@@ -153,6 +173,10 @@ public class FromTourListController implements Initializable {
         
     }
 
+    /**
+     * ein Kunde von der Tour abmelden
+     * @param event 
+     */
     @FXML
     private void kundeAbButton(ActionEvent event) {
 
@@ -171,6 +195,10 @@ public class FromTourListController implements Initializable {
         }       
     }
 
+    /**
+     * ein ReiseLeiter zur Tour anmelden
+     * @param event 
+     */
     @FXML
     private void reiseLAnButton(ActionEvent event) {
         ArrayList<ReiseLeiter> reiseLs = new ArrayList();
@@ -228,6 +256,10 @@ public class FromTourListController implements Initializable {
 
     }
 
+    /**
+     * ein ReiseLeiter von der Tour abmelden
+     * @param event 
+     */
     @FXML
     private void reiseLAbButton(ActionEvent event) {
 

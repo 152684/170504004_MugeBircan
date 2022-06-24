@@ -7,6 +7,8 @@ package com.mycompany.inf202;
 /**
  *
  * @author mbirc
+ * 
+ * Exception Klasse, um zu ueberpruefen, ob die gegebene BurgerID einer Person gueltig ist
  */
 public class UngueltigeIDException extends Exception{
     public UngueltigeIDException(){

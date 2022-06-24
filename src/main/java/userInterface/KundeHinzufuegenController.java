@@ -23,9 +23,9 @@ import javafx.scene.control.TextField;
  * @author mbirc
  */
 public class KundeHinzufuegenController implements Initializable {
-    Chef currentChef;
-    Mitarbeiter currentMit;
-    int currentTyp = 0; //chef=1, mit=2
+    Chef currentChef; /**< aktueller chef*/
+    Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
+    int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
     
     @FXML
     private TextField name;
@@ -51,18 +51,30 @@ public class KundeHinzufuegenController implements Initializable {
     }    
 
 
+    /**
+     * aktueller Mitarbeiter anlegen
+     * @param m -- Mitarbeiter
+     */
     public void currentAnlegen(Mitarbeiter m){
         textField.setText("Lassen Sie den Geburtsdatumfeld leer fuers Aktualisieren. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentMit = m;
         currentTyp = 2;        
     }
     
+    /**
+     * aktueller Chef anlegen
+     * @param c -- Chef
+     */
     public void currentAnlegen(Chef c){
         textField.setText("Lassen Sie den Geburtsdatumfeld leer fuers Aktualisieren. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentChef = c;
         currentTyp = 1;                
     }
 
+    /**
+     * Kunde hinzufuegen
+     * @param event 
+     */
     @FXML
     private void kundeHin(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -104,6 +116,10 @@ public class KundeHinzufuegenController implements Initializable {
         }
     }
   
+    /**
+     * Kunde aktualisieren
+     * @param event 
+     */
     @FXML
     private void kundeAkt(ActionEvent event) {        
         String name = this.name.getText();
@@ -127,6 +143,10 @@ public class KundeHinzufuegenController implements Initializable {
 
     }
 
+    /**
+     * ReiseLeiter hinzufuegen
+     * @param event 
+     */
     @FXML
     private void reiseLHinButton(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -169,6 +189,10 @@ public class KundeHinzufuegenController implements Initializable {
                     
     }
 
+    /**
+     * ReiseLeiter aktualisieren
+     * @param event 
+     */
     @FXML
     private void reiseLAktButton(ActionEvent event) {
         String name = this.name.getText();
@@ -192,6 +216,10 @@ public class KundeHinzufuegenController implements Initializable {
        
     }
 
+    /**
+     * Kunde Loeschen
+     * @param event 
+     */
     @FXML
     private void kundeLoeschButton(ActionEvent event) {
         long burgerID = Long.parseLong(this.burgerID.getText());
@@ -219,6 +247,10 @@ public class KundeHinzufuegenController implements Initializable {
         }
     }
 
+    /**
+     * ReiseLeiter Loeschen
+     * @param event 
+     */
     @FXML
     private void reiseLeitLoeschButton(ActionEvent event) {
         long burgerID = Long.parseLong(this.burgerID.getText());

@@ -14,6 +14,8 @@ import java.util.Iterator;
 /**
  *
  * @author mbirc
+ * 
+ * Klasse, um Daten von der Database zu loeschen
  */
 public class DeleteRecords {
 
@@ -24,6 +26,12 @@ public class DeleteRecords {
     private static ArrayList<String> hotels = new ArrayList();
     private static ArrayList<String> tours = new ArrayList();
     
+    /**
+     * Mitarbeiter mit der gegebenen BurgerID von der Database zu loeschen
+     * @param ID -- BurgerID
+     * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
+     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
+     */
     public static boolean deleteMitarbeiter(long ID) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -51,6 +59,12 @@ public class DeleteRecords {
         return true;
     }
 
+    /**
+     * Chef mit der gegebenen BurgerID von der Database zu loeschen
+     * @param ID -- BurgerID
+     * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
+     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
+     */
     public static boolean deleteChef(long ID) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -78,6 +92,12 @@ public class DeleteRecords {
         return true;
     }
 
+    /**
+     * Kunde mit der gegebenen BurgerID von der Database zu loeschen
+     * @param ID -- BurgerID
+     * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
+     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
+     */
     public static boolean deleteKunde(long ID) throws UngueltigeIDException{
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -105,6 +125,12 @@ public class DeleteRecords {
         return true;
     }
     
+    /**
+     * ReiseLeiter mit der gegebenen BurgerID von der Database zu loeschen
+     * @param ID -- BurgerID
+     * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
+     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
+     */
     public static void deleteReiseL(long ID) throws UngueltigeIDException{
         SelectRecords.allReiseLInArray(reiseLs);
         Iterator<ReiseLeiter> iter = reiseLs.iterator();
@@ -142,6 +168,10 @@ public class DeleteRecords {
         }
     }
 
+    /**
+     * Hotel mit dem gegebenen Name von der Database zu loeschen
+     * @param n -- Name
+     */
     public static void deleteHotel(String n){
         SelectRecords.hotelNamenInArray(hotels);
         Iterator<String> iter = hotels.iterator();
@@ -180,7 +210,9 @@ public class DeleteRecords {
     }
     
     /**
-     * deleteTour deletes Tours von Database. Wenn ein Tour geloescht wird, wird automatisch auch zum Tour angemeldete Kunden von diesem Tour abgemeldet. 
+     * deleteTour deletes Tours von Database. 
+     * Wenn ein Tour geloescht wird, wird automatisch auch zum Tour angemeldete Kunden von diesem Tour abgemeldet 
+     * und entsprechende Aktualisierungen durchgefuehrt. 
      * @param n -- Tour Name
      */
     public static void deleteTour(String n){
@@ -244,11 +276,15 @@ public class DeleteRecords {
         }
     }
     
-    public static int deleteKundeVonTour(String tour, long kundenId){
-        //returns 0 when kunde nicht zur Tour angemeldet ist
-        //returns 1 when kunde erfolgreich abgemeldet wird
-        //return 2 id unguiltig
-        
+    /**
+     * Ein Kunde von einem Tour abmelden
+     * @param tour -- Tourname
+     * @param kundenId -- Kunden BurgerID
+     * @retval 0 -- falls der Kunde zur Tour nicht angemeldet ist
+     * retval 1 -- falls der Kunde erfolgreich von der Tour abgemeldet ist
+     * retval 2 -- falls die BurgerID der Kunde ungueltig ist
+     */
+    public static int deleteKundeVonTour(String tour, long kundenId){        
         if(!(kundenId>10000000000L && kundenId<99999999999L )){
             return 2; 
         }
@@ -307,13 +343,17 @@ public class DeleteRecords {
         }
     }    
 
-    public static int deleteReiseLVonTour(String tour, long reiseLId){
-        //returns 0 when reiseLeiter nicht zur Tour angemeldet ist
-        //returns 1 when reiseLeiter erfolgreich abgemeldet wird
-        //returns 2 fehler
-        //return 3 id unguiltig
-        //return 4 der letzte reiseL
-        
+    /**
+     * Ein ReiseLeiter von der Tour abmelden
+     * @param tour -- Tourname
+     * @param reiseLId -- ReiseLEiterID
+     * @retval 0 -- falls der ReiseLeiter nicht zur Tour angemeldet ist
+     * @retval 1 -- falls der ReiseLeiter erfolgreich von der Tour abgemeldet wird
+     * @retval 2 -- falls es einen Fehler gibt
+     * @retval 3 -- falls die BurgerID des ReiseLeiters ungueltig ist
+     * @retval 4 -- falls es keinen weiteren Reiseleiter mehr bei der Tour uebrig bleibt (es muss mindestens ein Reiseleter bei einer Tour sein)
+     */
+    public static int deleteReiseLVonTour(String tour, long reiseLId){        
         if(!(reiseLId>10000000000L && reiseLId<99999999999L )){
             return 3; 
         }

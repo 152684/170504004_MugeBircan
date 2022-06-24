@@ -7,12 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.HotelListeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.HotelListeController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="842.0">
+      <AnchorPane id="AnchorPane" prefHeight="613.0" prefWidth="689.0">
          <children>
-            <TableView fx:id="hotelTable" layoutX="140.0" layoutY="81.0" prefHeight="417.0" prefWidth="733.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
+            <TableView fx:id="hotelTable" layoutX="140.0" layoutY="90.0" prefHeight="524.0" prefWidth="689.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
               <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="116.0" text="Name" />
                   <TableColumn fx:id="anschriftColumn" prefWidth="145.0" text="Anschrift" />
@@ -21,7 +20,7 @@
                   <TableColumn fx:id="preisColumn" minWidth="0.0" prefWidth="116.0" text="Preis" />
               </columns>
             </TableView>
-            <Label layoutX="295.0" layoutY="20.0" text="Hotels des ReiseBüros">
+            <Label layoutX="218.0" layoutY="32.0" text="Hotels des ReiseBüros">
                <font>
                   <Font size="26.0" />
                </font>

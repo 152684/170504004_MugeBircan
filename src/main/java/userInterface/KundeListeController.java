@@ -63,6 +63,9 @@ public class KundeListeController implements Initializable {
         }
     }    
  
+    /**
+     * Initialisieren den Spalten
+     */
     private void initializeCols(){
       
       nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -74,6 +77,10 @@ public class KundeListeController implements Initializable {
       toursColumn.setCellValueFactory(new PropertyValueFactory<>("reisen"));
     }   
     
+    /**
+     * Data in die Tabelle speichern
+     * @throws UngueltigeIDException 
+     */
     private void loadData() throws UngueltigeIDException{
 
         ArrayList<Kunde> kunden = new ArrayList();

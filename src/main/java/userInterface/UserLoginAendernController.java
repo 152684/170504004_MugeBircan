@@ -19,9 +19,9 @@ import javafx.scene.control.TextField;
  * @author mbirc
  */
 public class UserLoginAendernController implements Initializable {
-    Chef currentChef;
-    Mitarbeiter currentMit;
-    int currentTyp = 0; //chef=1, mit=2
+    Chef currentChef; /**< aktueller chef*/
+    Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
+    int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
 
     @FXML
     private TextField neuUserName;
@@ -46,16 +46,28 @@ public class UserLoginAendernController implements Initializable {
     private void neuPassIn(ActionEvent event) {
     }
     
+    /**
+     * aktueller Chef anlegen
+     * @param c -- Chef
+     */
     public void LoginCurrentChef(Chef c){   
         currentChef = c;
         currentTyp = 1;
     }
     
+    /**
+     * aktueller Mitarbeiter anlegen
+     * @param m -- Mitarbeiter
+     */
     public void LoginCurrentMit(Mitarbeiter m){   
         currentMit = m;
         currentTyp = 2;
     }
 
+    /**
+     * Wenn OK Button gelicked wird, werden die Daten aktualisiert
+     * @param event 
+     */
     @FXML
     private void buttonOK(ActionEvent event) {
         String user = neuUserName.getText();

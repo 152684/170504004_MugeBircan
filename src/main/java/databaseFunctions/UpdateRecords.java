@@ -18,8 +18,19 @@ import java.util.Iterator;
 /**
  *
  * @author mbirc
+ * 
+ * Klasse, um die Daten in der Database zu aktualisieren
  */
 public class UpdateRecords {
+    
+    /**
+     * Mitarbeiter Daten aktualisieren, wobei die BurgerID gegeben ist
+     * @param n -- Name
+     * @param anschr -- Anschrift
+     * @param e -- Email
+     * @param tel -- Telefonnnummer
+     * @param ID -- BurgerID
+     */
     public static void updateMitarbeiter(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -51,10 +62,12 @@ public class UpdateRecords {
 
     }
 
+    /**
+     * Anzahl der von dem Mitarbeiter registrierten/abgemeldeten Kunden sowie die Erfolgsrate des Mitarbeiters aktualisieren 
+     * @param id -- Mitarbeiter BurgerID
+     * @param anAb -- 1 falls ein Kunde registriert wird, 2 falls Kunde abgemeldet wird
+     */
     public static void updateMitarbeiterErfolg(long id, int anAb){
-        System.out.println("in update");
-        //anAb = 1 -- an
-        //anAb = 2 -- ab
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -112,6 +125,14 @@ public class UpdateRecords {
         }
     }
 
+    /**
+     * Chef Daten aktualisieren, wobei die BurgerID gegeben ist
+     * @param n -- Name
+     * @param anschr -- Anschrift
+     * @param e -- Email
+     * @param tel -- Telefonnnummer
+     * @param ID -- BurgerID
+     */
     public static void updateChef(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -143,6 +164,12 @@ public class UpdateRecords {
         
     }
 
+    /**
+     * Mitarbeiter Username und Passwort aktualisieren
+     * @param user -- username
+     * @param pass -- Passwort
+     * @param ID -- Mitarbeiter BurgerID
+     */
     public static void updateMitarbeiterUserNameUndPass(String user, String pass, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -172,6 +199,12 @@ public class UpdateRecords {
         
     }
     
+    /**
+     * Chef Username und Passwort aktualisieren 
+     * @param user -- username
+     * @param pass -- passwort
+     * @param ID -- Chef BurgerID
+     */
     public static void updateChefUserNameUndPass(String user, String pass, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -201,6 +234,14 @@ public class UpdateRecords {
         
     }
 
+    /**
+     * Kunde Daten aktualisieren, wobei die BurgerID gegeben ist
+     * @param n -- Name
+     * @param anschr -- Anschrift
+     * @param e -- Email
+     * @param tel -- Telefonnnummer
+     * @param ID -- BurgerID
+     */
     public static void updateKunde(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -232,6 +273,14 @@ public class UpdateRecords {
         
     }
     
+    /**
+     * ReiseLeiter Daten aktualisieren, wobei die BurgerID gegeben ist
+     * @param n -- Name
+     * @param anschr -- Anschrift
+     * @param e -- Email
+     * @param tel -- Telefonnnummer
+     * @param ID -- BurgerID
+     */
     public static void updateReiseL(String n, String anschr, String e, int tel, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -263,6 +312,14 @@ public class UpdateRecords {
         
     }
     
+    /**
+     * Hotel Daten aktualisieren, wobei der Name gegeben ist
+     * @param n -- Name
+     * @param anschr -- Anschrift
+     * @param e -- Email
+     * @param tel -- 1telefonnummer
+     * @param p -- Preis
+     */
     public static void updateHotel(String n, String anschr, String e, int tel, float p){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -294,11 +351,19 @@ public class UpdateRecords {
         
     }
   
-    public static int updateTourInfo(String n, Date d, int maxT, String info, String hN, float p){
-        //return 0 maxTeilnehmer reduziert
-        //return 1 erfolg
-        //return 2 fehler
-        
+    /**
+     * Tour Daten aktualisieren, wobei der Name gegeben ist
+     * @param n -- Name
+     * @param d -- Datum
+     * @param maxT -- maximale TeilnehmerZahl
+     * @param info -- Information
+     * @param hN -- HotelName
+     * @param p -- Preis
+     * @retval 0 -- falls maximale Teilnehmerzahl reduziert wird (dies ist nicht erlaubt)
+     * @retval 1 -- erfolgreiche Aktualisierung
+     * @retval 2 -- Fehler
+     */
+    public static int updateTourInfo(String n, Date d, int maxT, String info, String hN, float p){        
         Tour t = SelectRecords.findTour(n);
         if(t.getMaxTeilnehmer() <= maxT){
             int neueFreieP = maxT-t.getMaxTeilnehmer()+t.getFreiePlaetze();
@@ -343,9 +408,12 @@ public class UpdateRecords {
         
     }
     
+    /**
+     * Anzahl der freien Plätze bei der Tour aktualisieren
+     * @param tour -- Tourname
+     * @param anAb -- 1 falls Kunde angemeldet wird, 2 falls Kunde abgemeldet wird
+     */
     public static void tourFreiPlAkt(String tour, int anAb){
-        //anAb 1 -- kunde anmelden
-        //anAb 2 -- kunde abmelden
         Connect c = new Connect();
         Connection conn = c.connect();
         Tour t = SelectRecords.findTour(tour);
@@ -405,12 +473,16 @@ public class UpdateRecords {
         }
     }
 
-    public static int kundeZurTourAnmelden(String tour, long kundeId){
-        //returns 0 when kunde schon zur Tour angemeldet ist
-        //returns 1 when kunde erfolgreich angemeldet wird
-        //returns 2 fehler
-        //returns 3 falls keine freiePlaetze vorhanden
-        
+    /**
+     * ein Kunde zu einer Tour anmelden
+     * @param tour -- Tourname
+     * @param kundeId -- Kunde BurgerID
+     * @retval 0 -- falls der gegebene Kunde schon bei diesem Tour angemeldet ist
+     * @retval 1 -- falls der Kunde erfolgreich ur Tour angemeldet wird
+     * @retval 2 -- falls es einen Fehler gibt
+     * @retval 3 -- falls keine freie Plätze bei der Tour vorhanden ist
+     */
+    public static int kundeZurTourAnmelden(String tour, long kundeId){        
         Tour currentTour = SelectRecords.findTour(tour);
         if(currentTour.getFreiePlaetze()!= 0){
             Connect c = new Connect();
@@ -491,6 +563,13 @@ public class UpdateRecords {
 
     }
        
+    /**
+     * ein Kunde von einem Tour abmelden
+     * @param tour -- Tourname
+     * @param kunde -- neue KundenListe dieser Tour
+     * @param kundenId -- BurgerID des Kunden
+     * @param reisen -- neue Reisen dieser Kunde
+     */
     public static void deleteKundeVonTour(String tour, ArrayList<String> kunde, long kundenId, ArrayList<String> reisen){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -530,11 +609,15 @@ public class UpdateRecords {
         }
     }
 
-    public static int reiseLZurTourAnmelden(String tour, long reiseLId){
-        //returns 0 when reiseL schon zur Tour angemeldet ist
-        //returns 1 when reiseL erfolgreich angemeldet wird
-        //returns 2 fehler
-    
+    /**
+     * Ein ReiseLeiter zur Tour anmelden
+     * @param tour -- Tourname
+     * @param reiseLId -- BurgerID
+     * @retval 0 -- falls reiseL schon zur Tour angemeldet ist
+     * @retval 1 -- falls reiseL erfolgreich angemeldet wird
+     * @retval 2 -- falls es einen Fehler gibt
+     */
+    public static int reiseLZurTourAnmelden(String tour, long reiseLId){    
         Tour currentTour = SelectRecords.findTour(tour);
         
         Connect c = new Connect();
@@ -595,6 +678,12 @@ public class UpdateRecords {
 
     }
        
+    /**
+     * Ein ReiseLeiter von der Toru abmelden
+     * @param tour -- Toruname
+     * @param reiseL -- neue ReiseL Liste
+     * @param reiseLId  -- ReiseL BurgerID 
+     */
     public static void deleteReiseLVonTour(String tour, ArrayList<String> reiseL, long reiseLId){
         Connect c = new Connect();
         Connection conn = c.connect();

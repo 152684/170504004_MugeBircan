@@ -20,9 +20,9 @@ import javafx.scene.control.TextField;
  */
 public class HotelFunktionenController implements Initializable {
 
-    Chef currentChef;
-    Mitarbeiter currentMit;
-    int currentTyp = 0; //1 chef, 2 mit
+    Chef currentChef; /**< aktueller chef*/
+    Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
+    int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
 
     @FXML
     private TextField name;
@@ -45,18 +45,30 @@ public class HotelFunktionenController implements Initializable {
         // TODO
     }    
 
+    /**
+     * aktueller Mitarbeiter anlegen
+     * @param m -- Mitarbeiter
+     */
     public void currentAnlegen(Mitarbeiter m){
         textArea.setText("Der Löschvorgang funktioniert nach dem Namen des Hotels.\n Der Hotelname kann deshalb nicht verändert werden und alle andere Eingaben beim Löschen werden vernachlässigt!");
         currentMit = m;
         currentTyp = 2;        
     }
     
+    /**
+     * aktueller Chef anlegen
+     * @param c -- Chef
+     */
     public void currentAnlegen(Chef c){
         textArea.setText("Der Löschvorgang funktioniert nach dem Namen des Hotels.\n Der Hotelname kann deshalb nicht verändert werden und alle andere Eingaben beim Löschen werden vernachlässigt!");
         currentChef = c;
         currentTyp = 1;                
     }
 
+    /**
+     * Hotel hinzufuegen
+     * @param event 
+     */
     @FXML
     private void hotelHinzuButton(ActionEvent event) {
         String name = this.name.getText();
@@ -85,6 +97,10 @@ public class HotelFunktionenController implements Initializable {
         }
     }
 
+    /**
+     * Hotel aktualisieren
+     * @param event 
+     */
     @FXML
     private void hotelAktButton(ActionEvent event) {
         String name = this.name.getText();
@@ -113,6 +129,10 @@ public class HotelFunktionenController implements Initializable {
         }
     }
 
+    /**
+     * Hotel Loeschen
+     * @param event 
+     */
     @FXML
     private void hotelLoeschButton(ActionEvent event) {
         String name = this.name.getText();

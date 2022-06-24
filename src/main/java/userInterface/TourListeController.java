@@ -31,9 +31,9 @@ import javafx.stage.Stage;
 public class TourListeController implements Initializable {
     
     ObservableList list = FXCollections.observableArrayList();
-    Chef currentChef;
-    Mitarbeiter currentMit;
-    int currentTyp = 0; //1 chef, 2 mit
+    Chef currentChef; /**< aktueller chef*/
+    Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
+    int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
 
     @FXML
     private ListView<String> tourList;
@@ -47,16 +47,27 @@ public class TourListeController implements Initializable {
         addTour();
     }    
  
+    /**
+     * aktueller Mitarbeiter anlegen
+     * @param m -- Mitarbeiter
+     */
     public void currentAnlegen(Mitarbeiter m){
         currentMit = m;
         currentTyp = 2;        
     }
     
+    /**
+     * aktueller Chef anlegen
+     * @param c -- Chef
+     */
     public void currentAnlegen(Chef c){
         currentChef = c;
         currentTyp = 1;                
     }
 
+    /**
+     * Liste den Tour erstellen
+     */
     private void addTour(){
         list.removeAll(list);
         
@@ -74,6 +85,10 @@ public class TourListeController implements Initializable {
 
     }
 
+    /**
+     * Wenn ein Tour mit dem Klicken gewaehlt wird
+     * @param event 
+     */
     @FXML
     private void listMouseClicked(MouseEvent event) {
         String a = tourList.getSelectionModel().getSelectedItem();

@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  */
 public class LoginMitarbeiterController implements Initializable {
 
-    Mitarbeiter currentUser;
+    Mitarbeiter currentUser; /**< aktueller Mitarbeiter*/
     
     @FXML
     private TextArea sceneText;
@@ -38,12 +38,20 @@ public class LoginMitarbeiterController implements Initializable {
         // TODO
     }    
 
+    /**
+     * den aktuellen User finden
+     * @param id -- BurgerID des Chefs
+     * @throws UngueltigeIDException 
+     */
     public void fromLogin(long id) throws UngueltigeIDException{
         currentUser = SelectRecords.findMitarbeiter(id);
-        sceneText.setText("Willkommen Herr/Frau " + currentUser.getName() );
+        sceneText.setText("Willkommen Herr/Frau " + currentUser.getName().toUpperCase() );
     }
 
-    
+    /**
+     * Login Daten des aktuellen Users aendern
+     * @param event 
+     */    
     @FXML
     private void loginDatenAendern(ActionEvent event) {
         try{
@@ -63,22 +71,10 @@ public class LoginMitarbeiterController implements Initializable {
  
     }
 
-    private void kundeReiseLHinzuAkt(ActionEvent event) {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("KundeHinzufuegen.fxml"));
-            Parent root = loader.load();
-            //The following both lines are the only addition we need to pass the arguments
-            KundeHinzufuegenController controller2 = loader.getController();
-            controller2.currentAnlegen(currentUser);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-                
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
+    /**
+     * Hotelfunktionen Fenster oeffnen
+     * @param event 
+     */    
     @FXML
     private void hotelFunktionen(ActionEvent event) {
         try{
@@ -96,6 +92,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * TourFunktionen Fenster oeffnen
+     * @param event 
+     */
     @FXML
     private void tourFnk(ActionEvent event) {
         try{
@@ -113,6 +113,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * Tours listen
+     * @param event 
+     */
     @FXML
     private void tourL(ActionEvent event) {
         try{
@@ -129,6 +133,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * Kunde/ReiseL FUnktionen Fenster oeffnen
+     * @param event 
+     */
     @FXML
     private void kundeReiseLFnk(ActionEvent event) {
         try{
@@ -146,6 +154,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * Kunden Listen
+     * @param event 
+     */
     @FXML
     private void kundeListen(ActionEvent event) {
         try{
@@ -162,6 +174,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * ReiseLeitern Listen
+     * @param event 
+     */
     @FXML
     private void reiseLeiterListen(ActionEvent event) {
         try{
@@ -178,6 +194,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * Kunde zur Tour anmelden -- zuerst Liste der Tours oeffnen
+     * @param event 
+     */
     @FXML
     private void kundeZurTourAnAb(ActionEvent event) {
         try{
@@ -195,6 +215,10 @@ public class LoginMitarbeiterController implements Initializable {
         }
     }
 
+    /**
+     * Hotels listen
+     * @param event 
+     */
     @FXML
     private void hotelsListen(ActionEvent event) {
         try{

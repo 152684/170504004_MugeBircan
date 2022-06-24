@@ -22,8 +22,12 @@ import javafx.stage.Stage;
 public class FXMain extends Application {
     
     private static Scene scene;
-
  
+    /**
+     * Das Login Fenster oefnen
+     * @param stage
+     * @throws IOException 
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginScene"), 640, 480);
@@ -31,6 +35,7 @@ public class FXMain extends Application {
         stage.show();
     }
 
+    
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }

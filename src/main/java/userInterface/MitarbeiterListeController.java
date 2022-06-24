@@ -65,6 +65,9 @@ public class MitarbeiterListeController implements Initializable {
         }
     }    
 
+    /**
+     * Initialisieren den Spalten 
+     */
     private void initializeCols(){
       
       nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -77,24 +80,11 @@ public class MitarbeiterListeController implements Initializable {
       erfolgColumn.setCellValueFactory(new PropertyValueFactory<>("erfolgsRate"));
     }   
     
+    /**
+     * Daten in die Tabelle speichern
+     * @throws UngueltigeIDException 
+     */
     private void loadData() throws UngueltigeIDException{
-        /*
-        ArrayList<Long> mitarb = new ArrayList();
-        int tourZahl = SelectRecords.mitarbIDsInArray(mitarb);
-        Iterator<Long> iter = mitarb.iterator();
-        
-        
-        while(tourZahl != 0){
-            Mitarbeiter currentTour = SelectRecords.findMitarbeiter(iter.next());
-            mitarbData.add(currentTour);  
-            tourZahl--;
-        }
-
-        mitarbeiterTable.setItems(mitarbData);
-    }    
-        
-        
-        */
         ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();

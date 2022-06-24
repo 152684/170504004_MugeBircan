@@ -10,6 +10,8 @@ import java.sql.SQLException;
 /**
  *
  * @author mbirc
+ * 
+ * Klasse, um eine Verbindung mit dem Database zu erschaffen
  */
 public class Connect {
  
@@ -20,12 +22,8 @@ public class Connect {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:C:/sqlite/db/AgencyDB.db";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
-            
-            //System.out.println("Connection to SQLite has been established.");            
-            
+            String url = "jdbc:sqlite:C:/sqlite/db/AgencyDB.db"; /**< Lokation der Database*/
+            conn = DriverManager.getConnection(url); /**< Verbindung mit der Database zu erschaffen*/            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Fehler");

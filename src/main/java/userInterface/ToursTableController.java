@@ -60,6 +60,9 @@ public class ToursTableController implements Initializable {
         loadData();
     }    
     
+    /**
+     * Initialisieren den Spalten
+     */
     private void initializeCols(){
       
       tourNameColumn.setCellValueFactory(new PropertyValueFactory<>("tourName"));
@@ -73,6 +76,9 @@ public class ToursTableController implements Initializable {
       kundenColumn.setCellValueFactory(new PropertyValueFactory<>("kunden"));
     }   
     
+    /**
+     * Daten in die Tabelle speichern
+     */
     private void loadData(){
 
         ArrayList<String> tourNamen = new ArrayList();

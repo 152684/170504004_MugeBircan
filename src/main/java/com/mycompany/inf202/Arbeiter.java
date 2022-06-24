@@ -19,11 +19,8 @@ import java.util.logging.Logger;
  * @author mbirc
  * 
  * Arbeiter class extends from Person and has subclasses:
- * Arbeiter
  * Chef
- * Mitarbeiter
- * Kunde
- * ReiseLeiter 
+ * Mitarbeiter 
  */
 public class Arbeiter extends Person{
     

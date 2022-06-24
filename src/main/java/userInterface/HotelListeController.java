@@ -51,6 +51,9 @@ public class HotelListeController implements Initializable {
         loadData();
     }    
 
+    /**
+     * Initialisieren den Spalten
+     */
     private void initializeCols(){
       
       nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -60,6 +63,9 @@ public class HotelListeController implements Initializable {
       preisColumn.setCellValueFactory(new PropertyValueFactory<>("preis"));
     }   
     
+    /**
+     * Daten in die Tabelle speichern
+     */
     private void loadData(){
         ArrayList<String> hotels = new ArrayList();
         int hotelZahl = SelectRecords.hotelNamenInArray(hotels);

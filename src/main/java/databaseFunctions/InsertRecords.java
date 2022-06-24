@@ -13,9 +13,23 @@ import java.util.Date;
 /**
  *
  * @author mbirc
+ * 
+ * Klasse, um Daten in die Database zu speichern
  */
 public class InsertRecords {
     
+    /**
+     * neuer Mitarbeiter in die Database speichern 
+     * @param n -- Name
+     * @param ID -- BurgerID
+     * @param anschr -- Anschrift
+     * @param email -- Email
+     * @param telefon -- Telefonnummer
+     * @param geburt -- Geburtsdatum
+     * @param persID -- PersonalID
+     * @param user -- Username
+     * @param pass -- Passwort
+     */
     public static void insertMitarbeiter(String n, long ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -51,6 +65,18 @@ public class InsertRecords {
 
     }
     
+    /**
+     * neuer Chef in die Database speichern 
+     * @param n -- Name
+     * @param ID -- BurgerID
+     * @param anschr -- Anschrift
+     * @param email -- Email
+     * @param telefon -- Telefonnummer
+     * @param geburt -- Geburtsdatum
+     * @param persID -- PersonalID
+     * @param user -- Username
+     * @param pass -- Passwort
+     */
     public static void insertChef(String n, long ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -85,6 +111,16 @@ public class InsertRecords {
     
     }
    
+    /**
+     * 
+     * neue Kunde in die Database speichern
+     * @param n -- Name
+     * @param ID -- BurgerID
+     * @param anschr -- Anschrift
+     * @param email -- Email
+     * @param telefon -- Telefonnummer
+     * @param geburt -- Geburtsdatum
+     */
     public static void insertKunde(String n, long ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -117,6 +153,16 @@ public class InsertRecords {
         
     }
     
+    /**
+     * 
+     * neuer ReiseLeiter in die Database speichern
+     * @param n -- Name
+     * @param ID -- BurgerID
+     * @param anschr -- Anschrift
+     * @param email -- Email
+     * @param telefon -- Telefonnummer
+     * @param geburt -- Geburtsdatum
+     */
     public static void insertReiseLeiter(String n, long ID, String anschr, String email, int telefon, Date geburt){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -148,6 +194,14 @@ public class InsertRecords {
         
     }
     
+    /**
+     * neues Hotel in die Database speichern
+     * @param n -- Name
+     * @param anschr -- Anschrift
+     * @param telefon -- Telefonnummer
+     * @param email -- Email
+     * @param preis -- Preis
+     */
     public static void insertHotel(String n, String anschr, int telefon, String email, float preis){
         Connect c = new Connect();
         Connection conn = c.connect();
@@ -176,6 +230,17 @@ public class InsertRecords {
         
     }
 
+    /**
+     * 
+     * neue Tour in die Database speichern
+     * @param n -- Name
+     * @param d -- Datum
+     * @param info -- Informationen
+     * @param maxT -- masximale TeilneherZahl
+     * @param hN -- Hotel Name
+     * @param p -- Preis
+     * @param freiP -- freie Plaetze
+     */
     public static void insertTour(String n, Date d, String info, int maxT, String hN, float p, int freiP){
         Connect c = new Connect();
         Connection conn = c.connect();

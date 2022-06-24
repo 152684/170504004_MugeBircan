@@ -55,12 +55,19 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         // TODO
     }    
 
-    
+    /**
+     * aktuelle User des Systems einsetzen
+     * @param c -- aktueller Chef 
+     */
     public void currentAnlegen(Chef c){
         textField.setText("Lassen Sie den Geburtsdatumfeld leer fuers Aktualisieren. (Der Geburtsdatum kann nicht aktualisiert werden und irgendeine Eingabe bei diesem Feld wird vernachlässigt.");
         currentUser = c;
     }
 
+    /**
+     * neuer Chef hinzufuegen
+     * @param event 
+     */
     @FXML
     private void chefHinButton(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -81,12 +88,17 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         int persID = Integer.parseInt(this.persID.getText());
 
         if(burgerID < 99999999999L && burgerID > 10000000000L){
-            boolean insertErfolg = false;
-            insertErfolg = currentUser.setChef(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
-            if(insertErfolg){
-                textField.setText("Der Chef mit den Namen " + name + " wird gespeichert.");                            
+            if(persID < 99999999 && persID > 10000000){
+                boolean insertErfolg = false;
+                insertErfolg = currentUser.setChef(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
+                if(insertErfolg){
+                    textField.setText("Der Chef mit den Namen: " + name + ", BürgerID: " + burgerID + " wird gespeichert.");                            
+                }else{
+                    textField.setText("Der Chef mit den Namen " + name + " existiert schon.");                        
+                }
+                
             }else{
-                textField.setText("Der Chef mit den Namen " + name + " existiert schon.");                        
+                textField.setText("Die PersonalID darf nur eine 8 stellige Zahl sein.");
             }
         }else{
             textField.setText("Die Bürger ID darf nur eine 11 stellige Zahl sein.");
@@ -94,6 +106,10 @@ public class ChefMitarbHinzufuegenController implements Initializable {
 
     }
 
+    /**
+     * Chef aktualisieren
+     * @param event 
+     */
     @FXML
     private void chefAktButton(ActionEvent event) {
         String name = this.name.getText();
@@ -107,6 +123,10 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         textField.setText("Der Chef mit dem BurgerID: " + burgerID + " wurde aktualisiert.");
     }
 
+    /**
+     * neuer Mitarbeiter hinzufuegen
+     * @param event 
+     */
     @FXML
     private void MitHinButton(ActionEvent event) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -127,18 +147,27 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         int persID = Integer.parseInt(this.persID.getText());
 
         if(burgerID < 99999999999L && burgerID > 10000000000L){
-            boolean insertErfolg = false;
-            insertErfolg = currentUser.setMitarb(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
-            if(insertErfolg){
-                textField.setText("Der Mitarbeiter mit den Namen " + name + " wird gespeichert.");                            
+            if(persID < 99999999 && persID > 10000000){
+                boolean insertErfolg = false;
+                insertErfolg = currentUser.setMitarb(name, burgerID, anschrift, email, tel, geburtsDatum, persID, user, pass);
+                if(insertErfolg){
+                    textField.setText("Der Mitarbeiter mit den Namen: " + name + ", BürgerID: " + burgerID + " wird gespeichert.");                            
+                }else{
+                    textField.setText("Der Mitarbeiter mit den Namen: " + name + ", BürgerID: " + burgerID + " existiert schon.");                        
+                }            
+                
             }else{
-                textField.setText("Der Mitarbeiter mit den Namen " + name + " existiert schon.");                        
-            }            
+                textField.setText("Die Personal ID darf nur eine 8 stellige Zahl sein");
+            }
         }else{
-            textField.setText("Die B[rger ID darf nur eine 11 stellige Zahl sein");
+            textField.setText("Die Bürger ID darf nur eine 11 stellige Zahl sein");
         }
     }
 
+    /**
+     * Mitarbeiter aktualisieren
+     * @param event 
+     */
     @FXML
     private void MitAktButton(ActionEvent event) {
         String name = this.name.getText();
@@ -152,6 +181,10 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         textField.setText("Der Mitarbeiter mit dem BurgerID: " + burgerID + " wurde aktualisiert.");
     }
 
+    /**
+     * Chef loeschen
+     * @param event 
+     */
     @FXML
     private void chefLoeschButton(ActionEvent event) {
         long burgerID = Long.parseLong(this.burgerID.getText());
@@ -164,6 +197,10 @@ public class ChefMitarbHinzufuegenController implements Initializable {
         }
     }
 
+    /**
+     * Mitarbeiter loeschen
+     * @param event 
+     */
     @FXML
     private void mitarbLoeschButton(ActionEvent event) {
         long burgerID = Long.parseLong(this.burgerID.getText());
