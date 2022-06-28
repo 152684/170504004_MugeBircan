@@ -33,12 +33,6 @@ public class Arbeiter extends Person{
 
     InsertRecords insertData = new InsertRecords();
     
-    private ArrayList<Chef> chefs = new ArrayList();
-    private ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
-    private ArrayList<Kunde> kunden = new ArrayList();
-    private ArrayList<ReiseLeiter> reiseleitern = new ArrayList();
-    private ArrayList<Tour> tours = new ArrayList();
-    private ArrayList<Hotel> hotels = new ArrayList();
 
     /**
      * constructor class for Arbieter

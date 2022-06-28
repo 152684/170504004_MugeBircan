@@ -235,7 +235,7 @@ public class Tour {
      *  set Methode fuer preis
      * @param m 
      */
-    public void setPreis(int m){
+    public void setPreis(float m){
         preis = m;
     }
           

@@ -216,35 +216,45 @@ public class DeleteRecords {
      * @param n -- Tour Name
      */
     public static void deleteTour(String n){
+        System.out.println("in delete Tour");
         SelectRecords.tourNamenInArray(tours);
         Iterator<String> iter = tours.iterator();
 
         boolean exist = false;
         while(iter.hasNext()){
+            System.out.println("in while");
             if(iter.next().equals(n)){
+                System.out.println("in if");
                 ArrayList<String> kundenDesTours = SelectRecords.selectTourKunden(n);
-                Iterator<String> iterK = kundenDesTours.iterator();
+                
 
-                while(iterK.hasNext()){
-                    long id = Long.parseLong(iterK.next());
-                    ArrayList<String> reisen = SelectRecords.toursEinesKunden(id);
-                    Iterator<String> iterR = reisen.iterator();
-                    int stelleR = -1;
+                if(kundenDesTours != null){
+                    Iterator<String> iterK = kundenDesTours.iterator();
+                    System.out.println("in if-2");
+                    while(iterK.hasNext()){
+                        System.out.println("in while--solte nicht rein");
+                        long id = Long.parseLong(iterK.next());
+                        ArrayList<String> reisen = SelectRecords.toursEinesKunden(id);
+                        Iterator<String> iterR = reisen.iterator();
+                        int stelleR = -1;
 
-                    while(iterR.hasNext()){
-                        stelleR ++;
-                        if(iterR.next().equals(n)){                    
-                            break;
+                        while(iterR.hasNext()){
+                            stelleR ++;
+                            if(iterR.next().equals(n)){                    
+                                break;
+                            }
                         }
-                    }
-                    System.out.println("stelle: " + stelleR);
-                    if(reisen.size() == 1){
-                        reisen.removeAll(reisen);
-                    }else{            
-                        reisen.remove(stelleR);
-                    }
-                    UpdateRecords.deleteKundeVonTour(n, kundenDesTours, id, reisen);            
-                }        
+                        System.out.println("stelle: " + stelleR);
+                        if(reisen.size() == 1){
+                            reisen.removeAll(reisen);
+                        }else{            
+                            reisen.remove(stelleR);
+                        }
+                        UpdateRecords.deleteKundeVonTour(n, kundenDesTours, id, reisen);            
+                    }  
+                    System.out.println("oußer while--sollte nivcht rein");
+                }
+                System.out.println("außer if");
 
                 exist = true;
                 Connect c = new Connect();
