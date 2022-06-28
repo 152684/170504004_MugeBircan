@@ -216,23 +216,18 @@ public class DeleteRecords {
      * @param n -- Tour Name
      */
     public static void deleteTour(String n){
-        System.out.println("in delete Tour");
         SelectRecords.tourNamenInArray(tours);
         Iterator<String> iter = tours.iterator();
 
         boolean exist = false;
         while(iter.hasNext()){
-            System.out.println("in while");
             if(iter.next().equals(n)){
-                System.out.println("in if");
                 ArrayList<String> kundenDesTours = SelectRecords.selectTourKunden(n);
                 
 
                 if(kundenDesTours != null){
                     Iterator<String> iterK = kundenDesTours.iterator();
-                    System.out.println("in if-2");
                     while(iterK.hasNext()){
-                        System.out.println("in while--solte nicht rein");
                         long id = Long.parseLong(iterK.next());
                         ArrayList<String> reisen = SelectRecords.toursEinesKunden(id);
                         Iterator<String> iterR = reisen.iterator();
@@ -252,9 +247,7 @@ public class DeleteRecords {
                         }
                         UpdateRecords.deleteKundeVonTour(n, kundenDesTours, id, reisen);            
                     }  
-                    System.out.println("oußer while--sollte nivcht rein");
                 }
-                System.out.println("außer if");
 
                 exist = true;
                 Connect c = new Connect();
