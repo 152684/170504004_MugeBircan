@@ -31,9 +31,9 @@ public class Chef extends Arbeiter{
      * @param persID -- Chef personalID
      * @param user -- Chef userName
      * @param pass -- Chef Passwort
-     * @throws UngueltigeIDException 
      */
-    public Chef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) throws UngueltigeIDException{
+    public Chef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) 
+    {
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
     }
     
@@ -52,20 +52,15 @@ public class Chef extends Arbeiter{
      */
     public boolean setMitarb(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
     {
-        try {
-            Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
-            if(r == null){
-                Mitarbeiter k = new Mitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-                InsertRecords.insertMitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-                return true;                
-            }else{
-                return false;
-            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+
+        Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
+        if(r == null){
+            Mitarbeiter k = new Mitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+            InsertRecords.insertMitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+            return true;                
+        }else{
+            return false;
         }
-        return false;
-        
     }
     
     /**
@@ -88,19 +83,14 @@ public class Chef extends Arbeiter{
      */
     public boolean deleteMitarb(long ID)
     {
-        try {
-            Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
-            if(r == null){
-                return false;                
-            }else{
-                boolean erfolg = DeleteRecords.deleteMitarbeiter(ID);
-                return erfolg;            
-            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+
+        Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
+        if(r == null){
+            return false;                
+        }else{
+            boolean erfolg = DeleteRecords.deleteMitarbeiter(ID);
+            return erfolg;            
         }
-        return false;
-        
     }
     
     /**
@@ -119,20 +109,14 @@ public class Chef extends Arbeiter{
      */
     public boolean setChef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
     {
-        try {
-            Chef r = SelectRecords.findChef(ID);
-            if(r == null){
-                Chef k = new Chef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-                InsertRecords.insertChef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-                return true;                
-            }else{
-                return false;
-            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+        Chef r = SelectRecords.findChef(ID);
+        if(r == null){
+            Chef k = new Chef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+            InsertRecords.insertChef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+            return true;                
+        }else{
+            return false;
         }
-        return false;
-        
     }
     
     /**
@@ -156,19 +140,14 @@ public class Chef extends Arbeiter{
      */
     public boolean deleteChef(long ID)
     {
-        try {
-            Chef r = SelectRecords.findChef(ID);
-            if(r == null){
-                return false;                
-            }else{
-                boolean erfolg = DeleteRecords.deleteChef(ID);
-                return erfolg;            
-            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+
+        Chef r = SelectRecords.findChef(ID);
+        if(r == null){
+            return false;                
+        }else{
+            boolean erfolg = DeleteRecords.deleteChef(ID);
+            return erfolg;            
         }
-        return false;
-        
     }
     
 }

@@ -45,9 +45,9 @@ public class Arbeiter extends Person{
      * @param persID -- Arbieter PersonalID
      * @param user -- Arbieter UserName
      * @param pass -- Arbeiter Passwort
-     * @throws UngueltigeIDException 
      */
-    public Arbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) throws UngueltigeIDException{
+    public Arbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) 
+    {
         super(n, ID, anschr, e, telefon, geburt);
         personalID = persID;
         userName = user;
@@ -112,19 +112,16 @@ public class Arbeiter extends Person{
      */
     public boolean setKunde(String n, long ID, String anschr, String e, int telefon, Date geburt) 
     {       
-        try {
-            Kunde k = SelectRecords.findKunde(ID);
-            if(k == null){
-                Kunde kNew = new Kunde(n, ID, anschr, e, telefon, geburt);
-                InsertRecords.insertKunde(n, ID, anschr, e, telefon, geburt);
-                return true;                
-            }else{
-                return false;
-            }                        
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+
+        Kunde k = SelectRecords.findKunde(ID);
+        if(k == null){
+            Kunde kNew = new Kunde(n, ID, anschr, e, telefon, geburt);
+            InsertRecords.insertKunde(n, ID, anschr, e, telefon, geburt);
+            return true;                
+        }else{
+            return false;
+        }                        
+        
     }
     
     /**
@@ -138,19 +135,14 @@ public class Arbeiter extends Person{
      */
     public boolean updateKundenInfo(String n, long ID, String anschr, String e, int telefon)
     {       
-        try {
-            Kunde k = SelectRecords.findKunde(ID);
-            if(k == null){
-                return false;                
-            }else{
-                UpdateRecords.updateKunde(n, anschr, e, telefon, ID);
-                return true;
-            }                        
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-        
+
+        Kunde k = SelectRecords.findKunde(ID);
+        if(k == null){
+            return false;                
+        }else{
+            UpdateRecords.updateKunde(n, anschr, e, telefon, ID);
+            return true;
+        }                        
     }
     
     /**
@@ -160,17 +152,13 @@ public class Arbeiter extends Person{
      */
     public boolean deleteKunde(long id) 
     {
-        try {
-            Kunde r = SelectRecords.findKunde(id);
-            if(r == null){
-                return false;                
-            }else{
-                boolean erfolg = DeleteRecords.deleteKunde(id);
-                return erfolg;            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+
+        Kunde r = SelectRecords.findKunde(id);
+        if(r == null){
+            return false;                
+        }else{
+            boolean erfolg = DeleteRecords.deleteKunde(id);
+            return erfolg;            }
     }
     
     /**
@@ -337,20 +325,15 @@ public class Arbeiter extends Person{
      */
     public boolean setReiseL(String n, long ID, String anschr, String e, int telefon, Date geburt)
     {
-        try {
-            ReiseLeiter r = SelectRecords.findReiseL(ID);
-            if(r == null){
-                ReiseLeiter k = new ReiseLeiter(n, ID, anschr, e, telefon, geburt);
-                InsertRecords.insertReiseLeiter(n, ID, anschr, e, telefon, geburt);
-                return true;                
-            }else{
-                return false;
-            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
+
+        ReiseLeiter r = SelectRecords.findReiseL(ID);
+        if(r == null){
+            ReiseLeiter k = new ReiseLeiter(n, ID, anschr, e, telefon, geburt);
+            InsertRecords.insertReiseLeiter(n, ID, anschr, e, telefon, geburt);
+            return true;                
+        }else{
+            return false;
         }
-        return false;
-        
     }
     
     /**
@@ -365,18 +348,14 @@ public class Arbeiter extends Person{
      */
     public boolean updateReiseLInfo(String n, String anschr, String e, int telefon, long ID)
     {
-        try {
-            ReiseLeiter k = SelectRecords.findReiseL(ID);
-            if(k == null){
-                return false;                
-            }else{
-                UpdateRecords.updateReiseL(n, anschr, e, telefon, ID);
-                return true;
-            }                        
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;               
+        ReiseLeiter k = SelectRecords.findReiseL(ID);
+        if(k == null){
+            return false;                
+        }else{
+            UpdateRecords.updateReiseL(n, anschr, e, telefon, ID);
+            return true;
+        }                        
+        
     }
     
     /**
@@ -386,18 +365,13 @@ public class Arbeiter extends Person{
      */    
     public boolean deleteReiseL(long ID)
     {
-        try {
-            ReiseLeiter r = SelectRecords.findReiseL(ID);
-            if(r == null){
-                return false;                
-            }else{
-                DeleteRecords.deleteReiseL(ID);
-                return true;            }
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(Arbeiter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
 
+        ReiseLeiter r = SelectRecords.findReiseL(ID);
+        if(r == null){
+            return false;                
+        }else{
+            DeleteRecords.deleteReiseL(ID);
+            return true;            }
     }
     
 }

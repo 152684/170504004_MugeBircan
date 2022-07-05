@@ -24,9 +24,9 @@ public class Login {
      * @param pass -- Passwort
      * @retval 0 -- falls die Login Daten nicht gueltig sind
      * @retval long BurgerID -- BurgerID des einloggendes Arbeiters
-     * @throws UngueltigeIDException 
      */
-    static public long loginRichtig(String user, String pass) throws UngueltigeIDException{
+    static public long loginRichtig(String user, String pass) 
+    {
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         SelectRecords.allChefInArray(chefs);
         

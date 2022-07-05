@@ -26,15 +26,14 @@ public class SelectRecords {
     /**
      * Alle Mitarbietern aus der Database in ein ArrayList speichern
      * @param mitarbeitern -- Mitarbeiter ArrayList
-     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
      */
-    public static void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern) throws UngueltigeIDException{
+    public static void allMitarbeiterInArray(ArrayList<Mitarbeiter> mitarbeitern) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
     
         String sql = "SELECT * FROM mitarbeiter"; 
-        
-          
+                  
         try {  
             Statement stmt  = conn.createStatement();  
             ResultSet rs    = stmt.executeQuery(sql);  
@@ -45,10 +44,9 @@ public class SelectRecords {
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                                 rs.getString("passwort"), rs.getFloat("erfolgsRate"));
                 mitarbeitern.add(m);
-            }  
-        }catch(UngueltigeIDException e) {
-            throw e;
-        }catch (SQLException e) {  
+            }            
+        }
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {
@@ -106,9 +104,9 @@ public class SelectRecords {
      * Mitarbeiter mit der gegebenen BurgerID finden
      * @param id -- BurgerID des Mitarbeiters
      * @return Mitarbeiter
-     * @throws UngueltigeIDException falls BurgerID ungueltig ist
      */
-    public static Mitarbeiter findMitarbeiter(long id) throws UngueltigeIDException{
+    public static Mitarbeiter findMitarbeiter(long id) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -126,10 +124,8 @@ public class SelectRecords {
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                                 rs.getString("passwort"));
             
-        } catch(UngueltigeIDException e){
-            System.out.println("in exceptioin");
-            throw e;            
-        } catch (SQLException e) {  
+        } 
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {
@@ -149,16 +145,15 @@ public class SelectRecords {
      * Chef mit der gegebenen BurgerID finden
      * @param id -- BurgerID des Chefs
      * @return Chef
-     * @throws UngueltigeIDException falls BurgerID ungueltig ist
      */
-    public static Chef findChef(long id) throws UngueltigeIDException{
+    public static Chef findChef(long id) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
         
         String sql = "SELECT * FROM chef WHERE burgerID = ?"; 
         
         Chef chef = null;
-        
         
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
@@ -169,9 +164,8 @@ public class SelectRecords {
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
                                    rs.getString("passwort"));
             
-        }catch(UngueltigeIDException e) {
-            throw e;
-        }catch (SQLException e) {  
+        }
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {
@@ -190,9 +184,9 @@ public class SelectRecords {
     /**
      * Alle Chefs aus der Database in ein ArrayList speichern
      * @param chefs -- Chef ArrayList
-     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
      */
-    public static void allChefInArray(ArrayList<Chef> chefs) throws UngueltigeIDException{
+    public static void allChefInArray(ArrayList<Chef> chefs)
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -210,9 +204,8 @@ public class SelectRecords {
                                    rs.getString("passwort"));
                 chefs.add(c2);
             }  
-        } catch(UngueltigeIDException e){
-            throw e;
-        }catch (SQLException e) {  
+        } 
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
         finally {
@@ -230,9 +223,9 @@ public class SelectRecords {
     /**
      * Alle Kunden aus der Database in ein ArrayList speichern
      * @param kunden -- Kunde ArrayList
-     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
      */
-    public static void allKundenInArray(ArrayList<Kunde> kunden) throws UngueltigeIDException{
+    public static void allKundenInArray(ArrayList<Kunde> kunden) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -249,9 +242,8 @@ public class SelectRecords {
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getString("reisen"));
                 kunden.add(k2);
             }  
-        } catch(UngueltigeIDException e){
-            throw e;
-        }catch (SQLException e) {  
+        } 
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
         finally {
@@ -270,16 +262,15 @@ public class SelectRecords {
      * Kunde mit der gegebenen BurgerID finden
      * @param id -- BurgerID
      * @return Kunde
-     * @throws UngueltigeIDException falls BurgerID nicht gueltig ist
      */
-    public static Kunde findKunde(long id) throws UngueltigeIDException{
+    public static Kunde findKunde(long id) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
         
         String sql = "SELECT * FROM kunde WHERE burgerID = ?"; 
         
         Kunde k = null;
-        
         
         try {              
             PreparedStatement pstmt = conn.prepareStatement(sql);  
@@ -289,9 +280,8 @@ public class SelectRecords {
             k = new Kunde(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getString("reisen"));
             
-        }catch(UngueltigeIDException e) {
-            throw e;
-        }catch (SQLException e) {  
+        }
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {
@@ -354,9 +344,9 @@ public class SelectRecords {
     /**
      * Alle reiseLeitern aus der Database in ein ArrayList speichern
      * @param reiseLeitern -- ReiseLeiter ArrayList
-     * @throws UngueltigeIDException falls die BurgerID nicht gueltig ist
      */
-    public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern) throws UngueltigeIDException{
+    public static void allReiseLInArray(ArrayList<ReiseLeiter> reiseLeitern) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
     
@@ -373,9 +363,8 @@ public class SelectRecords {
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"));
                 reiseLeitern.add(k2);
             }  
-        } catch(UngueltigeIDException e){
-            throw e;
-        }catch (SQLException e) {  
+        } 
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
         finally {
@@ -394,9 +383,9 @@ public class SelectRecords {
      * ReiseLeiter mit der gegebenen BurgerID finden
      * @param id -- BurgerID des ReiseLeiters
      * @return ReiseLeiter
-     * @throws UngueltigeIDException falls BurgerID ungueltig ist 
      */
-    public static ReiseLeiter findReiseL(long id) throws UngueltigeIDException{
+    public static ReiseLeiter findReiseL(long id) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
         
@@ -413,9 +402,8 @@ public class SelectRecords {
             k = new ReiseLeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"));
             
-        }catch(UngueltigeIDException e) {
-            throw e;
-        }catch (SQLException e) {  
+        }
+        catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }  
         finally {

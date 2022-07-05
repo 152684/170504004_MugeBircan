@@ -164,9 +164,8 @@ public class FromTourListController implements Initializable {
                 
             }
             
-        }catch(UngueltigeIDException ex){
-            Logger.getLogger(FromTourListController.class.getName()).log(Level.SEVERE, null, ex);            
-        }catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -248,9 +247,8 @@ public class FromTourListController implements Initializable {
                 
             }
             
-        }catch(UngueltigeIDException ex){
-            Logger.getLogger(FromTourListController.class.getName()).log(Level.SEVERE, null, ex);            
-        }catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

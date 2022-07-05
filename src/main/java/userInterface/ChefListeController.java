@@ -10,8 +10,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -55,11 +53,7 @@ public class ChefListeController implements Initializable {
         // TODO
         table_info_app = chefTable;
         initializeCols();
-        try {
-            loadData();
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(ChefListeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        loadData();
     }    
 
     /**
@@ -79,10 +73,9 @@ public class ChefListeController implements Initializable {
     /**
      * Richtige Daten in die Tabelle einsetzen
      * 
-     * @throws UngueltigeIDException
      */
-    private void loadData() throws UngueltigeIDException{
-
+    private void loadData() 
+    {
         ArrayList<Chef> chefs = new ArrayList();
         SelectRecords.allChefInArray(chefs);
         Iterator<Chef> iter = chefs.iterator();

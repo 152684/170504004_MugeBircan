@@ -5,14 +5,12 @@
 package userInterface;
 
 import com.mycompany.inf202.ReiseLeiter;
-import com.mycompany.inf202.UngueltigeIDException;
+//import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.SelectRecords;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -54,11 +52,7 @@ public class ReiseLeitListeController implements Initializable {
         // TODO
         table_info_app = reiseLeitTable;
         initializeCols();
-        try {        
-            loadData();
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(MitarbeiterListeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        loadData();
     }    
  
     /**
@@ -76,9 +70,9 @@ public class ReiseLeitListeController implements Initializable {
     
     /**
      * Daten in die Tabelle speichern
-     * @throws UngueltigeIDException 
      */
-    private void loadData() throws UngueltigeIDException{
+    private void loadData() 
+    {
 
         ArrayList<ReiseLeiter> reiseLeitern = new ArrayList();
         SelectRecords.allReiseLInArray(reiseLeitern);

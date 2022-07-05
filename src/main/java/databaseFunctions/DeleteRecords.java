@@ -30,9 +30,9 @@ public class DeleteRecords {
      * Mitarbeiter mit der gegebenen BurgerID von der Database zu loeschen
      * @param ID -- BurgerID
      * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
-     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
      */
-    public static boolean deleteMitarbeiter(long ID) throws UngueltigeIDException{
+    public static boolean deleteMitarbeiter(long ID)
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
 
@@ -63,9 +63,9 @@ public class DeleteRecords {
      * Chef mit der gegebenen BurgerID von der Database zu loeschen
      * @param ID -- BurgerID
      * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
-     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
      */
-    public static boolean deleteChef(long ID) throws UngueltigeIDException{
+    public static boolean deleteChef(long ID) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
 
@@ -96,9 +96,9 @@ public class DeleteRecords {
      * Kunde mit der gegebenen BurgerID von der Database zu loeschen
      * @param ID -- BurgerID
      * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
-     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
      */
-    public static boolean deleteKunde(long ID) throws UngueltigeIDException{
+    public static boolean deleteKunde(long ID) 
+    {
         Connect c = new Connect();
         Connection conn = c.connect();
 
@@ -128,10 +128,9 @@ public class DeleteRecords {
     /**
      * ReiseLeiter mit der gegebenen BurgerID von der Database zu loeschen
      * @param ID -- BurgerID
-     * @return TRUE falls das Loeschen erfolgreich, FALSE andernfalls
-     * @throws UngueltigeIDException -- Ueberprueft nach gueltige BurgerID
      */
-    public static void deleteReiseL(long ID) throws UngueltigeIDException{
+    public static void deleteReiseL(long ID)
+    {
         SelectRecords.allReiseLInArray(reiseLs);
         Iterator<ReiseLeiter> iter = reiseLs.iterator();
         

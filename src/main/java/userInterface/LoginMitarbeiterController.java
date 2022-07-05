@@ -41,9 +41,9 @@ public class LoginMitarbeiterController implements Initializable {
     /**
      * den aktuellen User finden
      * @param id -- BurgerID des Chefs
-     * @throws UngueltigeIDException 
      */
-    public void fromLogin(long id) throws UngueltigeIDException{
+    public void fromLogin(long id)
+    {
         currentUser = SelectRecords.findMitarbeiter(id);
         sceneText.setText("Willkommen Herr/Frau " + currentUser.getName().toUpperCase() );
     }

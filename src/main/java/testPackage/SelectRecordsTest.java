@@ -7,7 +7,6 @@ package testPackage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.inf202.*;
-import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class SelectRecordsTest {
     private static ArrayList<Chef> chefs = new ArrayList();
     private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
 
-    public static void test() throws UngueltigeIDException{
+    public static void test() /*throws UngueltigeIDException*/{
 /*        
         System.out.println("-----------allMitarbeiterInArray überprüfen---------------");
         SelectRecords.allMitarbeiterInArray(mitarbeitern);

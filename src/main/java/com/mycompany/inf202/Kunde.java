@@ -24,9 +24,9 @@ public class Kunde extends Person{
      * @param e -- Kunde Email
      * @param telefon -- Kunde Telefonnummer
      * @param geburt -- Kunde Geburtsdatum
-     * @throws UngueltigeIDException 
      */
-    public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException{
+    public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt) 
+    {
         super(n, ID, anschr, e, telefon, geburt);
     }
 
@@ -39,9 +39,9 @@ public class Kunde extends Person{
      * @param telefon -- Kunde Telefonnummer
      * @param geburt -- Kunde Geburtsdatum
      * @param reise -- Kunde Reisen
-     * @throws UngueltigeIDException 
      */
-    public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt, String reise) throws UngueltigeIDException{
+    public Kunde(String n, long ID, String anschr, String e, int telefon, Date geburt, String reise) 
+    {
         super(n, ID, anschr, e, telefon, geburt);
         reisen = reise;
     }

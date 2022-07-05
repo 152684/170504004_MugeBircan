@@ -51,10 +51,10 @@ public class LoginSceneController implements Initializable {
     /**
      * Wenn beim Passwort Field an Enter-Taste gedruecht wird, werden die Daten ueberprueft und falls richtig der User eingeloggt
      * @param event
-     * @throws UngueltigeIDException 
      */
     @FXML
-    private void passIN(ActionEvent event) throws UngueltigeIDException{
+    private void passIN(ActionEvent event) 
+    {
         //für Chef wird loginType = 1, für Mitarbeiter = 2 
         String user = userID.getText();
         String pwd = passID.getText();

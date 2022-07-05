@@ -4,7 +4,6 @@
  */
 package com.mycompany.inf202;
 
-//import java.util.ArrayList;
 import java.util.Date;
 /**
  *
@@ -14,9 +13,6 @@ import java.util.Date;
  */
 public class ReiseLeiter extends Person{
     
-    //private ArrayList<String> touren = new ArrayList();
-    //private int reiseAnzahl = 0;
-    
     /**
      * Konstruktor fuer ReiseLeiter
      * @param n -- ReiseLeiter Name
@@ -25,9 +21,9 @@ public class ReiseLeiter extends Person{
      * @param e -- ReiseLeiter Email
      * @param telefon -- ReiseLeiter Telefonnummer
      * @param geburt -- ReiseLeiter Geburtsdatum
-     * @throws UngueltigeIDException 
      */
-    public ReiseLeiter(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException{
+    public ReiseLeiter(String n, long ID, String anschr, String e, int telefon, Date geburt)
+    {
         super(n, ID, anschr, e, telefon, geburt);
     }
     

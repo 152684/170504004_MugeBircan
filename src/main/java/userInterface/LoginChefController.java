@@ -40,9 +40,9 @@ public class LoginChefController implements Initializable {
     /**
      * den aktuellen User finden
      * @param id -- BurgerID des Chefs
-     * @throws UngueltigeIDException 
      */
-    public void fromLogin(long id) throws UngueltigeIDException{
+    public void fromLogin(long id) 
+    {
         currentUser = SelectRecords.findChef(id);
         sceneText.setText("Willkommen Herr/Frau " + currentUser.getName().toUpperCase());
     }

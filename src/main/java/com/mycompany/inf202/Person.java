@@ -28,15 +28,6 @@ public abstract class Person {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy"); /**< Gibt an, wie der Datum eingegeben werden soll.*/
 
     /**
-     * Ueberprueft, ob die gegebene BurgerID gueltig ist
-     * @param a -- gegebene BurgerID
-     * @return TRUE falls ID gueltig, FALSE falls ID nicht gueltig
-     */
-    public static boolean idGueltig(long a) { 
-        return (10000000000L <= a) && (a <= 99999999999L);
-    }
-
-    /**
      * constructor fuer Klasse Person
      * @param n -- Name
      * @param ID -- BurgerID
@@ -44,21 +35,15 @@ public abstract class Person {
      * @param e -- Email
      * @param telefon -- Telefonnumer
      * @param geburt -- Geburtsdatum
-     * @throws UngueltigeIDException falls die gegebene ID nicht gueltig ist 
      */
-    public Person(String n, long ID, String anschr, String e, int telefon, Date geburt) throws UngueltigeIDException
+    public Person(String n, long ID, String anschr, String e, int telefon, Date geburt) 
     {
-        if(idGueltig(ID)){
-            name = n;
-            burgerID = ID;
-            anschrift = anschr;
-            email = e;
-            telefonnummer = telefon;
-            geburtsdatum = geburt;            
-        }else{
-            System.out.println("Fehler beim Erzeugen der Person!");
-            throw new UngueltigeIDException();
-        }        
+        name = n;
+        burgerID = ID;
+        anschrift = anschr;
+        email = e;
+        telefonnummer = telefon;
+        geburtsdatum = geburt;            
     }
     
     /**
@@ -115,19 +100,4 @@ public abstract class Person {
         return name;
     }
     
-    /*
-    public void updateInfo(String n, String anschr, String e, int tel)
-    {
-        name = n;
-        anschrift = anschr;
-        email = e;
-        telefonnummer = tel;
-    }
-    
-    public void updateKontakt(String e, int tel)
-    {
-        email = e;
-        telefonnummer = tel;
-    }
-    */
 }

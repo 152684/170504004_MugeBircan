@@ -5,9 +5,7 @@
 package databaseFunctions;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.mycompany.inf202.Tour;
-import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

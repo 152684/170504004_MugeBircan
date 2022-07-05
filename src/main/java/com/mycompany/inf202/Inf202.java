@@ -22,13 +22,14 @@ import testPackage.*;
 
 public class Inf202 {
     
-    public static void main(String[] args) throws UngueltigeIDException {
+    public static void main(String[] args)
+    {
         System.out.println("---------------INF202 Project------------- ");
        
        
-        //InsertRecordsTest.test(); //nur richtige IDs sollen inserted werden.
+        //InsertRecordsTest.test();
         
-        SelectRecordsTest.test(); // program abstürtz beim ungueltiegeIDException / auch wenn MitarbeiterID in Chef gesucht wird
+        SelectRecordsTest.test(); 
         //UpdateRecordsTest.test();
         //DeleteRecordsTest.test();
         

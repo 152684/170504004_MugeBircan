@@ -4,13 +4,7 @@
  */
 package com.mycompany.inf202;
 
-import java.util.ArrayList;
 import java.util.Date;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
-import userInterface.ToursTableController;
-//import javafx.beans.property.StringProperty;
 /**
  *
  * @author mbirc

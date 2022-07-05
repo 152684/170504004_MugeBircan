@@ -4,7 +4,7 @@
  */
 package testPackage;
 
-import com.mycompany.inf202.UngueltigeIDException;
+//import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.DeleteRecords;
 
 /**
@@ -12,7 +12,7 @@ import databaseFunctions.DeleteRecords;
  * @author mbirc
  */
 public class DeleteRecordsTest {
-    public static void test() throws UngueltigeIDException{
+    public static void test() /*throws UngueltigeIDException*/{
 /* 
         System.out.println("-----------deleteMitarbeiter überprüfen---------------");
         DeleteRecords.deleteMitarbeiter(17050405005L);

@@ -10,8 +10,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -58,11 +56,7 @@ public class MitarbeiterListeController implements Initializable {
         // TODO
         table_info_app = mitarbeiterTable;
         initializeCols();
-        try {        
-            loadData();
-        } catch (UngueltigeIDException ex) {
-            Logger.getLogger(MitarbeiterListeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        loadData();
     }    
 
     /**
@@ -82,9 +76,9 @@ public class MitarbeiterListeController implements Initializable {
     
     /**
      * Daten in die Tabelle speichern
-     * @throws UngueltigeIDException 
      */
-    private void loadData() throws UngueltigeIDException{
+    private void loadData() 
+    {
         ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
         SelectRecords.allMitarbeiterInArray(mitarbeitern);
         Iterator<Mitarbeiter> iter = mitarbeitern.iterator();
