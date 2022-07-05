@@ -26,7 +26,7 @@ public class UpdateRecords {
      * @param n -- Name
      * @param anschr -- Anschrift
      * @param e -- Email
-     * @param tel -- Telefonnnummer
+     * @param tel -- Telefonnummer
      * @param ID -- BurgerID
      */
     public static void updateMitarbeiter(String n, String anschr, String e, int tel, long ID){
@@ -315,7 +315,7 @@ public class UpdateRecords {
      * @param n -- Name
      * @param anschr -- Anschrift
      * @param e -- Email
-     * @param tel -- 1telefonnummer
+     * @param tel -- Telefonnummer
      * @param p -- Preis
      */
     public static void updateHotel(String n, String anschr, String e, int tel, float p){

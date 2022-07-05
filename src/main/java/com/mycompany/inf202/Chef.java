@@ -9,8 +9,6 @@ import databaseFunctions.InsertRecords;
 import databaseFunctions.SelectRecords;
 import databaseFunctions.UpdateRecords;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

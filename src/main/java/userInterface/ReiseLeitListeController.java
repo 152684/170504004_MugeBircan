@@ -5,7 +5,6 @@
 package userInterface;
 
 import com.mycompany.inf202.ReiseLeiter;
-//import com.mycompany.inf202.UngueltigeIDException;
 import databaseFunctions.SelectRecords;
 import java.net.URL;
 import java.util.ArrayList;

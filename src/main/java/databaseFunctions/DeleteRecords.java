@@ -19,9 +19,6 @@ import java.util.Iterator;
  */
 public class DeleteRecords {
 
-    private static ArrayList<Chef> chefs = new ArrayList();
-    private static ArrayList<Mitarbeiter> mitarbeitern = new ArrayList();
-    private static ArrayList<Kunde> kunden = new ArrayList();
     private static ArrayList<ReiseLeiter> reiseLs = new ArrayList();
     private static ArrayList<String> hotels = new ArrayList();
     private static ArrayList<String> tours = new ArrayList();
