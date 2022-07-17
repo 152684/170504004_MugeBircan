@@ -84,14 +84,13 @@ public class LoginSceneController implements Initializable {
         if(loginType == 1){
             sceneText.setText("richtige Eingabe. Willkommen " + user);
             try{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginChef.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginChefNeu.fxml"));
                 Parent root = loader.load();
                 //The following both lines are the only addition we need to pass the arguments
-                LoginChefController controller2 = loader.getController();
+                LoginChefNeuController controller2 = loader.getController();
                 controller2.fromLogin(id);
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.setTitle("Layout2 + Controller2");
                 stage.show();
                 
             }catch(IOException e){
