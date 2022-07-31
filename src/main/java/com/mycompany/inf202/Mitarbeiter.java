@@ -4,7 +4,8 @@
  */
 package com.mycompany.inf202;
 
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -34,6 +35,24 @@ public class Mitarbeiter extends Arbeiter{
     public Mitarbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass) 
     {
         super(n, ID, anschr, e, telefon, geburt, persID, user, pass);
+    }
+
+    /**
+     * Konstruktor fuer Mitarbeiter
+     * @param n
+     * @param ID
+     * @param anschr
+     * @param e
+     * @param telefon
+     * @param geburt
+     * @param persID
+     * @param user
+     * @param pass
+     * @param neuReg 
+     */
+    public Mitarbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass, boolean neuReg) 
+    {
+        super(n, ID, anschr, e, telefon, geburt, persID, user, pass, neuReg);
     }
 
     /**

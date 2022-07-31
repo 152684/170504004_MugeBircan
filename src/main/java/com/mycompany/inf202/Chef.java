@@ -8,7 +8,7 @@ import databaseFunctions.DeleteRecords;
 import databaseFunctions.InsertRecords;
 import databaseFunctions.SelectRecords;
 import databaseFunctions.UpdateRecords;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -36,29 +36,52 @@ public class Chef extends Arbeiter{
     }
     
     /**
-     * ein neuer Mitarbeiter wird ins Database gespeichert.
-     * @param n -- Mitarbeiter Name
-     * @param ID -- Mitarbeiter BurgerID
-     * @param anschr -- Mitarbeiter Anschrift
-     * @param e -- Mitarbeiter Email
-     * @param telefon -- Mitarbeiter Telefonnummer
-     * @param geburt -- Mitarbeiter Geburtsdatum
-     * @param persID -- Mitarbeiter personalID
-     * @param user -- Mitarbeiter userName
-     * @param pass -- Mitarbeiter Passwort
-     * @return TRUE falls Mitarbeiter erfolreich ins Database gespeichert wird, FALSE andernfalls
+     * Konstruktor fuer Chef
+     * @param n
+     * @param ID
+     * @param anschr
+     * @param e
+     * @param telefon
+     * @param geburt
+     * @param persID
+     * @param user
+     * @param pass
+     * @param neuRegister 
      */
-    public boolean setMitarb(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
+    public Chef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass, boolean neuRegister) 
     {
+        super(n, ID, anschr, e, telefon, geburt, persID, user, pass, neuRegister);
+        
+    }
 
-        Mitarbeiter r = SelectRecords.findMitarbeiter(ID);
+    /**
+     * Mitarbetier Hinzufuegen 
+     * @param m -- Mitarbeiter
+     * @return -- true falls erfolgreich, false andernfalls
+     */
+    public boolean setMitarbNeu(Mitarbeiter m){
+        Mitarbeiter r = SelectRecords.findMitarbeiter(m.getBurgerID());
         if(r == null){
-            Mitarbeiter k = new Mitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-            InsertRecords.insertMitarbeiter(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-            return true;                
+            boolean erfolg = InsertRecords.insertMitarbeiterNeu(m);
+            return erfolg;                
         }else{
             return false;
-        }
+        }        
+    }
+    
+    /**
+     * Mitarbetier Hinzufuegen 
+     * @param m -- Mitarbeiter
+     * @return -- true falls erfolgreich, false andernfalls
+     */
+    public boolean setChefNeu(Chef c){
+        Chef r = SelectRecords.findChef(c.getBurgerID());
+        if(r == null){
+            boolean erfolg = InsertRecords.insertChefNeu(c);
+            return erfolg;                
+        }else{
+            return false;
+        }        
     }
     
     /**
@@ -90,33 +113,7 @@ public class Chef extends Arbeiter{
             return erfolg;            
         }
     }
-    
-    /**
-     * neuer Chef wird ins Database gespeichert.
-     * 
-     * @param n -- Mitarbeiter Name
-     * @param ID -- Mitarbeiter BurgerID
-     * @param anschr -- Mitarbeiter Anschrift
-     * @param e -- Mitarbeiter Email
-     * @param telefon -- Mitarbeiter Telefonnummer
-     * @param geburt -- Mitarbeiter Geburtsdatum
-     * @param persID -- Mitarbeiter personalID
-     * @param user -- Mitarbeiter userName
-     * @param pass -- Mitarbeiter Passwort
-     * @return TRUE falls erfolgreich gespeichert wird, FALSE andernfalls
-     */
-    public boolean setChef(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass)
-    {
-        Chef r = SelectRecords.findChef(ID);
-        if(r == null){
-            Chef k = new Chef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-            InsertRecords.insertChef(n, ID, anschr, e, telefon, geburt, persID, user, pass);
-            return true;                
-        }else{
-            return false;
-        }
-    }
-    
+        
     /**
      * Chefinfos Name, Anschrift, Email und Telefonnummer werden aktualisiert wobei der BurgerID gegeben ist 
      * @param n -- Mitarbeiter Name

@@ -1,0 +1,8 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+     -fx-background-image: url("C:\Users\mbirc\OneDrive\Dokumente\NetBeansProjects\inf202\src\main\resources\pics\travel.png");
+     -fx-background-size: 100% 100%; 
+}

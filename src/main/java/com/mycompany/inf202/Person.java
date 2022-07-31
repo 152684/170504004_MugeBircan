@@ -5,7 +5,9 @@
 package com.mycompany.inf202;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
+
 /**
  *
  * @author mbirc

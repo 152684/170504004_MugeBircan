@@ -122,7 +122,7 @@ public class SelectRecords {
             ResultSet rs    = pstmt.executeQuery();
             m = new Mitarbeiter(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                                 rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
-                                                rs.getString("passwort"));
+                                                rs.getString("passwort"), rs.getBoolean("neuRegister"));
             
         } 
         catch (SQLException e) {  
@@ -162,7 +162,7 @@ public class SelectRecords {
             ResultSet rs    = pstmt.executeQuery();
             chef = new Chef(rs.getString("name"), rs.getLong("burgerID"), rs.getString("anschrift"), rs.getString("email"), 
                                    rs.getInt("telefonnummer"), rs.getDate("geburtsdatum"), rs.getInt("personalID"), rs.getString("userName"),
-                                   rs.getString("passwort"));
+                                   rs.getString("passwort"), rs.getBoolean("neuRegister"));
             
         }
         catch (SQLException e) {  

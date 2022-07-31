@@ -4,7 +4,7 @@
  */
 package userInterface;
 
-import com.mycompany.inf202.Chef;
+import com.mycompany.inf202.Mitarbeiter;
 import databaseFunctions.SelectRecords;
 import java.io.IOException;
 import java.net.URL;
@@ -26,9 +26,9 @@ import javafx.stage.Stage;
  *
  * @author mbirc
  */
-public class LoginChefNeuController implements Initializable {
+public class LoginMitNeuController implements Initializable {
     
-    Chef currentUser; /**< aktueller chef*/
+    Mitarbeiter currentUser; /**< aktueller mitarbeiter*/
 
     @FXML
     private AnchorPane anchorPane;
@@ -46,11 +46,11 @@ public class LoginChefNeuController implements Initializable {
     }    
 
     public void fromLogin(long id, boolean neuReg){
-        currentUser = SelectRecords.findChef(id);
+        currentUser = SelectRecords.findMitarbeiter(id);
         labelUser.setText(currentUser.getName().toUpperCase());
-        labelTyp.setText("Chef");        
+        labelTyp.setText("Mitarbeiter");        
         if(neuReg){
-            loadFenster("UserLoginAendern");            
+            loadFenster("UserLoginAendern");        
         }
     }
 
@@ -71,11 +71,6 @@ public class LoginChefNeuController implements Initializable {
     @FXML
     private void eigeneDatenMouseClc(MouseEvent event) {
         loadFenster("UserLoginAendern");
-    }
-
-    @FXML
-    private void arbeiterMouseClc(MouseEvent event) {
-        loadFenster("ArbeiterFnkNeu");
     }
 
     @FXML
@@ -104,12 +99,8 @@ public class LoginChefNeuController implements Initializable {
             switch(fenster){
                 case "UserLoginAendern":
                     UserLoginAendernController controller = loader.getController();
-                    controller.LoginCurrentChef(currentUser);
-                    break;
-                case "ArbeiterFnkNeu":
-                    ArbeiterFnkNeuController controller1 = loader.getController();
-                    controller1.currentAnlegen(currentUser);            
-                    break;
+                    controller.LoginCurrentMit(currentUser);            
+                break;
                 case "KundeHinzufuegen":
                     KundeHinzufuegenController controller2 = loader.getController();
                     controller2.currentAnlegen(currentUser);            

@@ -4,7 +4,7 @@
  */
 package com.mycompany.inf202;
 
-import java.util.Date;
+import java.sql.Date;
 /**
  *
  * @author mbirc

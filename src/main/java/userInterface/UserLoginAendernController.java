@@ -22,6 +22,7 @@ public class UserLoginAendernController implements Initializable {
     Chef currentChef; /**< aktueller chef*/
     Mitarbeiter currentMit; /**< aktueller Mitarbeiter*/
     int currentTyp = 0; /**<1 falls der aktuelle User Chef ist, 2 falls Mitarbeiter ist*/
+    boolean neuReg; /**<true falls neu registriert is, false andernfalls*/
 
     @FXML
     private TextField neuUserName;
@@ -37,14 +38,6 @@ public class UserLoginAendernController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void userNameIn(ActionEvent event) {
-    }
-
-    @FXML
-    private void neuPassIn(ActionEvent event) {
-    }
     
     /**
      * aktueller Chef anlegen
@@ -53,6 +46,10 @@ public class UserLoginAendernController implements Initializable {
     public void LoginCurrentChef(Chef c){   
         currentChef = c;
         currentTyp = 1;
+        neuReg = c.getNeuRegister();
+        if(neuReg){
+            textField.setText("Bitte ändern Sie Ihre Login Daten bevor fortzufahren.");
+        }
     }
     
     /**
@@ -62,6 +59,10 @@ public class UserLoginAendernController implements Initializable {
     public void LoginCurrentMit(Mitarbeiter m){   
         currentMit = m;
         currentTyp = 2;
+        neuReg = m.getNeuRegister();
+        if(neuReg){
+            textField.setText("Bitte ändern Sie Ihre Login Daten bevor fortzufahren.");
+        }
     }
 
     /**

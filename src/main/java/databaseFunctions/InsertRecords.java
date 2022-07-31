@@ -4,6 +4,7 @@
  */
 package databaseFunctions;
 
+import com.mycompany.inf202.*;
 import java.sql.Connection;  
 import java.sql.PreparedStatement;  
 import java.sql.SQLException;
@@ -16,40 +17,40 @@ import java.util.Date;
  */
 public class InsertRecords {
     
+    
     /**
-     * neuer Mitarbeiter in die Database speichern 
-     * @param n -- Name
-     * @param ID -- BurgerID
-     * @param anschr -- Anschrift
-     * @param email -- Email
-     * @param telefon -- Telefonnummer
-     * @param geburt -- Geburtsdatum
-     * @param persID -- PersonalID
-     * @param user -- Username
-     * @param pass -- Passwort
+     * insert Mitarbeiter ins Database
+     * @param m -- Mitarbetier
+     * @return true falls richtig, false andernfalls
      */
-    public static void insertMitarbeiter(String n, long ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
+    public static boolean insertMitarbeiterNeu(Mitarbeiter m){
         Connect c = new Connect();
         Connection conn = c.connect();
+ 
+        boolean returnVal = false;
+        //java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
         
-        java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
-        
-        String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mitarbeiter(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort, neuRegister) VALUES(?,?,?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, n);  
-            pstmt.setLong(2, ID);  
-            pstmt.setString(3, anschr);  
-            pstmt.setString(4, email);  
-            pstmt.setInt(5, telefon);  
-            pstmt.setDate(6, sqlDate);
-            pstmt.setInt(7, persID);
-            pstmt.setString(8, user);  
-            pstmt.setString(9, pass);  
-            pstmt.executeUpdate(); 
+            pstmt.setString(1, m.getName());  
+            pstmt.setLong(2, m.getBurgerID());  
+            pstmt.setString(3, m.getAnschrift());  
+            pstmt.setString(4, m.getEmail());  
+            pstmt.setInt(5, m.getTelefonnummer());  
+            pstmt.setDate(6, m.getGeburtsdatum());
+            pstmt.setInt(7, m.getPersonalID());
+            pstmt.setString(8, m.getUserName());  
+            pstmt.setString(9, m.getPasswort());  
+            pstmt.setBoolean(10, m.getNeuRegister());
+            pstmt.executeUpdate();
+            returnVal = true;
         } catch (SQLException e) {  
             System.out.println("Der Arbeiter kann nicht hinzugefuegt werden!");
             System.out.println(e.getMessage());  
+            System.out.println(e.getCause());
+            System.out.println(e.toString());
+            System.out.println(e.getErrorCode());            
         }        
         finally {
             if(conn != null){
@@ -60,44 +61,44 @@ public class InsertRecords {
                 }
             }
         }
-
+        return returnVal;
     }
     
     /**
-     * neuer Chef in die Database speichern 
-     * @param n -- Name
-     * @param ID -- BurgerID
-     * @param anschr -- Anschrift
-     * @param email -- Email
-     * @param telefon -- Telefonnummer
-     * @param geburt -- Geburtsdatum
-     * @param persID -- PersonalID
-     * @param user -- Username
-     * @param pass -- Passwort
+     * insert Chef ins Database
+     * @param chef -- Chef
+     * @return true falls erfolgreich, false andernfalls
      */
-    public static void insertChef(String n, long ID, String anschr, String email, int telefon, Date geburt, int persID, String user, String pass){
+    public static boolean insertChefNeu(Chef chef){
         Connect c = new Connect();
         Connection conn = c.connect();
+ 
+        boolean returnVal = false;
+        //java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
         
-        java.sql.Date sqlDate = new java.sql.Date(geburt.getTime());
-        
-        String sql = "INSERT INTO chef(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO chef(name, burgerID, anschrift, email, telefonnummer, geburtsdatum, personalID, userName, passwort, neuRegister) VALUES(?,?,?,?,?,?,?,?,?,?)";
         try{    
-            PreparedStatement pstmt = conn.prepareStatement(sql);  
-            pstmt.setString(1, n);  
-            pstmt.setLong(2, ID);  
-            pstmt.setString(3, anschr);  
-            pstmt.setString(4, email);  
-            pstmt.setInt(5, telefon);  
-            pstmt.setDate(6, sqlDate);
-            pstmt.setInt(7, persID);
-            pstmt.setString(8, user);  
-            pstmt.setString(9, pass);  
-            pstmt.executeUpdate(); 
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, chef.getName());  
+            pstmt.setLong(2, chef.getBurgerID());  
+            pstmt.setString(3, chef.getAnschrift());  
+            pstmt.setString(4, chef.getEmail());  
+            pstmt.setInt(5, chef.getTelefonnummer());  
+            pstmt.setDate(6, chef.getGeburtsdatum());
+            pstmt.setInt(7, chef.getPersonalID());
+            pstmt.setString(8, chef.getUserName());  
+            pstmt.setString(9, chef.getPasswort());  
+            pstmt.setBoolean(10, chef.getNeuRegister());
+            pstmt.executeUpdate();
+            returnVal = true;
         } catch (SQLException e) {  
+            System.out.println("Der Arbeiter kann nicht hinzugefuegt werden!");
             System.out.println(e.getMessage());  
+            System.out.println(e.getCause());
+            System.out.println(e.toString());
+            System.out.println(e.getErrorCode());            
         }        
-            finally {
+        finally {
             if(conn != null){
                 try{
                     conn.close();                    
@@ -106,9 +107,9 @@ public class InsertRecords {
                 }
             }
         }
-    
+        return returnVal;
     }
-   
+       
     /**
      * 
      * neue Kunde in die Database speichern

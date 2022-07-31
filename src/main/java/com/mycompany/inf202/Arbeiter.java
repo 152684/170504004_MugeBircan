@@ -6,7 +6,8 @@ package com.mycompany.inf202;
 
 import databaseFunctions.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 import java.util.Scanner;
 
 /**
@@ -22,6 +23,7 @@ public class Arbeiter extends Person{
     protected int personalID; /**< personalID is the ID that every employee (Chef, Mitarbeiter) has*/
     protected String passwort; /**< an employee uses his/her passwort to log in the system*/ 
     protected String userName; /**< an employee uses his/her username to log in the system*/
+    protected boolean neuRegister; /**< true falls der Arbeiter neu registriert is, false andernfalls*/
     
     private Scanner sc = new Scanner(System.in);
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -47,8 +49,31 @@ public class Arbeiter extends Person{
         personalID = persID;
         userName = user;
         passwort = pass;
+        neuRegister = true;
     }
      
+    /**
+     * Konstruktor fuer Arbeiter
+     * @param n
+     * @param ID
+     * @param anschr
+     * @param e
+     * @param telefon
+     * @param geburt
+     * @param persID
+     * @param user
+     * @param pass
+     * @param neuReg 
+     */
+    public Arbeiter(String n, long ID, String anschr, String e, int telefon, Date geburt, int persID, String user, String pass, boolean neuReg) 
+    {
+        super(n, ID, anschr, e, telefon, geburt);
+        personalID = persID;
+        userName = user;
+        passwort = pass;
+        neuRegister = neuReg;
+    }
+
     /**
      * Diese Methode aktualisiert Login-Daten eines Arbieters
      * 
@@ -60,14 +85,13 @@ public class Arbeiter extends Person{
     public boolean setLogin(String user, String pass, int typ){
         userName = user;
         passwort = pass;
+        boolean erfolg = false;
         if(typ == 1){
-            UpdateRecords.updateChefUserNameUndPass(user, pass, burgerID); 
-            return true;
+            erfolg = UpdateRecords.updateChefUserNameUndPass(user, pass, burgerID); 
         }else if(typ == 2){
-            UpdateRecords.updateMitarbeiterUserNameUndPass(user, pass, burgerID);  
-            return true;
+            erfolg = UpdateRecords.updateMitarbeiterUserNameUndPass(user, pass, burgerID);  
         }
-        return false;
+        return erfolg;
     }
 
     /**
@@ -92,6 +116,14 @@ public class Arbeiter extends Person{
      */
     public int getPersonalID(){
         return personalID;
+    }
+    
+    /**
+     * getMethose fuer neuRegister
+     * @return neuRegister
+     */
+    public boolean getNeuRegister(){
+        return neuRegister;
     }
     
     /**

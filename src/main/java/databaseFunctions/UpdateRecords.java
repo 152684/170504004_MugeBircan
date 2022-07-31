@@ -163,24 +163,29 @@ public class UpdateRecords {
     }
 
     /**
-     * Mitarbeiter Username und Passwort aktualisieren
-     * @param user -- username
-     * @param pass -- Passwort
-     * @param ID -- Mitarbeiter BurgerID
+     * Mitarbeiter UserName und Passwort aktualisieren
+     * @param user
+     * @param pass
+     * @param ID
+     * @return true falls erfolgreich, falls andernfalls
      */
-    public static void updateMitarbeiterUserNameUndPass(String user, String pass, long ID){
+    public static boolean updateMitarbeiterUserNameUndPass(String user, String pass, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        String sql = "UPDATE mitarbeiter SET userName = ?, passwort = ? WHERE burgerID = ?";
+        boolean erfolg = false;
+        
+        String sql = "UPDATE mitarbeiter SET userName = ?, passwort = ?, neuRegister = ? WHERE burgerID = ?";
 
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
 
             pstmt.setString(1, user);  
             pstmt.setString(2, pass);  
-            pstmt.setLong(3, ID);
+            pstmt.setBoolean(3, false);
+            pstmt.setLong(4, ID);
             pstmt.executeUpdate(); 
+            erfolg = true;
         } catch (SQLException ex) {  
             System.out.println("Die login Daten des Mitarbeiters kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
@@ -194,28 +199,33 @@ public class UpdateRecords {
                 }
             }
         }
-        
+        return erfolg;
     }
     
     /**
-     * Chef Username und Passwort aktualisieren 
-     * @param user -- username
-     * @param pass -- passwort
-     * @param ID -- Chef BurgerID
+     * Chef userNAme und Passwort aktualisieren
+     * @param user
+     * @param pass
+     * @param ID
+     * @return true falls erfolgreich, false andernfalls
      */
-    public static void updateChefUserNameUndPass(String user, String pass, long ID){
+    public static boolean updateChefUserNameUndPass(String user, String pass, long ID){
         Connect c = new Connect();
         Connection conn = c.connect();
         
-        String sql = "UPDATE chef SET userName = ?, passwort = ? WHERE burgerID = ?";
+        boolean erfolg = false;
+        
+        String sql = "UPDATE chef SET userName = ?, passwort = ?, neuRegister = ? WHERE burgerID = ?";
 
         try{    
             PreparedStatement pstmt = conn.prepareStatement(sql);  
 
             pstmt.setString(1, user);  
             pstmt.setString(2, pass);  
-            pstmt.setLong(3, ID);
-            pstmt.executeUpdate(); 
+            pstmt.setBoolean(3, false);
+            pstmt.setLong(4, ID);
+            pstmt.executeUpdate();
+            erfolg = true;
         } catch (SQLException ex) {  
             System.out.println("Die login Daten des Chefs kann nicht aktualisiert werden!");
             System.out.println(ex.getMessage());  
@@ -229,7 +239,7 @@ public class UpdateRecords {
                 }
             }
         }
-        
+        return erfolg;
     }
 
     /**
